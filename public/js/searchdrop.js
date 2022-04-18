@@ -37,12 +37,12 @@ class SearchDrop {
         }
         this.optionsList.forEach(o => {
             o.addEventListener("click", () => {
+                o.querySelector("input").setAttribute('checked',true);
                 this.selected.innerHTML = o.querySelector("label").innerHTML;
                 this.searchBox.classList.add("opacity-0");
                 this.optionsContainer.classList.add("hidden");
                 this.optionsContainer.classList.remove("active");
 
-                o.querySelector("input").setAttribute('checked',true)
             });
         });
     }

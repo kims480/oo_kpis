@@ -78,8 +78,8 @@ html, body {
   .card .card-header{
       @apply bg-orange-700 text-orange-50 rounded-t-md flex shadow-lg px-2 mb-2 py-2
   }
-  .card .card-body{
-      @apply p-2 flex w-full max-w-full flex-col
+  .card .card-body,.card-body{
+      @apply p-2 flex w-full max-w-full flex-col overflow-x-auto
   }
   .card .card-footer{
       @apply border-t-2 border-slate-50 flex justify-end p-2

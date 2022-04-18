@@ -1,0 +1,167 @@
+/* @import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities'; */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html, body {
+    overflow-x: hidden!important;
+    font-family: "Source Sans Pro",sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+}
+@layer base{
+[type='text'],[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],[type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea,select {
+    @apply w-full rounded-lg  shadow-sm  focus:ring-indigo-500 caret-indigo-500
+    block
+    px-3
+    py-1.5
+    text-base
+    font-normal
+    text-gray-700
+    bg-white bg-clip-padding
+    border border-solid border-gray-300
+
+    transition
+    ease-in-out
+    m-0
+    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+
+}
+}
+.table { @apply bg-white text-gray-900 border-separate w-full shadow-md }
+.table  th { @apply bg-slate-800 text-blue-100;  padding: 2px; border-bottom: 2px solid #d8d8d8 ; }
+.table th:nth-child(1) { @apply w-auto }
+.table th:last-child { width: 15%; }
+.table tr:nth-child(odd) { @apply bg-white text-blue-900 }
+.table tr:nth-child(even) { @apply bg-blue-50 text-blue-900;}
+.table td { @apply p-0 }
+/* .table th { @apply bg-gray-700 text-white p-2 } */
+/* .table tr:nth-child(even) { @apply bg-blue-50 text-blue-900 } */
+    /* background-color:#f6f6f6 !important } */
+.btn {
+    @apply font-bold py-1 px-4 rounded  mr-1;
+  }
+  .btn-primary {
+    @apply bg-blue-700 text-white;
+  }
+  .btn-primary:hover {
+    @apply bg-blue-500;
+  }
+  .btn.btn-danger.btn-text,.btn.btn-danger.btn-xs {
+    @apply  text-orange-800;
+  }
+  .btn.btn-danger.btn-text:hover ,.btn.btn-danger.btn-xs:hover  {
+    @apply text-orange-600;
+  }
+  .btn.btn-success.btn-xs {
+    @apply  text-green-800 ;
+  }
+  .btn.btn-success.btn-xs:hover  {
+    @apply text-green-600 bg-transparent;
+  }
+  .btn-success {
+    @apply bg-lime-700 text-white;
+  }
+  .btn-success:hover {
+    @apply bg-lime-500;
+  }
+  .btn-default {
+    @apply bg-gray-200 text-slate-800;
+  }
+  .btn-default:hover {
+    @apply bg-gray-50 text-orange-800;
+  }
+  .card{
+      @apply bg-white shadow-md rounded-md flex-col max-w-full
+  }
+  .card .card-header{
+      @apply bg-orange-700 text-orange-50 rounded-t-md flex shadow-lg px-2 mb-2 py-2
+  }
+  .card .card-body{
+      @apply p-2 flex w-full max-w-full flex-col
+  }
+  .card .card-footer{
+      @apply border-t-2 border-slate-50 flex justify-end p-2
+  }
+  .row{
+      @apply flex flex-wrap
+  }
+  .form-group {
+    @apply w-full md:w-1/2 px-2 py-1
+  }
+  .content{
+      @apply w-full
+  }
+  .main{
+    width: 40%;
+  }
+  .actions-header{
+      width: 20%;
+  }
+  .actions{
+      @apply flex justify-center;
+  }
+  td .btn{
+      @apply bg-transparent p-1 text-slate-800
+  }
+  tr{
+      width: 100%;
+  }
+  h1,h2,h3{
+    @apply text-lg font-bold
+  }
+  .content-header{
+      @apply bg-slate-800 text-white rounded shadow-md p-2 mb-6 flex
+  }
+  .has-tooltip{
+      @apply relative
+  }
+  .tooltip {
+    @apply invisible absolute;
+  }
+
+  .has-tooltip:hover .tooltip {
+    @apply visible z-50 rounded shadow-md p-1 text-xs bg-gray-100 text-slate-500 bottom-0;
+  }
+
+/* <!-- Font Awesome --> */
+/* @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"); */
+
+/* @import url("https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"); */
+/* @import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"); */
+
+/* <!-- AdminLTE --> */
+/* @import url("https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/css/adminlte.min.css") ; */
+
+/* <!-- iCheck --> */
+
+/* @import url("https://cdnjs.cloudflare.com/ajax/libs/icheck-bootstrap/3.0.1/icheck-bootstrap.min.css"); */
+/* <!-- select2 --> */
+/* @import url("https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"); */
+/* <!-- flag-icon-css --> */
+/* @import url("https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css"); */
+/* <!-- tempusdominus-bootstrap-4 --> */
+/* @import url("https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css"); */
+
+/* @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@300&display=swap'); */
+
+/* @import './extra.scss'; */
+.form-switch .form-check-input:checked {
+    background-position: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-4 -4 8 8%22%3E%3Ccircle r=%223%22 fill=%22%23fff%22/%3E%3C/svg%3E");
+}
+.form-check-input:checked[type=checkbox] {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+}
+.form-switch .form-check-input {
+    margin-top: 0.1rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-4 -4 8 8%22%3E%3Ccircle r=%223%22 fill=%22%23fff%22/%3E%3C/svg%3E");
+    background-position: 0;
+    transition: background-position .15s ease-in-out;
+}
+
+.form-check-input:checked {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}

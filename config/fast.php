@@ -12,6 +12,10 @@ return [
         'dashboard',
         'users.profile',
         'users.showUpdateProfile',
-        'users.updateProfile'
+        'users.updateProfile',
+        'sites',
+        'siteSnag',
+        'siteSnag.create',
+        'snags'
     ]
 ];

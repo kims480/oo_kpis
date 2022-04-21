@@ -38,6 +38,8 @@ class SiteSnag extends Component
     public $selectedSnagsList = null;
     public $selectedSitesList = null;
     public $siteSelected;
+    public $severity;
+    public $snags_severity;
     public $snag_remarks;
     public $snags_status;
     public $snag_domain;
@@ -58,7 +60,7 @@ class SiteSnag extends Component
     {
         $this->maincategs = MainCateg::select('id', 'name')->get();
         $this->subcategs = collect();
-
+        $this->snags_severity=collect();
         $this->SnagsList = Snag::with('sub_categ.main_categ')->pluck('description', 'id');
         $this->snag_remarks = Snagremark::select('id', 'remark')->pluck('remark', 'id');
         $this->snags_status = Snagstatus::select('id', 'name')->pluck('name', 'id');

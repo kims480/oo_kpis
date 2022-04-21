@@ -24,6 +24,7 @@
         "tailwindcss": "^3.0.23"
     },
     "dependencies": {
+        "@alpinejs/focus": "^3.10.2",
         "@moesaid/cleopatra": "^1.1.1",
         "alpinejs": "^3.9.1",
         "chart.js": "^3.7.1",

@@ -10,6 +10,7 @@ class SearchDrop {
     constructor(domID = "") {
         this.domID = domID;
         this.selected = document.querySelector(this.domID + " .selected");
+        this.selectBox = document.querySelector(this.domID + ".select-box");
         this.optionsContainer = document.querySelector(this.domID + " .options-container");
         this.searchBox = document.querySelector(this.domID + " .search-box input");
         this.optionsList = document.querySelectorAll(this.domID + " .option");
@@ -19,29 +20,27 @@ class SearchDrop {
 
 
     getEventListener() {
-        this.selected.addEventListener("click", () => {
-            this.optionsContainer.classList.toggle("active");
+        // this.selected.addEventListener("click", () => {
+            // this.optionsContainer.classList.toggle("active");
 
+
+        // });
+        this.selectBox.addEventListener("click", () => {
+            this.searchBox.focus();
             this.searchBox.value = "";
             this.filterList("");
-
-            if (this.optionsContainer.classList.contains("active")) {
-                this.searchBox.focus();
-            }
         });
+
           this.searchBox.addEventListener("keyup", e=> {
             this.filterList(e.target.value);
           });
-        if (this.optionsContainer.classList.contains("active")) {
-            this.searchBox.focus();
-        }
         this.optionsList.forEach(o => {
             o.addEventListener("click", () => {
                 o.querySelector("input").setAttribute('checked',true);
                 this.selected.innerHTML = o.querySelector("label").innerHTML;
-                this.searchBox.classList.add("opacity-0");
-                this.optionsContainer.classList.add("hidden");
-                this.optionsContainer.classList.remove("active");
+                // this.searchBox.classList.add("opacity-0");
+                // this.optionsContainer.classList.add("hidden");
+                // this.optionsContainer.classList.remove("active");
 
             });
         });

@@ -99,6 +99,7 @@ cursor: pointer;
 .search-box input {
 width: 100%;
 padding: 4px 4px;
+height: 47px;
 font-family: "Roboto", sans-serif;
 font-size: 16px;
 position: absolute;
@@ -117,5 +118,10 @@ outline: none;
 
 .select-box .options-container.active ~ .search-box input {
 opacity: 1;
+
+pointer-events: auto;
+}
+.select-box .options-container ~ .search-box input {
+opacity: 0;
 pointer-events: auto;
 }

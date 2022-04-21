@@ -5,7 +5,8 @@
 
 
 // require('./searchdrop');
-import Alpine from 'alpinejs'
+import Alpine from 'alpinejs';
+import focus from '@alpinejs/focus';
 import swal from 'sweetalert';
 // import NiceSelect from'./nice-select2';
 // import './prism';
@@ -67,4 +68,4 @@ Alpine.data('tooltip', () => ({
 
 Alpine.start()
 // require('./main');
-
+Alpine.plugin(focus);

@@ -13,7 +13,7 @@
        </div>
         <form wire:submit.prevent="storeSiteSnag" class="">
             <div class="card-body">
-                <div class="md:grid  md:grid-cols-3 md:grid-rows-4 md:gap-2 flex flex-wrap">
+                <div class="md:grid  md:grid-cols-3 md:grid-rows-4 md:gap-2 grid grid-cols-1 grid-rows-12">
 
                     {{-- Site ID --}}
                     <div class="form-groups">

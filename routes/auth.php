@@ -84,3 +84,5 @@ Route::resource('sitePrios', App\Http\Controllers\SitePrioController::class);
 
 
 Route::resource('siteTypes', App\Http\Controllers\SiteTypeController::class);
+Route::resource('assets', App\Http\Controllers\AssetController::class);
+Route::resource('assets-details', App\Http\Controllers\AssetDetailController::class);

@@ -39,6 +39,17 @@ class UsersImport implements ToModel,WithHeadingRow,WithBatchInserts,WithUpserts
             'name'  => $row['name'],
             'email' => $row['email'],
            'password' => Hash::make($row[2]),
+           'phone' => $row['phone'],
+           'civil_id' => $row['civil_id'],
+           'hr_code' => $row['hr_code'],
+           'project' => $row['project_id'],
+           'designation' => $row['designation_id'],
+           'office' => $row['office_id'],
+           'title' => $row['title_id'],
+           'gender' => $row['gender'],
+           'department' => $row['dept_id'],
+           'hiring_date' => $row['hiring_date'],
+           'salary' => $row['salary'],
 
         ]);
     }

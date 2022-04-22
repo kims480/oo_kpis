@@ -18,12 +18,38 @@ $isDashboardActive = Request::is($urlAdmin);
 @php
 $isUserActive = Request::is($urlAdmin.'*generator_builder*');
 @endphp
-<li class="nav-item">
-    <a href="{{ route('generator_builder.index') }}" class="nav-link {{ $isUserActive ? 'active' : '' }}">
-        <i class="nav-icon fas fa-coins"></i>
-        <p>@lang('menu.generator_builder.title')</p>
-    </a>
-</li>
+<div @click="$store.sidebar.active = 'home' " x-data="tooltip" x-on:mouseover="show = true"
+                    x-on:mouseleave="show = false"
+                    class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer"
+                    x-bind:class="{'justify-start': $store.sidebar.full, 'sm:justify-center':!$store.sidebar.full,'text-gray-200 bg-gray-800':$store.sidebar.active == 'schedules','text-gray-400 ':$store.sidebar.active != 'schedules'}">
+                    <div class="flex  items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <a href="{{ route('generator_builder.index') }}" class="nav-link {{ $isUserActive ? 'active' : '' }}">
+
+                            <h1 x-cloak
+                            x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                            @lang('menu.generator_builder.title')</h1>
+
+                        </a>
+
+                    </div>
+                    <div x-cloak x-bind:class="$store.sidebar.full ? '':'sm:hidden'"
+                        class="flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                                d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <h1 class="w-5 h-5 p-1 bg-pink-400 rounded-sm text-sm leading-3 text-center text-gray-900">3
+                        </h1>
+
+                    </div>
+                </div>
+
 @endcan
 
 @can('attendances.index')
@@ -31,13 +57,18 @@ $isUserActive = Request::is($urlAdmin.'*generator_builder*');
 $isUserActive = Request::is($urlAdmin.'*attendances*');
 @endphp
 
-<li class="nav-item">
+<div @click="$store.sidebar.active = 'home' " x-data="tooltip" x-on:mouseover="show = true"
+x-on:mouseleave="show = false"
+class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer"
+x-bind:class="{'justify-start': $store.sidebar.full, 'sm:justify-center':!$store.sidebar.full,'text-gray-200 bg-gray-800':$store.sidebar.active == 'schedules',
+'text-gray-400 ':$store.sidebar.active != 'schedules'}">
     <a href="{{ route('attendances.index') }}" class="nav-link {{ $isUserActive ? 'active' : '' }}">
         <i class="nav-icon fas fa-calendar-alt"></i>
 
-        <p>@lang('menu.attendances.title')</p>
+        <h1 x-cloak
+        x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">@lang('menu.attendances.title')</h1>
     </a>
-</li>
+</div>
 @endcan
 
 @canany(['users.index','roles.index','permissions.index'])
@@ -46,7 +77,11 @@ $isUserActive = Request::is($urlAdmin.'*users*');
 $isRoleActive = Request::is($urlAdmin.'*roles*');
 $isPermissionActive = Request::is($urlAdmin.'*permissions*');
 @endphp
-<li class="nav-item {{($isUserActive||$isRoleActive||$isPermissionActive)?'menu-open':''}} ">
+<div @click="$store.sidebar.active = 'home' " x-data="tooltip" x-on:mouseover="show = true"
+x-on:mouseleave="show = false"
+class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer"
+x-bind:class="{'justify-start': $store.sidebar.full, 'sm:justify-center':!$store.sidebar.full,'text-gray-200 bg-gray-800':$store.sidebar.active == 'schedules',
+'text-gray-400 ':$store.sidebar.active != 'schedules'}"{{--  class="nav-item {{($isUserActive||$isRoleActive||$isPermissionActive)?'menu-open':''}} " --}}>
     <a href="#" class="nav-link">
         <i class="nav-icon fas fa-shield-virus"></i>
         <p>
@@ -86,7 +121,7 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
         </li>
         @endcan
     </ul>
-</li>
+</div>
 @endcan
 @can('fileUploads.index')
 <li class="nav-item">
@@ -149,10 +184,10 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
     </a>
 </li>
 @endcan
-@can('snagdomains.index')
+@can('snag-domains.index')
 
 <li class="nav-item">
-    <a href="{{ route('snagdomains.index') }}"
+    <a href="{{ route('snag-domains.index') }}"
        class="nav-link {{ Request::is('snagdomains*') ? 'active' : '' }}">
         <p>@lang('models/snagdomains.plural')</p>
     </a>
@@ -160,16 +195,16 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
 @endcan
 @can('snagstatuses.index')
 <li class="nav-item">
-    <a href="{{ route('snagstatuses.index') }}"
+    <a href="{{ route('snag-statuses.index') }}"
        class="nav-link {{ Request::is('admin/snagstatuses*') ? 'active' : '' }}">
         <p>@lang('models/snagstatuses.plural')</p>
     </a>
 </li>
 @endcan
 
-@can('siteSnags.index')
+@can('sitesnags.index')
 <li class="nav-item">
-    <a href="{{ route('siteSnags.index') }}"
+    <a href="{{ route('site-snags.index') }}"
        class="nav-link {{ Request::is('admin/siteSnags*') ? 'active' : '' }}">
         <p>@lang('models/siteSnags.plural')</p>
     </a>
@@ -177,7 +212,7 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
 @endcan
 @can('snagremarks.index')
 <li class="nav-item">
-    <a href="{{ route('snagremarks.index') }}"
+    <a href="{{ route('snag-remarks.index') }}"
        class="nav-link {{ Request::is('admin/snagremarks*') ? 'active' : '' }}">
         <p>@lang('models/snagremarks.plural')</p>
     </a>
@@ -185,7 +220,7 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
 @endcan
 @can('snagreporters.index')
 <li class="nav-item">
-    <a href="{{ route('snagreporters.index') }}"
+    <a href="{{ route('snag-reporters.index') }}"
        class="nav-link {{ Request::is('admin/snagreporters*') ? 'active' : '' }}">
         <p>@lang('models/snagreporters.plural')</p>
     </a>
@@ -193,7 +228,7 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
 @endcan
 @can('siteCategs.index')
 <li class="nav-item">
-    <a href="{{ route('siteCategs.index') }}"
+    <a href="{{ route('site-categs.index') }}"
        class="nav-link {{ Request::is('admin/siteCategs*') ? 'active' : '' }}">
         <p>@lang('models/siteCategs.plural')</p>
     </a>
@@ -201,7 +236,7 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
 @endcan
 @can('sitePrios.index')
 <li class="nav-item">
-    <a href="{{ route('sitePrios.index') }}"
+    <a href="{{ route('site-prios.index') }}"
        class="nav-link {{ Request::is('admin/sitePrios*') ? 'active' : '' }}">
         <p>@lang('models/sitePrios.plural')</p>
     </a>
@@ -209,7 +244,7 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
 @endcan
 @can('siteTypes.index')
 <li class="nav-item">
-    <a href="{{ route('siteTypes.index') }}"
+    <a href="{{ route('site-types.index') }}"
        class="nav-link {{ Request::is('admin/siteTypes*') ? 'active' : '' }}">
         <p>@lang('models/siteTypes.plural')</p>
     </a>

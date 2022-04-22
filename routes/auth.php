@@ -57,32 +57,32 @@ Route::resource('testings', App\Http\Controllers\TestingController::class);
 Route::resource('testnews', App\Http\Controllers\TestnewController::class);
 
 
-Route::resource('snagdomains', App\Http\Controllers\SnagdomainController::class);
+Route::resource('snag-domains', App\Http\Controllers\SnagdomainController::class);
 
 Route::resource('imports', App\Http\Controllers\SnagsController::class);
 
 
-Route::resource('snagstatuses', App\Http\Controllers\SnagstatusController::class);
+Route::resource('snag-statuses', App\Http\Controllers\SnagstatusController::class);
 
 
 Route::resource('snagmangs', App\Http\Controllers\SnagmangController::class);
 
 
-Route::resource('siteSnags', App\Http\Controllers\SiteSnagController::class);
+Route::resource('site-snags', App\Http\Controllers\SiteSnagController::class);
 
 
-Route::resource('snagremarks', App\Http\Controllers\SnagremarkController::class);
+Route::resource('snag-remarks', App\Http\Controllers\SnagremarkController::class);
 
 
-Route::resource('snagreporters', App\Http\Controllers\SnagreporterController::class);
+Route::resource('snag-reporters', App\Http\Controllers\SnagreporterController::class);
 
 
-Route::resource('siteCategs', App\Http\Controllers\SiteCategController::class);
+Route::resource('site-categs', App\Http\Controllers\SiteCategController::class);
 
 
-Route::resource('sitePrios', App\Http\Controllers\SitePrioController::class);
+Route::resource('site-prios', App\Http\Controllers\SitePrioController::class);
 
 
-Route::resource('siteTypes', App\Http\Controllers\SiteTypeController::class);
+Route::resource('site-types', App\Http\Controllers\SiteTypeController::class);
 Route::resource('assets', App\Http\Controllers\AssetController::class);
 Route::resource('assets-details', App\Http\Controllers\AssetDetailController::class);

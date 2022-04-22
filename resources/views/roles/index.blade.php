@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.full')
 
 @section('content')
     <section class="content-header">
@@ -29,7 +29,7 @@
 
                 <div class="card-footer clearfix">
                     <div class="float-right">
-                        
+
                     </div>
                 </div>
             </div>

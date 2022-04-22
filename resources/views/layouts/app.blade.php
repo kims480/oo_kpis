@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind Admin Template</title>
+    <title>ALKAN East</title>
     <meta name="author" content="Karim Saleh">
     <meta name="description" content="Ooredoo KPIs">
 
@@ -68,8 +68,8 @@
         <div class="h-screen bg-gray-900 transition-all  w-64 duration-300 space-y-2 fixed sm:relative"
             x-bind:class="{'w-64':$store.sidebar.full, 'w-64 sm:w-20':!$store.sidebar.full,'top-0 left-0':$store.sidebar.navOpen,'top-0 -left-64 sm:left-0':!$store.sidebar.navOpen}">
 
-            <h1 class="text-white font-black py-4"
-                x-bind:class="$store.sidebar.full ? 'text-2xl px-4' : 'text-xl px-4 xm:px-2'">LOGO</h1>
+            <h1 class="text-white font-black py-4 flex"
+                x-bind:class="$store.sidebar.full ? 'text-2xl px-4' : 'text-xs px-1 xm:px-1'"><span>ALKAN EAST</span></h1>
 
             <div class="px-4 space-y-2">
 
@@ -168,7 +168,7 @@
                         </svg>
                         <h1 x-cloak
                             x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
-                            Schedules</h1>
+                            Leave</h1>
                     </div>
                     <div x-cloak x-bind:class="$store.sidebar.full ? '':'sm:hidden'"
                         class="flex items-center space-x-2">
@@ -200,7 +200,7 @@
                             </svg>
                             <h1 x-cloak
                                 x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
-                                Income</h1>
+                                Snags</h1>
                         </div>
                         <svg x-cloak x-bind:class="$store.sidebar.full ? '':'sm:hidden'"
                             xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20"
@@ -214,33 +214,34 @@
                     <div x-cloak x-show="open" @click.outside="open=false"
                         x-bind:class="$store.sidebar.full ? expandedClass : shrinkedClass"
                         class="text-gray-400 space-y-3">
-                        <h1 class="hover:text-gray-200 cursor-pointer">Item 1</h1>
-                        <h1 class="hover:text-gray-200 cursor-pointer">Item 2</h1>
+                        <h5 class="hover:text-gray-200 cursor-pointer">Add Snag</h5>
+                        <h5 class="hover:text-gray-200 cursor-pointer">Manage Snag</h5>
+                        <h5 class="hover:text-gray-200 cursor-pointer">Snag List</h5>
                         <!-- Sub Dropdown  -->
-                        <div x-data="sub_dropdown" class="relative w-full ">
-                            <div @click="sub_toggle()" class="flex items-center justify-between cursor-pointer">
-                                <h1 class="hover:text-gray-200 cursor-pointer">Item 3</h1>
+                        {{-- <div x-data="sub_dropdown" class="relative w-full "> --}}
+                            {{-- <div @click="sub_toggle()" class="flex items-center justify-between cursor-pointer">
+                                <h1 class="hover:text-gray-200 cursor-pointer">Snag List</h1>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path fill-rule="evenodd"
                                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                                         clip-rule="evenodd" />
                                 </svg>
-                            </div>
-                            <div x-show="sub_open" @click.outside="sub_open = false"
+                            </div> --}}
+                            {{-- <div x-show="sub_open" @click.outside="sub_open = false"
                                 x-bind:class="$store.sidebar.full ? sub_expandedClass:sub_shrinkedClass">
-                                <h1 class="hover:text-gray-200 cursor-pointer ">Sub Item 1</h1>
-                                <h1 class="hover:text-gray-200 cursor-pointer ">Sub Item 2</h1>
-                                <h1 class="hover:text-gray-200 cursor-pointer ">Sub Item 3</h1>
-                            </div>
-                        </div>
-                        <h1 class="hover:text-gray-200 cursor-pointer">Item 4</h1>
+                                <h1 class="hover:text-gray-200 cursor-pointer ">Add Snag</h1>
+                                <h1 class="hover:text-gray-200 cursor-pointer ">Manage Snag</h1>
+                                <h1 class="hover:text-gray-200 cursor-pointer ">Snag List</h1>
+                            </div> --}}
+                        {{-- </div> --}}
+                        {{-- <h1 class="hover:text-gray-200 cursor-pointer">Item 4</h1> --}}
                     </div>
-                    @include('layouts.menu')
                 </div>
+                @include('layouts.menu_2')
 
                 <!-- Promote -->
-                <div x-data="dropdown" class="relative">
+                {{-- <div x-data="dropdown" class="relative">
                     <!-- Dropdown head -->
                     <div @click="toggle('promote')" x-data="tooltip" x-on:mouseover="show = true"
                         x-on:mouseleave="show = false"
@@ -273,7 +274,7 @@
                         <h1 class="hover:text-gray-200 cursor-pointer">Item 3</h1>
                         <h1 class="hover:text-gray-200 cursor-pointer">Item 4</h1>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
 
@@ -305,25 +306,41 @@
 
                 <div class="w-1/2"></div>
                 <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
+                    <p>
+                        {{ Auth::user()->name }} <br>
+                        <small>Member since {{ Auth::user()->created_at->format('M. Y') }}</small>
+                    </p>
                     <button @click="isOpen = !isOpen"
                         class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none">
                         <img src="https://source.unsplash.com/uJ8LNVCBjFQ/400x400">
                     </button>
+
                     <button x-show="isOpen" @click="isOpen = false"
                         class="h-full w-full fixed inset-0 cursor-default"></button>
-                    <div x-show="isOpen" class="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
-                        <a href="#" class="block px-4 py-2 account-link hover:text-white">Account</a>
-                        <a href="#" class="block px-4 py-2 account-link hover:text-white">Support</a>
-                        <a href="#" class="block px-4 py-2 account-link hover:text-white">Sign Out</a>
+
+                    <div x-show="isOpen" class="absolute flex flex-col w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
+                        <a href="{{ route('users.profile') }}"
+                            class=" px-4 py-2 account-link hover:text-white hover:cursor-pointer">Profile</a>
+                        <a href="#" class=" px-4 py-2 account-link hover:text-white"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Sign out
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                            class="d-none">
+                            @csrf
+                        </form>
+                        {{-- <a href="#" class="block px-4 py-2 account-link hover:text-white">Account</a>
+                        <a href="#" class="block px-4 py-2 account-link hover:text-white">Support</a> --}}
+                        {{-- <a href="{{ route('signout') }}" class="block px-4 py-2 account-link hover:text-white">Sign Out</a> --}}
                     </div>
                 </div>
             </header>
 
             <!-- Mobile Header & Nav -->
-            <header x-data="{ isOpen: false }" class="w-full bg-sidebar py-5 px-6 sm:hidden">
-                <div class="flex items-center justify-between">
-                    <a href="index.html"
-                        class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
+            <header x-data="{ isOpen: false }" class="w-full bg-sidebar py-5 px-6 sm:hidden bg-slate-900 text-sky-50">
+                <div class="flex items-center justify-between ">
+                    <a href="index.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">ALKAN
+                        East</a>
                     <button @click="isOpen = !isOpen" class="text-white text-3xl focus:outline-none">
                         <i x-show="!isOpen" class="fas fa-arrow-alt-circle-right"></i>
                         <i x-show="isOpen" class="fas fa-times"></i>
@@ -331,66 +348,73 @@
                 </div>
 
                 <!-- Dropdown Nav -->
-                <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4">
+                <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4 bg-slate-800">
                     <a href="index.html"
                         class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                         <i class="fas fa-tachometer-alt mr-3"></i>
                         Dashboard
                     </a>
-                    <a href="blank.html"
+                    <a href="{{ route('site-snags.index') }}"
                         class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                         <i class="fas fa-sticky-note mr-3"></i>
-                        Blank Page
+                        Snags
                     </a>
-                    <a href="tables.html" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
+                    <a href="{{ route('site-snags.create') }}"
+                        class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
                         <i class="fas fa-table mr-3"></i>
-                        Tables
+                        Add Snag
                     </a>
                     <a href="forms.html"
                         class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                         <i class="fas fa-align-left mr-3"></i>
                         Forms
                     </a>
-                    <a href="tabs.html"
-                        class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                        <i class="fas fa-tablet-alt mr-3"></i>
-                        Tabbed Content
-                    </a>
-                    <a href="calendar.html"
-                        class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                        <i class="fas fa-calendar mr-3"></i>
-                        Calendar
-                    </a>
+
+
                     <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                         <i class="fas fa-cogs mr-3"></i>
                         Support
                     </a>
-                    <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <a href="{{-- {{ route('user.profile') }} --}}"
+                        class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                         <i class="fas fa-user mr-3"></i>
                         My Account
                     </a>
-                    <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <a href="#"
+                        class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="fas fa-sign-out-alt mr-3"></i>
                         Sign Out
                     </a>
-                    <button
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                    class="d-none">
+                    @csrf
+                </form>
+                    {{-- <button
                         class="w-full bg-white cta-btn font-semibold py-2 mt-3 rounded-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
                         <i class="fas fa-arrow-circle-up mr-3"></i> Upgrade to Pro!
-                    </button>
+                    </button> --}}
                 </nav>
                 <!-- <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
                 <i class="fas fa-plus mr-3"></i> New Report
             </button> -->
             </header>
+
             <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
                 <main class="w-full relative flex-grow p-6">
-                    <div class="transition-all duration-300 absolute top-2 right-1/2  bg-stone-200 text-sm text-blue-900 p-2 border-l-8 border-stone-600 rounded-md opacity-80" wire:loading >
-                        Processing Payment...
-                        <svg class="inline-block animate-spin -mr-1 ml-3 h-5 w-5 text-amber-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                           <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                       </svg>
-                   </div>
+                    <div class="transition-all duration-300 absolute top-2 right-1/2  bg-stone-200 text-sm text-blue-900 p-2 border-l-8 border-stone-600 rounded-md opacity-80"
+                        wire:loading>
+                        Processing Data...
+                        <svg class="inline-block animate-spin -mr-1 ml-3 h-5 w-5 text-amber-400"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                            </path>
+                        </svg>
+                    </div>
                     @yield('content')
                 </main>
             </div>

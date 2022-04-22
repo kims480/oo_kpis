@@ -8,11 +8,11 @@
                 @lang('models/siteSnags.plural')
             </h3>
             <div class="ml-auto">
-                <a class="btn btn-default mr-3" href="{{ route('siteSnags.create') }}">
+                <a class="btn btn-default mr-3" href="{{ route('site-snags.create') }}">
                     @lang('crud.add_new')
                 </a>
                 @can('gen.permissions')
-                    <a class="btn btn-success " href="{{ route('insert.permissions', __('models/siteSnags.singular')) }}">
+                    <a class="btn btn-success " href="{{ route('insert.permissions', __('models/siteSnags.model')) }}">
                         @lang('crud.initiate_permissions')
                     </a>
                 @endcan

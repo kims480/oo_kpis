@@ -29,13 +29,13 @@
             <td>{{ $siteSnag->snagremark->remark ??''}}</td>
             <td>{{ $siteSnag->snagstatus->name ??''}}</td>
                 <td width="120">
-                    {!! Form::open(['route' => ['siteSnags.destroy', $siteSnag->id], 'method' => 'delete']) !!}
+                    {!! Form::open(['route' => ['site-snags.destroy', $siteSnag->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('siteSnags.show', [$siteSnag->id]) }}"
+                        <a href="{{ route('site-snags.show', [$siteSnag->id]) }}"
                            class='btn btn-default btn-xs'>
                             <i class="far fa-eye"></i>
                         </a>
-                        <a href="{{ route('siteSnags.edit', [$siteSnag->id]) }}"
+                        <a href="{{ route('site-snags.edit', [$siteSnag->id]) }}"
                            class='btn btn-success btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>

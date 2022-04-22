@@ -104,7 +104,7 @@
                                         <?php $selectedSnagsList = $snag; ?>
                                     @endif
                                     <div class="option"
-                                        wire:click.stop="$set('selectedSnag_id',{{ $ids }})">
+                                        wire:click.stop="$set('selectedSnag_id',{{ $ids }})" @click.prevent="snagSelect=false">
                                         <input type="radio" class="radio" id="snag-{{ $ids }}"
                                             value="{{ $ids }}" name="selectedSnag_id"
                                             wire:click.stop="$set('selectedSnag_id',{{ $ids }})" />
@@ -250,7 +250,7 @@
                     Add Snag to Site
                 </button>
                 {{-- {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!} --}}
-                <a href="{{ route('siteSnags.index') }}" class="btn btn-default">
+                <a href="{{ route('site-snags.index') }}" class="btn btn-default">
                     @lang('crud.cancel')
                 </a>
             </div>

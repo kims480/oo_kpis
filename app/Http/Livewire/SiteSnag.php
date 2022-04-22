@@ -61,7 +61,6 @@ class SiteSnag extends Component
         $this->maincategs = MainCateg::select('id', 'name')->get();
         $this->subcategs = collect();
         $this->snags_severity=collect();
-        $this->SnagsList = Snag::with('sub_categ.main_categ')->pluck('description', 'id');
         $this->snag_remarks = Snagremark::select('id', 'remark')->pluck('remark', 'id');
         $this->snags_status = Snagstatus::select('id', 'name')->pluck('name', 'id');
         $this->snag_domain = Snagdomain::select('id', 'name')->pluck('name', 'id');
@@ -88,6 +87,7 @@ class SiteSnag extends Component
         // dd($siteSnags);
         // return view('site_snags.create',compact('SnagsList','SitesList'));
         $this->SitesList = Site::where('site_id', 'like', '%' . $this->siteSearch . '%')->select('id', 'site_id')->paginate(100)->pluck('site_id', 'id');
+        $this->SnagsList = Snag::where('description', 'like', '%' . $this->snagSearch . '%')->select('id','description')->with('sub_categ.main_categ')->pluck('description', 'id');
         return view('livewire.site-snag', [
             // 'snags' => Snagmang::with('sub_categ.main_categ')->latest()->take(5)->get(),
             // 'SnagsList'=>Snagmang::with('sub_categ.main_categ')->latest()->take(5)->get(),
@@ -152,9 +152,21 @@ class SiteSnag extends Component
         $site_snag->closure_date = $this->closure_date;
 
         $site_snag->save();
+
+        $this->close();
+
+        $this->dispatchBrowserEvent('swal:modal', [
+            'type' => 'success',
+            'title' => 'Snag added successfully',
+            'text' => '',
+        ]);
         // $site->snag()->attach($this->selectedSnag_id);
 
 
+
+    }
+
+    function close(){
         $this->snag_name = '';
         $this->selectedMaincateg = null;
         $this->selectedSubcateg = null;

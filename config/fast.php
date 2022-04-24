@@ -13,7 +13,7 @@ return [
         'users.profile',
         'users.showUpdateProfile',
         'users.updateProfile',
-        'sites',
+        // 'sites',
         'siteSnag',
         'siteSnag.create',
         'snags'

@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                      @lang('models/assets.singular')
+                     @lang('models/offices.singular')
                 </div>
             </div>
         </div>
@@ -17,19 +17,20 @@
 
         <div class="card">
 
-            {!! Form::model($asset, ['route' => ['assets.update', $asset->id], 'method' => 'patch']) !!}
+            {!! Form::open(['route' => 'snags.store']) !!}
 
             <div class="card-body">
                 <div class="row">
-                    @include('assets.fields')
+                    {{-- @dump($sub_categ) --}}
+                    @include('snags.fields')
                 </div>
             </div>
 
             <div class="card-footer">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('assets.index') }}" class="btn btn-default">
-                    @lang('crud.cancel')
-                 </a>
+                <a href="{{ route('snags.index') }}" class="btn btn-default">
+                 @lang('crud.cancel')
+                </a>
             </div>
 
             {!! Form::close() !!}

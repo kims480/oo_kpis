@@ -18,7 +18,7 @@ class AssetController extends Controller
     {
         //
         $assets=Asset::all();
-        return view('assets.index')->with('assets');
+        return view('assets.index')->with('assets',$assets);
     }
 
     /**
@@ -40,11 +40,11 @@ class AssetController extends Controller
      */
     public function store(StoreAssetRequest $request)
     {
-        $input = $request->all();
+        $input = $request->only('name');
 
         $asset = Asset::create($input);
 
-        Flash::success(__('messages.saved', ['model' => __('models/assets.singular')]));
+        Flash::success(__('Asset Added Successfully', ['model' => __('models/assets.singular')]));
 
         return redirect(route('assets.index'));
     }
@@ -68,7 +68,13 @@ class AssetController extends Controller
      */
     public function edit(Asset $asset)
     {
-        //
+        if (empty($asset)) {
+            Flash::error(__('The required Asset is not found', ['model' => __('models/assets.singular')]));
+
+            return redirect(route('assets.index'));
+        }
+        return view('assets.edit')->with('asset',$asset);
+
     }
 
     /**
@@ -80,7 +86,19 @@ class AssetController extends Controller
      */
     public function update(UpdateAssetRequest $request, Asset $asset)
     {
-        //
+        if (empty($asset)) {
+            Flash::error(__('The required Asset is not found', ['model' => __('models/assets.singular')]));
+
+            return redirect(route('assets.index'));
+        }
+        // dump($asset);
+        $asset->name=$request->name;
+
+        $asset->save();
+        Flash::success(__('Asset Saved Successfully', ['model' => __('models/assets.singular')]));
+
+        return redirect(route('assets.index'));
+
     }
 
     /**
@@ -91,6 +109,18 @@ class AssetController extends Controller
      */
     public function destroy(Asset $asset)
     {
-        //
+        // $office = Asset::find($id);
+
+        if (empty($asset)) {
+            Flash::error(__('The required Asset is not found', ['model' => __('models/assets.singular')]));
+
+            return redirect(route('assets.index'));
+        }
+
+        $asset->delete($asset->id);
+
+        Flash::success(__('Asset deleted', ['model' => __('models/assets.singular')]));
+
+        return redirect(route('assets.index'));
     }
 }

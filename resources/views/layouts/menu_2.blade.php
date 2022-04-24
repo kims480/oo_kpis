@@ -1,253 +1,728 @@
+<!-- Home -->
 @php
-$urlAdmin=config('fast.admin_prefix');
+$urlAdmin = config('fast.admin_prefix');
 @endphp
 
+<!-- Dashboard -->
 @can('dashboard')
-@php
-$isDashboardActive = Request::is($urlAdmin);
-@endphp
-<li class="nav-item">
-    <a href="{{ route('dashboard') }}" class="nav-link {{ $isDashboardActive ? 'active' : '' }}">
-        <i class="nav-icon fas fa-tachometer-alt"></i>
-        <p>@lang('menu.dashboard')</p>
-    </a>
-</li>
+    @php
+    $isDashboardActive = Request::is($urlAdmin);
+    @endphp
+    <div x-data="tooltip" x-on:mouseover="show = true" x-on:mouseleave="show = false"
+        @click="$store.sidebar.active = 'admin' "
+        class=" relative flex items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer {{ Request::is('admin') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
+        x-bind:class="{'justify-start': $store.sidebar.full, 'sm:justify-center':!$store.sidebar.full,'text-gray-200 bg-gray-800':$store.sidebar.active == 'admin','text-gray-400 ':$store.sidebar.active != 'admin'}">
+        {{-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg> --}}
+        <a href="{{ route('home') }}"
+            class="flex justify-between p-0 w-full   items-center ">
+            <div class="flex items-center space-x-2">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <h3 x-cloak
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                    <p>@lang('menu.dashboard')</p>
+                </h3>
+            </div>
+        </a>
+    </div>
 @endcan
+
+<!-- Audience -->
+@can('attendances.index')
+    @php
+    $isUserActive = Request::is($urlAdmin . '*attendances*');
+    @endphp
+
+    <div @click="$store.sidebar.active = 'home' " x-data="tooltip" x-on:mouseover="show = true"
+        x-on:mouseleave="show = false"
+        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer"
+        x-bind:class="{'justify-start': $store.sidebar.full, 'sm:justify-center':!$store.sidebar.full,'text-gray-200 bg-gray-800':$store.sidebar.active == 'schedules',
+        'text-gray-400 ':$store.sidebar.active != 'schedules'}">
+        <a href="{{ route('attendances.index') }}"
+            class="flex justify-between p-0 w-full   items-center{{ $isUserActive ? 'active' : '' }}">
+            <div class="flex items-center space-x-2">
+                <i class="nav-icon fas fa-calendar-alt"></i>
+
+                <h3 x-cloak
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                    @lang('menu.attendances.title')</h3>
+            </div>
+        </a>
+    </div>
+@endcan
+
+<!-- Users/Roles/Permissions -->
+@canany(['users.index', 'roles.index', 'permissions.index'])
+    @php
+    $isUserActive = Request::is($urlAdmin . '*users*');
+    $isRoleActive = Request::is($urlAdmin . '*roles*');
+    $isPermissionActive = Request::is($urlAdmin . '*permissions*');
+    @endphp
+
+    <div x-data="dropdown" class="relative">
+        <!-- Dropdown head -->
+        <div @click="toggle('security')" x-data="tooltip" x-on:mouseover="show = true" x-on:mouseleave="show = false"
+            class="flex justify-between text-gray-400 hover:text-gray-200 hover:bg-gray-800 items-center space-x-2 rounded-md p-2 cursor-pointer"
+            x-bind:class="{'justify-start': $store.sidebar.full, 'sm:justify-center':!$store.sidebar.full, 'text-gray-200 bg-gray-800':$store.sidebar.active == 'security','text-gray-400 ':$store.sidebar.active != 'security'}">
+            <div
+                class="flex justify-between p-0 w-full   items-center{{ Request::is('admin/security*') ? 'active' : '' }}">
+                <div class="relative flex space-x-2 items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    {{-- <i class="nav-icon fas fa-shield-virus"></i> --}}
+                    <h1 x-cloak
+                        x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                        @lang('menu.user.title')
+                        {{-- <i class="fas fa-angle-left right"></i> --}}
+                    </h1>
+                </div>
+                <svg x-cloak x-bind:class="$store.sidebar.full ? '':'sm:hidden'" xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clip-rule="evenodd" />
+                </svg>
+            </div>
+        </div>
+        <!-- Dropdown content -->
+        <div x-cloak x-show="open" @click.outside="open =false"
+            x-bind:class="$store.sidebar.full ? expandedClass : shrinkedClass" class="text-gray-400 space-y-3 ">
+            @can('users.index')
+                <a href="{{ route('users.index') }}"
+                    class="hover:text-gray-200 cursor-pointer flex{{ $isUserActive ? 'text-gray-200' : '' }}">
+                    <h6 class=" cursor-pointer flex space-x-2">
+                        <i class="nav-icon fas fa-users"></i>
+                        <span>@lang('menu.user.users')</span>
+                    </h6>
+                </a>
+            @endcan
+            @can('roles.index')
+                <a href="{{ route('roles.index') }}"
+                    class="hover:text-gray-200 cursor-pointer flex {{ $isRoleActive ? 'text-gray-200' : '' }}">
+                    <h6 class=" cursor-pointer flex space-x-2">
+                        <i class="nav-icon fas fa-user-shield"></i>
+                        <p>
+                            @lang('menu.user.roles')
+                        </p>
+                    </h6>
+                </a>
+            @endcan
+            @can('permissions.index')
+                <a href="{{ route('permissions.index') }}"
+                    class="hover:text-gray-200 cursor-pointer flex {{ $isPermissionActive ? 'text-gray-200' : '' }}">
+                    <h6 class=" cursor-pointer flex space-x-2">
+                        <i class="nav-icon fas fa-shield-alt"></i>
+                        <p>
+                            @lang('menu.user.permissions')
+                        </p>
+                    </h6>
+                </a>
+            @endcan
+
+        </div>
+    </div>
+@endcan
+
+<!-- Posts -->
+{{-- <div @click="$store.sidebar.active = 'posts' " x-data="tooltip" x-on:mouseover="show = true"
+    x-on:mouseleave="show = false"
+    class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer"
+    x-bind:class="{'justify-start': $store.sidebar.full, 'sm:justify-center':!$store.sidebar.full,'text-gray-200 bg-gray-800':$store.sidebar.active == 'posts','text-gray-400 ':$store.sidebar.active != 'posts'}">
+    <div class="flex  items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        <h1 x-cloak
+            x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+            Posts</h1>
+    </div>
+    <h1 x-cloak x-bind:class="$store.sidebar.full ? '' :'sm:hidden'"
+        class="w-5 h-5 p-1 bg-green-400 rounded-sm text-sm leading-3 text-center text-gray-900">8</h1>
+</div> --}}
+
+<!-- Schedules -->
+{{-- <div @click="$store.sidebar.active = 'home' " x-data="tooltip" x-on:mouseover="show = true"
+    x-on:mouseleave="show = false"
+    class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer"
+    x-bind:class="{'justify-start': $store.sidebar.full, 'sm:justify-center':!$store.sidebar.full,'text-gray-200 bg-gray-800':$store.sidebar.active == 'schedules','text-gray-400 ':$store.sidebar.active != 'schedules'}">
+    <div class="flex  items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <h1 x-cloak
+            x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+            Leave</h1>
+    </div>
+    <div x-cloak x-bind:class="$store.sidebar.full ? '':'sm:hidden'" class="flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <h1 class="w-5 h-5 p-1 bg-pink-400 rounded-sm text-sm leading-3 text-center text-gray-900">3
+        </h1>
+
+    </div>
+</div> --}}
+
+<!-- Snags -->
+<div x-data="dropdown" class="relative">
+    <!-- Dropdown head -->
+    <div @click="toggle('income')" x-data="tooltip" x-on:mouseover="show = true" x-on:mouseleave="show = false"
+        class="flex justify-between text-gray-400 hover:text-gray-200 hover:bg-gray-800 items-center space-x-2 rounded-md p-2 cursor-pointer"
+        x-bind:class="{'justify-start': $store.sidebar.full, 'sm:justify-center':!$store.sidebar.full,'text-gray-200 bg-gray-800':$store.sidebar.active == 'income','text-gray-400 ':$store.sidebar.active != 'income'}">
+        <div
+            class="flex justify-between p-0 w-full   items-center{{ Request::is('admin/security*') ? 'active' : '' }}">
+
+            <div class="relative flex space-x-2 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+                </svg>
+                <h1 x-cloak
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                    Snags</h1>
+            </div>
+            <svg x-cloak x-bind:class="$store.sidebar.full ? '':'sm:hidden'" xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd" />
+            </svg>
+        </div>
+    </div>
+    <!-- Dropdown content -->
+    <div x-cloak x-show="open" @click.outside="open=false"
+        x-bind:class="$store.sidebar.full ? expandedClass : shrinkedClass" class="text-gray-400 space-y-3">
+        <h5 class="hover:text-gray-200 cursor-pointer">Add Snag</h5>
+        <h5 class="hover:text-gray-200 cursor-pointer">Manage Snag</h5>
+        <h5 class="hover:text-gray-200 cursor-pointer">Snag List</h5>
+        <!-- Sub Dropdown  -->
+        {{-- <div x-data="sub_dropdown" class="relative w-full "> --}}
+        {{-- <div @click="sub_toggle()" class="flex items-center justify-between cursor-pointer">
+            <h1 class="hover:text-gray-200 cursor-pointer">Snag List</h1>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20"
+                fill="currentColor">
+                <path fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd" />
+            </svg>
+        </div> --}}
+        {{-- <div x-show="sub_open" @click.outside="sub_open = false"
+            x-bind:class="$store.sidebar.full ? sub_expandedClass:sub_shrinkedClass">
+            <h1 class="hover:text-gray-200 cursor-pointer ">Add Snag</h1>
+            <h1 class="hover:text-gray-200 cursor-pointer ">Manage Snag</h1>
+            <h1 class="hover:text-gray-200 cursor-pointer ">Snag List</h1>
+        </div> --}}
+        {{-- </div> --}}
+        {{-- <h1 class="hover:text-gray-200 cursor-pointer">Item 4</h1> --}}
+    </div>
+</div>
+
+
 
 @can('generator_builder.index')
-@php
-$isUserActive = Request::is($urlAdmin.'*generator_builder*');
-@endphp
-<div @click="$store.sidebar.active = 'home' " x-data="tooltip" x-on:mouseover="show = true"
-                    x-on:mouseleave="show = false"
-                    class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer"
-                    x-bind:class="{'justify-start': $store.sidebar.full, 'sm:justify-center':!$store.sidebar.full,'text-gray-200 bg-gray-800':$store.sidebar.active == 'schedules','text-gray-400 ':$store.sidebar.active != 'schedules'}">
-                    <div class="flex  items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        <a href="{{ route('generator_builder.index') }}" class="nav-link {{ $isUserActive ? 'active' : '' }}">
+    @php
+    $isUserActive = Request::is($urlAdmin . '*generator_builder*');
+    @endphp
+    <div @click="$store.sidebar.active = 'home' " x-data="tooltip" x-on:mouseover="show = true"
+        x-on:mouseleave="show = false"
+        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer"
+        x-bind:class="{'justify-start': $store.sidebar.full, 'sm:justify-center':!$store.sidebar.full,'text-gray-200 bg-gray-800':$store.sidebar.active == 'schedules','text-gray-400 ':$store.sidebar.active != 'schedules'}">
+        <div class="flex  items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <a href="{{ route('generator_builder.index') }}" class="nav-link {{ $isUserActive ? 'active' : '' }}">
 
-                            <h1 x-cloak
-                            x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
-                            @lang('menu.generator_builder.title')</h1>
+                <h1 x-cloak
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                    @lang('menu.generator_builder.title')</h1>
 
-                        </a>
-
-                    </div>
-                    <div x-cloak x-bind:class="$store.sidebar.full ? '':'sm:hidden'"
-                        class="flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
-                                d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <h1 class="w-5 h-5 p-1 bg-pink-400 rounded-sm text-sm leading-3 text-center text-gray-900">3
-                        </h1>
-
-                    </div>
-                </div>
-
-@endcan
-
-@can('attendances.index')
-@php
-$isUserActive = Request::is($urlAdmin.'*attendances*');
-@endphp
-
-<div @click="$store.sidebar.active = 'home' " x-data="tooltip" x-on:mouseover="show = true"
-x-on:mouseleave="show = false"
-class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer"
-x-bind:class="{'justify-start': $store.sidebar.full, 'sm:justify-center':!$store.sidebar.full,'text-gray-200 bg-gray-800':$store.sidebar.active == 'schedules',
-'text-gray-400 ':$store.sidebar.active != 'schedules'}">
-    <a href="{{ route('attendances.index') }}" class="nav-link {{ $isUserActive ? 'active' : '' }}">
-        <i class="nav-icon fas fa-calendar-alt"></i>
-
-        <h1 x-cloak
-        x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">@lang('menu.attendances.title')</h1>
-    </a>
-</div>
-@endcan
-
-@canany(['users.index','roles.index','permissions.index'])
-@php
-$isUserActive = Request::is($urlAdmin.'*users*');
-$isRoleActive = Request::is($urlAdmin.'*roles*');
-$isPermissionActive = Request::is($urlAdmin.'*permissions*');
-@endphp
-<div @click="$store.sidebar.active = 'home' " x-data="tooltip" x-on:mouseover="show = true"
-x-on:mouseleave="show = false"
-class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer"
-x-bind:class="{'justify-start': $store.sidebar.full, 'sm:justify-center':!$store.sidebar.full,'text-gray-200 bg-gray-800':$store.sidebar.active == 'schedules',
-'text-gray-400 ':$store.sidebar.active != 'schedules'}"{{--  class="nav-item {{($isUserActive||$isRoleActive||$isPermissionActive)?'menu-open':''}} " --}}>
-    <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-shield-virus"></i>
-        <p>
-            @lang('menu.user.title')
-            <i class="fas fa-angle-left right"></i>
-        </p>
-    </a>
-    <ul class="nav nav-treeview">
-        @can('users.index')
-        <li class="nav-item">
-            <a href="{{ route('users.index') }}" class="nav-link {{ $isUserActive ? 'active' : '' }}">
-                <i class="nav-icon fas fa-users"></i>
-                <p>
-                    @lang('menu.user.users')
-                </p>
             </a>
-        </li>
-        @endcan
-        @can('roles.index')
-        <li class="nav-item">
-            <a href="{{ route('roles.index') }}" class="nav-link {{ $isRoleActive ? 'active' : '' }}">
-                <i class="nav-icon fas fa-user-shield"></i>
-                <p>
-                    @lang('menu.user.roles')
-                </p>
-            </a>
-        </li>
-        @endcan
-        @can('permissions.index')
-        <li class="nav-item ">
-            <a href="{{ route('permissions.index') }}" class="nav-link {{ $isPermissionActive ? 'active' : '' }}">
-                <i class="nav-icon fas fa-shield-alt"></i>
-                <p>
-                    @lang('menu.user.permissions')
-                </p>
-            </a>
-        </li>
-        @endcan
-    </ul>
-</div>
-@endcan
-@can('fileUploads.index')
-<li class="nav-item">
-    <a href="{{ route('fileUploads.index') }}" class="nav-link {{ Request::is('fileUploads*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-file-alt"></i>
-        <p>@lang('models/fileUploads.plural')</p>
-    </a>
-</li>
+
+        </div>
+        <div x-cloak x-bind:class="$store.sidebar.full ? '':'sm:hidden'" class="flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                    d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h1 class="w-5 h-5 p-1 bg-pink-400 rounded-sm text-sm leading-3 text-center text-gray-900">3
+            </h1>
+
+        </div>
+    </div>
 @endcan
 
 @can('sites.index')
-<li class="nav-item">
-    <a href="{{ route('sites.index') }}"
-       class="nav-link {{ Request::is('admin/sites*') ? 'active' : '' }}">
-        <p>@lang('models/sites.plural')</p>
-    </a>
-</li>
+    <div @click="$store.sidebar.active = 'sites'" x-data="tooltip" x-on:mouseover="show = true"
+        x-on:mouseleave="show = false"
+        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+        {{ Request::is('admin/sites*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
+        x-bind:class="{'justify-start': $store.sidebar.full,
+         'sm:justify-center':!$store.sidebar.full,
+         'text-gray-200 bg-gray-800':$store.sidebar.active == 'sites',
+         'text-gray-400 ':$store.sidebar.active != 'sites'}">
+        <!-- Posts -->
+        <a href="{{ route('sites.index') }}"
+            class="flex justify-between p-0 w-full items-center space-x-2{{ Request::is('admin/sites*') ? 'active' : '' }}">
+            <div class="flex  items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h3 x-cloak
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                    <span>@lang('models/sites.plural')</span>
+                </h3>
+
+            </div>
+            <h3 x-cloak x-bind:class="$store.sidebar.full ? '' :'sm:hidden'"
+                class="w-5 h-5 p-1 bg-green-400 rounded-sm text-sm leading-3 text-center text-gray-900">8</h3>
+        </a>
+    </div>
+@endcan
+
+@can('fileUploads.index')
+    <div @click="$store.sidebar.active = 'fileUploads'" x-data="tooltip" x-on:mouseover="show = true"
+        x-on:mouseleave="show = false"
+        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+    {{ Request::is('admin/fileUploads*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
+        x-bind:class="{'justify-start': $store.sidebar.full,
+     'sm:justify-center':!$store.sidebar.full,
+     'text-gray-200 bg-gray-800':$store.sidebar.active == 'fileUploads',
+     'text-gray-400 ':$store.sidebar.active != 'fileUploads'}">
+        <!-- Posts -->
+        <a href="{{ route('fileUploads.index') }}"
+            class="flex justify-between p-0 w-full  items-center space-x-2{{ Request::is('admin/fileUploads*') ? '' : '' }}">
+            <div class="flex  items-center space-x-2">
+                {{-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg> --}}
+                <i class="nav-icon fas fa-file-alt"></i>
+                <h6 x-cloak
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                    <p>@lang('models/fileUploads.plural')</p>
+                </h6>
+
+            </div>
+
+        </a>
+    </div>
+@endcan
+
+@can('site-snags.index')
+    <div @click="$store.sidebar.active = 'site-snags'" x-data="tooltip" x-on:mouseover="show = true"
+        x-on:mouseleave="show = false"
+        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+        {{ Request::is('admin/site-snags*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
+        x-bind:class="{'justify-start': $store.sidebar.full,
+         'sm:justify-center':!$store.sidebar.full,
+         'text-gray-200 bg-gray-800':$store.sidebar.active == 'site-snags',
+         'text-gray-400 ':$store.sidebar.active != 'site-snags'}">
+        <!-- Posts -->
+        <a href="{{ route('site-snags.index') }}"
+            class="flex justify-between p-0 w-full   items-center space-x-2{{ Request::is('admin/site-snags*') ? 'active' : '' }}">
+            <div class="flex  items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h3 x-cloak
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                    <p>@lang('models/siteSnags.plural')</p>
+                </h3>
+
+            </div>
+            <h3 x-cloak x-bind:class="$store.sidebar.full ? '' :'sm:hidden'"
+                class="w-5 h-5 p-1 bg-green-400 rounded-sm text-sm leading-3 text-center text-gray-900">8</h3>
+        </a>
+    </div>
 @endcan
 
 @can('imports.index')
-<li class="nav-item">
-    <a href="{{ route('imports.index') }}"
-       class="nav-link {{ Request::is('admin/imports*') ? 'active' : '' }}">
-        <p>@lang('models/snags.plural')</p>
-    </a>
-</li>
+    <div @click="$store.sidebar.active = 'imports'" x-data="tooltip" x-on:mouseover="show = true"
+        x-on:mouseleave="show = false"
+        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+        {{ Request::is('admin/imports*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
+        x-bind:class="{'justify-start': $store.sidebar.full,
+         'sm:justify-center':!$store.sidebar.full,
+         'text-gray-200 bg-gray-800':$store.sidebar.active == 'imports',
+         'text-gray-400 ':$store.sidebar.active != 'imports'}">
+        <!-- Posts -->
+        <a href="{{ route('imports.index') }}"
+            class="flex justify-between p-0 w-full   items-center space-x-2{{ Request::is('admin/imports*') ? 'active' : '' }}">
+            <div class="flex  items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h3 x-cloak
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+
+                    <span>@lang('models/snags.plural')</span>
+
+                </h3>
+
+            </div>
+            <h3 x-cloak x-bind:class="$store.sidebar.full ? '' :'sm:hidden'"
+                class="w-5 h-5 p-1 bg-green-400 rounded-sm text-sm leading-3 text-center text-gray-900">8</h3>
+        </a>
+    </div>
 @endcan
 
 @can('regions.index')
-<li class="nav-item">
-    <a href="{{ route('regions.index') }}"
-       class="nav-link {{ Request::is('admin/regions*') ? 'active' : '' }}">
-        <p>@lang('models/regions.plural')</p>
-    </a>
-</li>
+    <div @click="$store.sidebar.active = 'regions'" x-data="tooltip" x-on:mouseover="show = true"
+        x-on:mouseleave="show = false"
+        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+        {{ Request::is('admin/regions*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
+        x-bind:class="{'justify-start': $store.sidebar.full,
+         'sm:justify-center':!$store.sidebar.full,
+         'text-gray-200 bg-gray-800':$store.sidebar.active == 'regions',
+         'text-gray-400 ':$store.sidebar.active != 'regions'}">
+        <!-- Posts -->
+        <a href="{{ route('regions.index') }}"
+            class="flex justify-between p-0 w-full   items-center space-x-2{{ Request::is('admin/regions*') ? 'active' : '' }}">
+            <div class="flex  items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h3 x-cloak
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+
+                    <p>@lang('models/regions.plural')</p>
+                </h3>
+
+            </div>
+            <h3 x-cloak x-bind:class="$store.sidebar.full ? '' :'sm:hidden'"
+                class="w-5 h-5 p-1 bg-green-400 rounded-sm text-sm leading-3 text-center text-gray-900">8</h3>
+        </a>
+    </div>
 @endcan
 
 @can('offices.index')
-<li class="nav-item">
-    <a href="{{ route('offices.index') }}"
-       class="nav-link {{ Request::is('admin/offices*') ? 'active' : '' }}">
-        <p>@lang('models/offices.plural')</p>
-    </a>
-</li>
+    <div @click="$store.sidebar.active = 'offices'" x-data="tooltip" x-on:mouseover="show = true"
+        x-on:mouseleave="show = false"
+        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+        {{ Request::is('admin/offices*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
+        x-bind:class="{'justify-start': $store.sidebar.full,
+         'sm:justify-center':!$store.sidebar.full,
+         'text-gray-200 bg-gray-800':$store.sidebar.active == 'offices',
+         'text-gray-400 ':$store.sidebar.active != 'offices'}">
+        <!-- Posts -->
+        <a href="{{ route('offices.index') }}"
+            class=" flex  justify-between p-0 w-full   items-center space-x-2{{ Request::is('admin/offices*') ? 'active' : '' }}">
+            <div class="flex item-csnter">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h3 x-cloak
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                    {{-- <a href="{{ route('offices.index') }}" --}}
+                    {{-- class="nav-link {{ Request::is('admin/offices*') ? 'active' : '' }}"> --}}
+                    <span>@lang('models/offices.plural')</span>
+                    {{-- </a> --}}
+                </h3>
+            </div>
+
+            <h3 x-cloak x-bind:class="$store.sidebar.full ? '' :'sm:hidden'"
+                class="w-5 h-5 p-1 bg-green-400 rounded-sm text-sm leading-3 text-center text-gray-900">8</h3>
+        </a>
+    </div>
 @endcan
+
 @can('governs.index')
+    <div @click="$store.sidebar.active = 'governs'" x-data="tooltip" x-on:mouseover="show = true"
+        x-on:mouseleave="show = false"
+        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+        {{ Request::is('admin/governs*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
+        x-bind:class="{'justify-start': $store.sidebar.full,
+         'sm:justify-center':!$store.sidebar.full,
+         'text-gray-200 bg-gray-800':$store.sidebar.active == 'governs',
+         'text-gray-400 ':$store.sidebar.active != 'governs'}">
+        <!-- Posts -->
+        <a href="{{ route('governs.index') }}"
+            class="flex justify-between p-0 w-full  items-center space-x-2  {{ Request::is('admin/governs*') ? 'active' : '' }}">
+            <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h3 x-cloak
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
 
-<li class="nav-item">
-    <a href="{{ route('governs.index') }}"
-       class="nav-link {{ Request::is('admin/governs*') ? 'active' : '' }}">
-        <p>@lang('models/governs.plural')</p>
-    </a>
-</li>
+                    <span>@lang('models/governs.plural')</span>
+
+                </h3>
+
+            </div>
+            <h3 x-cloak x-bind:class="$store.sidebar.full ? '' :'sm:hidden'"
+                class="w-5 h-5 p-1 bg-green-400 rounded-sm text-sm leading-3 text-center text-gray-900">8</h3>
+        </a>
+    </div>
 @endcan
+
 @can('wilayats.index')
-<li class="nav-item">
-    <a href="{{ route('wilayats.index') }}"
-       class="nav-link {{ Request::is('admin/wilayats*') ? 'active' : '' }}">
-        <p>@lang('models/wilayats.plural')</p>
-    </a>
-</li>
+    <div @click="$store.sidebar.active = 'wilayats'" x-data="tooltip" x-on:mouseover="show = true"
+        x-on:mouseleave="show = false"
+        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+        {{ Request::is('admin/wilayats*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
+        x-bind:class="{'justify-start': $store.sidebar.full,
+         'sm:justify-center':!$store.sidebar.full,
+         'text-gray-200 bg-gray-800':$store.sidebar.active == 'wilayats',
+         'text-gray-400 ':$store.sidebar.active != 'wilayats'}">
+        <!-- Posts -->
+        <a href="{{ route('wilayats.index') }}"
+            class="flex justify-between p-0 w-full   items-center space-x-2{{ Request::is('admin/wilayats*') ? 'active' : '' }}">
+            <div class="flex  items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h3 x-cloak
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                    <p>@lang('models/wilayats.plural')</p>
+                </h3>
+
+            </div>
+            <h3 x-cloak x-bind:class="$store.sidebar.full ? '' :'sm:hidden'"
+                class="w-5 h-5 p-1 bg-green-400 rounded-sm text-sm leading-3 text-center text-gray-900">8</h3>
+        </a>
+    </div>
 @endcan
+
 @can('snag-domains.index')
+    <div @click="$store.sidebar.active = 'snagdomains'" x-data="tooltip" x-on:mouseover="show = true"
+        x-on:mouseleave="show = false"
+        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+        {{ Request::is('admin/snagdomains*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
+        x-bind:class="{'justify-start': $store.sidebar.full,
+         'sm:justify-center':!$store.sidebar.full,
+         'text-gray-200 bg-gray-800':$store.sidebar.active == 'snagdomains',
+         'text-gray-400 ':$store.sidebar.active != 'snagdomains'}">
+        <!-- Posts -->
+        <a href="{{ route('snag-domains.index') }}"
+            class="flex justify-between p-0 w-full  items-center space-x-2{{ Request::is('admin/snag-domains*') ? 'active' : '' }}">
+            <div class="flex  items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h3 x-cloak
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                    <p>@lang('models/snagdomains.plural')</p>
+                </h3>
 
-<li class="nav-item">
-    <a href="{{ route('snag-domains.index') }}"
-       class="nav-link {{ Request::is('snagdomains*') ? 'active' : '' }}">
-        <p>@lang('models/snagdomains.plural')</p>
-    </a>
-</li>
-@endcan
-@can('snagstatuses.index')
-<li class="nav-item">
-    <a href="{{ route('snag-statuses.index') }}"
-       class="nav-link {{ Request::is('admin/snagstatuses*') ? 'active' : '' }}">
-        <p>@lang('models/snagstatuses.plural')</p>
-    </a>
-</li>
+            </div>
+            <h3 x-cloak x-bind:class="$store.sidebar.full ? '' :'sm:hidden'"
+                class="w-5 h-5 p-1 bg-green-400 rounded-sm text-sm leading-3 text-center text-gray-900">8</h3>
+        </a>
+    </div>
 @endcan
 
-@can('sitesnags.index')
-<li class="nav-item">
-    <a href="{{ route('site-snags.index') }}"
-       class="nav-link {{ Request::is('admin/siteSnags*') ? 'active' : '' }}">
-        <p>@lang('models/siteSnags.plural')</p>
-    </a>
-</li>
-@endcan
-@can('snagremarks.index')
-<li class="nav-item">
-    <a href="{{ route('snag-remarks.index') }}"
-       class="nav-link {{ Request::is('admin/snagremarks*') ? 'active' : '' }}">
-        <p>@lang('models/snagremarks.plural')</p>
-    </a>
-</li>
-@endcan
-@can('snagreporters.index')
-<li class="nav-item">
-    <a href="{{ route('snag-reporters.index') }}"
-       class="nav-link {{ Request::is('admin/snagreporters*') ? 'active' : '' }}">
-        <p>@lang('models/snagreporters.plural')</p>
-    </a>
-</li>
-@endcan
-@can('siteCategs.index')
-<li class="nav-item">
-    <a href="{{ route('site-categs.index') }}"
-       class="nav-link {{ Request::is('admin/siteCategs*') ? 'active' : '' }}">
-        <p>@lang('models/siteCategs.plural')</p>
-    </a>
-</li>
-@endcan
-@can('sitePrios.index')
-<li class="nav-item">
-    <a href="{{ route('site-prios.index') }}"
-       class="nav-link {{ Request::is('admin/sitePrios*') ? 'active' : '' }}">
-        <p>@lang('models/sitePrios.plural')</p>
-    </a>
-</li>
-@endcan
-@can('siteTypes.index')
-<li class="nav-item">
-    <a href="{{ route('site-types.index') }}"
-       class="nav-link {{ Request::is('admin/siteTypes*') ? 'active' : '' }}">
-        <p>@lang('models/siteTypes.plural')</p>
-    </a>
-</li>
+@can('snag-statuses.index')
+    <div @click="$store.sidebar.active = 'snag-statuses'" x-data="tooltip" x-on:mouseover="show = true"
+        x-on:mouseleave="show = false"
+        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+        {{ Request::is('admin/snag-statuses*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
+        x-bind:class="{'justify-start': $store.sidebar.full,
+         'sm:justify-center':!$store.sidebar.full,
+         'text-gray-200 bg-gray-800':$store.sidebar.active == 'snag-statuses',
+         'text-gray-400 ':$store.sidebar.active != 'snag-statuses'}">
+        <!-- Posts -->
+        <a href="{{ route('snag-statuses.index') }}"
+            class="flex justify-between p-0 w-full   items-center space-x-2{{ Request::is('admin/snag-statuses*') ? 'active' : '' }}">
+            <div class="flex  items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h3 x-cloak
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                    <p>@lang('models/snagstatuses.plural')</p>
+                </h3>
 
+            </div>
+            <h3 x-cloak x-bind:class="$store.sidebar.full ? '' :'sm:hidden'"
+                class="w-5 h-5 p-1 bg-green-400 rounded-sm text-sm leading-3 text-center text-gray-900">8</h3>
+        </a>
+    </div>
+@endcan
+
+@can('snag-remarks.index')
+    <div @click="$store.sidebar.active = 'snag-remarks'" x-data="tooltip" x-on:mouseover="show = true"
+        x-on:mouseleave="show = false"
+        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+        {{ Request::is('admin/snag-remarks*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
+        x-bind:class="{'justify-start': $store.sidebar.full,
+         'sm:justify-center':!$store.sidebar.full,
+         'text-gray-200 bg-gray-800':$store.sidebar.active == 'snag-remarks',
+         'text-gray-400 ':$store.sidebar.active != 'snag-remarks'}">
+        <!-- Posts -->
+        <a href="{{ route('snag-remarks.index') }}"
+            class="flex justify-between p-0 w-full   items-center space-x-2{{ Request::is('admin/snag-remarks*') ? 'active' : '' }}">
+            <div class="flex  items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h3 x-cloak
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                    <p>@lang('models/snagremarks.plural')</p>
+                </h3>
+
+            </div>
+            <h3 x-cloak x-bind:class="$store.sidebar.full ? '' :'sm:hidden'"
+                class="w-5 h-5 p-1 bg-green-400 rounded-sm text-sm leading-3 text-center text-gray-900">8</h3>
+        </a>
+    </div>
+@endcan
+
+@can('snag-reporters.index')
+    <div @click="$store.sidebar.active = 'snag-reporters'" x-data="tooltip" x-on:mouseover="show = true"
+        x-on:mouseleave="show = false"
+        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+        {{ Request::is('admin/snag-reporters*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
+        x-bind:class="{'justify-start': $store.sidebar.full,
+         'sm:justify-center':!$store.sidebar.full,
+         'text-gray-200 bg-gray-800':$store.sidebar.active == 'snag-reporters',
+         'text-gray-400 ':$store.sidebar.active != 'snag-reporters'}">
+        <!-- Posts -->
+        <a href="{{ route('snag-reporters.index') }}"
+            class="flex justify-between p-0 w-full   items-center space-x-2{{ Request::is('admin/snag-reporters*') ? 'active' : '' }}">
+            <div class="flex  items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h3 x-cloak
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                    <p>@lang('models/snagreporters.plural')</p>
+                </h3>
+
+            </div>
+            <h3 x-cloak x-bind:class="$store.sidebar.full ? '' :'sm:hidden'"
+                class="w-5 h-5 p-1 bg-green-400 rounded-sm text-sm leading-3 text-center text-gray-900">8</h3>
+        </a>
+    </div>
+@endcan
+
+@can('site-categs.index')
+    <div @click="$store.sidebar.active = 'site-categs'" x-data="tooltip" x-on:mouseover="show = true"
+        x-on:mouseleave="show = false"
+        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+        {{ Request::is('admin/site-categs*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
+        x-bind:class="{'justify-start': $store.sidebar.full,
+         'sm:justify-center':!$store.sidebar.full,
+         'text-gray-200 bg-gray-800':$store.sidebar.active == 'site-categs',
+         'text-gray-400 ':$store.sidebar.active != 'site-categs'}">
+        <!-- Posts -->
+        <a href="{{ route('site-categs.index') }}"
+            class="flex justify-between p-0 w-full   items-center space-x-2{{ Request::is('admin/site-categs*') ? 'active' : '' }}">
+            <div class="flex  items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h3 x-cloak
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                    <p>@lang('models/siteCategs.plural')</p>
+                </h3>
+
+            </div>
+            <h3 x-cloak x-bind:class="$store.sidebar.full ? '' :'sm:hidden'"
+                class="w-5 h-5 p-1 bg-green-400 rounded-sm text-sm leading-3 text-center text-gray-900">8</h3>
+        </a>
+    </div>
+@endcan
+
+@can('site-prios.index')
+    <div @click="$store.sidebar.active = 'site-prios'" x-data="tooltip" x-on:mouseover="show = true"
+        x-on:mouseleave="show = false"
+        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+        {{ Request::is('admin/site-prios*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
+        x-bind:class="{'justify-start': $store.sidebar.full,
+         'sm:justify-center':!$store.sidebar.full,
+         'text-gray-200 bg-gray-800':$store.sidebar.active == 'site-prios',
+         'text-gray-400 ':$store.sidebar.active != 'site-prios'}">
+        <!-- Posts -->
+        <a href="{{ route('site-prios.index') }}"
+            class="flex justify-between p-0 w-full   items-center space-x-2{{ Request::is('admin/site-prios*') ? 'active' : '' }}">
+            <div class="flex  items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h3 x-cloak
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                    <p>@lang('models/sitePrios.plural')</p>
+                </h3>
+
+            </div>
+            <h3 x-cloak x-bind:class="$store.sidebar.full ? '' :'sm:hidden'"
+                class="w-5 h-5 p-1 bg-green-400 rounded-sm text-sm leading-3 text-center text-gray-900">8</h3>
+        </a>
+    </div>
+@endcan
+
+@can('site-types.index')
+    <div @click="$store.sidebar.active = 'site-types'" x-data="tooltip" x-on:mouseover="show = true"
+        x-on:mouseleave="show = false"
+        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+        {{ Request::is('admin/site-types*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
+        x-bind:class="{'justify-start': $store.sidebar.full,
+         'sm:justify-center':!$store.sidebar.full,
+         'text-gray-200 bg-gray-800':$store.sidebar.active == 'site-types',
+         'text-gray-400 ':$store.sidebar.active != 'site-types'}">
+        <!-- Posts -->
+        <a href="{{ route('site-types.index') }}"
+            class="flex justify-between p-0 w-full   items-center space-x-2{{ Request::is('admin/site-types*') ? 'active' : '' }}">
+            <div class="flex  items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h3 x-cloak
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                    <p>@lang('models/siteTypes.plural')</p>
+                </h3>
+
+            </div>
+            <h3 x-cloak x-bind:class="$store.sidebar.full ? '' :'sm:hidden'"
+                class="w-5 h-5 p-1 bg-green-400 rounded-sm text-sm leading-3 text-center text-gray-900">8</h3>
+        </a>
+    </div>
 @endcan

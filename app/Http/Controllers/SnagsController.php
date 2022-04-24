@@ -7,7 +7,10 @@ namespace App\Http\Controllers;
 use App\Http\Livewire\MainSubCateg;
 use App\Http\Requests\UpdateFileUploadRequest;
 use App\Imports\SnagsImport;
+use App\Models\MainCateg;
 use App\Models\Site;
+use App\Models\Snag;
+use App\Models\SubCateg;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -20,7 +23,7 @@ use Maatwebsite\Excel\HeadingRowImport;
 class SnagsController extends Controller
 {
     public $snagsList;
-    public MainSubCateg $MainSubCateg;
+    // public MainSubCateg $MainSubCateg;
     protected $path='snags';
 
     public function __construct() {
@@ -34,6 +37,7 @@ class SnagsController extends Controller
      */
     public function index()
     {
+        $this->snagsList=Snag::with('sub_categ.main_categ')->get();
         return view('snags.index',['snagslist'=>$this->snagsList]);
     }
 
@@ -45,6 +49,11 @@ class SnagsController extends Controller
     public function create()
     {
         //
+        $sub_categ=SubCateg::select('id','name')->get();
+        $main_categ=MainCateg::select('id','name')->get();
+        return view('snags.create',['sub_categ'=>$sub_categ,'main_categ'=>$main_categ]);
+
+
     }
 
     /**
@@ -164,11 +173,15 @@ class SnagsController extends Controller
     public function getSiteSnags()
     {
 
-        return Site::with(['snag_mangs','site_snags'])->whereHas('snag_mangs')->get();
+        // return Site::with(['snag_mangs','site_snags'])->whereHas('snag_mangs')->get();
         // return SiteSnag::leftJoin('snag_mangs', function($join) {
         //     $join->on('site_snags.snag_mangs', '=', 'snag_mangs.id');
         //   })
         //   ->whereNotNull('site_snags.snag_mangs')
         //   ->get();
+    }
+    public function export()
+    {
+
     }
 }

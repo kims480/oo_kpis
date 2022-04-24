@@ -1,54 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('flash::message')
-    <div class="col-md-6 bg-white shadow-sm rounded p-2">
-        <div class="d-flex align-items-center">
-            <div class="col-md-2">
-                <span>Upload File</span>
-            </div>
-            <form action="{{ route('imports.store') }}" class="d-flex" method="post" enctype="multipart/form-data">
-                <div class="custom-file col-md-8">
-                    @csrf
-                    <input type="file" name='snaglist' class="custom-file-input" id="customFile">
-                    <label class="custom-file-label" for="customFile">Choose file</label>
-                </div>
-                <div class="col-md-2">
-                    {!! Form::submit('Upload', ['class' => 'btn btn-primary']) !!}
-                </div>
-            </form>
+    <div class="card ">
+        <div class="card-header">
+            {{-- <div class="col-sm-12 d-flex align-items-center"> --}}
+            @lang('models/snags.plural')
+
+            <a class="btn btn-default btn-sm py-0 ml-auto" href="{{ route('snags.create') }}">
+                @lang('crud.add_new')
+            </a>
+            @can('gen.permissions')
+                <a class="btn btn-default p-0  btn-sm ml-1"
+                    href="{{ route('insert.permissions', __('models/snags.singular')) }}">
+                    @lang('crud.initiate_permissions')
+                </a>
+            @endcan
+            @can('snags.export')
+                <a class="btn btn-default p-0  btn-sm ml-1"
+                    href="{{ route('snags.export', __('models/snags.export')) }}">
+                    {{__('models/snags.export')}}
+                </a>
+            @endcan
+            {{-- </div> --}}
         </div>
+        {{-- @livewire('snags') --}}
+        {{-- @livewire('products') --}}
+        {{-- @dump($filter) --}}
+        {{-- @dump($snagslist) --}}
+        @include('snags.table')
     </div>
-
-    @livewire('main-sub-categ')
-    {{-- <input type="submit" class="btn btn-primary" value="Upload">
-<table class="table">
-    <thead>
-        <tr>
-            <td>A</td>
-            <td>B</td>
-            <td>C</td>
-            <td>D</td>
-        </tr>
-    </thead>
-    <tbody>
-
-        @if (!empty($snagslist))
-            @foreach ($snagslist as $snag)
-                <tr>
-                    <td>{{$snag->site_name}}</td>
-                    <td>{{$snag->snag }}</td>
-                    <td>{{$snag->long}}</td>
-                    <td>{{$snag->snag_reporter }}</td>
-                </tr>
-            @endforeach
-        @endif
-    </tbody>
-</table> --}}
-    {{-- @livewire('products') --}}
-    {{-- @dump($filter) --}}
-    @dump($snagslist)
-
     {{-- @foreach ($snagslist as $site => $snags)
         <div class="row">
             <div class="col-md-2">{{ $site }}</div>
@@ -66,7 +46,7 @@
         @endforeach --}}
     {{-- site {{$site}} : {{$snag}} --}}
     @push('page_scripts')
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        {{-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
             window.addEventListener('swal:modal', event => {
                 swal({
@@ -91,6 +71,6 @@
                     });
             });
 
-        </script>
+        </script> --}}
     @endpush
 @endsection

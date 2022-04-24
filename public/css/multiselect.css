@@ -21,7 +21,7 @@
     max-height: 240px;
     /* opacity: 1; */
     overflow-y: scroll;
-    margin-top: 50px;
+    margin-top: 37px;
 }
 
 .selected {
@@ -99,7 +99,7 @@ cursor: pointer;
 .search-box input {
 width: 100%;
 padding: 4px 4px;
-height: 47px;
+height: 32px;
 font-family: "Roboto", sans-serif;
 font-size: 16px;
 position: absolute;

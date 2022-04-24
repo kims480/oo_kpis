@@ -11,8 +11,8 @@ class Snag extends Model
     // Sr. #	REPORT DATE	SITEID	Region	Office	SNAGS	MAIN_CATEGORY	SUB CATEGORY	STATUS	Closure Date	Snag Reported By	Domain	Remarks
     use HasFactory, SoftDeletes;
 
-    public $table='snags';
-    protected $hidden=['created_at','updated_at','deleted_at','pivot','sub_categ'];
+    protected $table='snags';
+    protected $hidden=['created_at','updated_at','deleted_at','pivot'];
     public $timestamps = true;
     public $fillable =  [
         'description',

@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                     @lang('models/offices.singular')
+                     @lang('models/snags.singular')
                 </div>
             </div>
         </div>
@@ -17,17 +17,17 @@
 
         <div class="card">
 
-            {!! Form::open(['route' => 'offices.store']) !!}
+            {!! Form::open(['route' => 'snags.store']) !!}
 
             <div class="card-body">
                 <div class="row">
-                    @include('offices.fields')
+                    @include('snags.fields')
                 </div>
             </div>
 
             <div class="card-footer">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('offices.index') }}" class="btn btn-default">
+                <a href="{{ route('snags.index') }}" class="btn btn-default">
                  @lang('crud.cancel')
                 </a>
             </div>

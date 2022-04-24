@@ -25,7 +25,7 @@ class MainCateg extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function sub_categ()
+    public function sub_categs()
     {
         return $this->hasMany(SubCateg::class, 'main_categ_id', 'id');
     }

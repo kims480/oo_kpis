@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALKAN East</title>
     <meta name="author" content="Karim Saleh">
-    <meta name="description" content="Alkan East">
+    <meta name="description" content="Ooredoo KPIs">
 
     <!-- Tailwind -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">

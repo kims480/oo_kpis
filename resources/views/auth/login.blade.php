@@ -68,7 +68,7 @@ hold-transition login-page
         </div>
         <!-- /.login-card-body -->
     </div>
-    @include('layouts.lang')
+    {{-- @include('layouts.lang') --}}
 </div>
 <!-- /.login-box -->
 @endsection

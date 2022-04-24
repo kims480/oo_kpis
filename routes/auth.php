@@ -60,6 +60,9 @@ Route::resource('testnews', App\Http\Controllers\TestnewController::class);
 Route::resource('snag-domains', App\Http\Controllers\SnagdomainController::class);
 
 Route::resource('imports', App\Http\Controllers\SnagsController::class);
+Route::resource('snags', App\Http\Controllers\SnagsController::class);
+Route::get('snags-export', [App\Http\Controllers\SnagsController::class,'export'])->name('snags.export');
+Route::get('snags-import', [App\Http\Controllers\SnagsController::class,'import'])->name('snags.import');
 
 
 Route::resource('snag-statuses', App\Http\Controllers\SnagstatusController::class);

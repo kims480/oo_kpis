@@ -33,6 +33,7 @@ class SiteAllExport implements  WithMultipleSheets
         $sheets[] = new SiteTypeExport;
         $sheets[] = new SiteCategExport;
         $sheets[] = new GovernExport;
+        $sheets[] = new SiteSnagsExport;
 
 
         return $sheets;

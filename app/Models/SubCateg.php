@@ -27,7 +27,7 @@ class SubCateg extends Model
      */
     public function snags()
     {
-        return $this->hasMany(Snagmang::class, 'sub_categ_id', 'id');
+        return $this->hasMany(Snag::class, 'sub_categ_id', 'id');
     }
 
     /**

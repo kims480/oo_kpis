@@ -23,8 +23,13 @@
     @endif --}}
 
     {{-- Array Of Links --}}
-    @if (is_array($items->getUrlRange(0, $items->total() / $items->perPage())))
-        @foreach ($items->getUrlRange(0, $items->total() / $items->perPage()) as $element)
+    @php
+        $elementLength=round(($items->total() / $items->perPage()),0,PHP_ROUND_HALF_UP);
+        $elements=$items->getUrlRange(1, $elementLength );
+        // dd($elements);
+    @endphp
+    @if (is_array($elements))
+        @foreach ($elements as $element)
             {{-- @foreach ($element as $page => $url) --}}
                 @if ($loop->iteration == $items->currentPage())
                     <li class="page-item  border border-l-slate-50 flex  text-xs text-center text-slate-50 bg-slate-700 active"

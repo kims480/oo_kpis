@@ -1,7 +1,7 @@
 {{-- <div class="table-responsive table-striped table-sm table-bordered"> --}}
 <!-- component -->
-
-<table class=" w-full table-auto scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-300 h-32 overflow-y-scroll">
+<div class="scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-300">
+<table class=" w-full table-auto mb-2  {{-- h-32  --}}">
     <thead>
         <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
             <th class="py-3 px-6 text-left">#</th>
@@ -113,6 +113,7 @@
         @endforeach
     </tbody>
 </table>
+</div>
 {{-- <div class="overflow-x-auto">
     <div
         class="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">

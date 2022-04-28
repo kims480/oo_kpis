@@ -33,10 +33,10 @@
 
         </div>
         <div class="card-footer ">
-
-                @include('adminlte-templates::common.paginate', [
-                    'records' => $siteSnags,
-                ])
+            <x-paginate-component :items="$siteSnags"/>
+            {{-- @include('adminlte-templates::common.paginate', [
+                'records' => $siteSnags,
+            ]) --}}
 
         </div>
     </div>

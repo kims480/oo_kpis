@@ -1,14 +1,14 @@
 <!-- Home -->
 @php
 $urlAdmin = config('fast.admin_prefix');
+Request::is('admin');
 @endphp
-
 <!-- Dashboard -->
 @can('dashboard')
     @php
     $isDashboardActive = Request::is($urlAdmin);
     @endphp
-    <div x-data="tooltip" x-on:mouseover="show = true" x-on:mouseleave="show = false"
+    <a href="{{ route('home') }}" x-data="tooltip" x-on:mouseover="show = true" x-on:mouseleave="show = false"
         @click="$store.sidebar.active = 'admin' "
         class=" relative flex items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer {{ Request::is('admin') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
         x-bind:class="{'justify-start': $store.sidebar.full, 'sm:justify-center':!$store.sidebar.full,'text-gray-200 bg-gray-800':$store.sidebar.active == 'admin','text-gray-400 ':$store.sidebar.active != 'admin'}">
@@ -16,17 +16,17 @@ $urlAdmin = config('fast.admin_prefix');
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
         </svg> --}}
-        <a href="{{ route('home') }}"
-            class="flex justify-between p-0 w-full   items-center ">
-            <div class="flex items-center space-x-2">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <h3 x-cloak
-                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
-                    <p>@lang('menu.dashboard')</p>
-                </h3>
-            </div>
-        </a>
-    </div>
+
+        {{-- class="flex justify-between p-0 w-full   items-center " > --}}
+        <div class="flex items-center space-x-2" {{-- x-bind:class="!$store.sidebar.full && !show ? 'sm:hidden absolute -top-2 -right-3':''" --}}>
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <h3 x-cloak x-cloak
+                x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                <span class="">@lang('menu.dashboard')</span>
+            </h3>
+        </div>
+
+    </a>
 @endcan
 
 <!-- Audience -->
@@ -35,22 +35,22 @@ $urlAdmin = config('fast.admin_prefix');
     $isUserActive = Request::is($urlAdmin . '*attendances*');
     @endphp
 
-    <div @click="$store.sidebar.active = 'home' " x-data="tooltip" x-on:mouseover="show = true"
-        x-on:mouseleave="show = false"
-        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer"
+    <a href="{{ route('attendances.index') }}" @click="$store.sidebar.active = 'home' " x-data="tooltip"
+        x-on:mouseover="show = true" x-on:mouseleave="show = false"
+        class=" relative flex justify-between items-center {{ $isUserActive ? 'text-gray-200 bg-gray-800' : '' }} text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer"
         x-bind:class="{'justify-start': $store.sidebar.full, 'sm:justify-center':!$store.sidebar.full,'text-gray-200 bg-gray-800':$store.sidebar.active == 'schedules',
         'text-gray-400 ':$store.sidebar.active != 'schedules'}">
-        <a href="{{ route('attendances.index') }}"
-            class="flex justify-between p-0 w-full   items-center{{ $isUserActive ? 'active' : '' }}">
-            <div class="flex items-center space-x-2">
-                <i class="nav-icon fas fa-calendar-alt"></i>
+        {{-- <a
+            class="flex justify-between p-0 w-full   items-center"> --}}
+        <div class="flex items-center space-x-2">
+            <i class="nav-icon fas fa-calendar-alt"></i>
 
-                <h3 x-cloak
-                    x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
-                    @lang('menu.attendances.title')</h3>
-            </div>
-        </a>
-    </div>
+            <h3 x-cloak
+                x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
+                @lang('menu.attendances.title')</h3>
+        </div>
+        {{-- </a> --}}
+    </a>
 @endcan
 
 <!-- Users/Roles/Permissions -->
@@ -64,7 +64,7 @@ $urlAdmin = config('fast.admin_prefix');
     <div x-data="dropdown" class="relative">
         <!-- Dropdown head -->
         <div @click="toggle('security')" x-data="tooltip" x-on:mouseover="show = true" x-on:mouseleave="show = false"
-            class="flex justify-between text-gray-400 hover:text-gray-200 hover:bg-gray-800 items-center space-x-2 rounded-md p-2 cursor-pointer"
+            class="flex flex-col justify-between text-gray-400 hover:text-gray-200 hover:bg-gray-800 items-center space-x-2 rounded-md p-2 cursor-pointer"
             x-bind:class="{'justify-start': $store.sidebar.full, 'sm:justify-center':!$store.sidebar.full, 'text-gray-200 bg-gray-800':$store.sidebar.active == 'security','text-gray-400 ':$store.sidebar.active != 'security'}">
             <div
                 class="flex justify-between p-0 w-full   items-center{{ Request::is('admin/security*') ? 'active' : '' }}">
@@ -88,42 +88,44 @@ $urlAdmin = config('fast.admin_prefix');
                         clip-rule="evenodd" />
                 </svg>
             </div>
-        </div>
-        <!-- Dropdown content -->
-        <div x-cloak x-show="open" @click.outside="open =false"
-            x-bind:class="$store.sidebar.full ? expandedClass : shrinkedClass" class="text-gray-400 space-y-3 ">
-            @can('users.index')
-                <a href="{{ route('users.index') }}"
-                    class="hover:text-gray-200 cursor-pointer flex{{ $isUserActive ? 'text-gray-200' : '' }}">
-                    <h6 class=" cursor-pointer flex space-x-2">
-                        <i class="nav-icon fas fa-users"></i>
-                        <span>@lang('menu.user.users')</span>
-                    </h6>
-                </a>
-            @endcan
-            @can('roles.index')
-                <a href="{{ route('roles.index') }}"
-                    class="hover:text-gray-200 cursor-pointer flex {{ $isRoleActive ? 'text-gray-200' : '' }}">
-                    <h6 class=" cursor-pointer flex space-x-2">
-                        <i class="nav-icon fas fa-user-shield"></i>
-                        <p>
-                            @lang('menu.user.roles')
-                        </p>
-                    </h6>
-                </a>
-            @endcan
-            @can('permissions.index')
-                <a href="{{ route('permissions.index') }}"
-                    class="hover:text-gray-200 cursor-pointer flex {{ $isPermissionActive ? 'text-gray-200' : '' }}">
-                    <h6 class=" cursor-pointer flex space-x-2">
-                        <i class="nav-icon fas fa-shield-alt"></i>
-                        <p>
-                            @lang('menu.user.permissions')
-                        </p>
-                    </h6>
-                </a>
-            @endcan
 
+            <!-- Dropdown content -->
+            <div x-cloak x-show="open" @click.outside="open =false"
+                x-bind:class="$store.sidebar.full ? expandedClass : shrinkedClass"
+                class="text-gray-400 space-y-3 transition-all flex flex-col">
+                @can('users.index')
+                    <a href="{{ route('users.index') }}"
+                        class="hover:text-gray-200 cursor-pointer flex{{ $isUserActive ? 'text-gray-200' : '' }}">
+                        <h6 class=" cursor-pointer flex space-x-2">
+                            <i class="nav-icon fas fa-users"></i>
+                            <span>@lang('menu.user.users')</span>
+                        </h6>
+                    </a>
+                @endcan
+                @can('roles.index')
+                    <a href="{{ route('roles.index') }}"
+                        class="hover:text-gray-200 cursor-pointer flex {{ $isRoleActive ? 'text-gray-200' : '' }}">
+                        <h6 class=" cursor-pointer flex space-x-2">
+                            <i class="nav-icon fas fa-user-shield"></i>
+                            <p>
+                                @lang('menu.user.roles')
+                            </p>
+                        </h6>
+                    </a>
+                @endcan
+                @can('permissions.index')
+                    <a href="{{ route('permissions.index') }}"
+                        class="hover:text-gray-200 cursor-pointer flex {{ $isPermissionActive ? 'text-gray-200' : '' }}">
+                        <h6 class=" cursor-pointer flex space-x-2">
+                            <i class="nav-icon fas fa-shield-alt"></i>
+                            <p>
+                                @lang('menu.user.permissions')
+                            </p>
+                        </h6>
+                    </a>
+                @endcan
+
+            </div>
         </div>
     </div>
 @endcan
@@ -206,9 +208,9 @@ $urlAdmin = config('fast.admin_prefix');
     <!-- Dropdown content -->
     <div x-cloak x-show="open" @click.outside="open=false"
         x-bind:class="$store.sidebar.full ? expandedClass : shrinkedClass" class="text-gray-400 space-y-3">
-        <h5 class="hover:text-gray-200 cursor-pointer">Add Snag</h5>
-        <h5 class="hover:text-gray-200 cursor-pointer">Manage Snag</h5>
-        <h5 class="hover:text-gray-200 cursor-pointer">Snag List</h5>
+        <a href="{{ route('site-snags.create') }}" class="block hover:text-gray-200 cursor-pointer">Add Snag</a>
+        <a href="{{ route('site-snags.index') }}" class="block hover:text-gray-200 cursor-pointer">Manage Snag</a>
+        <a href="{{ route('snags.index') }}" class="block hover:text-gray-200 cursor-pointer">Snag List</a>
         <!-- Sub Dropdown  -->
         {{-- <div x-data="sub_dropdown" class="relative w-full "> --}}
         {{-- <div @click="sub_toggle()" class="flex items-center justify-between cursor-pointer">

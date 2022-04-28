@@ -65,19 +65,19 @@
 <body class="bg-gray-100 font-family-karla h-screen mx-auto antialiased  @stack('page_body_class')" x-data>
     <div class="flex justify-between">
         {{-- <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl"> --}}
-        <div class="h-screen bg-gray-900 transition-all  w-64 duration-300 space-y-2 fixed sm:relative"
+        <div class="h-screen bg-gray-900 transition-all  w-64 duration-300 space-y-2 fixed sm:relative  "
             x-bind:class="{'w-64':$store.sidebar.full, 'w-64 sm:w-20':!$store.sidebar.full,'top-0 left-0':$store.sidebar.navOpen,'top-0 -left-64 sm:left-0':!$store.sidebar.navOpen}">
 
             <h1 class="text-white font-black py-4 flex"
                 x-bind:class="$store.sidebar.full ? 'text-2xl px-4' : 'text-xs px-1 xm:px-1'"><span>ALKAN EAST</span></h1>
 
-            <div class="px-4 space-y-2">
+            <div class="px-2 space-y-1 scrollbar-thin overflow-y-clip  scrollbar-thumb-slate-700 scrollbar-track-slate-500" style="max-height: 85vh;">
 
                 <!-- SideBar Toggle -->
                 <button @click="$store.sidebar.full = !$store.sidebar.full"
-                    class="hidden sm:block focus:outline-none absolute p-1 -right-3 top-10 bg-gray-900 rounded-full shadow-md">
+                    class="hidden sm:block focus:outline-none  absolute z-10 p-1 -right-4 top-10 bg-slate-50 rounded-full shadow-md">
                     <svg xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 transition-all duration-300 text-white transform"
+                        class="h-6 w-6 transition-all duration-300 text-slate-800  transform"
                         x-bind:class="$store.sidebar.full ? 'rotate-90':'-rotate-90 '" viewBox="0 0 20 20"
                         fill="currentColor">
                         <path fill-rule="evenodd"
@@ -133,7 +133,7 @@
             <header class="w-full items-center bg-white py-2 px-6 hidden sm:flex">
                 <!-- Mobile Menu Toggle -->
                 <button @click="$store.sidebar.navOpen = !$store.sidebar.navOpen"
-                    class="sm:hidden absolute top-5 right-5 focus:outline-none">
+                    class="sm:hidden absolute top-5 right-5 focus:outline-none  bg-slate-300 rounded-full shadow-md">
                     <!-- Menu Icons -->
                     {{-- <i class="far fa-arrow-alt-square-right"></i> --}}
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
@@ -197,7 +197,7 @@
 
                 <!-- Dropdown Nav -->
                 <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4 bg-slate-800">
-                    <a href="index.html"
+                    <a href="{{route('dashboard')}}"
                         class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                         <i class="fas fa-tachometer-alt mr-3"></i>
                         Dashboard
@@ -212,21 +212,11 @@
                         <i class="fas fa-table mr-3"></i>
                         Add Snag
                     </a>
-                    <a href="forms.html"
-                        class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                        <i class="fas fa-align-left mr-3"></i>
-                        Forms
-                    </a>
 
-
-                    <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                        <i class="fas fa-cogs mr-3"></i>
-                        Support
-                    </a>
                     <a href="{{-- {{ route('user.profile') }} --}}"
                         class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                         <i class="fas fa-user mr-3"></i>
-                        My Account
+                        My Profile
                     </a>
                     <a href="#"
                         class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"

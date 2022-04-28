@@ -55,7 +55,7 @@
             </button>
         </div>
 
-        <table class="table mt-2">
+        <table class="table mt-2 overflow-x-auto">
             <thead>
                 <tr x-show="filtersOn">
                     <th>
@@ -130,8 +130,8 @@
                 @endif
             </tbody>
         </table>
-        <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
-            <div
+        {{-- <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8"> --}}
+            {{-- <div
                 class="align-middle rounded-tl-lg rounded-tr-lg inline-block w-full py-4 overflow-hidden bg-white shadow-lg px-12">
                 <div class="flex justify-between">
                     <div class="inline-flex border rounded w-7/12 px-2 lg:px-6 h-12 bg-transparent">
@@ -155,8 +155,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div
+            </div> --}}
+            {{-- <div
                 class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
                 <table class="min-w-full">
                     <thead>
@@ -275,8 +275,8 @@
                         </nav>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div> --}}
+        {{-- </div> --}}
     </div>
     <div class="border-t-2 border-slate-50 mt-3 flex justify-center p-2 w-full max-w-full">
         <div class=""> {{ $sites->links() }}

@@ -7,6 +7,7 @@ use Livewire\Component;
 class MultiSelect extends Component
 {
     public $label;
+    public $itemId;
     public $optionList;
     public $optionValue;
     public $optionSelected;
@@ -16,9 +17,10 @@ class MultiSelect extends Component
      *
      * @return void
      */
-    public function mount($label=null,$optionList=null,$optionValue=null,$optionSelected=null)
+    public function mount($label=null,$itemId=null,$optionList=null,$optionValue=null,$optionSelected=null)
     {
         $this->label=$label;
+        $this->itemId=$itemId;
         $this->optionList=$optionList;
         $this->optionValue=$optionValue;
         $this->optionSelected=$optionSelected;

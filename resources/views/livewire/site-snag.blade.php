@@ -20,43 +20,10 @@
                 <div class="md:grid  md:grid-cols-3 md:grid-rows-4 md:gap-2 grid grid-cols-1 grid-rows-12">
 
                     {{-- Site ID --}}
-                    <div class="form-groups">
-                        <label for="site">Site ID <span style="color:red;">*</span></label>
-
-                        <div class="select-box " id="site" x-data="{ siteSelect: false }"
-                            @click.prevent="siteSelect=!siteSelect;" @click.outside="siteSelect = false">
-                            <div class="options-container active hidden "
-                                :class="{'hidden' : !siteSelect,'active':siteSelect}">
-                                <div class="option">
-                                    {{-- <input type="radio" class="radio" id="" /> --}}
-                                    <label>Site ID</label>
-                                </div>
-                                @foreach ($SitesList as $id => $site)
-                                    @if ($selectedSite_id == $id)
-                                        <?php $site_name = $site; ?>
-                                    @endif
-                                    {{-- <div class="option" @updateSearch.window="showOption=checkIndexOf({textA:'{{$site}}',textB:$event.detail.typed})" :class="{'hidden':!showOption}"> --}}
-                                    <div class="option"
-                                        wire:click="$set('selectedSite_id',{{ $id }});$set('site_name',{{ $site }});">
-                                        <input type="radio" class="radio"
-                                            wire:click.stop="$set('selectedSite_id',{{ $id }})"
-                                            id="site-{{ $id }}" value="{{ $id }}"
-                                            name="selectedSite_id" />
-                                        <label for="site-{{ $id }}">{{ $site }}</label>
-                                    </div>
-                                @endforeach
-                            </div>
-
-                            <div class="selected">
-                                {{ empty($site_name) ? 'Select Site ID' : $site_name }}
-                            </div>
-
-                            <div class="search-box" x-trap="siteSelect" {{-- x-data="{fff:''}" x-init="$watch('fff', value => console.log(value))" --}}>
-                                <input type="text" wire:model.debounce300ms="siteSearch" {{-- @keyup="$dispatch('updateSearch',{typed:$event.target.value}),fff=$event.target.value" --}}
-                                    placeholder="Start Typing..." />
-                            </div>
-                        </div>
-                    </div>
+                    <x-multi-select label="Site ID" itemId="site" :optionSelectedId="$selectedSite_id"
+                                    optionValue="selectedSite_id" optionName="site_name"
+                                    :optionSelectedName="$site_name" :optionList="$SitesList"
+                                    itemSearch="siteSearch" />
 
                     {{-- Sub Categ --}}
                     <div class="form-groups ">
@@ -88,23 +55,27 @@
                     </div>
 
                     {{-- Sub Snag --}}
-                    <div class="form-groups ">
+                    <x-multi-select label="Snag" itemId="snag" optionValue="selectedSnag_id"
+                                    :optionSelectedId="$selectedSnag_id"  optionName="selectedSnagsList"
+                                    :optionSelectedName="$selectedSnagsList" :optionList="$SnagsList"
+                                    itemSearch="snagSearch" />
+                    {{-- <div class="form-groups ">
                         <label for="snag">Snag <span style="color:red;">*</span></label>
 
-                        <div class="select-box" id="snag" x-data="{ snagSelect: false }" @click.prevent="snagSelect=!snagSelect"
-                            @click.outside="snagSelect = false">
+                        <div class="select-box" id="snag" x-data="{ snagSelect: false }"
+                            @click.prevent="snagSelect=!snagSelect" @click.outside="snagSelect = false">
                             <div class="options-container active hidden "
-                                :class="{'hidden' : !snagSelect,'active':snagSelect}">
+                                :class="{ 'hidden': !snagSelect, 'active': snagSelect }">
                                 <div class="option">
-                                    {{-- <input type="radio" class="" id="" /> --}}
                                     <label>Snag</label>
                                 </div>
                                 @foreach ($SnagsList as $ids => $snag)
                                     @if ($selectedSnag_id == $ids)
-                                        <?php $selectedSnagsList = $snag; ?>
+                                        <?php /* $selectedSnagsList = $snag; */ ?>
                                     @endif
                                     <div class="option"
-                                        wire:click.stop="$set('selectedSnag_id',{{ $ids }})" @click.prevent="snagSelect=false">
+                                        wire:click.stop="$set('selectedSnag_id',{{ $ids }})"
+                                        @click.prevent="snagSelect=false">
                                         <input type="radio" class="radio" id="snag-{{ $ids }}"
                                             value="{{ $ids }}" name="selectedSnag_id"
                                             wire:click.stop="$set('selectedSnag_id',{{ $ids }})" />
@@ -122,10 +93,10 @@
                             <div class="search-box" x-trap="snagSelect">
                                 <input type="text" wire:model.debounce300ms="snagSearch" placeholder="Start Typing..."
                                     class="" />
-                                {{-- wire:model="snagSearch" --}}
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
+
 
                     {{-- Extra Remarks for snag --}}
                     <div class="form-groups ">
@@ -213,10 +184,10 @@
 
                     {{-- Severity --}}
                     <div class="form-groups ">
-                        <label for="state" class=" col-form-label text-md-right">Status </label>
+                        <label for="state" class=" col-form-label text-md-right">Severity </label>
                         <div class="col-md-6">
                             <select wire:model="severity" class="form-control ">
-                                @if ($snags_status->count() == 0)
+                                @if ($snags_severity->count() == 0)
                                     <option value="">-- Snag Severity --</option>
                                 @endif
                                 <option value="" disabled> --Snag Severity-- </option>
@@ -232,17 +203,7 @@
                         <label for="closure_date" class="formbuilder-date-label">Closure Date</label>
                         <input type="date" class="form-control " name="closure_date" access="false" id="closure_date">
                     </div>
-                    <pre>
-                        {{-- {{ $site_name}}
-                        {!!$selectedSite_id?? null !!}
-                        {!!$selectedSnag_id?? null !!}
-                        {!!$selectedMaincateg !!}
-                        {!!$selectedSubcateg !!}
-                        {!!$selectedSnag_status?? null !!}
-                        {!!$selectedSnag_domain?? null !!}
-                        {!!$selectedSnag_reporter?? null !!}
-                        {{ $selectedSnag_remarks?? null }} --}}
-                    </pre>
+
                 </div>
             </div>
             <div class="card-footer">
@@ -257,17 +218,11 @@
         </form>
     </div>
     @push('page_scripts')
+    {{-- <script src="{{ asset('js/searchdrop.js') }}"></script> --}}
+
         {{-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script> --}}
 
-        <script src="{{ asset('js/searchdrop.js') }}"></script>
-        <script>
-            new SearchDrop('#site');
-            new SearchDrop('#snag');
-        </script>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function(e) {});
-        </script>
         {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
     //         integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
     //         crossorigin="anonymous" referrerpolicy="no-referrer">

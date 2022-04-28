@@ -26,7 +26,7 @@
     @php
         $elementLength=round(($items->total() / $items->perPage()),0,PHP_ROUND_HALF_UP);
         $elements=$items->getUrlRange(1, $elementLength );
-        // dd($elements);
+        // dd($elements)
     @endphp
     @if (is_array($elements))
         @foreach ($elements as $element)

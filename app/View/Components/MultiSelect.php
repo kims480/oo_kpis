@@ -9,21 +9,29 @@ use Illuminate\View\Component;
 class MultiSelect extends Component
 {
     public $label;
+    public $itemId;
     public $optionList;
     public $optionValue;
-    public $optionSelected;
+    public $optionName;
+    public $optionSelectedId;
+    public $optionSelectedName;
+    public $itemSearch;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($label=null,$optionList=null,$optionValue=null,$optionSelected=null)
+    public function __construct($label=null,$itemId=null,$optionList=null,$optionValue=null,$optionName=null,$optionSelectedId=null,$itemSearch=null,$optionSelectedName=null)
     {
         $this->label=$label;
+        $this->itemId=$itemId;
         $this->optionList=$optionList;
         $this->optionValue=$optionValue;
-        $this->optionSelected=$optionSelected;
+        $this->optionName=$optionName;
+        $this->optionSelectedId=$optionSelectedId;
+        $this->optionSelectedName=$optionSelectedName;
+        $this->itemSearch=$itemSearch;
     }
 
     /**

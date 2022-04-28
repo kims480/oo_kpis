@@ -85,10 +85,15 @@
                             <a href="{{ route('site-snags.show', [$siteSnag->id]) }}" class='btn btn-default btn-xs'>
                                 <i class="far fa-eye"></i>
                             </a>
+                            @can('site-snags.edit')
+
                             <a href="{{ route('site-snags.edit', [$siteSnag->id]) }}" class='btn btn-success btn-xs'>
                                 <i class="far fa-edit"></i>
                             </a>
+                            @endcan
+                            @can('site-snags.destroy')
                             {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                            @endcan
                         </div>
                         {!! Form::close() !!}
                         {{-- <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">

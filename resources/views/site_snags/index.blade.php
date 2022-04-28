@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="card">
-        <section class="card-header">
+        <section class="content-header">
 
             <h3 class="">
                 @lang('models/siteSnags.plural')
@@ -21,7 +21,7 @@
 
         </section>
 
-        <div class="card-body">
+        <div class="card-body overflow-hidden">
 
             @include('flash::message')
 
@@ -30,13 +30,13 @@
 
             @include('site_snags.table')
 
-            <div class="card-footer clearfix float-right">
-                <div class="float-right">
-                    @include('adminlte-templates::common.paginate', [
-                        'records' => $siteSnags,
-                    ])
-                </div>
-            </div>
+
+        </div>
+        <div class="card-footer ">
+
+                @include('adminlte-templates::common.paginate', [
+                    'records' => $siteSnags,
+                ])
 
         </div>
     </div>

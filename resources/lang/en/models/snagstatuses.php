@@ -1,9 +1,11 @@
 <?php
 
 return array (
-  'singular' => 'Snagstatus',
-  'plural' => 'Snagstatuses',
-  'fields' => 
+  'model' => 'Snagstatus',
+  'singular' => 'Snag Status',
+  'url' => 'snag-statuses',
+  'plural' => 'Snag Statuses',
+  'fields' =>
   array (
     'id' => 'Id',
     'name' => 'Name',

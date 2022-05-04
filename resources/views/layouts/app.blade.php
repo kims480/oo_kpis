@@ -7,15 +7,12 @@
     <title>ALKAN East</title>
     <meta name="author" content="Karim Saleh">
     <meta name="description" content="Alkan East">
-
     <!-- Tailwind -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('css/nice-select2.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style_nice.css') }}"> --}}
-    {{-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script> --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
 
     @livewireStyles
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <style>
         .dataTables_wrapper {
@@ -32,10 +29,7 @@
     @stack('page_css')
     @stack('third_party_stylesheets')
     <!-- AlpineJS -->
-    <!-- Alpine Js -->
-    {{-- <script  src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script> --}}
-    {{-- <SCript src="{{asset("js/alpine.js")}}"></SCript> --}}
-    {{-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script> --}}
+
 
     <style>
         /* @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
@@ -56,22 +50,19 @@
         }
 
     </style>
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
-        integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
 
 </head>
 
 <body class="bg-gray-100 font-family-karla h-screen mx-auto antialiased  @stack('page_body_class')" x-data>
-    <div class="flex justify-between">
+    <div class="flex justify-between overflow-hidden ">
         {{-- <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl"> --}}
         <div class="h-screen bg-gray-900 transition-all  w-64 duration-300 space-y-2 fixed sm:relative  "
             x-bind:class="{'w-64':$store.sidebar.full, 'w-64 sm:w-20':!$store.sidebar.full,'top-0 left-0':$store.sidebar.navOpen,'top-0 -left-64 sm:left-0':!$store.sidebar.navOpen}">
 
-            <h1 class="text-white font-black py-4 flex"
-                x-bind:class="$store.sidebar.full ? 'text-2xl px-4' : 'text-xs px-1 xm:px-1'"><span>ALKAN EAST</span></h1>
+            <h1 class="text-white uppercase font-black py-4 flex"
+                x-bind:class="$store.sidebar.full ? 'text-2xl px-4' : 'text-xs px-1 xm:px-1'"><span>{{ env('APP_NAME') }}</span></h1>
 
-            <div class="px-2 space-y-1 scrollbar-thin overflow-y-clip  scrollbar-thumb-slate-700 scrollbar-track-slate-500" style="max-height: 85vh;">
+            <div class="px-2 space-y-1 {{-- scrollbar-thin overflow-y-clip  scrollbar-thumb-slate-700 scrollbar-track-slate-500 --}}" style="max-height: 85vh;">
 
                 <!-- SideBar Toggle -->
                 <button @click="$store.sidebar.full = !$store.sidebar.full"
@@ -88,41 +79,6 @@
 
                 @include('layouts.menu_2')
 
-                <!-- Promote -->
-                {{-- <div x-data="dropdown" class="relative">
-                    <!-- Dropdown head -->
-                    <div @click="toggle('promote')" x-data="tooltip" x-on:mouseover="show = true"
-                        x-on:mouseleave="show = false"
-                        class="flex justify-between text-gray-400 hover:text-gray-200 hover:bg-gray-800 items-center space-x-2 rounded-md p-2 cursor-pointer"
-                        x-bind:class="{'justify-start': $store.sidebar.full, 'sm:justify-center':!$store.sidebar.full,'text-gray-200 bg-gray-800':$store.sidebar.active == 'promote','text-gray-400 ':$store.sidebar.active != 'promote'}">
-                        <div class="relative flex space-x-2 items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                            </svg>
-                            <h1 x-cloak
-                                x-bind:class="!$store.sidebar.full && show ? visibleClass :'' || !$store.sidebar.full && !show ? 'sm:hidden':''">
-                                Promote</h1>
-                        </div>
-                        <svg x-cloak x-bind:class="$store.sidebar.full ? '':'sm:hidden'"
-                            xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <!-- Dropdown content -->
-                    <div x-cloak x-show="open" @click.outside="open=false"
-                        x-bind:class="$store.sidebar.full ? expandedClass : shrinkedClass"
-                        class="text-gray-400 space-y-3">
-                        <h1 class="hover:text-gray-200 cursor-pointer">Item 1</h1>
-                        <h1 class="hover:text-gray-200 cursor-pointer">Item 2</h1>
-                        <h1 class="hover:text-gray-200 cursor-pointer">Item 3</h1>
-                        <h1 class="hover:text-gray-200 cursor-pointer">Item 4</h1>
-                    </div>
-                </div> --}}
             </div>
         </div>
 
@@ -239,7 +195,7 @@
             </button> -->
             </header>
 
-            <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
+            <div class="w-full h-screen overflow-x-hidden border-t flex flex-col overflow-y-clip  scrollbar-thin  scrollbar-thumb-slate-700 scrollbar-track-slate-500">
                 <main class="w-full relative flex-grow p-6">
                     <div class="transition-all duration-300 absolute top-2 right-1/2  bg-stone-200 text-sm text-blue-900 p-2 border-l-8 border-stone-600 rounded-md opacity-80"
                         wire:loading>
@@ -253,6 +209,7 @@
                             </path>
                         </svg>
                     </div>
+                    {{-- {{$slot}} --}}
                     @yield('content')
                 </main>
             </div>

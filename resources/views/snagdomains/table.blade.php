@@ -15,13 +15,13 @@
             <td>{{ $snagdomain->name }}</td>
             <td>{{ $snagdomain->note }}</td>
                 <td width="120">
-                    {!! Form::open(['route' => ['snagdomains.destroy', $snagdomain->id], 'method' => 'delete']) !!}
+                    {!! Form::open(['route' => [__('models/snagdomains.url').'.destroy', $snagdomain->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('snagdomains.show', [$snagdomain->id]) }}"
+                        <a href="{{ route(__('models/snagdomains.url').'.show', [$snagdomain->id]) }}"
                            class='btn btn-default btn-xs'>
                             <i class="far fa-eye"></i>
                         </a>
-                        <a href="{{ route('snagdomains.edit', [$snagdomain->id]) }}"
+                        <a href="{{ route(__('models/snagdomains.url').'.edit', [$snagdomain->id]) }}"
                            class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>

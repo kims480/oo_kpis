@@ -9,12 +9,12 @@
                 </div>
                 <div class="col-sm-6 d-flex justify-content-end">
                     <a class="btn btn-primary mr-3"
-                       href="{{ route('snagremarks.create') }}">
+                       href="{{ route(__('models/snagremarks.url').'.create') }}">
                          @lang('crud.add_new')
                     </a>
                     @can('gen.permissions')
                         <a class="btn btn-success "
-                        href="{{route('insert.permissions',__('models/snagremarks.singular')) }}">
+                        href="{{route('insert.permissions',__('models/snagremarks.model').'/'.__('models/snagremarks.url')) }}">
                             @lang('crud.initiate_permissions')
                         </a>
                     @endcan

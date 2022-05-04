@@ -16,7 +16,7 @@
             </svg>
         </div>
         <form wire:submit.prevent="storeSiteSnag" class="">
-            <div class="card-body">
+            <div class="card-body overflow-hidden">
                 <div class="md:grid  md:grid-cols-3 md:grid-rows-4 md:gap-2 grid grid-cols-1 grid-rows-12">
 
                     {{-- Site ID --}}
@@ -56,8 +56,8 @@
 
                     {{-- Sub Snag --}}
                     <x-multi-select label="Snag" itemId="snag" optionValue="selectedSnag_id"
-                                    :optionSelectedId="$selectedSnag_id"  optionName="selectedSnagsList"
-                                    :optionSelectedName="$selectedSnagsList" :optionList="$SnagsList"
+                                    :optionSelectedId="$selectedSnag_id"  optionName="snag_name"
+                                    :optionSelectedName="$snag_name" :optionList="$SnagsList"
                                     itemSearch="snagSearch" />
                     {{-- <div class="form-groups ">
                         <label for="snag">Snag <span style="color:red;">*</span></label>
@@ -176,7 +176,7 @@
                                 @endif
                                 <option value="" disabled> --Snag Status-- </option>
                                 @foreach ($snags_status as $status_id => $status_name)
-                                    <option value="{{ $status_id }}">{{ $status_name }}</option>
+                                    <option value="{{ $status_id }}" {{$status_name=='Open'?'selected':''}}>{{ $status_name }}</option>
                                 @endforeach
                             </select>
                         </div>

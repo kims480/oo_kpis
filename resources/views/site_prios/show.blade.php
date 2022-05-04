@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-sm-6">
                     <a class="btn btn-default float-right"
-                       href="{{ route('sitePrios.index') }}">
+                       href="{{ route(__('models/sitePrios.url').'.index') }}">
                          @lang('crud.back')
                     </a>
                 </div>

@@ -9,12 +9,12 @@
                 </div>
                 <div class="col-sm-6 d-flex justify-content-end">
                     <a class="btn btn-primary mr-3"
-                       href="{{ route('siteTypes.create') }}">
+                       href="{{ route(__('models/siteTypes.url').'.create') }}">
                          @lang('crud.add_new')
                     </a>
                     @can('gen.permissions')
                         <a class="btn btn-success "
-                        href="{{route('insert.permissions',__('models/siteTypes.singular')) }}">
+                        href="{{route('insert.permissions',__('models/siteTypes.model').'/'.__('models/siteTypes.url')) }}">
                             @lang('crud.initiate_permissions')
                         </a>
                     @endcan

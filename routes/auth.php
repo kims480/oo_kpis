@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\SnagToSite;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [
@@ -46,16 +47,11 @@ Route::resource('regions', App\Http\Controllers\RegionController::class);
 Route::resource('governs', App\Http\Controllers\GovernController::class);
 Route::resource('wilayats', App\Http\Controllers\WilayatController::class);
 Route::resource('categs', App\Http\Controllers\CategController::class);
-Route::get('/gen-permissions/{model}', [App\Http\Controllers\RegionController::class,'generatePermissions'])->name('insert.permissions');
-
-
-
+Route::get('/gen-permissions/{model}/{url?}', [App\Http\Controllers\DashboardController::class,'generatePermissions'])->name('insert.permissions');
 
 Route::resource('testings', App\Http\Controllers\TestingController::class);
 
-
 Route::resource('testnews', App\Http\Controllers\TestnewController::class);
-
 
 Route::resource('snag-domains', App\Http\Controllers\SnagdomainController::class);
 
@@ -64,28 +60,24 @@ Route::resource('snags', App\Http\Controllers\SnagsController::class);
 Route::get('snags-export', [App\Http\Controllers\SnagsController::class,'export'])->name('snags.export');
 Route::get('snags-import', [App\Http\Controllers\SnagsController::class,'import'])->name('snags.import');
 
-
 Route::resource('snag-statuses', App\Http\Controllers\SnagstatusController::class);
-
 
 Route::resource('snagmangs', App\Http\Controllers\SnagmangController::class);
 
-
 Route::resource('site-snags', App\Http\Controllers\SiteSnagController::class);
-
 
 Route::resource('snag-remarks', App\Http\Controllers\SnagremarkController::class);
 
-
-Route::resource('snag-reporters', App\Http\Controllers\SnagreporterController::class);
-
+Route::resource('snag-sources', App\Http\Controllers\SnagreporterController::class);
 
 Route::resource('site-categs', App\Http\Controllers\SiteCategController::class);
 
-
 Route::resource('site-prios', App\Http\Controllers\SitePrioController::class);
 
-
 Route::resource('site-types', App\Http\Controllers\SiteTypeController::class);
+
 Route::resource('assets', App\Http\Controllers\AssetController::class);
+
 Route::resource('assets-details', App\Http\Controllers\AssetDetailController::class);
+
+Route::get('add-snag-to-site', SnagToSite::class)->name('snag-to-site');

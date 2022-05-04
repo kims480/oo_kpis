@@ -15,7 +15,8 @@ return [
         'users.updateProfile',
         // 'sites',
         'siteSnag',
-        'siteSnag.create',
+        // 'site-snags.index',
+        // 'site-snags.create',
         'snags'
     ]
 ];

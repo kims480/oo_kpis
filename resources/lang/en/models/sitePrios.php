@@ -1,9 +1,11 @@
 <?php
 
 return array (
-  'singular' => 'SitePrio',
-  'plural' => 'SitePrios',
-  'fields' => 
+  'model' => 'SitePrio',
+  'singular' => 'Site Priority',
+  'url' => 'site-prios',
+  'plural' => 'Site Priorities',
+  'fields' =>
   array (
     'id' => 'Id',
     'name' => 'Name',

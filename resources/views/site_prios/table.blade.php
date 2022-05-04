@@ -13,13 +13,13 @@
                 <td>{{ $sitePrio->id }}</td>
             <td>{{ $sitePrio->name }}</td>
                 <td width="120">
-                    {!! Form::open(['route' => ['sitePrios.destroy', $sitePrio->id], 'method' => 'delete']) !!}
+                    {!! Form::open(['route' => [__('models/sitePrios.url').'.destroy', $sitePrio->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('sitePrios.show', [$sitePrio->id]) }}"
+                        <a href="{{ route(__('models/sitePrios.url').'.show', [$sitePrio->id]) }}"
                            class='btn btn-default btn-xs'>
                             <i class="far fa-eye"></i>
                         </a>
-                        <a href="{{ route('sitePrios.edit', [$sitePrio->id]) }}"
+                        <a href="{{ route(__('models/sitePrios.url').'.edit', [$sitePrio->id]) }}"
                            class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>

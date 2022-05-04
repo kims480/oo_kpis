@@ -1,8 +1,10 @@
 <?php
 
 return array (
+  'model' => 'Site',
   'singular' => 'Site',
   'plural' => 'Sites',
+  'url' => 'sites',
   'fields' =>
   array (
     'id' => 'Id',

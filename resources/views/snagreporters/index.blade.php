@@ -5,16 +5,16 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                   @lang('models/snagreporters.plural')
+                   @lang('models/snagreporters.url')
                 </div>
                 <div class="col-sm-6 d-flex justify-content-end">
                     <a class="btn btn-primary mr-3"
-                       href="{{ route('snagreporters.create') }}">
+                       href="{{ route(__('models/snagreporters.url').'.create') }}">
                          @lang('crud.add_new')
                     </a>
                     @can('gen.permissions')
                         <a class="btn btn-success "
-                        href="{{route('insert.permissions',__('models/snagreporters.singular')) }}">
+                        href="{{route('insert.permissions',__('models/snagreporters.model').'/'.__('models/snagreporters.url')) }}">
                             @lang('crud.initiate_permissions')
                         </a>
                     @endcan

@@ -17,7 +17,7 @@
 
         <div class="card">
 
-            {!! Form::model($siteType, ['route' => ['siteTypes.update', $siteType->id], 'method' => 'patch']) !!}
+            {!! Form::model($siteType, ['route' => [__('models/siteTypes.url').'.update', $siteType->id], 'method' => 'patch']) !!}
 
             <div class="card-body">
                 <div class="row">
@@ -27,7 +27,7 @@
 
             <div class="card-footer">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('siteTypes.index') }}" class="btn btn-default">
+                <a href="{{ route(__('models/siteTypes.url').'.index') }}" class="btn btn-default">
                     @lang('crud.cancel')
                  </a>
             </div>

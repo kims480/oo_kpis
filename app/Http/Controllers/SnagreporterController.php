@@ -58,9 +58,9 @@ class SnagreporterController extends AppBaseController
 
         $snagreporter = $this->snagreporterRepository->create($input);
 
-        Flash::success(__('messages.saved', ['model' => __('models/snagreporters.singular')]));
+        Flash::success(__('Snag Source saved successfully', ['model' => __('models/snagreporters.model')]));
 
-        return redirect(route('snagreporters.index'));
+        return redirect(route(__('models/snagreporters.url').'.index'));
     }
 
     /**
@@ -75,9 +75,9 @@ class SnagreporterController extends AppBaseController
         $snagreporter = $this->snagreporterRepository->find($id);
 
         if (empty($snagreporter)) {
-            Flash::error(__('messages.not_found', ['model' => __('models/snagreporters.singular')]));
+            Flash::error(__('messages.not_found', ['model' => __('models/snagreporters.model')]));
 
-            return redirect(route('snagreporters.index'));
+            return redirect(route(__('models/snagreporters.url').'.index'));
         }
 
         return view('snagreporters.show')->with('snagreporter', $snagreporter);
@@ -95,9 +95,9 @@ class SnagreporterController extends AppBaseController
         $snagreporter = $this->snagreporterRepository->find($id);
 
         if (empty($snagreporter)) {
-            Flash::error(__('messages.not_found', ['model' => __('models/snagreporters.singular')]));
+            Flash::error(__('messages.not_found', ['model' => __('models/snagreporters.model')]));
 
-            return redirect(route('snagreporters.index'));
+            return redirect(route(__('models/snagreporters.url').'.index'));
         }
 
         return view('snagreporters.edit')->with('snagreporter', $snagreporter);
@@ -116,16 +116,16 @@ class SnagreporterController extends AppBaseController
         $snagreporter = $this->snagreporterRepository->find($id);
 
         if (empty($snagreporter)) {
-            Flash::error(__('messages.not_found', ['model' => __('models/snagreporters.singular')]));
+            Flash::error(__('messages.not_found', ['model' => __('models/snagreporters.model')]));
 
-            return redirect(route('snagreporters.index'));
+             return redirect(route(__('models/snagreporters.url').'.index'));
         }
 
         $snagreporter = $this->snagreporterRepository->update($request->all(), $id);
 
-        Flash::success(__('messages.updated', ['model' => __('models/snagreporters.singular')]));
+        Flash::success(__('messages.updated', ['model' => __('models/snagreporters.model')]));
 
-        return redirect(route('snagreporters.index'));
+         return redirect(route(__('models/snagreporters.url').'.index'));
     }
 
     /**
@@ -142,15 +142,15 @@ class SnagreporterController extends AppBaseController
         $snagreporter = $this->snagreporterRepository->find($id);
 
         if (empty($snagreporter)) {
-            Flash::error(__('messages.not_found', ['model' => __('models/snagreporters.singular')]));
+            Flash::error(__('messages.not_found', ['model' => __('models/snagreporters.model')]));
 
-            return redirect(route('snagreporters.index'));
+             return redirect(route(__('models/snagreporters.url').'.index'));
         }
 
         $this->snagreporterRepository->delete($id);
 
-        Flash::success(__('messages.deleted', ['model' => __('models/snagreporters.singular')]));
+        Flash::success(__('messages.deleted', ['model' => __('models/snagreporters.model')]));
 
-        return redirect(route('snagreporters.index'));
+         return redirect(route(__('models/snagreporters.url').'.index'));
     }
 }

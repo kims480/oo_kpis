@@ -13,13 +13,13 @@
                 <td>{{ $snagstatus->id }}</td>
             <td>{{ $snagstatus->name }}</td>
                 <td width="120">
-                    {!! Form::open(['route' => ['snagstatuses.destroy', $snagstatus->id], 'method' => 'delete']) !!}
+                    {!! Form::open(['route' => [__('models/snagstatuses.url').'.destroy', $snagstatus->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('snagstatuses.show', [$snagstatus->id]) }}"
+                        <a href="{{ route(__('models/snagstatuses.url').'.show', [$snagstatus->id]) }}"
                            class='btn btn-default btn-xs'>
                             <i class="far fa-eye"></i>
                         </a>
-                        <a href="{{ route('snagstatuses.edit', [$snagstatus->id]) }}"
+                        <a href="{{ route(__('models/snagstatuses.url').'.edit', [$snagstatus->id]) }}"
                            class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>

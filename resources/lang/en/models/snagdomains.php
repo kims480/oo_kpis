@@ -1,8 +1,11 @@
 <?php
 
 return array (
-  'singular' => 'Domain',
-  'plural' => 'Domains',
+  'model' => 'Snagdomain',
+  'singular' => 'Snag Domain',
+  'plural' => 'Snag Domains',
+  'url' => 'snag-domains',
+//   'plural' => 'Domains',
   'fields' =>
   array (
     'id' => 'Id',

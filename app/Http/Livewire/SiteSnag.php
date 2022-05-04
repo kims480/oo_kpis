@@ -20,40 +20,37 @@ class SiteSnag extends Component
     use WithPagination;
     public $maincategs;
     public $subcategs;
-
-
-    public  $SnagsList, $SitesList;
+    public $SnagsList, $SitesList;
 
     public $selectedMaincateg = null;
     public $selectedSubcateg = null;
 
     public $site_name = null;
-    public $snag_name = null;
     public $selectedSite_id = null;
-    public $selectedSnag_id = null;
-    public $snagSearch = null;
     public $siteSearch = null;
-    public $siteOptionListActive = false;
 
-    public $selectedSnagsList = null;
-    public $selectedSitesList = null;
-    public $siteSelected;
+    public $snag_name = null;
+    public $snagSearch = null;
+    public $selectedSnag_id = null;
+
     public $severity;
-    public $snags_severity;
     public $snag_remarks;
-    public $snags_status;
+    public $snag_status;
     public $snag_domain;
     public $snag_reporter;
+    public $snag_severity;
+
     public $selectedSnag_remarks;
     public $selectedSnag_status;
     public $selectedSnag_domain;
     public $selectedSnag_reporter;
+    public $selectedSnag_severity;
     public $report_date;
     public $closure_date;
-    public $data = [];
+    // public $data = [];
 
 
-    protected $listeners = ['siteSelected' => 'selectSite'];
+    // protected $listeners = ['siteSelected' => 'selectSite'];
 
 
     public function mount()
@@ -65,20 +62,14 @@ class SiteSnag extends Component
         $this->snags_status = Snagstatus::select('id', 'name')->pluck('name', 'id');
         $this->snag_domain = Snagdomain::select('id', 'name')->pluck('name', 'id');
         $this->snag_reporter = Snagreporter::select('id', 'name')->pluck('name', 'id');
-
-        $this->data = [
-            'selectedSite_id' => $this->selectedSite_id,
-            'selectedSnag_id' => $this->selectedSnag_id,
-            'Snag_domain' => $this->selectedSnag_domain,
-            'Snag_MainCateg' => $this->selectedMaincateg,
-            'Snag_remarks' => $this->selectedSnag_remarks,
-        ];
-        // $this->site_s="";
     }
 
     public function rules()
     {
-        return [];
+        return [
+            'selectedSnag_id' => 'required',
+            'selectedSite_id' => 'required',
+        ];
     }
     public function render()
     {
@@ -86,7 +77,7 @@ class SiteSnag extends Component
         // $siteSnags = $this->siteSnagRepository->paginate(10);
         // dd($siteSnags);
         // return view('site_snags.create',compact('SnagsList','SitesList'));
-        $this->SitesList = Site::where('site_id', 'like', '%' . $this->siteSearch . '%')->select('id', 'site_id')->paginate(100)->pluck('site_id', 'id');
+        $this->SitesList = Site::where('site_id', 'like', '%' . $this->siteSearch . '%')->select('id', 'site_id')->orderBy('site_id','ASC')->paginate(100)->pluck('site_id', 'id');
         $this->SnagsList = Snag::where('description', 'like', '%' . $this->snagSearch . '%')->select('id','description')->with('sub_categ.main_categ')->pluck('description', 'id');
         return view('livewire.site-snag', [
             // 'snags' => Snagmang::with('sub_categ.main_categ')->latest()->take(5)->get(),
@@ -116,7 +107,7 @@ class SiteSnag extends Component
         if (!is_null($value)) {
             // $this->snags = Snagmang::where('sub_categ_id', $value)->get();
             $this->SnagsList = Snag::where('sub_categ_id', $value)
-                ->orWhere('description', $this->snagSearch)->pluck('description', 'id');
+                ->orWhere('description', $this->snagSearch)->orderBy('description','ASC')->pluck('description', 'id');
             // $this->selectedSnagsList=null;
         }
     }
@@ -132,10 +123,7 @@ class SiteSnag extends Component
     public function storeSiteSnag()
     {
         // dd($this->data);
-        $this->validate([
-            'selectedSnag_id' => 'required',
-            'selectedSite_id' => 'required',
-        ]);
+        $this->validate($this->rules());
 
         $site = Site::find($this->selectedSite_id);
         $site->snags()->attach([$this->selectedSnag_id]);

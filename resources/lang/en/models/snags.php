@@ -1,8 +1,10 @@
 <?php
 
 return array (
+  'model' => 'Snag',
   'singular' => 'Snags',
   'plural' => 'Snag',
+  'url' => 'snags',
   'fields' =>
   array (
     'id' => 'Id',

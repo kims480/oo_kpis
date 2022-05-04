@@ -17,7 +17,7 @@
 
         <div class="card">
 
-            {!! Form::open(['route' => 'sitePrios.store']) !!}
+            {!! Form::open(['route' => __('models/sitePrios.url').'.store']) !!}
 
             <div class="card-body">
                 <div class="row">
@@ -27,7 +27,7 @@
 
             <div class="card-footer">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('sitePrios.index') }}" class="btn btn-default">
+                <a href="{{ route(__('models/sitePrios.url').'.index') }}" class="btn btn-default">
                  @lang('crud.cancel')
                 </a>
             </div>

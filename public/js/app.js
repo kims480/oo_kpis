@@ -3793,6 +3793,7 @@ window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 window.swal = (sweetalert__WEBPACK_IMPORTED_MODULE_2___default());
 window.Toastify = (toastify_js__WEBPACK_IMPORTED_MODULE_3___default()); // window.SelectSearch = searchdrop;
 
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].plugin(_alpinejs_focus__WEBPACK_IMPORTED_MODULE_1__["default"]);
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].store('darkMode', {
   on: false,
   toggle: function toggle() {
@@ -3833,12 +3834,10 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('sub_dropdown', function (
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('tooltip', function () {
   return {
     show: false,
-    visibleClass: 'block sm:absolute z-10 -top-2 sm:border border-gray-800 left-5 sm:text-sm sm:bg-gray-900 sm:px-2 sm:py-1 sm:rounded-md'
+    visibleClass: 'block sm:absolute z-20 -top-2 sm:border border-gray-800 left-4 sm:text-sm sm:bg-gray-900 sm:px-2 sm:py-1 sm:rounded-md'
   };
 });
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start(); // require('./main');
-
-alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].plugin(_alpinejs_focus__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
 /***/ }),
 

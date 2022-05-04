@@ -25,25 +25,25 @@ class SearchDrop {
 
 
         // });
-        this.selectBox.addEventListener("click", () => {
-            this.searchBox.focus();
-            this.searchBox.value = "";
-            this.filterList("");
-        });
+        // this.selectBox.addEventListener("click", () => {
+        //     this.searchBox.focus();
+        //     this.searchBox.value = "";
+        //     this.filterList("");
+        // });
 
           this.searchBox.addEventListener("keyup", e=> {
             this.filterList(e.target.value);
           });
-        this.optionsList.forEach(o => {
-            o.addEventListener("click", () => {
-                o.querySelector("input").setAttribute('checked',true);
-                this.selected.innerHTML = o.querySelector("label").innerHTML;
-                // this.searchBox.classList.add("opacity-0");
-                // this.optionsContainer.classList.add("hidden");
-                // this.optionsContainer.classList.remove("active");
+        // this.optionsList.forEach(o => {
+        //     o.addEventListener("click", () => {
+        //         // o.querySelector("input").setAttribute('checked',true);
+        //         // this.selected.innerHTML = o.querySelector("label").innerHTML;
+        //         // this.searchBox.classList.add("opacity-0");
+        //         // this.optionsContainer.classList.add("hidden");
+        //         // this.optionsContainer.classList.remove("active");
 
-            });
-        });
+        //     });
+        // });
     }
     filterList(searchTerm) {
         searchTerm = searchTerm.toLowerCase();

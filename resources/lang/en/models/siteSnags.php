@@ -1,8 +1,9 @@
 <?php
 
 return array (
-    'model'=>'siteSnag',
+    'model'=>'SiteSnag',
   'singular' => 'Site Snag',
+  'url' => 'site-snags',
   'plural' => 'Site Snags',
   'fields' =>
   array (

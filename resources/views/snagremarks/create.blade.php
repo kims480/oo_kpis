@@ -17,7 +17,7 @@
 
         <div class="card">
 
-            {!! Form::open(['route' => 'snagremarks.store']) !!}
+            {!! Form::open(['route' => __('models/snagremarks.url').'.store']) !!}
 
             <div class="card-body">
                 <div class="row">
@@ -27,7 +27,7 @@
 
             <div class="card-footer">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('snagremarks.index') }}" class="btn btn-default">
+                <a href="{{ route(__('models/snagremarks.url').'.index') }}" class="btn btn-default">
                  @lang('crud.cancel')
                 </a>
             </div>

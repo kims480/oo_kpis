@@ -1,9 +1,11 @@
 <?php
 
 return array (
-  'singular' => 'SiteType',
-  'plural' => 'SiteTypes',
-  'fields' => 
+  'model' => 'SiteType',
+  'singular' => 'Site Type',
+  'plural' => 'Site Types',
+  'url' => 'site-types',
+  'fields' =>
   array (
     'id' => 'Id',
     'name' => 'Name',

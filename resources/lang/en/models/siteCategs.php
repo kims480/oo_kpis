@@ -1,9 +1,11 @@
 <?php
 
 return array (
-  'singular' => 'SiteCateg',
-  'plural' => 'SiteCategs',
-  'fields' => 
+  'model' => 'SiteCateg',
+  'singular' => 'Site Categ',
+  'url' => 'site-categs',
+  'plural' => 'Site Categories',
+  'fields' =>
   array (
     'id' => 'Id',
     'name' => 'Name',

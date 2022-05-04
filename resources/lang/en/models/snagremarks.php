@@ -1,7 +1,9 @@
 <?php
 
 return array (
+  'model' => 'Snagremark',
   'singular' => 'Snag Remark',
+  'url' => 'snag-remarks',
   'plural' => 'Snag Remarks',
   'fields' =>
   array (

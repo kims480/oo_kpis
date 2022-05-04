@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Badge;
+namespace App\View\Components\Pill;
 
 use Illuminate\View\Component;
 

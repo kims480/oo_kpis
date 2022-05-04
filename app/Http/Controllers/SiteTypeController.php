@@ -58,9 +58,9 @@ class SiteTypeController extends AppBaseController
 
         $siteType = $this->siteTypeRepository->create($input);
 
-        Flash::success(__('messages.saved', ['model' => __('models/siteTypes.singular')]));
+        Flash::success(__('messages.saved', ['model' => __('models/siteTypes.model')]));
 
-        return redirect(route('siteTypes.index'));
+        return redirect(route(__('models/siteTypes.url').'.index'));
     }
 
     /**
@@ -75,9 +75,9 @@ class SiteTypeController extends AppBaseController
         $siteType = $this->siteTypeRepository->find($id);
 
         if (empty($siteType)) {
-            Flash::error(__('messages.not_found', ['model' => __('models/siteTypes.singular')]));
+            Flash::error(__('messages.not_found', ['model' => __('models/siteTypes.model')]));
 
-            return redirect(route('siteTypes.index'));
+            return redirect(route(__('models/siteTypes.url').'.index'));
         }
 
         return view('site_types.show')->with('siteType', $siteType);
@@ -95,9 +95,9 @@ class SiteTypeController extends AppBaseController
         $siteType = $this->siteTypeRepository->find($id);
 
         if (empty($siteType)) {
-            Flash::error(__('messages.not_found', ['model' => __('models/siteTypes.singular')]));
+            Flash::error(__('messages.not_found', ['model' => __('models/siteTypes.model')]));
 
-            return redirect(route('siteTypes.index'));
+            return redirect(route(__('models/siteTypes.url').'.index'));
         }
 
         return view('site_types.edit')->with('siteType', $siteType);
@@ -116,16 +116,16 @@ class SiteTypeController extends AppBaseController
         $siteType = $this->siteTypeRepository->find($id);
 
         if (empty($siteType)) {
-            Flash::error(__('messages.not_found', ['model' => __('models/siteTypes.singular')]));
+            Flash::error(__('messages.not_found', ['model' => __('models/siteTypes.model')]));
 
-            return redirect(route('siteTypes.index'));
+            return redirect(route(__('models/siteTypes.url').'.index'));
         }
 
         $siteType = $this->siteTypeRepository->update($request->all(), $id);
 
-        Flash::success(__('messages.updated', ['model' => __('models/siteTypes.singular')]));
+        Flash::success(__('messages.updated', ['model' => __('models/siteTypes.model')]));
 
-        return redirect(route('siteTypes.index'));
+        return redirect(route(__('models/siteTypes.url').'.index'));
     }
 
     /**
@@ -142,15 +142,15 @@ class SiteTypeController extends AppBaseController
         $siteType = $this->siteTypeRepository->find($id);
 
         if (empty($siteType)) {
-            Flash::error(__('messages.not_found', ['model' => __('models/siteTypes.singular')]));
+            Flash::error(__('messages.not_found', ['model' => __('models/siteTypes.model')]));
 
-            return redirect(route('siteTypes.index'));
+            return redirect(route(__('models/siteTypes.url').'.index'));
         }
 
         $this->siteTypeRepository->delete($id);
 
-        Flash::success(__('messages.deleted', ['model' => __('models/siteTypes.singular')]));
+        Flash::success(__('messages.deleted', ['model' => __('models/siteTypes.model')]));
 
-        return redirect(route('siteTypes.index'));
+        return redirect(route(__('models/siteTypes.url').'.index'));
     }
 }

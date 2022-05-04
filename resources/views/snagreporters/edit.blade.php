@@ -17,7 +17,7 @@
 
         <div class="card">
 
-            {!! Form::model($snagreporter, ['route' => ['snagreporters.update', $snagreporter->id], 'method' => 'patch']) !!}
+            {!! Form::model($snagreporter, ['route' => [__('models/snagreporters.url').'.update', $snagreporter->id], 'method' => 'patch']) !!}
 
             <div class="card-body">
                 <div class="row">
@@ -27,7 +27,7 @@
 
             <div class="card-footer">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('snagreporters.index') }}" class="btn btn-default">
+                <a href="{{ route(__('models/snagreporters.url').'.index') }}" class="btn btn-default">
                     @lang('crud.cancel')
                  </a>
             </div>

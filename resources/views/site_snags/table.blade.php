@@ -58,9 +58,18 @@
 
                 <td class=" px-1 text-center ">
                     @if( !empty($siteSnag->snagstatus->name))
+                        @if ($siteSnag->snagstatus->name=='Closed')
 
-                    <span
-                        class=" {{  ($siteSnag->snagstatus->name=='Closed') ? 'bg-green-200 text-green-600' : ''}} {{ ($siteSnag->snagstatus->name=='Pending') ?'bg-amber-200 text-amber-600':'' }}{{ $siteSnag->snagstatus->name=='Open' ?'bg-slate-200 text-slate-600 ':'' }} py-1 px-3 rounded-full text-xs">{{ $siteSnag->snagstatus->name ?? '' }}</span>
+                        <x-pill.pill-success >{{ $siteSnag->snagstatus->name ?? '' }}</x-pill.pill-success>
+                        @elseif ($siteSnag->snagstatus->name=='Pending')
+
+                        <x-pill.pill-warning >{{ $siteSnag->snagstatus->name ?? '' }}</x-pill.pill-warning>
+                        @elseif ($siteSnag->snagstatus->name=='Open')
+                        <x-pill.pill-info >{{ $siteSnag->snagstatus->name ?? '' }}</x-pill.pill-info>
+                        @endif
+                    {{-- <span
+                        class=" {{  ($siteSnag->snagstatus->name=='Closed') ? 'bg-green-200 text-green-600' : ''}} {{ () ?'bg-amber-200 text-amber-600':'' }}{{  ?'bg-slate-200 text-slate-600 ':'' }} py-1 px-3 rounded-full text-xs">
+                    </span> --}}
                     @endif
                 </td>
                 <td class=" px-1 text-center">
@@ -80,22 +89,22 @@
                 </td>
                 <td class=" px-2 text-center">
                     <div class="flex item-center justify-center">
-                        {!! Form::open(['route' => ['site-snags.destroy', $siteSnag->id], 'method' => 'delete']) !!}
                         <div class='btn-group px-8 flex justify-between justify-items-center'>
-                            <a href="{{ route('site-snags.show', [$siteSnag->id]) }}" class='btn btn-default btn-xs'>
+                            <a href="{{ route(__('models/siteSnags.url').'.show', [$siteSnag->id]) }}" class='btn btn-default btn-xs'>
                                 <i class="far fa-eye"></i>
                             </a>
                             @can('site-snags.edit')
 
-                            <a href="{{ route('site-snags.edit', [$siteSnag->id]) }}" class='btn btn-success btn-xs'>
+                            <a href="{{ route(__('models/siteSnags.url').'.edit', [$siteSnag->id]) }}" class='btn btn-success btn-xs'>
                                 <i class="far fa-edit"></i>
                             </a>
                             @endcan
                             @can('site-snags.destroy')
+                            {!! Form::open(['route' => [__('models/siteSnags.url').'.destroy', $siteSnag->id], 'method' => 'delete']) !!}
                             {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                            {!! Form::close() !!}
                             @endcan
                         </div>
-                        {!! Form::close() !!}
                         {{-- <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />

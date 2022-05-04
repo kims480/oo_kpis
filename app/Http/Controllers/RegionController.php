@@ -158,36 +158,5 @@ class RegionController extends AppBaseController
         return redirect(route('regions.index'));
     }
 
-    public function generatePermissions ($model)
-    {
-        if(! class_exists("\App\Models\\".$model)){
-            Flash::error('Model is not exist');
 
-            return redirect(route('dashboard'));
-
-        }
-        $class=$model;
-        $tableName=strtolower($class).'s';
-        $permissions=[
-            ['name'=>$tableName.'.index','guard_name'=>'web','title'=>$tableName.'.index','module'=>$class],
-            ['name'=>$tableName.'.create','guard_name'=>'web','title'=>$tableName.'.create','module'=>$class],
-            ['name'=>$tableName.'.update','guard_name'=>'web','title'=>$tableName.'.update','module'=>$class],
-            ['name'=>$tableName.'.edit','guard_name'=>'web','title'=>$tableName.'.edit','module'=>$class],
-            ['name'=>$tableName.'.store','guard_name'=>'web','title'=>$tableName.'.store','module'=>$class],
-            ['name'=>$tableName.'.destroy','guard_name'=>'web','title'=>$tableName.'.destroy','module'=>$class],
-            ['name'=>$tableName.'.show','guard_name'=>'web','title'=>$tableName.'.show','module'=>$class],
-        ];
-
-        // dd($permissions);
-
-        foreach ($permissions as $permission) {
-            Permission::firstOrCreate($permission);
-        }
-
-        Flash::success(__('messages.saved', ['model' =>$class]));
-
-        return redirect(route($tableName.'.index'));
-
-
-    }
 }

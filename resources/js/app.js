@@ -26,6 +26,7 @@ window.swal = swal;
 window.Toastify = Toastify;
 // window.SelectSearch = searchdrop;
 
+Alpine.plugin(focus);
 
 Alpine.store('darkMode', {
     on: false,
@@ -63,9 +64,8 @@ Alpine.data('sub_dropdown', () => ({
 // Creating tooltip
 Alpine.data('tooltip', () => ({
     show: false,
-    visibleClass:'block sm:absolute z-10 -top-2 sm:border border-gray-800 left-5 sm:text-sm sm:bg-gray-900 sm:px-2 sm:py-1 sm:rounded-md'
+    visibleClass:'block sm:absolute z-20 -top-2 sm:border border-gray-800 left-4 sm:text-sm sm:bg-gray-900 sm:px-2 sm:py-1 sm:rounded-md'
 }))
 
 Alpine.start()
 // require('./main');
-Alpine.plugin(focus);

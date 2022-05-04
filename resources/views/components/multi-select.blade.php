@@ -1,12 +1,12 @@
 <div class="form-groups relative flex flex-col" x-data="{ openItemSelect: false }">
     <label for="{{ $itemId }}">{{ $label }} <span style="color:red;">*</span> {{ $optionSelectedId }}
-        {{ $optionSelectedName ?? '' }}
+        {{-- {{ ${$optionName} == null?'_' : $optionSelectedName }} --}}
     </label>
     <input type="text" @click="$focus.within($refs.searchBox).first()" @click.prevent="openItemSelect=!openItemSelect;"
         class="selected relative invalid:border-pink-500
                 invalid:text-pink-600 py-1.5 px-2 border border-slate-400
                 cursor-pointer bg-slate-100 text-sm font-semibold text-sky-900 rounded-lg"
-        placeholder="{{ $label }}" wire:model="{{ $optionName }}" readonly>
+        placeholder="{{$optionSelectedName ?? $label }}" wire:model="{{ $optionName }}" name="{{ $optionName }}"  readonly>
 
     <span @click="$focus.within($refs.searchBox).first();" @click.prevent="openItemSelect=!openItemSelect;"
         class="absolute content-[''] bg-contain bg-[url('/img/soccer.svg')]
@@ -33,7 +33,7 @@
                             hover:text-slate-200 hover:font-semibold
                             {{ $optionSelectedId == $id ? 'bg-slate-800 border-0 text-slate-50 border-l-8 border-red-700' : '' }}"
                     tabindex="{{ $loop->iteration }}" class="focus:bg-orange-300" @click="openItemSelect=false"
-                    wire:click="$set('{{ $optionValue }}',{{ $id }});$set('{{ $optionName }}',{{ $item }});">
+                    wire:click="$set('{{ $optionName }}','{{ $item }}');{{-- $set('{{ $optionValue }}',{{ $id }}); --}}">
                     <input type="radio" class="radio opacity-0 {{ $itemId }}-option" {{-- wire:click.stop="$set('{{ $optionValue }}',{{ $id }})" --}}
                         wire:model="{{ $optionValue }}" id="{{ $itemId }}-{{ $id }}"
                         value="{{ $id }}" />

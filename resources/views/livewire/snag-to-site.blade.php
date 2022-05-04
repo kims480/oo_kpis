@@ -4,7 +4,7 @@
     @endpush
     <x-multi-select label="Site ID" itemId="site" :optionSelectedId="$selectedSite_id" optionValue="selectedSite_id" optionName="site_name"
         :optionSelectedName="$site_name" :optionList="$SitesList" itemSearch="siteSearch" />
-    {{-- Main Categ --}}
+        {{$site_name}}
     <div class="form-groups ">
         <label for="selectedMaincateg" class="col-form-label text-md-right">Main Categ</label>
         <select wire:model="selectedMaincateg" {{-- name="selectedMaincateg" --}} id="selectedMaincateg"

@@ -12,10 +12,10 @@ use Livewire\Component;
 class SnagToSite extends Component
 {
     public $test;
-    public $site_name = null;
+    public $site_name = '';
     public $selectedSite_id = null;
     public $siteSearch = null;
-    public $snag_name = null;
+    public $snag_name = '';
     public $snagSearch = null;
     public $selectedSnag_id = null;
     public $selectedSnagsList = null;

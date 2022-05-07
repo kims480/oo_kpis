@@ -20,45 +20,20 @@
                 <div class="md:grid  md:grid-cols-3 md:grid-rows-4 md:gap-2 grid grid-cols-1 grid-rows-12">
 
                     {{-- Site ID --}}
-                    <x-multi-select label="Site ID" itemId="site" :optionSelectedId="$selectedSite_id"
-                                    optionValue="selectedSite_id" optionName="site_name"
-                                    :optionSelectedName="$site_name" :optionList="$SitesList"
-                                    itemSearch="siteSearch" />
+                    <x-multi-select label="Site ID" itemId="site" :optionSelectedId="$selectedSite_id" optionValue="selectedSite_id"
+                        optionName="site_name" :optionSelectedName="$site_name" :optionList="$SitesList" itemSearch="siteSearch" />
 
-                    {{-- Sub Categ --}}
-                    <div class="form-groups ">
-                        <label for="selectedMaincateg" class="col-form-label text-md-right">Main Categ</label>
-                        <select wire:model="selectedMaincateg" name="selectedMaincateg"
-                            class="form-control block
-                           ">
-                            <option value="">-- choose Main Categ --</option>
-                            @foreach ($maincategs as $mainCateg_id => $mainCateg_name)
-                                <option value="{{ $mainCateg_name->id }}">{{ $mainCateg_name->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    {{-- Main Categ --}}
+                    <x-select label="Main Categ" id="selectedMaincateg" :itemsList="$maincategs"
+                        selectedItem="selectedMaincateg" />
 
                     {{-- Sub Sub Categ --}}
-                    <div class="form-groups ">
-                        <label for="subcateg" class=" col-form-label text-md-right">Sub Categ</label>
-                        <div class="col-md-6">
-                            <select wire:model="selectedSubcateg" name="subcateg" class="form-control ">
-                                @if ($subcategs->count() == 0)
-                                    <option value="">-- choose Main categ first --</option>
-                                @endif
-                                <option value="">-- choose Sub Categ --</option>
-                                @foreach ($subcategs as $subcateg)
-                                    <option value="{{ $subcateg->id }}">{{ $subcateg->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
+                    <x-select label="Sub Categ" id="subcateg" :itemsList="$subcategs" selectedItem="selectedSubcateg" />
+
 
                     {{-- Sub Snag --}}
-                    <x-multi-select label="Snag" itemId="snag" optionValue="selectedSnag_id"
-                                    :optionSelectedId="$selectedSnag_id"  optionName="snag_name"
-                                    :optionSelectedName="$snag_name" :optionList="$SnagsList"
-                                    itemSearch="snagSearch" />
+                    <x-multi-select label="Snag" itemId="snag" optionValue="selectedSnag_id" :optionSelectedId="$selectedSnag_id"
+                        optionName="snag_name" :optionSelectedName="$snag_name" :optionList="$SnagsList" itemSearch="snagSearch" />
                     {{-- <div class="form-groups ">
                         <label for="snag">Snag <span style="color:red;">*</span></label>
 
@@ -117,86 +92,21 @@
                     </div>
 
                     {{-- Domain --}}
-                    <div class="form-groups ">
-                        <label for="state" class=" col-form-label text-md-right">Domain</label>
-                        <div class="col-md-6">
-                            <select wire:model="selectedSnag_domain" name="selectedSnag_domain" class="form-control ">
-                                @if ($snag_domain->count() == 0)
-                                    <option value="">-- choose Domain --</option>
-                                @endif
-                                <option value="">-- choose Domain --</option>
-                                @foreach ($snag_domain as $domain_id => $domain_name)
-                                    <option value="{{ $domain_id }}">{{ $domain_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
+                    <x-select-filtered label="Domain" id="selectedSnag_domain" :itemsList="$snag_domain" selectedItem="selectedSnag_domain" />
 
                     {{-- Reported In --}}
-                    <div class="form-groups ">
-                        <label for="state" class=" col-form-label text-md-right">Reported In </label>
-                        <div class="col-md-6">
-                            <select wire:model="selectedSnag_reporter" name="selectedSnag_reporter"
-                                class="form-control ">
-                                @if ($snag_reporter->count() == 0)
-                                    <option value="">-- Snag Source --</option>
-                                @endif
-                                <option value="">-- Snag Source --</option>
-                                @foreach ($snag_reporter as $reporter_id => $reporter_name)
-                                    <option value="{{ $reporter_id }}">{{ $reporter_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
+                    <x-select-filtered label="Reported In" id="selectedSnag_reporter" :itemsList="$snag_reporter" selectedItem="selectedSnag_reporter" />
+
 
                     {{-- Remarks --}}
-                    <div class="form-groups ">
-                        <label for="state" class=" col-form-label text-md-right">Remarks </label>
-                        <div class="col-md-6">
-                            <select wire:model="selectedSnag_remarks" class="form-control ">
-                                @if ($snag_remarks->count() == 0)
-                                    <option value="">-- Snag Remarks --</option>
-                                @endif
-                                <option value="">-- Snag Remarks --</option>
-
-                                @foreach ($snag_remarks as $remark_id => $remark)
-                                    <option value="{{ $remark_id }}">{{ $remark }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
+                    <x-select-filtered label="Remarks" id="snag-remarks" :itemsList="$snag_remarks" selectedItem="selectedSnag_remarks" />
 
                     {{-- Status --}}
-                    <div class="form-groups ">
-                        <label for="state" class=" col-form-label text-md-right">Status </label>
-                        <div class="col-md-6">
-                            <select wire:model="selectedSnag_status" class="form-control ">
-                                @if ($snags_status->count() == 0)
-                                    <option value="">-- Snag Status --</option>
-                                @endif
-                                <option value="" disabled> --Snag Status-- </option>
-                                @foreach ($snags_status as $status_id => $status_name)
-                                    <option value="{{ $status_id }}" {{$status_name=='Open'?'selected':''}}>{{ $status_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
+                    <x-select-filtered label="Snag Status" id="snag-status" :itemsList="$snags_status" selectedItem="selectedSnag_status" />
+
 
                     {{-- Severity --}}
-                    <div class="form-groups ">
-                        <label for="state" class=" col-form-label text-md-right">Severity </label>
-                        <div class="col-md-6">
-                            <select wire:model="severity" class="form-control ">
-                                @if ($snags_severity->count() == 0)
-                                    <option value="">-- Snag Severity --</option>
-                                @endif
-                                <option value="" disabled> --Snag Severity-- </option>
-                                @foreach ($snags_severity as $severity_id => $severity_name)
-                                    <option value="{{ $severity_id }}">{{ $severity_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
+                    <x-select-filtered label="Snag Severity" id="snag-severity" :itemsList="$snags_severity" selectedItem="severity" />
 
                     {{-- Closure Date --}}
                     <div class="formbuilder-date form-groups field-date-1647795089799">
@@ -218,7 +128,7 @@
         </form>
     </div>
     @push('page_scripts')
-    {{-- <script src="{{ asset('js/searchdrop.js') }}"></script> --}}
+        {{-- <script src="{{ asset('js/searchdrop.js') }}"></script> --}}
 
         {{-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script> --}}
 

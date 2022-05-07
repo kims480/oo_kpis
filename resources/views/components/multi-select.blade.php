@@ -52,8 +52,13 @@
                 @keydown.down="$focus.within($refs.optionsContainer).first()"
                 wire:model.debounce300ms="{{ $itemSearch }}" {{-- @keyup="$dispatch('updateSearch',{typed:$event.target.value}),fff=$event.target.value" --}} placeholder="Start Typing..." />
         </div>
-    </div>
 
+    </div>
+    @error($optionValue)
+    <x-validation-error class="{{$itemId}}-invalid">
+        {{$message}}
+    </x-validation-error>
+    @enderror
     @once
         @include('layouts.app.search_drop')
     @endonce
@@ -62,4 +67,6 @@
             new SearchDrop('#{{ $itemId }}');
         </script>
     @endpush
+
+
 </div>

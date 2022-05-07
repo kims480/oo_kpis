@@ -171,7 +171,7 @@ html, body {
 .swal-modal {
     /* width: 25%; */
     font-size: 14px;
-    @apply w-3/12 sm:w-3/4;
+    @apply  w-3/4 md:w-6/12;
     /* background-color: rgba(63,255,106,0.69); */
     /* border: 3px solid white; */
 

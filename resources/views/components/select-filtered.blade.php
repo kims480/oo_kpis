@@ -6,7 +6,7 @@
         @endif
         <option value="" class="text-sm text-gray-500">  --Choose {{ $label }}-- </option>
         @foreach ($itemsList as $item_id => $itemName)
-            <option value="{{ $item_id }}" class="text-sm text-blue-800 border-b border-solid border-blue-400">
+            <option value="{{ $item_id }}" class="text-sm text-blue-800 border-b  border-blue-400">
                 {{ $itemName }}
             </option>
         @endforeach

@@ -52,7 +52,10 @@ class SiteSnag extends Component
 
     // protected $listeners = ['siteSelected' => 'selectSite'];
 
-
+    protected $messages = [
+        'selectedSnag_id.required' => 'The Snag cannot be empty.',
+        'selectedSite_id.required' => 'The Site_ID cannot be empty.',
+    ];
     public function mount()
     {
         $this->maincategs = MainCateg::select('id', 'name')->get();
@@ -64,12 +67,17 @@ class SiteSnag extends Component
         $this->snag_reporter = Snagreporter::select('id', 'name')->pluck('name', 'id');
     }
 
+
     public function rules()
     {
         return [
             'selectedSnag_id' => 'required',
             'selectedSite_id' => 'required',
         ];
+    }
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName, $this->rules());
     }
     public function render()
     {

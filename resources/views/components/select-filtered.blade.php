@@ -1,6 +1,6 @@
 <div class="form-groups flex flex-col ">
     <label for="{{ $id }}" class="col-form-label text-md-right whitespace-nowrap px-1">{{ $label }}</label>
-    <select wire:model="{{ $selectedItem }}" id="{{ $id }}" class="form-control block text-sm text-gray-500 font-semibold">
+    <select wire:model="{{ $selectedItem }}" id="{{ $id }}" class="form-control block text-sm">
         @if ($itemsList->count() == 0)
             <option value="" class="text-sm text-gray-500">-- {{ $label }} --</option>
         @endif

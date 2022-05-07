@@ -22,13 +22,19 @@ class SnagToSite extends Component
     public $selectedMaincateg = null;
     public $selectedSubcateg = null;
     public $SitesList;
+    public $SiteSnagsList;
     public $maincategs;
     public $subcategs;
 
+    protected $messages = [
+        'selectedSnag_id.required' => 'The Snag cannot be empty.',
+        'selectedSite_id.required' => 'The Site_ID cannot be empty.',
+    ];
 
     function mount($test=null){
         $this->maincategs = MainCateg::select('id', 'name')->get();
         $this->subcategs = collect();
+        $this->SiteSnagsList = collect();
         $this->test=$test;
     }
     public function render()
@@ -39,6 +45,13 @@ class SnagToSite extends Component
 
         return view('livewire.snag-to-site')->extends('layouts.app')->section('content');
             // ->layout('');
+    }
+    public function updatedSelectedSiteId($value)
+    {
+        $this->SiteSnagsList = SiteSnag::where('site_id',  $this->selectedSite_id)->with(['site','snag','reportedBy','snagdomain','snagreporter','snagremark','snagstatus','snag_closed_by'])->get();
+
+        $this->snagSearch=null;
+        // $this->selectedSubcateg = null;
     }
     public function updatedSelectedMaincateg($value)
     {
@@ -71,6 +84,8 @@ class SnagToSite extends Component
         $this->snag_name = null;
         $this->report_date = null;
         $this->closure_date = null;
+        $this->resetValidation();
+        $this->resetErrorBag();
     }
     public function storeSiteSnag()
     {

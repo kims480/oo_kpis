@@ -163,7 +163,7 @@ class SiteSnag extends Component
     }
 
     function close(){
-        $this->snag_name = '';
+        $this->site_name = null;
         $this->selectedMaincateg = null;
         $this->selectedSubcateg = null;
         $this->selectedSnag = null;
@@ -180,5 +180,9 @@ class SiteSnag extends Component
         $this->snag_name = null;
         $this->report_date = null;
         $this->closure_date = null;
+        $this->resetValidation();
+        $this->resetErrorBag();
+
+
     }
 }

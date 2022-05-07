@@ -11,23 +11,23 @@ html, body {
     -webkit-font-smoothing: antialiased;
 }
 @layer base{
-[type='text'],[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],[type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea,select {
-    @apply w-full rounded-lg  shadow-sm  focus:ring-indigo-500 caret-indigo-500
-    block
-    px-3
-    py-1.5
-    text-base
-    font-normal
-    text-gray-700
-    bg-white bg-clip-padding
-    border border-solid border-gray-300
+    [type='text'],[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],
+    [type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea,select {
+        @apply w-full rounded-lg  shadow-sm  focus:ring-indigo-500 caret-indigo-500
+        block
+        px-3
+        py-1
+        text-base
+        font-semibold
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-900 focus:bg-slate-100 focus:border-blue-600 focus:outline-none
 
-    transition
-    ease-in-out
-    m-0
-    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-
-}
+    }
 }
 .table { @apply bg-white text-gray-900 border-separate w-full shadow-md }
 .table  th { @apply bg-slate-800 text-blue-100;  padding: 2px; border-bottom: 2px solid #d8d8d8 ; }

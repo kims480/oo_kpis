@@ -35,38 +35,34 @@
                     <x-multi-select label="Snag" itemId="snag" optionValue="selectedSnag_id" :optionSelectedId="$selectedSnag_id"
                         optionName="snag_name" :optionSelectedName="$snag_name" :optionList="$SnagsList" itemSearch="snagSearch" />
 
-
                     {{-- Reported Date --}}
-                    <div class="formbuilder-date form-groups field-date-1647795088214">
-                        <label for="date-1647795088214" class="formbuilder-date-label">Reported Date</label>
-                        <input type="date" class="form-control block
-                       " name=" id="
-                            date-1647795088214">
-                    </div>
+                    <x-forms.input id="report_date" type="date" label="Reported Date" wireModel="" />
 
                     {{-- Domain --}}
-                    <x-select-filtered label="Domain" id="selectedSnag_domain" :itemsList="$snag_domain" selectedItem="selectedSnag_domain" />
+                    <x-select-filtered label="Domain" id="selectedSnag_domain" :itemsList="$snag_domain"
+                        selectedItem="selectedSnag_domain" />
 
                     {{-- Reported In --}}
-                    <x-select-filtered label="Reported In" id="selectedSnag_reporter" :itemsList="$snag_reporter" selectedItem="selectedSnag_reporter" />
+                    <x-select-filtered label="Reported In" id="selectedSnag_reporter" :itemsList="$snag_reporter"
+                        selectedItem="selectedSnag_reporter" />
 
 
                     {{-- Remarks --}}
-                    <x-select-filtered label="Remarks" id="snag-remarks" :itemsList="$snag_remarks" selectedItem="selectedSnag_remarks" />
+                    <x-select-filtered label="Remarks" id="snag-remarks" :itemsList="$snag_remarks"
+                        selectedItem="selectedSnag_remarks" />
 
                     {{-- Status --}}
-                    <x-select-filtered label="Snag Status" id="snag-status" :itemsList="$snags_status" selectedItem="selectedSnag_status" />
+                    <x-select-filtered label="Snag Status" id="snag-status" :itemsList="$snags_status"
+                        selectedItem="selectedSnag_status" />
 
 
                     {{-- Severity --}}
-                    <x-select-filtered label="Snag Severity" id="snag-severity" :itemsList="$snags_severity" selectedItem="severity" />
+                    <x-select-filtered label="Snag Severity" id="snag-severity" :itemsList="$snags_severity"
+                        selectedItem="severity" />
 
 
                     {{-- Closure Date --}}
-                    <div class="formbuilder-date form-groups field-date-1647795089799">
-                        <label for="closure_date" class="formbuilder-date-label">Closure Date</label>
-                        <input type="date" class="form-control " name="closure_date" access="false" id="closure_date">
-                    </div>
+                    <x-forms.input id="closure_date" type="date" label="Closure Date" wireModel="" />
 
                 </div>
             </div>
@@ -76,7 +72,7 @@
                 </button>
                 {{-- {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!} --}}
                 <a href="{{ route('site-snags.index') }}" class="btn btn-default">
-                    @lang('crud.cancel')
+                    @lang('crud.back')
                 </a>
             </div>
         </form>
@@ -84,4 +80,3 @@
 
 
 </div>
-

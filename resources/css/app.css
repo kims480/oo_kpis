@@ -124,6 +124,9 @@ html, body {
   .has-tooltip:hover .tooltip {
     @apply visible z-50 rounded shadow-md p-1 text-xs bg-gray-100 text-slate-500 bottom-0;
   }
+  .battery_deploy{
+    @apply pt-2;
+  }
 
 /* <!-- Font Awesome --> */
 /* @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"); */

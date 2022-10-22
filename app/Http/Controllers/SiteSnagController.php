@@ -9,10 +9,9 @@ use App\Http\Controllers\AppBaseController;
 use App\Models\Site;
 use App\Models\SiteSnag;
 use App\Models\Snag;
-use App\Models\Snagd;
-use App\Models\Snagmang;
 use Illuminate\Http\Request;
-use Flash;
+use Illuminate\Support\Facades\Redirect;
+use Laracasts\Flash\Flash;
 use Response;
 
 class SiteSnagController extends AppBaseController
@@ -34,7 +33,7 @@ class SiteSnagController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $siteSnags = SiteSnag::with(['site','snag','reportedBy','snagdomain','snagreporter','snagremark','snagstatus','snag_closed_by'])->paginate(10);
+        $siteSnags = SiteSnag::with(['site', 'snag', 'reportedBy', 'snagdomain', 'snagreporter', 'snagremark', 'snagstatus', 'snag_closed_by'])->paginate(10);
 
 
 
@@ -49,11 +48,11 @@ class SiteSnagController extends AppBaseController
      */
     public function create()
     {
-        $SnagsList = Snag::all()->pluck('description','id');
-        $SitesList = Site::all()->pluck('site_id','id');
+        $SnagsList = Snag::all()->pluck('description', 'id');
+        $SitesList = Site::all()->pluck('site_id', 'id');
         // $siteSnags = $this->siteSnagRepository->paginate(10);
         // dd($siteSnags);
-        return view('site_snags.create',compact('SnagsList','SitesList'));
+        return view('site_snags.create', compact('SnagsList', 'SitesList'));
     }
 
     /**
@@ -71,7 +70,7 @@ class SiteSnagController extends AppBaseController
 
         Flash::success(__('messages.saved', ['model' => __('models/siteSnags.singular')]));
 
-        return redirect(route('siteSnags.index'));
+        return redirect(route('site-snags.index'));
     }
 
     /**
@@ -88,7 +87,7 @@ class SiteSnagController extends AppBaseController
         if (empty($siteSnag)) {
             Flash::error(__('messages.not_found', ['model' => __('models/siteSnags.singular')]));
 
-            return redirect(route('siteSnags.index'));
+            return redirect(route('site-snags.index'));
         }
 
         return view('site_snags.show')->with('siteSnag', $siteSnag);
@@ -108,7 +107,7 @@ class SiteSnagController extends AppBaseController
         if (empty($siteSnag)) {
             Flash::error(__('messages.not_found', ['model' => __('models/siteSnags.singular')]));
 
-            return redirect(route('siteSnags.index'));
+            return redirect(route('site-snags.index'));
         }
 
         return view('site_snags.edit')->with('siteSnag', $siteSnag);
@@ -129,14 +128,14 @@ class SiteSnagController extends AppBaseController
         if (empty($siteSnag)) {
             Flash::error(__('messages.not_found', ['model' => __('models/siteSnags.singular')]));
 
-            return redirect(route('siteSnags.index'));
+            return redirect(route('site-snags.index'));
         }
 
         $siteSnag = $this->siteSnagRepository->update($request->all(), $id);
 
         Flash::success(__('messages.updated', ['model' => __('models/siteSnags.singular')]));
 
-        return redirect(route('siteSnags.index'));
+        return redirect(route('site-snags.index'));
     }
 
     /**
@@ -155,13 +154,19 @@ class SiteSnagController extends AppBaseController
         if (empty($siteSnag)) {
             Flash::error(__('messages.not_found', ['model' => __('models/siteSnags.singular')]));
 
-            return redirect(route('siteSnags.index'));
+            return redirect(route('site-snags.index'));
         }
 
         $this->siteSnagRepository->delete($id);
 
-        Flash::success(__('messages.deleted', ['model' => __('models/siteSnags.singular')]));
+        Flash::success(__('Snag <strong>' . $siteSnag->snag->description . '</strong> deleted from Site <strong>'.$siteSnag->site->site_id. '</strong>', ['model' => __('models/siteSnags.singular')]));
 
-        return redirect(route('siteSnags.index'));
+        return  Redirect::back();
+        /*
+        return Redirect::back()->withErrors(['msg' => 'The Message']);
+            @if($errors->any())
+            <h4>{{$errors->first()}}</h4>
+            @endif
+        */
     }
 }

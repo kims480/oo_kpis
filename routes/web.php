@@ -29,3 +29,4 @@ Route::get('/checkOnline', function (App\Repositories\AttendanceRepository $atte
 
 Route::resource('snags-managing',\App\Http\Controllers\SnagsController::class);
 Route::get('site-snags',[\App\Http\Controllers\SnagsController::class,'getSiteSnags'])->name('site.snags');
+// Route::get('/gen-permissions/{model}/{url?}', [App\Http\Controllers\DashboardController::class,'generatePermissions'])->name('insert.permissions');

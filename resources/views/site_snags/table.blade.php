@@ -20,7 +20,7 @@
     </thead>
     <tbody class="text-gray-600 text-sm font-light">
         @foreach ($siteSnags as $siteSnag)
-            <tr class="border-b border-gray-200 odd:bg-gray-50 hover:bg-gray-100">
+            <tr x-data="{opacity: {{$loop->last==$loop->iteration}}}" class="border-b border-gray-200 odd:bg-gray-50 hover:bg-gray-100 [visibility:none]   animate-dropdown [animation-delay:{{$loop->iteration*0.1}}s]" :class="opacity ? 'opacity-100':'opacity-0'">
                 <td class=" px-1 text-left whitespace-nowrap">
                     <div class="flex items-center">
                         {{-- <div class="mr-2">

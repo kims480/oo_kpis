@@ -39,12 +39,12 @@ class UserSeeder extends Seeder
         // Supper Admin
         $roleSupperAdmin = $this->roleRepository->create([
             'name' =>    Role::SUPPER_ADMIN,
-            'title' => 'Supper Admin',
+            'title' => 'Supper-Admin_api',
             'guard_name' => 'api'
         ]);
         $roleSupperAdmin = $this->roleRepository->create([
             'name' =>    Role::SUPPER_ADMIN,
-            'title' => 'Supper_Admin',
+            'title' => 'Supper-Admin_web',
             'guard_name' => 'web'
         ]);
 

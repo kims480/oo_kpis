@@ -4,9 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-
-
-class CreateCategoriesTable extends Migration
+class CreateCurrenciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,11 +13,11 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        // Schema::dropIfExists('categories');
-
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+        Schema::create('currencies', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name', 50)->unique();
+            $table->string('code', 50)->unique();
+            $table->string('symbol', 5)->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('currencies');
     }
 }

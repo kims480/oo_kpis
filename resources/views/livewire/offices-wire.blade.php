@@ -1,5 +1,5 @@
 <div>
-    <div class="card-body">
+    <div class="card-body ">
         <div class="content px-3">
             {{-- @if (session()->has('flash_message')) --}}
 

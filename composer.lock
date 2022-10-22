@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "73fd53288b85a4e3053bbb0df65cde69",
+    "content-hash": "6a466bdf417f133800e963ad8af461f4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1027,6 +1027,55 @@
                 }
             ],
             "time": "2022-01-03T14:53:04+00:00"
+        },
+        {
+            "name": "gentritxhema/laravel-currency",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Gentritxhema/laravel-currency.git",
+                "reference": "8f53fad3f5da2f7275b28a2b0e38e7968cd26670"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Gentritxhema/laravel-currency/zipball/8f53fad3f5da2f7275b28a2b0e38e7968cd26670",
+                "reference": "8f53fad3f5da2f7275b28a2b0e38e7968cd26670",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.6.34|~5.7.0|~5.8.0|^6.0|^7.0|^8.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "GentritXhema\\Currencies\\Providers\\CurrenciesProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GentritXhema\\Currencies\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gentrit Xhema",
+                    "email": "gentrit.xhema@gmail.com"
+                }
+            ],
+            "description": "Laravel currency table migration and seed",
+            "homepage": "https://github.com/Gentritxhema/laravel-currency",
+            "support": {
+                "issues": "https://github.com/Gentritxhema/laravel-currency/issues",
+                "source": "https://github.com/Gentritxhema/laravel-currency/tree/master"
+            },
+            "time": "2022-02-23T14:00:52+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -10131,6 +10180,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "gentritxhema/laravel-currency": 20,
         "infyomlabs/generator-builder": 20,
         "infyomlabs/swagger-generator": 20
     },

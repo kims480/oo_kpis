@@ -59,11 +59,12 @@
                 {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
                 <input type="number" id="BatteryBankNum" wire:model="BatteryBankNum">
             </div>
-            <div class="battery_deploy">
-                <label for="rectifier_num">Battery Installation Date:</label>
-                {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
-                <input type="date" name="rectifier_num" id="rectifier_num">
-            </div>
+
+        </div>
+        <div class="battery_deploy">
+            <label for="rectifier_num">Battery Installation Date:</label>
+            {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
+            <input type="date" name="rectifier_num" id="rectifier_num">
         </div>
         <div class="battery_deploy">
             <label for="aircon_status">Airconditioning status:</label>

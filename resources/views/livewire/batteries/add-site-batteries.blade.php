@@ -90,6 +90,23 @@
             <button class="p-2 rounded-md bg-green-800 text-gray-100 font-bold" wire:click="storeSiteSnag"> Save
             </button>
         </div>
+        <div class="lvd flex items-end">
+            <div class="battery_deploy">
+                <label for="modules">#Rect Modules</label>
+                {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
+                <input type="number" name="modules" id="modules" min="1" max="10">
+            </div>
+            <div class="battery_deploy">
+                <label for="llvd">LLVD Value</label>
+                {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
+                <input type="text" name="llvd" id="llvd" >
+            </div>
+            <div class="battery_deploy">
+                <label for="blvd">BLVD Value</label>
+                {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
+                <input type="text" name="blvd" id="blvd">
+            </div>
+        </div>
 
     </div>
 

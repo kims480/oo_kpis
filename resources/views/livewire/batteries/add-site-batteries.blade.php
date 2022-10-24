@@ -18,50 +18,52 @@
  --}}
         <div class="bb-bank flex justify-between">
             <div class="battery_deploy">
-                <label for="rectifier_num_1">Battery SN:</label>
+                <label for="rectifier_num_1">Battery#1 SN:</label>
                 {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
                 <input type="text" id="batterySN1" wire:model="BatterySN">
             </div>
             <div class="battery_deploy">
-                <label for="rectifier_num_2">Battery SN:</label>
+                <label for="rectifier_num_2">Battery#2 SN:</label>
                 {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
                 <input type="text" id="batterySN2" wire:model="BatterySN">
             </div>
             <div class="battery_deploy">
-                <label for="rectifier_num_3">Battery SN:</label>
+                <label for="rectifier_num_3">Battery#3 SN:</label>
                 {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
                 <input type="text" id="batterySN3" wire:model="BatterySN">
             </div>
             <div class="battery_deploy">
-                <label for="rectifier_num_4">Battery SN:</label>
+                <label for="rectifier_num_4">Battery#4 SN:</label>
                 {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
                 <input type="text" id="batterySN4" wire:model="BatterySN">
             </div>
         </div>
-        <div class="battery_deploy">
-            <label for="numberOfRectifiers">Number of Rectifiers:</label>
-            {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
-            <input type="number" name="rectifier_num" id="rectifier_num" min="1" max="10">
-        </div>
-        <div class="battery_deploy">
-            <label for="rectifier_num">Rectifier Number:</label>
-            {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
-            <input type="number" name="rectifier_num" id="rectifier_num" min="1" max="10">
-        </div>
-        <div class="battery_deploy">
-            <label for="rectifier_num">Bank Number:</label>
-            {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
-            <input type="number" name="rectifier_num" id="rectifier_num" min="1" max="10">
-        </div>
-        <div class="battery_deploy">
-            <label for="BatteryBankNum">Battery sequence:</label>
-            {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
-            <input type="number" id="BatteryBankNum" wire:model="BatteryBankNum">
-        </div>
-        <div class="battery_deploy">
-            <label for="rectifier_num">Battery Installation Date:</label>
-            {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
-            <input type="date" name="rectifier_num" id="rectifier_num">
+        <div class="rectifier flex justify-between">
+            <div class="battery_deploy">
+                <label for="numberOfRectifiers">Number of Rectifiers:</label>
+                {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
+                <input type="number" name="rectifier_num" id="rectifier_num" min="1" max="10">
+            </div>
+            <div class="battery_deploy">
+                <label for="rectifier_num">Rectifier Number:</label>
+                {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
+                <input type="number" name="rectifier_num" id="rectifier_num" min="1" max="10">
+            </div>
+            <div class="battery_deploy">
+                <label for="rectifier_num">Bank Number:</label>
+                {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
+                <input type="number" name="rectifier_num" id="rectifier_num" min="1" max="10">
+            </div>
+            <div class="battery_deploy">
+                <label for="BatteryBankNum">Battery sequence:</label>
+                {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
+                <input type="number" id="BatteryBankNum" wire:model="BatteryBankNum">
+            </div>
+            <div class="battery_deploy">
+                <label for="rectifier_num">Battery Installation Date:</label>
+                {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
+                <input type="date" name="rectifier_num" id="rectifier_num">
+            </div>
         </div>
         <div class="battery_deploy">
             <label for="aircon_status">Airconditioning status:</label>

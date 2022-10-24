@@ -1,5 +1,5 @@
 <div class=" p-2 rounded-sm border bg-white">
-    <div >
+    <div>
         <div class="battery_deploy">
             <x-multi-select label="Site ID" itemId="site" :optionSelectedId="$selectedSite_id" optionValue="selectedSite_id"
                 optionName="site_name" :optionSelectedName="$site_name" :optionList="$SitesList" itemSearch="siteSearch" />
@@ -16,10 +16,27 @@
     public $agingOfOldBatteries;
             Rectifier Number	Bank#	Battery#	B SN	B Installation Date	#Rectifiers	Airconditioning status	Rectifier charging status
  --}}
-        <div class="battery_deploy">
-            <label for="rectifier_num">Battery SN:</label>
-            {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
-            <input type="text" id="batterySN" wire:model="BatterySN">
+        <div class="bb-bank flex">
+            <div class="battery_deploy">
+                <label for="rectifier_num_1">Battery SN:</label>
+                {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
+                <input type="text" id="batterySN1" wire:model="BatterySN">
+            </div>
+            <div class="battery_deploy">
+                <label for="rectifier_num_2">Battery SN:</label>
+                {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
+                <input type="text" id="batterySN2" wire:model="BatterySN">
+            </div>
+            <div class="battery_deploy">
+                <label for="rectifier_num_3">Battery SN:</label>
+                {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
+                <input type="text" id="batterySN3" wire:model="BatterySN">
+            </div>
+            <div class="battery_deploy">
+                <label for="rectifier_num_4">Battery SN:</label>
+                {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
+                <input type="text" id="batterySN4" wire:model="BatterySN">
+            </div>
         </div>
         <div class="battery_deploy">
             <label for="numberOfRectifiers">Number of Rectifiers:</label>
@@ -63,7 +80,8 @@
         </div>
         <div class="battery_deploy w-full pt-2 mt-3 border-t-2 flex justify-end items-end ">
             {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
-            <button class="p-2 rounded-md bg-green-800 text-gray-100 font-bold" wire:click="storeSiteSnag"> Save </button>
+            <button class="p-2 rounded-md bg-green-800 text-gray-100 font-bold" wire:click="storeSiteSnag"> Save
+            </button>
         </div>
 
     </div>

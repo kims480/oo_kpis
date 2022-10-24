@@ -20,3 +20,7 @@ git checkout HEAD^ public/mix-manifest.json
 
  git checkout HEAD^ public/images/logo.png -f
  git pull https://github.com/kims480/oo_kpis.git master
+
+git add .
+git commit -m "battery-1"
+git push -u origin main

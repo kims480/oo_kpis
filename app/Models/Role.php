@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Role extends Model
 {
     use SoftDeletes;
-    public const SUPPER_ADMIN = "supper-admin_web";
+    public const SUPPER_ADMIN = "supper-admin";
     public const GUEST = "guest";
 
     public $table = 'roles';

@@ -54,11 +54,7 @@
                 {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
                 <input type="number" name="rectifier_num" id="rectifier_num" min="1" max="10">
             </div>
-            <div class="battery_deploy">
-                <label for="BatteryBankNum">Battery sequence:</label>
-                {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
-                <input type="number" id="BatteryBankNum" wire:model="BatteryBankNum">
-            </div>
+
 
         </div>
         <div class="battery_deploy">

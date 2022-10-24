@@ -26,6 +26,7 @@ class AddSiteBatteries extends Component
     public $maincategs;
     public $rectifierNum;
     public $BankNum;
+    public $shelterNum;
     public $BatteryBankNum;
     public $BatterySN;
     public $batteryInstallationDate;

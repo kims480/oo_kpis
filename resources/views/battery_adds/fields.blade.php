@@ -65,14 +65,14 @@
 <!-- Aircon Status Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('aircon_status', __('models/batteryAdds.fields.aircon_status').':') !!}
-    {!! Form::select('aircon_status', ['Good' => 'Good', 'Bad' => 'Bad'], null, ['class' => 'form-control custom-select']) !!}
+    {!! Form::select('aircon_status', [1 => 'Good', 0 => 'Bad'], null, ['class' => 'form-control custom-select']) !!}
 </div>
 
 
 <!-- Rect Charge Status Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('rect_charge_status', __('models/batteryAdds.fields.rect_charge_status').':') !!}
-    {!! Form::select('rect_charge_status', ['Good' => 'Good', 'Bad' => 'Bad'], null, ['class' => 'form-control custom-select']) !!}
+    {!! Form::select('rect_charge_status', [1 => 'Good', 0 => 'Bad'], null, ['class' => 'form-control custom-select']) !!}
 </div>
 
 

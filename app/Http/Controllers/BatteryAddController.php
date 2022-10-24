@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateBatteryAddRequest;
 use App\Repositories\BatteryAddRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use GuzzleHttp\Psr7\Request;
 use Response;
 
 class BatteryAddController extends AppBaseController
@@ -28,9 +29,13 @@ class BatteryAddController extends AppBaseController
      *
      * @return Response
      */
-    public function index(BatteryAddDataTable $batteryAddDataTable)
+    public function index()
+    // public function index(BatteryAddDataTable $batteryAddDataTable)
     {
-        return $batteryAddDataTable->render('battery_adds.index');
+        $batteries = $this->batteryAddRepository->all();
+        return view('battery_adds.index')
+            ->with('batteries', $batteries);
+        // return $batteryAddDataTable->render('battery_adds.index');
     }
 
     /**

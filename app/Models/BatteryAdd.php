@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -26,13 +27,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property number $llvd
  * @property number $blvd
  */
-class BatteryAdd extends Model
+class BatteryAdd extends EloquentModel
 {
     use SoftDeletes;
 
 
     public $table = 'battery_add';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -84,8 +85,8 @@ class BatteryAdd extends Model
      * @var array
      */
     public static $rules = [
-        'batter_1_sn' => 'unique'
+        'batter_1_sn' => 'unique:battery_add'
     ];
 
-    
+
 }

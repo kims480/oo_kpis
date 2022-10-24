@@ -16,11 +16,23 @@
     public $agingOfOldBatteries;
             Rectifier Number	Bank#	Battery#	B SN	B Installation Date	#Rectifiers	Airconditioning status	Rectifier charging status
  --}}
- <div class="battery_deploy">
-    <label for="shelter_num">Shelter#</label>
-    {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
-    <input type="number" name="Shelter" id="Shelter" min="1" max="5" >
-</div>
+        <div class="battery_deploy">
+            <label for="shelter_num">Shelter#</label>
+            {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
+            <input type="number" name="shelter" id="Shelter" min="1" max="5">
+        </div>
+        <div class="ref flex content-between items-end flex-wrap">
+            <div class="battery_deploy">
+                <label for="ref_wo">Ref WO#</label>
+                {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
+                <input type="text" name="ref_Wo" id="ref_wo">
+            </div>
+            <div class="battery_deploy">
+                <label for="ref_cr">Ref CR#</label>
+                {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
+                <input type="text" name="ref_cr" id="ref_cr">
+            </div>
+        </div>
         <div class="bb-bank flex justify-between items-end flex-wrap">
             <div class="battery_deploy ">
                 <label for="rectifier_num_1">Battery#1 SN:</label>
@@ -99,7 +111,7 @@
             <div class="battery_deploy">
                 <label for="llvd">LLVD Value</label>
                 {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
-                <input type="text" name="llvd" id="llvd" >
+                <input type="text" name="llvd" id="llvd">
             </div>
             <div class="battery_deploy">
                 <label for="blvd">BLVD Value</label>

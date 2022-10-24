@@ -16,8 +16,8 @@
     public $agingOfOldBatteries;
             Rectifier Number	Bank#	Battery#	B SN	B Installation Date	#Rectifiers	Airconditioning status	Rectifier charging status
  --}}
-        <div class="bb-bank flex justify-between">
-            <div class="battery_deploy">
+        <div class="bb-bank flex justify-between items-end">
+            <div class="battery_deploy ">
                 <label for="rectifier_num_1">Battery#1 SN:</label>
                 {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
                 <input type="text" id="batterySN1" wire:model="BatterySN">
@@ -38,7 +38,7 @@
                 <input type="text" id="batterySN4" wire:model="BatterySN">
             </div>
         </div>
-        <div class="rectifier flex justify-between">
+        <div class="rectifier flex justify-between items-end">
             <div class="battery_deploy">
                 <label for="numberOfRectifiers">Number of Rectifiers:</label>
                 {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}

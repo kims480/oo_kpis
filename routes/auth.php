@@ -84,3 +84,6 @@ Route::resource('assets-details', App\Http\Controllers\AssetDetailController::cl
 Route::get('add-snag-to-site', SnagToSite::class)->name('snag-to-site');
 Route::get('add-battery', AddSiteBatteries::class)->name('add-battery');
 Route::get('add-batteries-to-site', AddSiteBatteries::class)->name('battery-to-site');
+
+
+Route::resource('batteryAdds', App\Http\Controllers\BatteryAddController::class);

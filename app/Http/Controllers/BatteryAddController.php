@@ -2,84 +2,151 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BatteryAdd;
-use Illuminate\Http\Request;
+use App\DataTables\BatteryAddDataTable;
+use App\Http\Requests;
+use App\Http\Requests\CreateBatteryAddRequest;
+use App\Http\Requests\UpdateBatteryAddRequest;
+use App\Repositories\BatteryAddRepository;
+use Flash;
+use App\Http\Controllers\AppBaseController;
+use Response;
 
-class BatteryAddController extends Controller
+class BatteryAddController extends AppBaseController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    /** @var BatteryAddRepository $batteryAddRepository*/
+    private $batteryAddRepository;
+
+    public function __construct(BatteryAddRepository $batteryAddRepo)
     {
-        //
+        $this->batteryAddRepository = $batteryAddRepo;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the BatteryAdd.
      *
-     * @return \Illuminate\Http\Response
+     * @param BatteryAddDataTable $batteryAddDataTable
+     *
+     * @return Response
+     */
+    public function index(BatteryAddDataTable $batteryAddDataTable)
+    {
+        return $batteryAddDataTable->render('battery_adds.index');
+    }
+
+    /**
+     * Show the form for creating a new BatteryAdd.
+     *
+     * @return Response
      */
     public function create()
     {
-        //
+        return view('battery_adds.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created BatteryAdd in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param CreateBatteryAddRequest $request
+     *
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateBatteryAddRequest $request)
     {
-        //
+        $input = $request->all();
+
+        $batteryAdd = $this->batteryAddRepository->create($input);
+
+        Flash::success(__('messages.saved', ['model' => __('models/batteryAdds.singular')]));
+
+        return redirect(route('batteryAdds.index'));
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified BatteryAdd.
      *
-     * @param  \App\Models\BatteryAdd  $batteryAdd
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     *
+     * @return Response
      */
-    public function show(BatteryAdd $batteryAdd)
+    public function show($id)
     {
-        //
+        $batteryAdd = $this->batteryAddRepository->find($id);
+
+        if (empty($batteryAdd)) {
+            Flash::error(__('messages.not_found', ['model' => __('models/batteryAdds.singular')]));
+
+            return redirect(route('batteryAdds.index'));
+        }
+
+        return view('battery_adds.show')->with('batteryAdd', $batteryAdd);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified BatteryAdd.
      *
-     * @param  \App\Models\BatteryAdd  $batteryAdd
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     *
+     * @return Response
      */
-    public function edit(BatteryAdd $batteryAdd)
+    public function edit($id)
     {
-        //
+        $batteryAdd = $this->batteryAddRepository->find($id);
+
+        if (empty($batteryAdd)) {
+            Flash::error(__('messages.not_found', ['model' => __('models/batteryAdds.singular')]));
+
+            return redirect(route('batteryAdds.index'));
+        }
+
+        return view('battery_adds.edit')->with('batteryAdd', $batteryAdd);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified BatteryAdd in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\BatteryAdd  $batteryAdd
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @param UpdateBatteryAddRequest $request
+     *
+     * @return Response
      */
-    public function update(Request $request, BatteryAdd $batteryAdd)
+    public function update($id, UpdateBatteryAddRequest $request)
     {
-        //
+        $batteryAdd = $this->batteryAddRepository->find($id);
+
+        if (empty($batteryAdd)) {
+            Flash::error(__('messages.not_found', ['model' => __('models/batteryAdds.singular')]));
+
+            return redirect(route('batteryAdds.index'));
+        }
+
+        $batteryAdd = $this->batteryAddRepository->update($request->all(), $id);
+
+        Flash::success(__('messages.updated', ['model' => __('models/batteryAdds.singular')]));
+
+        return redirect(route('batteryAdds.index'));
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified BatteryAdd from storage.
      *
-     * @param  \App\Models\BatteryAdd  $batteryAdd
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     *
+     * @return Response
      */
-    public function destroy(BatteryAdd $batteryAdd)
+    public function destroy($id)
     {
-        //
+        $batteryAdd = $this->batteryAddRepository->find($id);
+
+        if (empty($batteryAdd)) {
+            Flash::error(__('messages.not_found', ['model' => __('models/batteryAdds.singular')]));
+
+            return redirect(route('batteryAdds.index'));
+        }
+
+        $this->batteryAddRepository->delete($id);
+
+        Flash::success(__('messages.deleted', ['model' => __('models/batteryAdds.singular')]));
+
+        return redirect(route('batteryAdds.index'));
     }
 }

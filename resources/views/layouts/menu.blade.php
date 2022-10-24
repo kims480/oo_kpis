@@ -216,3 +216,10 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
 </li>
 
 @endcan
+<li class="nav-item">
+    <a href="{{ route('batteryAdds.index') }}"
+       class="nav-link {{ Request::is('batteryAdds*') ? 'active' : '' }}">
+        <p>@lang('models/batteryAdds.plural')</p>
+    </a>
+</li>
+

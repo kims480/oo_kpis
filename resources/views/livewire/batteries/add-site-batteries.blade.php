@@ -85,11 +85,7 @@
             {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
             <input type="number" name="rectifier_num" id="rectifier_num" min="1" max="15">
         </div>
-        <div class="battery_deploy w-full pt-2 mt-3 border-t-2 flex justify-end items-end ">
-            {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
-            <button class="p-2 rounded-md bg-green-800 text-gray-100 font-bold" wire:click="storeSiteSnag"> Save
-            </button>
-        </div>
+
         <div class="lvd flex items-end">
             <div class="battery_deploy">
                 <label for="modules">#Rect Modules</label>
@@ -106,6 +102,11 @@
                 {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
                 <input type="text" name="blvd" id="blvd">
             </div>
+        </div>
+        <div class="battery_deploy w-full pt-2 mt-3 border-t-2 flex justify-end items-end ">
+            {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
+            <button class="p-2 rounded-md bg-green-800 text-gray-100 font-bold" wire:click="storeSiteSnag"> Save
+            </button>
         </div>
 
     </div>

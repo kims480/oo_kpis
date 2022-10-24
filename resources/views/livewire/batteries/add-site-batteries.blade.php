@@ -61,17 +61,25 @@
         <div class="battery_deploy">
             <label for="rectifier_num">Battery Installation Date:</label>
             {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
-            <input type="number" name="rectifier_num" id="rectifier_num" min="1" max="10">
+            <input type="date" name="rectifier_num" id="rectifier_num">
         </div>
         <div class="battery_deploy">
-            <label for="rectifier_num">Airconditioning status:</label>
+            <label for="aircon_status">Airconditioning status:</label>
             {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
-            <input type="number" name="rectifier_num" id="rectifier_num" min="1" max="10">
+            <select name="aircon_status" id="">
+                <option value="1">Good</option>
+                <option value="0">Bad</option>
+            </select>
+            {{-- <input type="number" name="rectifier_num" id="rectifier_num" min="1" max="10"> --}}
         </div>
         <div class="battery_deploy">
-            <label for="rectifier_num">Rectifier charging status:</label>
+            <label for="charge_status">Rectifier charging status:</label>
+            <select name="charge_status" id="">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
             {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
-            <input type="number" name="rectifier_num" id="rectifier_num" min="1" max="10">
+            {{-- <input type="number" name="rectifier_num" id="rectifier_num" min="1" max="10"> --}}
         </div>
         <div class="battery_deploy">
             <label for="rectifier_num">Aging of old batteries <small>(Years)</small> :</label>

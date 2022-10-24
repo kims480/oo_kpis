@@ -54,7 +54,11 @@
                 {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
                 <input type="number" name="rectifier_num" id="rectifier_num" min="1" max="10">
             </div>
-
+            <div class="battery_deploy">
+                <label for="modules">#Rect Modules</label>
+                {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
+                <input type="number" name="modules" id="modules" min="1" max="10">
+            </div>
 
         </div>
         <div class="battery_deploy">
@@ -87,11 +91,7 @@
         </div>
 
         <div class="lvd flex items-end">
-            <div class="battery_deploy">
-                <label for="modules">#Rect Modules</label>
-                {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}
-                <input type="number" name="modules" id="modules" min="1" max="10">
-            </div>
+
             <div class="battery_deploy">
                 <label for="llvd">LLVD Value</label>
                 {{-- <x-forms-input type="number" label="Rectifier Number" id="Rectifier_Number"  wireModel="" /> --}}

@@ -49,7 +49,7 @@
 <!-- Install Date Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('install_date', __('models/batteryAdds.fields.install_date').':') !!}
-    {!! Form::text('install_date', null, ['class' => 'form-control','id'=>'install_date']) !!}
+    {!! Form::date('install_date', null, ['class' => 'form-control','id'=>'install_date']) !!}
 </div>
 
 @push('page_scripts')

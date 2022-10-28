@@ -7,7 +7,7 @@
                 <div class="col-sm-6">
                    @lang('models/batteryAdds.plural')
                 </div>
-                <div class="col-sm-6 d-flex justify-content-end">
+                <div class="col-sm-6 d-flex flex content-end justify-content-end">
                     <a class="btn btn-primary mr-3"
                        href="{{ route('batteryAdds.create') }}">
                          @lang('crud.add_new')

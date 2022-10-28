@@ -2,7 +2,7 @@
 
 return array (
   'singular' => 'Batteryadd',
-  'plural' => 'Batteryadds',
+  'plural' => 'Battery-Adds',
   'fields' =>
   array (
     'id' => 'Id',

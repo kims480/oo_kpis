@@ -58,17 +58,20 @@ class BatteryAddController extends AppBaseController
     public function store(CreateBatteryAddRequest $request)
     {
         $input = $request->all();
+        // dd($input );
 
         $batteries=[
-            $input['battery_1_sn'],
+            $input['batter_1_sn'],
             $input['battery_2_sn'],
             $input['battery_3_sn'],
             $input['battery_4_sn'],
 
         ];
+        // dd($input,$batteries );
+
         foreach ($batteries as $battery) {
             # code...
-            $input['battery_1_sn']=$battery;
+            $input["batter_1_sn"]=$battery;
             $batteryAdd = $this->batteryAddRepository->create($input);
         }
 

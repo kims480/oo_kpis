@@ -1,6 +1,6 @@
 <!-- Site  Deployed Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('site__deployed', __('models/batteryAdds.fields.site__deployed') . ':') !!}
+    {!! Form::label('site__deployed', __('models/batteryAdds.fields.site__deployed') . ':') !!}<small class="text-red-800 text-base font-bold">*</small>
     {!! Form::text('site__deployed', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -23,22 +23,22 @@
 </div>
 
 <!-- Batter 1 Sn Field -->
-<div class="flex flex-wrap justify-between">
+<div class="w-full flex flex-wrap justify-between py-2  border-cyan-700 border border-solid rounded-sm bg-slate-100">
     <div class="form-group col-sm-6">
-        {!! Form::label('batter_1_sn', __('models/batteryAdds.fields.batter_1_sn') . ':') !!}
+        {!! Form::label('batter_1_sn', __('models/batteryAdds.fields.batter_1_sn') . ':') !!}<small class="text-red-800 text-base font-bold">*</small>
         {!! Form::text('batter_1_sn', null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group col-sm-6">
-        {!! Form::label('batter_2_sn', __('models/batteryAdds.fields.batter_2_sn') . ':') !!}
-        {!! Form::text('batter_2_sn', null, ['class' => 'form-control']) !!}
+        {!! Form::label('battery_2_sn', __('models/batteryAdds.fields.battery_2_sn') . ':') !!}<small class="text-red-800 text-base font-bold">*</small>
+        {!! Form::text('battery_2_sn', null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group col-sm-6">
-        {!! Form::label('batter_3_sn', __('models/batteryAdds.fields.batter_3_sn') . ':') !!}
-        {!! Form::text('batter_3_sn', null, ['class' => 'form-control']) !!}
+        {!! Form::label('battery_3_sn', __('models/batteryAdds.fields.battery_3_sn') . ':') !!}<small class="text-red-800 text-base font-bold">*</small>
+        {!! Form::text('battery_3_sn', null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group col-sm-6">
-        {!! Form::label('batter_4_sn', __('models/batteryAdds.fields.batter_4_sn') . ':') !!}
-        {!! Form::text('batter_4_sn', null, ['class' => 'form-control']) !!}
+        {!! Form::label('battery_4_sn', __('models/batteryAdds.fields.battery_4_sn') . ':') !!}<small class="text-red-800 text-base font-bold">*</small>
+        {!! Form::text('battery_4_sn', null, ['class' => 'form-control']) !!}
     </div>
 
 </div>

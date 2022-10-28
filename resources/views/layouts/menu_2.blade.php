@@ -848,8 +848,8 @@ echo Request::is('admin*');
 @endcan
 <!-- Battery-add -->
 
-@can('batteryAdds.index')
-    <div @click="$store.sidebar.active = 'site-snags'" x-data="tooltip" x-on:mouseover="show = true"
+@can('batteryadds.index')
+    <div @click="$store.sidebar.active = 'batteryAdds'" x-data="tooltip" x-on:mouseover="show = true"
         x-on:mouseleave="show = false"
         class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
         {{ Request::is('admin/batteryAdds*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"

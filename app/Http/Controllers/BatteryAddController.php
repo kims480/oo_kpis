@@ -59,7 +59,18 @@ class BatteryAddController extends AppBaseController
     {
         $input = $request->all();
 
-        $batteryAdd = $this->batteryAddRepository->create($input);
+        $batteries=[
+            $input['battery_1_sn'],
+            $input['battery_2_sn'],
+            $input['battery_3_sn'],
+            $input['battery_4_sn'],
+
+        ];
+        foreach ($batteries as $battery) {
+            # code...
+            $input['battery_1_sn']=$battery;
+            $batteryAdd = $this->batteryAddRepository->create($input);
+        }
 
         Flash::success(__('messages.saved', ['model' => __('models/batteryAdds.singular')]));
 

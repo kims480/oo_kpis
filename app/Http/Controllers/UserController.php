@@ -61,11 +61,15 @@ class UserController extends AppBaseController
     {
         $input = $request->all();
         $input['password'] = Hash::make($request->password);
-
+        $role_data = $request->get('role_data');
+        // if($role_data->contains(1))
+        // {
+        //     dd($request,$role_data);
+        // }
         $user = $this->userRepository->create($input);
 
-        $role_data = $request->get('role_data');
-        $user->syncRoles($role_data);
+        // $user->syncRoles($role_data);
+        $user->roles()->sync($role_data);
         Flash::success('User saved successfully.');
 
         return redirect(route('users.index'));
@@ -131,7 +135,7 @@ class UserController extends AppBaseController
 
         $user = $this->userRepository->update($request->all(), $id);
         $role_data = $request->get('role_data');
-        $user->syncRoles($role_data);
+        $user->roles()->sync($role_data);
         Flash::success('User updated successfully.');
 
         return redirect(route('users.index'));

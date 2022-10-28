@@ -24,3 +24,15 @@ git checkout HEAD^ public/mix-manifest.json
 git add .
 git commit -m "battery-1"
 git push -u origin main
+
+
+Remote
+cd domains/karimsaleh.tech/public_html/ookpi/
+chmod 777 -R ./
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+export NVM_DIR="$HOME/.nvm"
+wget -qO- https://cdn.rawgit.com/creationix/nvm/master/install.sh | bash
+git pull https://github.com/kims480/oo_kpis.git main
+git checkout  public/css/app.css -f
+export PATH="/opt/alt/php80/usr/bin:$PATH"
+alias php='/opt/alt/php80/usr/bin/php'

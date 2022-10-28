@@ -164,7 +164,7 @@ abstract class BaseRepository
     public function create($input)
     {
         $model = $this->model->newInstance($input);
-        $model->added_by= auth()->user()->id;
+        // $model->added_by= auth()->user()->id;
         $model->save();
 
         return $model;

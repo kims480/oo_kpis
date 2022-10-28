@@ -1,9 +1,9 @@
 <?php
 
 return array (
-  'singular' => 'BatteryAdd',
-  'plural' => 'BatteryAdds',
-  'fields' => 
+  'singular' => 'Batteryadd',
+  'plural' => 'Batteryadds',
+  'fields' =>
   array (
     'id' => 'Id',
     'site__deployed' => 'Site  Deployed',

@@ -1,7 +1,7 @@
 <?php
 
 return array (
-  'singular' => 'Batteryadd',
+  'singular' => 'battery-add',
   'plural' => 'Battery-Adds',
   'fields' =>
   array (

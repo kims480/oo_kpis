@@ -1,4 +1,5 @@
 <!-- Id Field -->
+<div class="container flex w-full flex-wrap justify-items-stretch flex-col">
 <div class="col-sm-12">
     {!! Form::label('id', __('models/batteryAdds.fields.id').':') !!}
     <p>{{ $batteryAdd->id }}</p>
@@ -87,4 +88,4 @@
     {!! Form::label('blvd', __('models/batteryAdds.fields.blvd').':') !!}
     <p>{{ $batteryAdd->blvd }}</p>
 </div>
-
+</div>

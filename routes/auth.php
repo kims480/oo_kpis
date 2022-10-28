@@ -86,4 +86,4 @@ Route::get('add-battery', AddSiteBatteries::class)->name('add-battery');
 Route::get('add-batteries-to-site', AddSiteBatteries::class)->name('battery-to-site');
 
 
-Route::resource('batteryAdds', App\Http\Controllers\BatteryAddController::class);
+Route::resource('battery-add', App\Http\Controllers\BatteryAddController::class);

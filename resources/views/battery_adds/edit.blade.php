@@ -17,7 +17,7 @@
 
         <div class="card">
 
-            {!! Form::model($batteryAdd, ['route' => ['batteryAdds.update', $batteryAdd->id], 'method' => 'patch']) !!}
+            {!! Form::model($batteryAdd, ['route' => [__('models/batteryAdds.singular').'.update', $batteryAdd->id], 'method' => 'patch']) !!}
 
             <div class="card-body">
                 <div class="row">
@@ -27,7 +27,7 @@
 
             <div class="card-footer">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('batteryAdds.index') }}" class="btn btn-default">
+                <a href="{{ route(__('models/batteryAdds.singular').'.index') }}" class="btn btn-default">
                     @lang('crud.cancel')
                  </a>
             </div>

@@ -47,13 +47,13 @@ blvd
                 <td>{{ $battery->num_of_rect }}</td>
                 <td>{{ $battery->rect_num }}</td>
                 <td class="flex justify-center">
-                    {!! Form::open(['route' => ['batteryAdds.destroy', $battery->id], 'method' => 'delete']) !!}
+                    {!! Form::open(['route' => [__('models/batteryAdds.singular').'.destroy', $battery->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('batteryAdds.show', [$battery->id]) }}"
+                        <a href="{{ route(__('models/batteryAdds.singular').'.show', [$battery->id]) }}"
                            class='btn btn-default btn-xs'>
                             <i class="far fa-eye"></i>
                         </a>
-                        <a href="{{ route('batteryAdds.edit', [$battery->id]) }}"
+                        <a href="{{ route(__('models/batteryAdds.singular').'.edit', [$battery->id]) }}"
                            class='btn btn-success btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>

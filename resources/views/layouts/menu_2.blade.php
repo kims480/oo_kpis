@@ -852,7 +852,7 @@ echo Request::is('admin*');
     <div @click="$store.sidebar.active = 'batteryAdds'" x-data="tooltip" x-on:mouseover="show = true"
         x-on:mouseleave="show = false"
         class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
-        {{ Request::is('admin/batteryAdds*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
+        {{ Request::is('admin/'.__('models/batteryAdds.singular').'*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
         x-bind:class="{
             'justify-start': $store.sidebar.full,
             'sm:justify-center': !$store.sidebar.full,
@@ -860,7 +860,7 @@ echo Request::is('admin*');
             'text-gray-400 ': $store.sidebar.active != 'site-snags'
         }">
         <!-- Posts -->
-        <a href="{{ route('batteryAdds.index') }}"
+        <a href="{{ route(__('models/batteryAdds.singular').'.index') }}"
             class="flex justify-between p-0 w-full   items-center space-x-2{{ Request::is('admin/batteryAdds*') ? 'active' : '' }}">
             <div class="flex  items-center space-x-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"

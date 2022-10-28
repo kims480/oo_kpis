@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-sm-6 d-flex flex content-end justify-content-end">
                     <a class="btn btn-primary mr-3"
-                       href="{{ route('batteryAdds.create') }}">
+                       href="{{ route(__('models/batteryAdds.singular').'.create') }}">
                          @lang('crud.add_new')
                     </a>
                     @can('gen.permissions')

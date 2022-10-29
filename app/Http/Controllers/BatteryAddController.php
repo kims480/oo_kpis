@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\BatteryAddDataTable;
+use App\Exports\BatteryAddExport;
 use App\Http\Requests;
 use App\Http\Requests\CreateBatteryAddRequest;
 use App\Http\Requests\UpdateBatteryAddRequest;
@@ -10,6 +11,7 @@ use App\Repositories\BatteryAddRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use GuzzleHttp\Psr7\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use Response;
 
 class BatteryAddController extends AppBaseController
@@ -177,5 +179,24 @@ class BatteryAddController extends AppBaseController
         Flash::success(__('messages.deleted', ['model' => __('models/batteryAdds.singular')]));
 
         return redirect(route(__('models/batteryAdds.singular').'.index'));
+    }
+    ########## Export Wilayat to Excel ###############
+    public function export()
+    {
+        return Excel::download(new BatteryAddExport, 'batteries.xlsx');
+    }
+
+
+    ########## Import Wilayat from Excel ###############
+    public function import()
+    {
+       //  $this->validate($this->rules());
+    //    $import = new SitesAllImport();
+       // $import->onlySheets('Worksheet 1', 'Worksheet 3');
+    //    $import =Excel::import($import, $this->your_file);
+       // $this->imported= ($import );
+
+       // $this->your_file->store('files');
+       //  return redirect('/')->with('success', 'All good!');
     }
 }

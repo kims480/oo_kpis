@@ -3,6 +3,8 @@
 return array (
   'singular' => 'battery-add',
   'plural' => 'Battery-Adds',
+  'export' => 'Export',
+  'import' => 'Import',
   'fields' =>
   array (
     'id' => 'Id',

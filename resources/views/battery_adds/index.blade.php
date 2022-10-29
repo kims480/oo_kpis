@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid w-full flex  content-between ">
+<div class="card ">
+    <div class="card-header">
             <div class="flex w-full p-1 justify-between content-between">
                 <div class="col-sm-6">
                    @lang('models/batteryAdds.plural')
@@ -22,7 +22,7 @@
                 @include('layouts.app.common')
             </div>
         </div>
-    </section>
+    </div>
 
     <div class="content px-3">
 
@@ -42,6 +42,7 @@
             </div>
         </div>
     </div>
+</div>
 
 @endsection
 

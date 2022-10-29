@@ -22,25 +22,25 @@ blvd
     @include('layouts.datatables_js')
     {!! $dataTable->scripts() !!}
 @endpush --}}
-<div class="table-responsive">
-    <table class="table table-striped table-sm table-bordered" id="governs-table">
+<div class="scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-300">
+    <table class=" w-full table-auto mb-2  {{-- h-32  --}}">
         <thead>
-        <tr>
-            <th>Site_ID</th>
-            <th>Battery SN</th>
-            <th>@lang('models/batteryAdds.fields.shelter_num')</th>
-            <th>@lang('models/batteryAdds.fields.ref_wo')</th>
-            <th>@lang('models/batteryAdds.fields.ref_cr')</th>
-            <th>@lang('models/batteryAdds.fields.num_of_rect')</th>
-            <th>@lang('models/batteryAdds.fields.rect_num')</th>
-            <th>@lang('models/batteryAdds.fields.bank_num')</th>
-            <th>@lang('models/batteryAdds.fields.added_by')</th>
+            <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+            <th class="py-3 px-6 text-center">Site_ID</th>
+            <th class="py-3 px-6 text-center">Battery SN</th>
+            <th class="py-3 px-6 text-center">@lang('models/batteryAdds.fields.shelter_num')</th>
+            <th class="py-3 px-6 text-center">@lang('models/batteryAdds.fields.ref_wo')</th>
+            <th class="py-3 px-6 text-center">@lang('models/batteryAdds.fields.ref_cr')</th>
+            <th class="py-3 px-6 text-center">@lang('models/batteryAdds.fields.num_of_rect')</th>
+            <th class="py-3 px-6 text-center">@lang('models/batteryAdds.fields.rect_num')</th>
+            <th class="py-3 px-6 text-center">@lang('models/batteryAdds.fields.bank_num')</th>
+            <th class="py-3 px-6 text-center">@lang('models/batteryAdds.fields.added_by')</th>
             <th colspan="3">@lang('crud.action')</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody class="text-gray-600 text-sm font-light">
          @foreach($batteries as $battery)
-            <tr class="text-center">
+            <tr x-data="{opacity: {{$loop->last==$loop->iteration}}}" class="text-center border-b border-gray-200 odd:bg-gray-50 hover:bg-gray-100 [visibility:none]   animate-dropdown [animation-delay:{{$loop->iteration*0.1}}s]" :class="opacity ? 'opacity-100':'opacity-0'">
                 <td class="text-sm">{{ $battery->site->site_id }}</td>
                 <td class="text-sm">{{ $battery->batter_1_sn }}</td>
                 <td class="text-sm">{{ $battery->ref_wo }}</td>

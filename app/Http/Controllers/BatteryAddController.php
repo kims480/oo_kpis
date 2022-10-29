@@ -82,7 +82,7 @@ class BatteryAddController extends AppBaseController
 
         Flash::success(__('messages.saved', ['model' => __('models/batteryAdds.singular')]));
 
-        return redirect(route('batteryAdds.index'));
+        return redirect(route(__('models/batteryAdds.singular').'.index'));
     }
 
     /**

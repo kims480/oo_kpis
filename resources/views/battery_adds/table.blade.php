@@ -49,7 +49,7 @@ blvd
                 <td>{{ $battery->num_of_rect }}</td>
                 <td>{{ $battery->rect_num }}</td>
                 <td>{{ $battery->bank_num }}</td>
-                <td>{{ $battery->user->name }}</td>
+                <td class="text-sm">{{ $battery->user->name }}</td>
                 <td class="flex justify-center">
                     {!! Form::open(['route' => [__('models/batteryAdds.singular').'.destroy', $battery->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

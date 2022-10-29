@@ -166,7 +166,7 @@ abstract class BaseRepository
         $model = $this->model->newInstance($input);
 
         // dd($this->model);
-        if (! $this->model instanceof \App\Models\User){
+        if (! $this->model instanceof \App\Models\User || ! $this->model instanceof \App\Models\Permission || ! $this->model instanceof \App\Models\Role){
             $model->added_by= auth()->user()->id;
         }
         $model->save();

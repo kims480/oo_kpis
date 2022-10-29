@@ -3802,7 +3802,7 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].store('darkMode', {
 }); // Stores variable globally
 
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].store('sidebar', {
-  full: false,
+  full: true,
   active: 'home',
   navOpen: false
 }); // Creating component Dropdown

@@ -1,25 +1,28 @@
 <!-- Site  Deployed Field -->
-<div class="form-group col-sm-6">
+{{-- <div class="form-group col-sm-6">
     {!! Form::label('site__deployed', __('models/batteryAdds.fields.site__deployed') . ':') !!}<small class="text-red-800 text-base font-bold">*</small>
     {!! Form::text('site__deployed', null, ['class' => 'form-control']) !!}
+</div> --}}
+<div class="form-groub p-1 px-2 col-sm-6 sm:w-full md:w-1/2">
+@livewire('site-list')
 </div>
 
 <!-- Shelter Num Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('shelter_num', __('models/batteryAdds.fields.shelter_num') . ':') !!}
-    {!! Form::number('shelter_num', null, ['class' => 'form-control']) !!}
+    {!! Form::number('shelter_num', 1, ['class' => 'form-control','min'=>0,'max'=>10]) !!}
 </div>
 
 <!-- Ref Wo Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('ref_wo', __('models/batteryAdds.fields.ref_wo') . ':') !!}
-    {!! Form::text('ref_wo', null, ['class' => 'form-control']) !!}
+    {!! Form::text('ref_wo', "CM-2022...", ['class' => 'form-control']) !!}
 </div>
 
 <!-- Ref Cr Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('ref_cr', __('models/batteryAdds.fields.ref_cr') . ':') !!}
-    {!! Form::text('ref_cr', null, ['class' => 'form-control']) !!}
+    {!! Form::text('ref_cr', "CR-2022...", ['class' => 'form-control']) !!}
 </div>
 
 <!-- Batter 1 Sn Field -->
@@ -46,19 +49,19 @@
 <!-- Num Of Rect Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('num_of_rect', __('models/batteryAdds.fields.num_of_rect') . ':') !!}
-    {!! Form::number('num_of_rect', null, ['class' => 'form-control']) !!}
+    {!! Form::number('num_of_rect', 1, ['class' => 'form-control','min'=>1,'max'=>10]) !!}
 </div>
 
 <!-- Rect Num Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('rect_num', __('models/batteryAdds.fields.rect_num') . ':') !!}
-    {!! Form::number('rect_num', null, ['class' => 'form-control']) !!}
+    {!! Form::number('rect_num', 1, ['class' => 'form-control','min'=>1,'max'=>10]) !!}
 </div>
 
 <!-- Bank Num Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('bank_num', __('models/batteryAdds.fields.bank_num') . ':') !!}
-    {!! Form::number('bank_num', null, ['class' => 'form-control']) !!}
+    {!! Form::number('bank_num', 1, ['class' => 'form-control','min'=>1,'max'=>20]) !!}
 </div>
 
 <!-- Install Date Field -->
@@ -96,17 +99,17 @@
 <!-- Old Batteries Aging Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('old_batteries_aging', __('models/batteryAdds.fields.old_batteries_aging') . ':') !!}
-    {!! Form::number('old_batteries_aging', null, ['class' => 'form-control']) !!}
+    {!! Form::number('old_batteries_aging', 5, ['class' => 'form-control','min'=>0,'max'=>10]) !!}
 </div>
 
 <!-- Llvd Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('llvd', __('models/batteryAdds.fields.llvd') . ':') !!}
-    {!! Form::text('llvd', null, ['class' => 'form-control']) !!}
+    {!! Form::text('llvd', "46", ['class' => 'form-control' ]) !!}
 </div>
 
 <!-- Blvd Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('blvd', __('models/batteryAdds.fields.blvd') . ':') !!}
-    {!! Form::text('blvd', null, ['class' => 'form-control']) !!}
+    {!! Form::text('blvd', '43.2', ['class' => 'form-control']) !!}
 </div>

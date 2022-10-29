@@ -37,7 +37,7 @@ Alpine.store('darkMode', {
 })
  // Stores variable globally
  Alpine.store('sidebar', {
-    full: false,
+    full: true,
     active: 'home',
     navOpen: false
 });

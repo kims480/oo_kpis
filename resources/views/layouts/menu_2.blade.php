@@ -1,7 +1,7 @@
 <!-- Home -->
 @php
 $urlAdmin = config('fast.admin_prefix');
-echo Request::is('admin*');
+// echo Request::is('admin*');
 
 @endphp
 <!-- Dashboard -->
@@ -827,7 +827,7 @@ echo Request::is('admin*');
             'text-gray-200 bg-gray-800': $store.sidebar.active == 'site-snags',
             'text-gray-400 ': $store.sidebar.active != 'site-snags'
         }">
-        <!-- Posts -->
+        <!-- Snags -->
         <a href="{{ route('site-snags.index') }}"
             class="flex justify-between p-0 w-full   items-center space-x-2{{ Request::is('admin/site-snags*') ? 'active' : '' }}">
             <div class="flex  items-center space-x-2">
@@ -846,22 +846,23 @@ echo Request::is('admin*');
         </a>
     </div>
 @endcan
+
 <!-- Battery-add -->
 
 @can(__('models/batteryAdds.singular').'.index')
-    <div @click="$store.sidebar.active = 'batteryAdds'" x-data="tooltip" x-on:mouseover="show = true"
+    <div @click="$store.sidebar.active = 'battery-add'" x-data="tooltip" x-on:mouseover="show = true"
         x-on:mouseleave="show = false"
-        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
-        {{ Request::is('admin/'.__('models/batteryAdds.singular').'*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
+        class=" relative flex justify-between items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+        {{ Request::is('admin/'.__('models/batteryAdds.singular').'*')  ? 'active text-orange-300 bg-gray-800' : 'text-gray-400' }}"
         x-bind:class="{
             'justify-start': $store.sidebar.full,
             'sm:justify-center': !$store.sidebar.full,
-            'text-gray-200 bg-gray-800': $store.sidebar.active == 'site-snags',
-            'text-gray-400 ': $store.sidebar.active != 'site-snags'
+            {{-- 'text-gray-200 bg-gray-800': $store.sidebar.active == 'battery-add', --}}
+            {{-- 'text-gray-400 ': $store.sidebar.active != 'battery-add' --}}
         }">
-        <!-- Posts -->
+        <!-- bATTERIES -->
         <a href="{{ route(__('models/batteryAdds.singular').'.index') }}"
-            class="flex justify-between p-0 w-full   items-center space-x-2{{ Request::is('admin/batteryAdds*') ? 'active' : '' }}">
+            class="flex justify-between p-0 w-full   items-center space-x-2 {{ Request::is('admin/'.__('models/batteryAdds.singular').'*') ? 'active ' : '' }}">
             <div class="flex  items-center space-x-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">

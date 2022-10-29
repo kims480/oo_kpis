@@ -58,7 +58,7 @@ class BatteryAddController extends AppBaseController
     public function store(CreateBatteryAddRequest $request)
     {
         $input = $request->all();
-        // dd($input );
+        dd($input );
 
         $batteries=[
             $input['batter_1_sn'],

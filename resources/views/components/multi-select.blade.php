@@ -2,6 +2,7 @@
     <label for="{{ $itemId }}">{{ $label }} <span style="color:red;">*</span> {{ $optionSelectedId }}
         {{-- {{ ${$optionName} == null?'_' : $optionSelectedName }} --}}
     </label>
+    {!! Form::hidden('site_name_id', $optionSelectedId) !!}
     <input type="text" @click="$focus.within($refs.searchBox).first()" @click.prevent="openItemSelect=!openItemSelect;"
         class="selected relative invalid:border-pink-500
                 invalid:text-pink-600 py-1.5 px-2 border border-slate-400

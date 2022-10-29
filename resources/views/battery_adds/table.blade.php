@@ -38,7 +38,7 @@ blvd
             <th colspan="3">@lang('crud.action')</th>
         </tr>
         </thead>
-        <tbody class="text-gray-600 text-sm font-light">
+        <tbody class="text-sky-900 text-sm font-light ">
          @foreach($batteries as $battery)
             <tr x-data="{opacity: {{$loop->last==$loop->iteration}}}" class="text-center border-b border-gray-200 odd:bg-gray-50 hover:bg-gray-100 [visibility:none]   animate-dropdown [animation-delay:{{$loop->iteration*0.1}}s]" :class="opacity ? 'opacity-100':'opacity-0'">
                 <td class="text-sm">{{ $battery->site->site_id }}</td>

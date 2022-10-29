@@ -2,12 +2,12 @@
 
 @section('content')
     <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
+        <div class="container-fluid w-full flex  content-between ">
+            <div class="flex w-full p-1 justify-between content-between">
                 <div class="col-sm-6">
                    @lang('models/batteryAdds.plural')
                 </div>
-                <div class="col-sm-6 d-flex flex content-end justify-content-end">
+                <div class="col-sm-6 d-flex flex content-end self-end ">
                     <a class="btn btn-primary mr-3"
                        href="{{ route(__('models/batteryAdds.singular').'.create') }}">
                          @lang('crud.add_new')

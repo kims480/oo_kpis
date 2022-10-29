@@ -26,8 +26,8 @@ blvd
     <table class="table table-striped table-sm table-bordered" id="governs-table">
         <thead>
         <tr>
-            <th>@lang('models/batteryAdds.fields.site__deployed')</th>
-            <th>@lang('models/batteryAdds.fields.batter_1_sn')</th>
+            <th>Site_ID</th>
+            <th>Battery SN</th>
             <th>@lang('models/batteryAdds.fields.shelter_num')</th>
             <th>@lang('models/batteryAdds.fields.ref_wo')</th>
             <th>@lang('models/batteryAdds.fields.ref_cr')</th>
@@ -38,12 +38,12 @@ blvd
         </thead>
         <tbody>
          @foreach($batteries as $battery)
-            <tr>
-                <td>{{ $battery->site__deployed }}</td>
-                <td>{{ $battery->batter_1_sn }}</td>
-                <td>{{ $battery->shelter_num }}</td>
-                <td>{{ $battery->ref_wo }}</td>
-                <td>{{ $battery->ref_cr }}</td>
+            <tr class="text-center">
+                <td>{{ $battery->site->site_id }}</td>
+                <td class="text-sm">{{ $battery->batter_1_sn }}</td>
+                <td >{{ $battery->shelter_num }}</td>
+                <td class="text-sm">{{ $battery->ref_wo }}</td>
+                <td class="text-sm">{{ $battery->ref_cr }}</td>
                 <td>{{ $battery->num_of_rect }}</td>
                 <td>{{ $battery->rect_num }}</td>
                 <td class="flex justify-center">

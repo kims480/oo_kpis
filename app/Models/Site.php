@@ -193,4 +193,14 @@ class Site extends Model
         return $this->hasMany(SiteSnag::class, 'site_id', 'id');
     }
 
+    /**
+     * Get all of the batterys for the Site
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function batteries()
+    {
+        return $this->hasMany(BatteryAdd::class, 'site__deployed');
+    }
+
 }

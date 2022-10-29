@@ -88,5 +88,15 @@ class BatteryAdd extends EloquentModel
         'batter_1_sn' => 'unique:battery_add'
     ];
 
+    /**
+     * Get the site that owns the BatteryAdd
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function site()
+    {
+        return $this->belongsTo(Site::class, 'site__deployed', 'id');
+    }
+
 
 }

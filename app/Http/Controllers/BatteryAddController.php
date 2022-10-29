@@ -32,7 +32,10 @@ class BatteryAddController extends AppBaseController
     public function index()
     // public function index(BatteryAddDataTable $batteryAddDataTable)
     {
-        $batteries = $this->batteryAddRepository->all();
+        $batteries = $this->batteryAddRepository->all(["site"=> function($query) {
+            $query->select('id','site_id');
+        }
+        ]);
         return view('battery_adds.index')
             ->with('batteries', $batteries);
         // return $batteryAddDataTable->render('battery_adds.index');
@@ -58,7 +61,9 @@ class BatteryAddController extends AppBaseController
     public function store(CreateBatteryAddRequest $request)
     {
         $input = $request->all();
-        dd($input );
+        // dd($input );
+
+        $input["site__deployed"]=$input["site_name_id"];
 
         $batteries=[
             $input['batter_1_sn'],

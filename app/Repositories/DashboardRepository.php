@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Attendance;
+use App\Models\BatteryAdd;
 use Carbon\Carbon;
 
 /**
@@ -15,6 +16,8 @@ class DashboardRepository
 {
     /** @var  UserRepository */
     private $userRepository;
+    /** @var  BatteryAddRepository */
+    private $batteryAddRepository;
     /** @var  RoleRepository */
     private $roleRepository;
     /** @var  PermissionRepository */
@@ -26,10 +29,11 @@ class DashboardRepository
      *
      * @return void
      */
-    public function __construct(RoleRepository $roleRepo, UserRepository $userRepo, PermissionRepository $permissionRepo, AttendanceRepository $attendanceRepo)
+    public function __construct(RoleRepository $roleRepo, UserRepository $userRepo, PermissionRepository $permissionRepo,BatteryAddRepository $batteryAddRepo, AttendanceRepository $attendanceRepo)
     {
         $this->permissionRepository = $permissionRepo;
         $this->userRepository = $userRepo;
+        $this->batteryAddRepository = $batteryAddRepo;
         $this->roleRepository = $roleRepo;
         $this->attendanceRepository = $attendanceRepo;
     }
@@ -39,6 +43,9 @@ class DashboardRepository
         $dashboardInfo = [];
         $dashboardInfo['user_count'] =  $this->userRepository->count();
         $dashboardInfo['role_count'] =  $this->roleRepository->count();
+        $dashboardInfo['batteries_batch_1_2022'] =  1128;
+        $dashboardInfo['batteries'] =  $this->batteryAddRepository->count();
+        $dashboardInfo['batteries_sites'] =  BatteryAdd::distinct()->count('site__deployed');
         $dashboardInfo['permission_count'] =  $this->permissionRepository->count();
         $dashboardInfo['user_online'] =  $this->attendanceRepository->CountUserOnline();
         return $dashboardInfo;

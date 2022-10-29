@@ -99,7 +99,7 @@ class BatteryAddController extends AppBaseController
         if (empty($batteryAdd)) {
             Flash::error(__('messages.not_found', ['model' => __('models/batteryAdds.singular')]));
 
-            return redirect(route('batteryAdds.index'));
+            return redirect(route(__('models/batteryAdds.singular').'.index'));
         }
 
         return view('battery_adds.show')->with('batteryAdd', $batteryAdd);
@@ -147,7 +147,7 @@ class BatteryAddController extends AppBaseController
 
         Flash::success(__('messages.updated', ['model' => __('models/batteryAdds.singular')]));
 
-        return redirect(route('batteryAdds.index'));
+        return redirect(route(__('models/batteryAdds.singular').'.index'));
     }
 
     /**
@@ -171,6 +171,6 @@ class BatteryAddController extends AppBaseController
 
         Flash::success(__('messages.deleted', ['model' => __('models/batteryAdds.singular')]));
 
-        return redirect(route('batteryAdds.index'));
+        return redirect(route(__('models/batteryAdds.singular').'.index'));
     }
 }

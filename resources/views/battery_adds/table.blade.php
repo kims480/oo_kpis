@@ -42,15 +42,15 @@ blvd
          @foreach($batteries as $battery)
             <tr x-data="{opacity: {{$loop->last==$loop->iteration}}}" class="text-center border-b border-gray-200 odd:bg-gray-50 hover:bg-gray-100 [visibility:none]   animate-dropdown [animation-delay:{{$loop->iteration*0.1}}s]" :class="opacity ? 'opacity-100':'opacity-0'">
                 <td class="text-sm">{{ $battery->site->site_id }}</td>
-                <td class="text-sm">{{ $battery->batter_1_sn }}</td>
-                <td class="text-sm">{{ $battery->ref_wo }}</td>
-                <td class="text-sm">{{ $battery->ref_cr }}</td>
-                <td >{{ $battery->shelter_num }}</td>
-                <td>{{ $battery->num_of_rect }}</td>
-                <td>{{ $battery->rect_num }}</td>
-                <td>{{ $battery->bank_num }}</td>
-                <td class="text-sm">{{ $battery->user->name }}</td>
-                <td class="flex justify-center">
+                <td class="text-xs">{{ $battery->batter_1_sn }}</td>
+                <td class="text-xs">{{ $battery->ref_wo }}</td>
+                <td class="text-xs">{{ $battery->ref_cr }}</td>
+                <td class="text-sm">{{ $battery->shelter_num }}</td>
+                <td class="text-sm">{{ $battery->num_of_rect }}</td>
+                <td class="text-sm">{{ $battery->rect_num }}</td>
+                <td class="text-sm">{{ $battery->bank_num }}</td>
+                <td class="text-xs">{{ $battery->user->name }}</td>
+                <td class="flex justify-center flex-nowrap">
                     {!! Form::open(['route' => [__('models/batteryAdds.singular').'.destroy', $battery->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
                         <a href="{{ route(__('models/batteryAdds.singular').'.show', [$battery->id]) }}"

@@ -33,19 +33,23 @@ blvd
             <th>@lang('models/batteryAdds.fields.ref_cr')</th>
             <th>@lang('models/batteryAdds.fields.num_of_rect')</th>
             <th>@lang('models/batteryAdds.fields.rect_num')</th>
+            <th>@lang('models/batteryAdds.fields.bank_num')</th>
+            <th>@lang('models/batteryAdds.fields.added_by')</th>
             <th colspan="3">@lang('crud.action')</th>
         </tr>
         </thead>
         <tbody>
          @foreach($batteries as $battery)
             <tr class="text-center">
-                <td>{{ $battery->site->site_id }}</td>
+                <td class="text-sm">{{ $battery->site->site_id }}</td>
                 <td class="text-sm">{{ $battery->batter_1_sn }}</td>
-                <td >{{ $battery->shelter_num }}</td>
                 <td class="text-sm">{{ $battery->ref_wo }}</td>
                 <td class="text-sm">{{ $battery->ref_cr }}</td>
+                <td >{{ $battery->shelter_num }}</td>
                 <td>{{ $battery->num_of_rect }}</td>
                 <td>{{ $battery->rect_num }}</td>
+                <td>{{ $battery->bank_num }}</td>
+                <td>{{ $battery->user->name }}</td>
                 <td class="flex justify-center">
                     {!! Form::open(['route' => [__('models/batteryAdds.singular').'.destroy', $battery->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

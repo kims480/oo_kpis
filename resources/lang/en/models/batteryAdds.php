@@ -7,6 +7,7 @@ return array (
   array (
     'id' => 'Id',
     'site__deployed' => 'Site  Deployed',
+    'added_by' => 'Added By',
     'shelter_num' => 'Shelter Num',
     'ref_wo' => 'Ref Wo',
     'ref_cr' => 'Ref Cr',

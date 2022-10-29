@@ -98,5 +98,15 @@ class BatteryAdd extends EloquentModel
         return $this->belongsTo(Site::class, 'site__deployed', 'id');
     }
 
+    /**
+     * Get the user that owns the BatteryAdd
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'added_by');
+    }
+
 
 }

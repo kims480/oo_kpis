@@ -34,6 +34,8 @@ class BatteryAddController extends AppBaseController
     {
         $batteries = $this->batteryAddRepository->all(["site"=> function($query) {
             $query->select('id','site_id');
+        },"user"=> function($query) {
+            $query->select('id','name');
         }
         ]);
         return view('battery_adds.index')

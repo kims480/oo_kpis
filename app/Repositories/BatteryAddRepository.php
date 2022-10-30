@@ -24,7 +24,15 @@ class BatteryAddRepository extends BaseRepository
         'install_date',
         'aircon_status',
         'rect_charge_status',
-        'old_batteries_aging'
+        'old_batteries_aging',
+        'Amp_before',
+        'volt_before' ,
+        'Volt_after' ,
+        'Amp_After',
+        'capacity_rating',
+        'battery_brand',
+        'Battery_model',
+        'remarks'
     ];
 
     /**

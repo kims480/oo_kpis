@@ -3,6 +3,9 @@
     {!! Form::label('site__deployed', __('models/batteryAdds.fields.site__deployed') . ':') !!}<small class="text-red-800 text-base font-bold">*</small>
     {!! Form::text('site__deployed', null, ['class' => 'form-control']) !!}
 </div> --}}
+<div class="w-full">
+<x-alert type="error" title="Warning" message="All Data photos to be reflected on Autin"></x-alert>
+</div>
 <div class="form-groub p-1 px-2 col-sm-6 sm:w-full md:w-1/2">
 @livewire('site-list')
 </div>
@@ -23,6 +26,16 @@
 <div class="form-group col-sm-6">
     {!! Form::label('ref_cr', __('models/batteryAdds.fields.ref_cr') . ':') !!}
     {!! Form::text('ref_cr', "CR-2022...", ['class' => 'form-control']) !!}
+</div>
+<!-- Load Vlot Before Cr Start -->
+<div class="form-group col-sm-6">
+    {!! Form::label('volt_before', __('models/batteryAdds.fields.volt_before') . ':') !!}
+    {!! Form::text('volt_before', "", ['class' => 'form-control']) !!}
+</div>
+<!-- Load Amp Before Cr Start -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Amp_before', __('models/batteryAdds.fields.Amp_before') . ':') !!}
+    {!! Form::text('Amp_before', "", ['class' => 'form-control']) !!}
 </div>
 
 <!-- Batter 1 Sn Field -->
@@ -112,4 +125,34 @@
 <div class="form-group col-sm-6">
     {!! Form::label('blvd', __('models/batteryAdds.fields.blvd') . ':') !!}
     {!! Form::text('blvd', '43.2', ['class' => 'form-control']) !!}
+</div>
+<!-- Capacity Rating Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('capacity_rating', __('models/batteryAdds.fields.capacity_rating') . ':') !!}
+    {!! Form::text('capacity_rating', '', ['class' => 'form-control']) !!}
+</div>
+<!-- Battery Brand Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('battery_brand', __('models/batteryAdds.fields.battery_brand') . ':') !!}
+    {!! Form::text('battery_brand', '', ['class' => 'form-control']) !!}
+</div>
+<!-- Battery Model Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Battery_model', __('models/batteryAdds.fields.Battery_model') . ':') !!}
+    {!! Form::text('Battery_model', '', ['class' => 'form-control']) !!}
+</div>
+<!-- Voltage Testing after Install Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Volt_after', __('models/batteryAdds.fields.Volt_after') . ':') !!}
+    {!! Form::text('Volt_after', '', ['class' => 'form-control']) !!}
+</div>
+<!-- Ampere Testing after Install Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Amp_After', __('models/batteryAdds.fields.Amp_After') . ':') !!}
+    {!! Form::text('Amp_After', '', ['class' => 'form-control']) !!}
+</div>
+<!-- Remarks -->
+<div class="form-group col-sm-6">
+    {!! Form::label('remarks', __('models/batteryAdds.fields.remarks') . ':') !!}
+    {!! Form::text('remarks', '', ['class' => 'form-control']) !!}
 </div>

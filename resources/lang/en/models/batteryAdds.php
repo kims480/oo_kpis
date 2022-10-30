@@ -26,5 +26,14 @@ return array (
     'old_batteries_aging' => 'Old Batteries Aging',
     'llvd' => 'Llvd',
     'blvd' => 'Blvd',
+    'volt_before' => 'Volte Before Activity',
+    'Amp_before' => 'Ampere Before activity',
+    'Volt_after' => 'Volt After Activity',
+    'Amp_After' => 'Ampere After activity',
+    'capacity_rating' => 'Capacity rating',
+    'battery_brand' => 'Brand',
+    'Battery_model' => 'Model',
+    'remarks' => 'Remarks',
+
   ),
 );

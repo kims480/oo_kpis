@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Illuminate\Container\Container as Application;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Facades\Auth;
 
 abstract class BaseRepository
 {
@@ -170,7 +170,7 @@ abstract class BaseRepository
             'added_by',
             array_merge($model->getFillable(), $model->getHidden()),
          )){
-            $model->added_by= auth()->user()->id;
+            $model->added_by= Auth::user()->id;
         }
         $model->save();
 

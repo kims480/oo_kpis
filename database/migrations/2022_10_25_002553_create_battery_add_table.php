@@ -35,6 +35,15 @@ class CreateBatteryAddTable extends Migration
             $table->softDeletes();
             $table->foreign('site__deployed')->references('id')->on('sites');
             $table->foreign('added_by')->references('id')->on('users');
+            $table->timestamps();
+            $table->float('Amp_before')->nullable();
+            $table->float('volt_before')->nullable();
+            $table->float('Volt_after')->nullable();
+            $table->float('Amp_After')->nullable();
+            $table->integer('capacity_rating')->nullable();
+            $table->char('battery_brand',30)->nullable();
+            $table->char('Battery_model',30)->nullable();
+            $table->text('reamrks')->nullable();
         });
     }
 

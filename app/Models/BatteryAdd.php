@@ -41,6 +41,7 @@ class BatteryAdd extends EloquentModel
 
     public $fillable = [
         'site__deployed',
+        'added_by',
         'shelter_num',
         'ref_wo',
         'ref_cr',
@@ -53,7 +54,15 @@ class BatteryAdd extends EloquentModel
         'rect_charge_status',
         'old_batteries_aging',
         'llvd',
-        'blvd'
+        'blvd',
+        'Amp_before',
+        'volt_before' ,
+        'Volt_after' ,
+        'Amp_After',
+        'capacity_rating',
+        'battery_brand',
+        'Battery_model',
+        'remarks'
     ];
 
     /**
@@ -76,7 +85,15 @@ class BatteryAdd extends EloquentModel
         'rect_charge_status' => 'integer',
         'old_batteries_aging' => 'integer',
         'llvd' => 'float',
-        'blvd' => 'float'
+        'blvd' => 'float',
+        'Amp_before'=>'float',
+        'volt_before' =>'float',
+        'Volt_after' =>'float',
+        'Amp_After'=>'float',
+        'capacity_rating'=>'integer',
+        'battery_brand'=>'string',
+        'Battery_model'=>'string',
+        'remarks'=>'string'
     ];
 
     /**

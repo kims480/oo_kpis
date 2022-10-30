@@ -14,7 +14,7 @@ class AddTimestaampToBatteryAddTable extends Migration
     public function up()
     {
         Schema::table('battery_add', function (Blueprint $table) {
-            $table->timestamps();
+
         });
     }
 

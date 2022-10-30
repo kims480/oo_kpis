@@ -1,6 +1,6 @@
 
 <div class="alert alert-{{$type}} {{$type=='error' ? 'bg-red-100 border border-red-400 text-red-700':'bg-slate-300 text-blue-600' }} px-4 py-1 rounded relative" role="alert">
-   {{$title ? '<strong class="font-bold">' . $title.'!</strong>': null}}
+   {!!$title ? '<strong class="font-bold">' . $title.'!</strong>': null!!}
     <span class="block sm:inline">{{$message}}
         {{$slot}}</span>
     <span class="absolute top-0 bottom-0 right-0 px-4 py-1">

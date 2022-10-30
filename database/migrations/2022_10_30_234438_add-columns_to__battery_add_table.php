@@ -21,7 +21,7 @@ class AddColumnsToBatteryAddTable extends Migration
             $table->integer('capacity_rating')->nullable();
             $table->char('battery_brand',30)->nullable();
             $table->char('Battery_model',30)->nullable();
-            $table->text('reamrks')->nullable();
+            $table->text('remarks')->nullable();
 
 
         });

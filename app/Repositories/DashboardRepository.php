@@ -45,9 +45,24 @@ class DashboardRepository
         $dashboardInfo['role_count'] =  $this->roleRepository->count();
         $dashboardInfo['batteries_batch_1_2022'] =  1128;
         $dashboardInfo['batteries'] =  $this->batteryAddRepository->count();
+        $batteries=  BatteryAdd::select('id','install_date')->with(['site'=>function($q){
+            $q->select('id','site_id','office_id');
+        }
+        ])->get();
+        $dashboardInfo['batteries_chart_weeks_xdata']=[];
+        $dashboardInfo['batteries_chart_weeks_ydata']=[];
+        $weeks=$batteries->groupBY(function($battery){
+            return Carbon::parse($battery->install_date)->week();
+        });
+        foreach ($weeks as $week => $value) {
+            $dashboardInfo['batteries_chart_weeks_xdata'][]="Week-".$week;
+            $dashboardInfo['batteries_chart_weeks_ydata'][]=count($value);
+        }
+
         $dashboardInfo['batteries_sites'] =  BatteryAdd::distinct()->count('site__deployed');
         $dashboardInfo['permission_count'] =  $this->permissionRepository->count();
-        $dashboardInfo['user_online'] =  $this->attendanceRepository->CountUserOnline();
+        // $dashboardInfo['user_online'] =  $this->attendanceRepository->CountUserOnline();
+
         return $dashboardInfo;
     }
     private function getChartUserCheckinInfo()
@@ -92,7 +107,7 @@ class DashboardRepository
     {
         $dashboard = [];
         $dashboard['dashboardInfo'] = $this->getDashboardInfo();
-        $dashboard['chartUserCheckin'] = $this->getChartUserCheckinInfo();
+        // $dashboard['chartUserCheckin'] = $this->getChartUserCheckinInfo();
         return $dashboard;
     }
 }

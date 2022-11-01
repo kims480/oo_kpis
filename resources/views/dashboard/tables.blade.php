@@ -352,9 +352,9 @@ var _xdata=JSON.parse('{!! json_encode( $dashboardInfo["batteries_chart_weeks_xd
             var myChart = new Chart(chartOne, {
                 type: 'bar',
                 data: {
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    labels: ['Muscat', 'Salalah', 'Sohar', 'Ibra', 'Nizwa', 'Sur'],
                     datasets: [{
-                        label: '# of Votes',
+                        label: '#Sites/Region',
                         data: [12, 19, 3, 5, 2, 3],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',

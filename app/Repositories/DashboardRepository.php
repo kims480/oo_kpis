@@ -45,10 +45,14 @@ class DashboardRepository
         $dashboardInfo['role_count'] =  $this->roleRepository->count();
         $dashboardInfo['batteries_batch_1_2022'] =  1128;
         $dashboardInfo['batteries'] =  $this->batteryAddRepository->count();
-        $batteries=  BatteryAdd::select('id','install_date')->with(['site'=>function($q){
+//         DB::table('battery_add')->select('id', 'install_date', DB::raw( count('site__deployed') as 'Sites'))
+// ->groupBy(‘seller’)
+// ->groupBy(‘date’)
+// ->get();
+        $batteries=  BatteryAdd::select('battery_add.id','install_date','site__deployed')->with(['site'=>function($q){
             $q->select('id','site_id','office_id');
         }
-        ])->get();
+        ])->orderBy('install_date','asc')->get();
         $dashboardInfo['batteries_chart_weeks_xdata']=[];
         $dashboardInfo['batteries_chart_weeks_ydata']=[];
         $weeks=$batteries->groupBY(function($battery){
@@ -59,6 +63,7 @@ class DashboardRepository
             $dashboardInfo['batteries_chart_weeks_ydata'][]=count($value);
         }
 
+        // dd($dashboardInfo['batteries_chart_weeks_ydata']);
         $dashboardInfo['batteries_sites'] =  BatteryAdd::distinct()->count('site__deployed');
         $dashboardInfo['permission_count'] =  $this->permissionRepository->count();
         // $dashboardInfo['user_online'] =  $this->attendanceRepository->CountUserOnline();

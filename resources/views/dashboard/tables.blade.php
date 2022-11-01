@@ -393,7 +393,7 @@ var _xdata=JSON.parse('{!! json_encode( $dashboardInfo["batteries_chart_weeks_xd
                     // labels: ['Muscat', 'Salalah', 'Sorah', 'Ibri', 'Nizwa', 'Adam'],
                     labels:  _xdata,
                     datasets: [{
-                        label: '# of Sites',
+                        label: '# of Batteries',
                         data: _ydata,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',

@@ -315,7 +315,7 @@
             <div class="flex flex-wrap mt-6">
                 <div class="w-full lg:w-1/2 pr-0 lg:pr-2">
                     <p class="text-xl pb-3 flex items-center">
-                        <i class="fas fa-plus mr-3"></i> Monthly Reports
+                        <i class="fas fa-plus mr-3"></i> Offices Progress
                     </p>
                     <div class="p-6 bg-white">
                         <canvas id="chartOne" width="400" height="200"></canvas>
@@ -323,7 +323,7 @@
                 </div>
                 <div class="w-full lg:w-1/2 pl-0 lg:pl-2 mt-12 lg:mt-0">
                     <p class="text-xl pb-3 flex items-center">
-                        <i class="fas fa-check mr-3"></i> Resolved Reports
+                        <i class="fas fa-check mr-3"></i> Batteries Installation/Week
                     </p>
                     <div class="p-6 bg-white">
                         <canvas id="chartTwo" width="400" height="200"></canvas>
@@ -362,7 +362,12 @@ var _xdata=JSON.parse('{!! json_encode( $dashboardInfo["batteries_chart_weeks_xd
                             'rgba(255, 206, 86, 0.2)',
                             'rgba(75, 192, 192, 0.2)',
                             'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)'
                         ],
                         borderColor: [
                             'rgba(255, 99, 132, 1)',
@@ -370,7 +375,12 @@ var _xdata=JSON.parse('{!! json_encode( $dashboardInfo["batteries_chart_weeks_xd
                             'rgba(255, 206, 86, 1)',
                             'rgba(75, 192, 192, 1)',
                             'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)'
                         ],
                         borderWidth: 1
                     }]

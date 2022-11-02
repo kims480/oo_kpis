@@ -343,8 +343,10 @@
     </div>
     <script type="text/javascript">
 
-var _xdata=JSON.parse('{!! json_encode( $dashboardInfo["batteries_chart_weeks_xdata"]) !!}');
-            var _ydata=JSON.parse('{!! json_encode( $dashboardInfo["batteries_chart_weeks_ydata"]) !!}');
+            // var _xdata=JSON.parse('{!! json_encode( $dashboardInfo["batteries_chart_weeks_xdata"]) !!}');
+            var _xdata=JSON.parse('{!! json_encode( array_keys($dashboardInfo["batteries_progress_chart"])) !!}');
+            var _ydata=JSON.parse('{!! json_encode( array_values($dashboardInfo["batteries_progress_chart"])) !!}');
+            // var _ydata=JSON.parse('{!! json_encode( $dashboardInfo["batteries_chart_weeks_ydata"]) !!}');
     </script>
     @push('page_scripts')
         <script>
@@ -403,7 +405,7 @@ var _xdata=JSON.parse('{!! json_encode( $dashboardInfo["batteries_chart_weeks_xd
                     // labels: ['Muscat', 'Salalah', 'Sorah', 'Ibri', 'Nizwa', 'Adam'],
                     labels:  _xdata,
                     datasets: [{
-                        label: '# of Batteries',
+                        label: 'Deployed Sites Progress',
                         data: _ydata,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',

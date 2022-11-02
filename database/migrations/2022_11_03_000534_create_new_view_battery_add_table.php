@@ -32,7 +32,8 @@ class CreateNewViewBatteryAddTable extends Migration
      */
     public function down()
     {
-        Schema::dropView('batteries_week_count_chart');
+        // DB::
+        Schema::drop('batteries_week_count_chart');
         // Schema::dropView('batteries_progress_chart');
     }
 }

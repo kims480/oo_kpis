@@ -4,7 +4,10 @@ namespace App\Repositories;
 
 use App\Models\Attendance;
 use App\Models\BatteryAdd;
+use App\Models\BatteryCountWeekChart;
+use App\Models\BatteryprogressChart;
 use Carbon\Carbon;
+use phpDocumentor\Reflection\Types\ArrayKey;
 
 /**
  * Class DashboardRepository
@@ -65,6 +68,13 @@ class DashboardRepository
 
         // dd($dashboardInfo['batteries_chart_weeks_ydata']);
         $dashboardInfo['batteries_sites'] =  BatteryAdd::distinct()->count('site__deployed');
+        $dashboardInfo['batteries_progress_chart'] =  BatteryprogressChart::get()->mapWithKeys(function ($item, $key) {
+            return ["week-".$item['week'] => $item['battery_total_progress']];
+        })->toArray();
+        // var_dump(array_keys($dashboardInfo['batteries_progress_chart']) );
+        $dashboardInfo['batteries_week_count_chart'] =  BatteryCountWeekChart::get()->mapWithKeys(function ($item, $key) {
+            return ["week-".$item['week'] => $item['num_of_Site_per_week']];
+        })->toArray();;
         $dashboardInfo['permission_count'] =  $this->permissionRepository->count();
         // $dashboardInfo['user_online'] =  $this->attendanceRepository->CountUserOnline();
 

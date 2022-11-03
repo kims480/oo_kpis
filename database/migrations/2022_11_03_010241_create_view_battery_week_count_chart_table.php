@@ -19,7 +19,7 @@ class CreateViewBatteryWeekCountChartTable extends Migration
         AS
         SELECT `week`, SUM(`num_of_Site_per_week`) Over (order by week) AS battery_total_progress
         FROM `batteries_week_count_chart`
-        where `deleted_at` = NULL;
+
         ");
     }
 

@@ -19,7 +19,9 @@ class CreateNewViewBatteryAddTable extends Migration
         CREATE VIEW batteries_week_count_chart
         AS
         SELECT WEEK(`install_date`,2) AS week, COUNT(DISTINCT `site__deployed`) AS num_of_Site_per_week
-        FROM `battery_add` GROUP BY Week(install_date,2);
+        FROM `battery_add`
+        where `deleted_at` = NULL
+         GROUP BY Week(install_date,2);
 
 
         ");

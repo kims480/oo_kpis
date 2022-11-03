@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Attendance;
+use App\Models\BatterAddOffice;
 use App\Models\BatteryAdd;
 use App\Models\BatteryCountWeekChart;
 use App\Models\BatteryprogressChart;
@@ -74,7 +75,10 @@ class DashboardRepository
         // var_dump(array_keys($dashboardInfo['batteries_progress_chart']) );
         $dashboardInfo['batteries_week_count_chart'] =  BatteryCountWeekChart::get()->mapWithKeys(function ($item, $key) {
             return ["week-".$item['week'] => $item['num_of_Site_per_week']];
-        })->toArray();;
+        })->toArray();
+        $dashboardInfo['batteries_office_chart'] =  BatterAddOffice::get()->mapWithKeys(function ($item, $key) {
+            return [$item['office_name'] => $item['num_office_name']];
+        })->except(['Warehouse'])->toArray();
         $dashboardInfo['permission_count'] =  $this->permissionRepository->count();
         // $dashboardInfo['user_online'] =  $this->attendanceRepository->CountUserOnline();
 

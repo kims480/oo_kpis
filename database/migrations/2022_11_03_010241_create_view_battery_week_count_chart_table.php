@@ -18,7 +18,8 @@ class CreateViewBatteryWeekCountChartTable extends Migration
         CREATE VIEW batteries_progress_chart
         AS
         SELECT `week`, SUM(`num_of_Site_per_week`) Over (order by week) AS battery_total_progress
-        FROM `batteries_week_count_chart`;
+        FROM `batteries_week_count_chart`
+        where `deleted_at` = NULL;
         ");
     }
 
@@ -29,6 +30,6 @@ class CreateViewBatteryWeekCountChartTable extends Migration
      */
     public function down()
     {
-        Schema::drop('batteries_progress_chart');
+        Schema::dropIfExists('batteries_progress_chart');
     }
 }

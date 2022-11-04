@@ -464,7 +464,7 @@
                                 weight: 'bold'
                             },
                             // formatter: Math.round,
-                            align: 'end',
+                            align: 'center',
                             anchor: 'end'
                         }
                     }

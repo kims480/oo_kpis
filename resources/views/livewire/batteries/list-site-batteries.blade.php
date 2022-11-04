@@ -161,7 +161,7 @@
                             "
                                 :class="opacity ? 'opacity-100' : 'opacity-0'">
 
-                                <td>{{ $battery->id ?? null }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>
                                     {{ $battery->site_name ?? null }}
 

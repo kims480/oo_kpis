@@ -287,7 +287,8 @@
                     <span class="text-sky-700 font-bold  ">
                         Batteries Batch-1
                     </span>
-                    <span class="pt-3 w-full text-center font-semibold text-lg text-teal-700">{{ $dashboardInfo['batteries_batch_1_2022'] }}</span>
+                    <span
+                        class="pt-3 w-full text-center font-semibold text-lg text-teal-700">{{ $dashboardInfo['batteries_batch_1_2022'] }}</span>
                     {{-- <span class="text-xs w-full flex align-bottom text-orange-700 content-end">2022</span> --}}
                     <x-badge.badge-info>2022</x-badge.badge-info>
 
@@ -296,14 +297,16 @@
                     <span class="text-sky-700 font-bold  ">
                         Deployed in Batch-1
                     </span>
-                    <span class="pt-3 w-full text-center font-semibold text-lg text-teal-700">{{ $dashboardInfo['batteries'] }}</span>
+                    <span
+                        class="pt-3 w-full text-center font-semibold text-lg text-teal-700">{{ $dashboardInfo['batteries'] }}</span>
                     <x-pills.badge-info>2022</x-pills.badge-info>
                 </div>
                 <div class="p-5 flex flex-col bg-slate-100 rounded border-solid border-gray-400 shadow">
                     <span class="text-sky-700 font-bold  ">
                         Sites in Batch-1
                     </span>
-                    <span class="pt-3 w-full text-center font-semibold text-lg text-teal-700">{{ $dashboardInfo['batteries_sites'] }}</span>
+                    <span
+                        class="pt-3 w-full text-center font-semibold text-lg text-teal-700">{{ $dashboardInfo['batteries_sites'] }}</span>
                     <x-pills.badge-info>2022</x-pills.badge-info>
                 </div>
 
@@ -342,13 +345,12 @@
         </main>
     </div>
     <script type="text/javascript">
-
-            // var _xdata=JSON.parse('{!! json_encode( $dashboardInfo["batteries_chart_weeks_xdata"]) !!}');
-            var _xdata=JSON.parse('{!! json_encode( array_keys($dashboardInfo["batteries_progress_chart"])) !!}');
-            var office_xdata=JSON.parse('{!! json_encode( array_keys($dashboardInfo["batteries_office_chart"])) !!}');
-            var _ydata=JSON.parse('{!! json_encode( array_values($dashboardInfo["batteries_progress_chart"])) !!}');
-            var office_ydata=JSON.parse('{!! json_encode( array_values($dashboardInfo["batteries_office_chart"])) !!}');
-            // var _ydata=JSON.parse('{!! json_encode( $dashboardInfo["batteries_chart_weeks_ydata"]) !!}');
+        // var _xdata=JSON.parse('{!! json_encode($dashboardInfo['batteries_chart_weeks_xdata']) !!}');
+        var _xdata = JSON.parse('{!! json_encode(array_keys($dashboardInfo['batteries_progress_chart'])) !!}');
+        var office_xdata = JSON.parse('{!! json_encode(array_keys($dashboardInfo['batteries_office_chart'])) !!}');
+        var _ydata = JSON.parse('{!! json_encode(array_values($dashboardInfo['batteries_progress_chart'])) !!}');
+        var office_ydata = JSON.parse('{!! json_encode(array_values($dashboardInfo['batteries_office_chart'])) !!}');
+        // var _ydata=JSON.parse('{!! json_encode($dashboardInfo['batteries_chart_weeks_ydata']) !!}');
     </script>
     @push('page_scripts')
         <script>
@@ -396,7 +398,23 @@
                                 beginAtZero: true
                             }
                         }]
+                    },
+
+                    plugins: {
+                        datalabels: {
+                            color: 'blue',
+                            // display: function(context) {
+                            //     return context.dataset.data[context.dataIndex] > 15;
+                            // },
+                            font: {
+                                weight: 'bold'
+                            },
+                            // formatter: Math.round,
+                            align: 'end',
+                            anchor: 'end'
+                        }
                     }
+
                 }
             });
 
@@ -405,7 +423,7 @@
                 type: 'line',
                 data: {
                     // labels: ['Muscat', 'Salalah', 'Sorah', 'Ibri', 'Nizwa', 'Adam'],
-                    labels:  _xdata,
+                    labels: _xdata,
                     datasets: [{
                         label: 'Deployed Sites Progress',
                         data: _ydata,
@@ -435,6 +453,20 @@
                                 beginAtZero: true
                             }
                         }]
+                    },
+                    plugins: {
+                        datalabels: {
+                            color: 'blue',
+                            // display: function(context) {
+                            //     return context.dataset.data[context.dataIndex] > 15;
+                            // },
+                            font: {
+                                weight: 'bold'
+                            },
+                            // formatter: Math.round,
+                            align: 'end',
+                            anchor: 'end'
+                        }
                     }
                 }
             });

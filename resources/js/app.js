@@ -14,7 +14,10 @@ import swal from 'sweetalert';
 // import  'searchdrop';
 import Toastify from 'toastify-js';
 import { Chart, registerables } from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+
 Chart.register(...registerables);
+Chart.register(ChartDataLabels);
 window.Chart=Chart;
 // window.NiceSelect=NiceSelect;
 // import { getRelativePosition } from 'chart.js/helpers';

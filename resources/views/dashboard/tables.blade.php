@@ -427,13 +427,15 @@
                     datasets: [{
                         label: 'Deployed Sites Progress',
                         data: _ydata,
+                        tension: 0.2,
+                        fill: false,
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
+                            'rgba(255, 99, 132, 0.6)',
+                            'rgba(54, 162, 235, 0.6)',
+                            'rgba(255, 206, 86, 0.6)',
+                            'rgba(75, 192, 192, 0.6)',
+                            'rgba(153, 102, 255, 0.6)',
+                            'rgba(255, 159, 64, 0.6)'
                         ],
                         borderColor: [
                             'rgba(255, 99, 132, 1)',
@@ -456,19 +458,44 @@
                     },
                     plugins: {
                         datalabels: {
-                            color: 'blue',
-                            // display: function(context) {
-                            //     return context.dataset.data[context.dataIndex] > 15;
-                            // },
+                            color: 'white',
+                            backgroundColor: function(context) {
+                                return context.dataset.backgroundColor;
+                            },
                             font: {
                                 weight: 'bold'
                             },
-                            // formatter: Math.round,
+                            borderRadius: 4,
+                            formatter: function(value, context) {
+                                return context.dataset.data[context.dataIndex];
+                            },
                             align: 'center',
-                            anchor: 'end'
+                            anchor: 'end',
+                            padding: 2
+                        },
+                        legend: {
+                            title: {
+                                display: true,
+                                text: 'Weely Progress',
+                            }
                         }
-                    }
-                }
+                    },
+                    layout: {
+                        padding: {
+                            top: 32,
+                            right: 16,
+                            bottom: 16,
+                            left: 8
+                        }
+                    },
+                    elements: {
+                        line: {
+                            fill: false,
+                            tension: 0.4
+                        }
+                    },
+                },
+
             });
         </script>
     @endpush

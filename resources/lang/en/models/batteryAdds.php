@@ -13,6 +13,7 @@ return array (
     'shelter_num' => 'Shelter Num',
     'ref_wo' => 'Ref Wo',
     'ref_cr' => 'Ref Cr',
+    'battery_sn' => 'Battery Sn',
     'batter_1_sn' => 'Battery-1 Sn',
     'battery_2_sn' => 'Battery-2 Sn',
     'battery_3_sn' => 'Battery-3 Sn',

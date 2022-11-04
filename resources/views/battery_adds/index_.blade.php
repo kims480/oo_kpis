@@ -8,9 +8,11 @@
             <a class="btn btn-primary mr-3" href="{{ route(__('models/batteryAdds.singular') . '.create') }}">
                 @lang('crud.add_new')
             </a>
+            @can(__('models/batteryAdds.plural').'.export')
             <a class="btn btn-primary mr-3" href="{{ route(__('models/batteryAdds.singular') . '.export') }}">
                 @lang('models/batteryAdds.export')
             </a>
+            @endcan
             {{-- <button wire:click.prevent="export" x-data={isOpen:false}
                 class="transition ease-in-out btn btn-default relative has-tooltips text-sm " data-mdb-ripple="true"
                 @mouseover="isOpen=true" @mouseover.away="isOpen=false">
@@ -43,4 +45,3 @@
 
     </div>
 </div>
-

@@ -100,10 +100,10 @@
                             'wire:model' => 'ref_cr',
                         ]) !!}
                         </th>
-                        <th> {!! Form::text('shelter_num', null, [
+                        <th> {!! Form::text('install_date', null, [
                             'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
-                            'placeholder' => __('models/batteryAdds.fields.shelter_num'),
-                            'wire:model' => 'shelter_num',
+                            'placeholder' => __('models/batteryAdds.fields.install_date'),
+                            'wire:model' => 'install_date',
                         ]) !!}
                         </th>
                         <th> {!! Form::text('num_of_rect', null, [
@@ -142,7 +142,7 @@
                         <th class="py-3 px-6 text-center">Battery SN</th>
                         <th class="py-3 px-6 text-center">@lang('models/batteryAdds.fields.ref_wo')</th>
                         <th class="py-3 px-6 text-center">@lang('models/batteryAdds.fields.ref_cr')</th>
-                        <th class="py-3 px-6 text-center">@lang('models/batteryAdds.fields.shelter_num')</th>
+                        <th class="py-3 px-6 text-center">@lang('models/batteryAdds.fields.install_date')</th>
                         <th class="py-3 px-6 text-center">@lang('models/batteryAdds.fields.num_of_rect')</th>
                         <th class="py-3 px-6 text-center">@lang('models/batteryAdds.fields.rect_num')</th>
                         <th class="py-3 px-6 text-center">@lang('models/batteryAdds.fields.bank_num')</th>
@@ -168,7 +168,7 @@
                                 <td>{{ $battery->batter_1_sn ?? null }}</td>
                                 <td>{{ $battery->ref_wo ?? null }}</td>
                                 <td>{{ $battery->ref_cr ?? null }}</td>
-                                <td>{{ $battery->shelter_num ?? null }}</td>
+                                <td>{{ $battery->install_date ?? null }}</td>
                                 <td>{{ $battery->num_of_rect ?? null }}</td>
                                 <td>{{ $battery->rect_num ?? null }}</td>
                                 <td>{{ $battery->bank_num ?? null }}</td>

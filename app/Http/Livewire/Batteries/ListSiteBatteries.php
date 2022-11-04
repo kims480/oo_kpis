@@ -20,8 +20,8 @@ class ListSiteBatteries extends Component
     public $battery_1_sn;
     public $ref_cr;
     public $ref_wo;
-    public $type;
-    public $wilayat;
+    public $install_date;
+
     public $added_by;
     public $your_file;
     public $imported;
@@ -65,6 +65,7 @@ class ListSiteBatteries extends Component
             ->where('batter_1_sn', 'like', '%' . $this->battery_1_sn . '%')
             ->where('ref_wo', 'like', '%' . $this->ref_wo . '%')
             ->Where('ref_cr', 'like', '%' . $this->ref_cr . '%')
+            ->Where('install_date', 'like', '%' . $this->install_date . '%')
             ->Where('battery_add.deleted_at', null)
             ->orderByDesc('battery_add.id')
             ->paginate($this->perPage);

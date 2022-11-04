@@ -53,11 +53,11 @@ class ListSiteBatteries extends Component
         //     ->paginate($this->perPage);
 
         $batteries=DB::table('battery_add')
-            ->join('sites',function($sites){
+            ->leftJoin('sites',function($sites){
                 $sites->on('sites.id','=','battery_add.site__deployed')
                                 ->Where('sites.site_id', 'like', '%' . $this->site_id . '%');
                 })
-            ->join('users',function($users){
+            ->leftJoin('users',function($users){
                 $users->on('users.id','=','battery_add.added_by')
                         ->Where('users.name', 'like', '%' . $this->added_by . '%');
             })

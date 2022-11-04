@@ -161,7 +161,7 @@
                             "
                                 :class="opacity ? 'opacity-100' : 'opacity-0'">
 
-                                <td>{{ ($battery->currentpage()-1) * $battery->perpage() + $loop->iteration }}</td>
+                                <td>{{ ($batteries->currentPage()-1) * $batteries->perPage() + $loop->iteration }}</td>
                                 <td>
                                     {{ $battery->site_name ?? null }}
 

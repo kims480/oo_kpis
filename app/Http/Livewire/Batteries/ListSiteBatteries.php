@@ -52,20 +52,21 @@ class ListSiteBatteries extends Component
         //     // ->orWhereSite('site_id', 'like', '%' . $this->site_id . '%')
         //     ->paginate($this->perPage);
 
-        $batteries=DB::table('battery_add')
-            ->leftJoin('sites',function($sites){
-                $sites->on('sites.id','=','battery_add.site__deployed')
-                                ->Where('sites.site_id', 'like', '%' . $this->site_id . '%');
-                })
-            ->leftJoin('users',function($users){
-                $users->on('users.id','=','battery_add.added_by')
-                        ->Where('users.name', 'like', '%' . $this->added_by . '%');
+        $batteries = DB::table('battery_add')
+            ->leftJoin('sites', function ($sites) {
+                $sites->on('sites.id', '=', 'battery_add.site__deployed')
+                    ->select('sites.id as site__id', 'sites.site_id As site_name')
+                    ->Where('sites.site_id', 'like', '%' . $this->site_id . '%');
             })
-            ->select('battery_add.*','sites.id as site__id','sites.site_id As site_name','users.id as user_id','users.name as user_name')
-            ->where('batter_1_sn', 'like', '%' . $this->battery_1_sn . '%')
-            ->where('ref_wo', 'like', '%' . $this->ref_wo . '%')
-            ->Where('ref_cr', 'like', '%' . $this->ref_cr . '%')
-            ->Where('install_date', 'like', '%' . $this->install_date . '%')
+            ->leftJoin('users', function ($users) {
+                $users->on('users.id', '=', 'battery_add.added_by')
+                    ->select('users.id as user_id', 'users.name as user_name')
+                    ->Where('users.name', 'like', '%' . $this->added_by . '%');
+            })
+            // ->where('batter_1_sn', 'like', '%' . $this->battery_1_sn . '%')
+            // ->where('ref_wo', 'like', '%' . $this->ref_wo . '%')
+            // ->Where('ref_cr', 'like', '%' . $this->ref_cr . '%')
+            // ->Where('install_date', 'like', '%' . $this->install_date . '%')
             // ->Where('battery_add.deleted_at', null)
             ->orderByDesc('battery_add.id')
             ->paginate($this->perPage);

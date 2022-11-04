@@ -166,13 +166,13 @@
                                     {{ $battery->site_name ?? null }}
 
                                 <td>{{ $battery->batter_1_sn ?? null }}</td>
-                                <td>{{ $battery->ref_wo ?? null }}</td>
-                                <td>{{ $battery->ref_cr ?? null }}</td>
+                                <td class="text-xs">{{ $battery->ref_wo ?? null }}</td>
+                                <td class="text-xs">{{ $battery->ref_cr ?? null }}</td>
                                 <td>{{ $battery->install_date ?? null }}</td>
                                 <td>{{ $battery->num_of_rect ?? null }}</td>
                                 <td>{{ $battery->rect_num ?? null }}</td>
                                 <td>{{ $battery->bank_num ?? null }}</td>
-                                <td>{{ $battery->user_name ?? null }}</td>
+                                <td class="text-xs">{{ $battery->user_name ?? null }}</td>
                                 {{-- <td>{{ $battery->address ?? null }}</td> --}}
                                 <td class="flex justify-center flex-nowrap">
                                     {!! Form::open([

@@ -80,7 +80,7 @@ class DashboardRepository
         $dashboardInfo['batteries_office_chart'] =  BatterAddOffice::get()->mapWithKeys(function ($item, $key) {
             return [$item['office_name'] => $item['num_office_name']];
         })->except(['Warehouse'])->toArray();
-        $dashboardInfo['batteries_site_prio_chart'] =  BatterySitePrio::get()->mapWithKeys(function ($item, $key) {
+        $dashboardInfo['batteries_site_prio_chart'] =  BatterySitePrio::get()->filter()->mapWithKeys(function ($item, $key) {
             return [$item['site_prio'] => $item['num_sites']];
         })->toArray();
         $dashboardInfo['permission_count'] =  $this->permissionRepository->count();

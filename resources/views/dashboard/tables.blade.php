@@ -337,7 +337,7 @@
                         <i class="fas fa-check mr-3"></i> Secured Sites Priority Till the moment
                     </p>
                     <div class="p-6 bg-white">
-                        <canvas id="chartThree"></canvas>
+                        <canvas id="chartThree" width="400" height="200"></canvas>
                     </div>
                 </div>
             </div>
@@ -542,14 +542,17 @@
                 data: {
                     labels: sitePrio_xdata,
                     datasets: [{
-                        label: '#Sites/Region',
+                        label: 'Site Priorty Secured',
                         data: sitePrio_ydata,
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                            'rgba(255, 206, 86, 0.7)',
+                            'rgba(75, 192, 192, 0.7)',
                         ],
+                        datalabels: {
+                            anchor: 'end'
+                        },
                         borderColor: [
                             'rgba(255, 99, 132, 1)',
                             'rgba(54, 162, 235, 1)',
@@ -560,26 +563,45 @@
                     }]
                 },
                 options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
+                    // Core options
+                    aspectRatio: 4 / 3,
+                    cutoutPercentage: 32,
+                    layout: {
+                        padding: 2
+                    },
+                    elements: {
+                        line: {
+                            fill: false
+                        },
+                        point: {
+                            hoverRadius: 7,
+                            radius: 5
+                        }
                     },
 
                     plugins: {
                         datalabels: {
-                            color: 'blue',
-                            // display: function(context) {
-                            //     return context.dataset.data[context.dataIndex] > 15;
-                            // },
+                            backgroundColor: function(context) {
+                                return context.dataset.backgroundColor;
+                            },
+                            borderColor: 'white',
+                            borderRadius: 25,
+                            borderWidth: 2,
+                            color: 'white',
+                            align:'center',
                             font: {
                                 weight: 'bold'
                             },
-                            // formatter: Math.round,
-                            align: 'center',
-                            anchor: 'end'
+                            padding: 2,
+                            formatter: function(value, context) {
+                                // console.log(context.);
+                                var i=context.dataIndex;
+
+                                var prio = sitePrio_xdata[i];
+                                // var prio = "pRIO";
+
+                                return  prio + " - "+value  ;
+                            }
                         }
                     }
 

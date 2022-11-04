@@ -66,7 +66,7 @@ class ListSiteBatteries extends Component
             ->where('ref_wo', 'like', '%' . $this->ref_wo . '%')
             ->Where('ref_cr', 'like', '%' . $this->ref_cr . '%')
             ->Where('install_date', 'like', '%' . $this->install_date . '%')
-            ->Where('battery_add.deleted_at', null)
+            // ->Where('battery_add.deleted_at', null)
             ->orderByDesc('battery_add.id')
             ->paginate($this->perPage);
         return view('livewire.batteries.list-site-batteries', ['batteries' => $batteries]);

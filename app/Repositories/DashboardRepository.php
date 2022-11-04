@@ -7,6 +7,7 @@ use App\Models\BatterAddOffice;
 use App\Models\BatteryAdd;
 use App\Models\BatteryCountWeekChart;
 use App\Models\BatteryprogressChart;
+use App\Models\BatterySitePrio;
 use Carbon\Carbon;
 use phpDocumentor\Reflection\Types\ArrayKey;
 
@@ -79,6 +80,9 @@ class DashboardRepository
         $dashboardInfo['batteries_office_chart'] =  BatterAddOffice::get()->mapWithKeys(function ($item, $key) {
             return [$item['office_name'] => $item['num_office_name']];
         })->except(['Warehouse'])->toArray();
+        $dashboardInfo['batteries_site_prio_chart'] =  BatterySitePrio::get()->mapWithKeys(function ($item, $key) {
+            return [$item['site_prio'] => $item['num_sites']];
+        })->toArray();
         $dashboardInfo['permission_count'] =  $this->permissionRepository->count();
         // $dashboardInfo['user_online'] =  $this->attendanceRepository->CountUserOnline();
 

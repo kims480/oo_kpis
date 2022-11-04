@@ -329,14 +329,22 @@
                         <i class="fas fa-check mr-3"></i> Batteries Installation/Week
                     </p>
                     <div class="p-6 bg-white">
-                        <canvas id="chartTwo" width="400" height="200"></canvas>
+                        <canvas id="chartTwo"></canvas>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 pl-0 lg:pl-2 mt-12 lg:mt-0">
+                    <p class="text-xl pb-3 flex items-center">
+                        <i class="fas fa-check mr-3"></i> Secured Sites Priority Till the moment
+                    </p>
+                    <div class="p-6 bg-white">
+                        <canvas id="chartThree"></canvas>
                     </div>
                 </div>
             </div>
 
             <div class="w-full mt-12">
                 <p class="text-xl pb-3 flex items-center">
-                    <i class="fas fa-list mr-3"></i> Latest Reports
+                    <i class="fas fa-list mr-3"></i>
                 </p>
                 <div class="bg-white overflow-auto">
 
@@ -348,8 +356,10 @@
         // var _xdata=JSON.parse('{!! json_encode($dashboardInfo['batteries_chart_weeks_xdata']) !!}');
         var _xdata = JSON.parse('{!! json_encode(array_keys($dashboardInfo['batteries_progress_chart'])) !!}');
         var office_xdata = JSON.parse('{!! json_encode(array_keys($dashboardInfo['batteries_office_chart'])) !!}');
+        var sitePrio_xdata = JSON.parse('{!! json_encode(array_keys($dashboardInfo['batteries_site_prio_chart'])) !!}');
         var _ydata = JSON.parse('{!! json_encode(array_values($dashboardInfo['batteries_progress_chart'])) !!}');
         var office_ydata = JSON.parse('{!! json_encode(array_values($dashboardInfo['batteries_office_chart'])) !!}');
+        var sitePrio_ydata = JSON.parse('{!! json_encode(array_values($dashboardInfo['batteries_site_prio_chart'])) !!}');
         // var _ydata=JSON.parse('{!! json_encode($dashboardInfo['batteries_chart_weeks_ydata']) !!}');
     </script>
     @push('page_scripts')
@@ -422,8 +432,10 @@
             var myLineChart = new Chart(chartTwo, {
                 type: 'line',
                 data: {
-                    // labels: ['Muscat', 'Salalah', 'Sorah', 'Ibri', 'Nizwa', 'Adam'],
-                    labels: _xdata,
+
+                    labels: ['week-42', 'week-43', 'week-44', 'week-45', 'week-46', 'week-47', 'week-48', 'week-49',
+                        'week-50', 'week-51', 'week-52'
+                    ],
                     datasets: [{
                         label: 'Deployed Sites Progress',
                         data: _ydata,
@@ -445,6 +457,105 @@
                             'rgba(153, 102, 255, 1)',
                             'rgba(255, 159, 64, 1)'
                         ],
+                        borderWidth: 2
+                    }, {
+                        label: 'Planned/Week',
+                        data: [3, 11, 37, 63, 63, 89, 104, 110, 120, 125, 130],
+                        tension: 0.2,
+                        fill: false,
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            },
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Sites'
+                            }
+                        }]
+                    },
+                    plugins: {
+                        datalabels: [{
+                            color: 'white',
+                            backgroundColor: function(context) {
+                                return context.dataset.backgroundColor;
+                            },
+                            font: {
+                                weight: 'bold'
+                            },
+                            borderRadius: 4,
+                            formatter: function(value, context) {
+                                return context.dataset.data[0][context.dataIndex];
+                            },
+                            align: 'end',
+                            anchor: 'end',
+                            padding: 2
+                        }, {
+                            color: 'white',
+                            backgroundColor: function(context) {
+                                return context.dataset.backgroundColor;
+                            },
+                            font: {
+                                weight: 'bold'
+                            },
+                            borderRadius: 4,
+                            formatter: function(value, context) {
+                                return context.dataset.data[1][context.dataIndex];
+                            },
+                            align: 'end',
+                            anchor: 'end',
+                            padding: 2
+                        }],
+                        legend: {
+                            title: {
+                                display: true,
+                                text: 'Weely Progress',
+                            }
+                        }
+                    },
+                    aspectRatio: 5 / 3,
+                    layout: {
+                        padding: {
+                            top: 1,
+                            right: 1,
+                            bottom: 1,
+                            left: 1
+                        }
+                    },
+                    elements: {
+                        line: {
+                            fill: false,
+                            tension: 0.3
+                        }
+                    },
+                },
+
+            });
+
+            var chartThree = document.getElementById('chartThree');
+            var myChart = new Chart(chartThree, {
+                type: 'pie',
+                data: {
+                    labels: sitePrio_xdata,
+                    datasets: [{
+                        label: '#Sites/Region',
+                        data: sitePrio_ydata,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                        ],
                         borderWidth: 1
                     }]
                 },
@@ -456,46 +567,23 @@
                             }
                         }]
                     },
+
                     plugins: {
                         datalabels: {
-                            color: 'white',
-                            backgroundColor: function(context) {
-                                return context.dataset.backgroundColor;
-                            },
+                            color: 'blue',
+                            // display: function(context) {
+                            //     return context.dataset.data[context.dataIndex] > 15;
+                            // },
                             font: {
                                 weight: 'bold'
                             },
-                            borderRadius: 4,
-                            formatter: function(value, context) {
-                                return context.dataset.data[context.dataIndex];
-                            },
+                            // formatter: Math.round,
                             align: 'center',
-                            anchor: 'end',
-                            padding: 2
-                        },
-                        legend: {
-                            title: {
-                                display: true,
-                                text: 'Weely Progress',
-                            }
+                            anchor: 'end'
                         }
-                    },
-                    layout: {
-                        padding: {
-                            top: 32,
-                            right: 16,
-                            bottom: 16,
-                            left: 8
-                        }
-                    },
-                    elements: {
-                        line: {
-                            fill: false,
-                            tension: 0.4
-                        }
-                    },
-                },
+                    }
 
+                }
             });
         </script>
     @endpush

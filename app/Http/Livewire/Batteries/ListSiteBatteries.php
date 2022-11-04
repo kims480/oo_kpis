@@ -53,10 +53,10 @@ class ListSiteBatteries extends Component
         //     ->paginate($this->perPage);
 
         $batteries=DB::table('battery_add')
-        ->join('sites',function($sites){
-            $sites->on('sites.id','=','battery_add.site__deployed')
-                            ->Where('sites.site_id', 'like', '%' . $this->site_id . '%');
-            })
+            ->join('sites',function($sites){
+                $sites->on('sites.id','=','battery_add.site__deployed')
+                                ->Where('sites.site_id', 'like', '%' . $this->site_id . '%');
+                })
             ->join('users',function($users){
                 $users->on('users.id','=','battery_add.added_by')
                         ->Where('users.name', 'like', '%' . $this->added_by . '%');
@@ -66,7 +66,7 @@ class ListSiteBatteries extends Component
             ->where('ref_wo', 'like', '%' . $this->ref_wo . '%')
             ->Where('ref_cr', 'like', '%' . $this->ref_cr . '%')
             ->Where('battery_add.deleted_at', null)
-            ->orderByDesc('battery_add.install_date')
+            ->orderByDesc('battery_add.id')
             ->paginate($this->perPage);
         return view('livewire.batteries.list-site-batteries', ['batteries' => $batteries]);
     }

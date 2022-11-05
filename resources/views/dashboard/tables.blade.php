@@ -282,31 +282,31 @@
         <main class="w-full flex-grow p-1">
             <h1 class="text-3xl text-black pb-6">Dashboard</h1>
 
-            <div class="flex justify-between w-full">
-                <div class="p-5 flex flex-col bg-slate-100 rounded border-solid border-gray-400 shadow">
-                    <span class="text-sky-700 font-bold  ">
-                        Batteries Batch-1
+            <div class="flex justify-between gap-2  w-full">
+                <div class="p-5 flex flex-col justify-between bg-blue-50 rounded border-solid border-gray-500 shadow-md">
+                    <span class="text-sky-900 font-bold w-full uppercase  text-sm text-center">
+                        Total Batteries Batch-1
                     </span>
                     <span
-                        class="pt-3 w-full text-center font-semibold text-lg text-teal-700">{{ $dashboardInfo['batteries_batch_1_2022'] }}</span>
+                        class="pt-3 w-full text-center font-semibold text-lg text-blue-700">{{ $dashboardInfo['batteries_batch_1_2022'] }}</span>
                     {{-- <span class="text-xs w-full flex align-bottom text-orange-700 content-end">2022</span> --}}
                     <x-badge.badge-info>2022</x-badge.badge-info>
 
                 </div>
-                <div class="p-5 flex flex-col bg-slate-100 rounded border-solid border-gray-400 shadow">
-                    <span class="text-sky-700 font-bold  ">
-                        Deployed in Batch-1
+                <div class="p-5 flex flex-col justify-between bg-blue-50 rounded border-solid border-gray-400 shadow-md">
+                    <span class="text-sky-900 font-bold uppercase text-sm ">
+                        Batteries Deployed in Batch-1
                     </span>
                     <span
-                        class="pt-3 w-full text-center font-semibold text-lg text-teal-700">{{ $dashboardInfo['batteries'] }}</span>
+                        class="pt-3 w-full text-center font-semibold text-lg text-blue-700">{{ $dashboardInfo['batteries'] }}</span>
                     <x-pills.badge-info>2022</x-pills.badge-info>
                 </div>
-                <div class="p-5 flex flex-col bg-slate-100 rounded border-solid border-gray-400 shadow">
-                    <span class="text-sky-700 font-bold  ">
-                        Sites in Batch-1
+                <div class="p-5 flex flex-col justify-between uppercase bg-blue-50 rounded border-solid border-gray-400 shadow-md">
+                    <span class="text-sky-900 font-bold  ">
+                        Sites Done Batch-1
                     </span>
                     <span
-                        class="pt-3 w-full text-center font-semibold text-lg text-teal-700">{{ $dashboardInfo['batteries_sites'] }}</span>
+                        class="pt-3 w-full text-center font-semibold text-lg text-blue-700">{{ $dashboardInfo['batteries_sites'] }}</span>
                     <x-pills.badge-info>2022</x-pills.badge-info>
                 </div>
 

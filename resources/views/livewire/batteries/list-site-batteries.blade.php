@@ -1,6 +1,6 @@
 <div class="card w-full p-0" x-data={filtersOn:false}>
     <div class="card-body p-0 relative w-full ">
-        <div class="py-1 bg-slate-500 w-full flex border-b-2 border-amber-500 border-solid mb-2">
+        <div class="py-1 bg-slate-700 w-full flex border-b-2 border-amber-500 border-solid mb-2">
             @include('flash::message')
             <div class="transition-all duration-300 absolute top-2 right-1/2  bg-stone-200 text-sm text-blue-900 p-2 border-l-8 border-stone-600 rounded-md opacity-80"
                 wire:loading>
@@ -53,9 +53,12 @@
                             for="flexSwitchCheckChecked">Filter</label>
                     </div>
                 </div>
-                <a class="btn btn-primary mr-3" href="{{ route(__('models/batteryAdds.singular') . '.create') }}">
-                    @lang('crud.add_new')
-                </a>
+                @can(__('models/batteryAdds.singular') . '.create')
+                    <a class="transition text-amber-800 bg-amber-50 ease-in-out btn btn-default relative has-tooltips text-sm hover:bg-cyan-900 hover:text-slate-50"
+                        href="{{ route(__('models/batteryAdds.singular') . '.create') }}">
+                        @lang('crud.add_new')
+                    </a>
+                @endcan
                 @can(__('models/batteryAdds.singular') . '.export')
                     <button wire:click.prevent="export" x-data={isOpen:false}
                         class="transition text-amber-800 bg-amber-50 ease-in-out btn btn-default relative has-tooltips text-sm "
@@ -164,7 +167,7 @@
                             "
                                 :class="opacity ? 'opacity-100' : 'opacity-0'">
 
-                                <td>{{ ($batteries->currentPage()-1) * $batteries->perPage() + $loop->iteration }}</td>
+                                <td>{{ ($batteries->currentPage() - 1) * $batteries->perPage() + $loop->iteration }}</td>
                                 <td>
                                     {{ $battery->site_name ?? null }}
 

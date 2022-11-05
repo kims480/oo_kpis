@@ -53,6 +53,9 @@
                             for="flexSwitchCheckChecked">Filter</label>
                     </div>
                 </div>
+                <a class="btn btn-primary mr-3" href="{{ route(__('models/batteryAdds.singular') . '.create') }}">
+                    @lang('crud.add_new')
+                </a>
                 @can(__('models/batteryAdds.singular') . '.export')
                     <button wire:click.prevent="export" x-data={isOpen:false}
                         class="transition text-amber-800 bg-amber-50 ease-in-out btn btn-default relative has-tooltips text-sm "
@@ -169,7 +172,7 @@
                                 <td class="text-xs">{{ $battery->ref_wo ?? null }}</td>
                                 <td class="text-xs">{{ $battery->ref_cr ?? null }}</td>
                                 <td>{{ $battery->install_date ?? null }}</td>
-                                <td>{{ $battery->num_of_rect ?? null }}</td>
+                                <td>{{ $battery->site_prio ?? null }}</td>
                                 <td>{{ $battery->rect_num ?? null }}</td>
                                 <td>{{ $battery->bank_num ?? null }}</td>
                                 <td class="text-xs">{{ $battery->user_name ?? null }}</td>

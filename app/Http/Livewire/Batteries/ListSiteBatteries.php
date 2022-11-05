@@ -21,6 +21,7 @@ class ListSiteBatteries extends Component
     public $ref_cr;
     public $ref_wo;
     public $install_date;
+    public $num_of_rect;
 
     public $added_by;
     public $your_file;
@@ -55,13 +56,14 @@ class ListSiteBatteries extends Component
         $batteries=DB::table('battery_add')
             ->Join('sites',function($sites){
                 $sites->on('sites.id','=','battery_add.site__deployed')
-                                ->Where('sites.site_id', 'like', '%' . $this->site_id . '%');
+                                ->Where('sites.site_id', 'like', '%' . $this->site_id . '%')
+                                ->Where('sites.prio', 'like', '%' . $this->num_of_rect . '%');
                 })
             ->Join('users',function($users){
                 $users->on('users.id','=','battery_add.added_by')
                         ->Where('users.name', 'like', '%' . $this->added_by . '%');
             })
-            ->select('battery_add.*','sites.id as site__id','sites.site_id As site_name','users.id as user_id','users.name as user_name')
+            ->select('battery_add.*','sites.id as site__id','sites.prio as site_prio','sites.site_id As site_name','users.id as user_id','users.name as user_name')
             ->where('batter_1_sn', 'like', '%' . $this->battery_1_sn . '%')
             ->where(function ($query) {
                 $query->where('ref_wo', 'like', '%' . $this->ref_wo . '%')

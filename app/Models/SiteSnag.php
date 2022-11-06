@@ -186,4 +186,12 @@ class SiteSnag extends Model
         return $this->belongsTo(User::class, 'snag_closed_by','id');
     }
 
+     /**
+     * The roles that belong to the passive_spares.
+     */
+    public function passive_spares()
+    {
+        return $this->belongsToMan(PassiveSpare::class, 'site_snag_passive_spare');
+    }
+
 }

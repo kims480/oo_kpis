@@ -226,3 +226,17 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
 </li>
 @endcan
 
+<li class="nav-item">
+    <a href="{{ route('passiveSpares.index') }}"
+       class="nav-link {{ Request::is('passiveSpares*') ? 'active' : '' }}">
+        <p>@lang('models/passiveSpares.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('siteExtras.index') }}"
+       class="nav-link {{ Request::is('siteExtras*') ? 'active' : '' }}">
+        <p>@lang('models/siteExtras.plural')</p>
+    </a>
+</li>
+

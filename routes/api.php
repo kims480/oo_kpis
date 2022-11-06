@@ -61,3 +61,9 @@ Route::resource('site_prios', App\Http\Controllers\API\SitePrioAPIController::cl
 
 
 Route::resource('site_types', App\Http\Controllers\API\SiteTypeAPIController::class);
+
+
+Route::resource('passive_spares', App\Http\Controllers\API\PassiveSpareAPIController::class);
+
+
+Route::resource('site_extras', App\Http\Controllers\API\SiteExtraAPIController::class);

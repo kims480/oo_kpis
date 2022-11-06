@@ -26,6 +26,25 @@ git commit -m "battery-1"
 git push -u origin main
 
 
+git checkout HEAD^ app/Http/Controllers/API/SiteExtraAPIController.php
+git checkout HEAD^ app/Http/Controllers/SiteExtraController.php
+git checkout HEAD^ app/Http/Requests/API/CreateSiteExtraAPIRequest.php
+git checkout HEAD^ app/Http/Requests/API/UpdateSiteExtraAPIRequest.php
+git checkout HEAD^ app/Http/Requests/CreateSiteExtraRequest.php
+git checkout HEAD^ app/Http/Requests/UpdateSiteExtraRequest.php
+git checkout HEAD^ app/Models/SiteExtra.php
+git checkout HEAD^ app/Repositories/SiteExtraRepository.php
+git checkout HEAD^ database/migrations/2022_11_06_205459_create_site_extras_table.php
+git checkout HEAD^ resources/lang/en/models/siteExtras.php
+git checkout HEAD^ resources/views/site_extras/create.blade.php
+git checkout HEAD^ resources/views/site_extras/edit.blade.php
+git checkout HEAD^ resources/views/site_extras/fields.blade.php
+git checkout HEAD^ resources/views/site_extras/index.blade.php
+git checkout HEAD^ resources/views/site_extras/show.blade.php
+git checkout HEAD^ resources/views/site_extras/show_fields.blade.php
+git checkout HEAD^ resources/views/site_extras/table.blade.php
+
+
 Remote
 cd domains/karimsaleh.tech/public_html/ookpi/
 chmod 777 -R ./

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -19,13 +20,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $Important
  * @property integer $high_consumption
  */
-class PassiveSpare extends Model
+class PassiveSpare extends EloquentModel
 {
     use SoftDeletes;
 
 
     public $table = 'passive_spares';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -62,8 +63,17 @@ class PassiveSpare extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+      /**
+     * The roles that belong to the user.
+     */
+    public function site_snags()
+    {
+        return $this->belongsToMan(SiteSnag::class, 'site_snag_passive_spare')
+            ->withTimeStamps()
+            ->withPivot(['qty']);
+    }
+
 }

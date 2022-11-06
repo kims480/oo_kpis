@@ -10,36 +10,37 @@
 @livewire('site-list')
 </div>
 
+
 <!-- Shelter Num Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('shelter_num', __('models/batteryAdds.fields.shelter_num') . ':') !!}
-    {!! Form::number('shelter_num', 1, ['class' => 'form-control','min'=>0,'max'=>10]) !!}
+    {!! Form::number('shelter_num',null, ['class' => 'form-control','min'=>0,'max'=>10,'placeholder'=>'Enter Selter number']) !!}
 </div>
 
 <!-- Ref Wo Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('ref_wo', __('models/batteryAdds.fields.ref_wo') . ':') !!}
-    {!! Form::text('ref_wo', "CM-2022...", ['class' => 'form-control']) !!}
+    {!! Form::text('ref_wo', null, ['class' => 'form-control','placeholder'=>'Enter WO number']) !!}
 </div>
 
 <!-- Ref Cr Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('ref_cr', __('models/batteryAdds.fields.ref_cr') . ':') !!}
-    {!! Form::text('ref_cr', "CR-2022...", ['class' => 'form-control']) !!}
+    {!! Form::text('ref_cr', null, ['class' => 'form-control','placeholder'=>'Enter CR number']) !!}
 </div>
 <!-- Load Vlot Before Cr Start -->
 <div class="form-group col-sm-6">
     {!! Form::label('volt_before', __('models/batteryAdds.fields.volt_before') . ':') !!}
-    {!! Form::text('volt_before', "", ['class' => 'form-control']) !!}
+    {!! Form::text('volt_before', null, ['class' => 'form-control' ,'placeholder'=>'Volt before Activity']) !!}
 </div>
 <!-- Load Amp Before Cr Start -->
 <div class="form-group col-sm-6">
     {!! Form::label('Amp_before', __('models/batteryAdds.fields.Amp_before') . ':') !!}
-    {!! Form::text('Amp_before', "", ['class' => 'form-control']) !!}
+    {!! Form::text('Amp_before', null, ['class' => 'form-control','placeholder'=>'Ampere Befroe Activity']) !!}
 </div>
 
 <!-- Batter 1 Sn Field -->
-<div class="w-full flex flex-wrap justify-between py-2  border-cyan-700 border border-solid rounded-sm bg-slate-100">
+<div class="w-full flex flex-wrap justify-between py-2 my-2  border-cyan-700 border border-solid rounded-sm bg-slate-100">
     <div class="form-group col-sm-6">
         {!! Form::label('batter_1_sn', __('models/batteryAdds.fields.batter_1_sn') . ':') !!}<small class="text-red-800 text-base font-bold">*</small>
         {!! Form::text('batter_1_sn', null, ['class' => 'form-control']) !!}
@@ -62,19 +63,19 @@
 <!-- Num Of Rect Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('num_of_rect', __('models/batteryAdds.fields.num_of_rect') . ':') !!}
-    {!! Form::number('num_of_rect', 1, ['class' => 'form-control','min'=>1,'max'=>10]) !!}
+    {!! Form::number('num_of_rect', null, ['class' => 'form-control','min'=>1,'max'=>10,'placeholder'=>'How many Rectifiers on site?']) !!}
 </div>
 
 <!-- Rect Num Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('rect_num', __('models/batteryAdds.fields.rect_num') . ':') !!}
-    {!! Form::number('rect_num', 1, ['class' => 'form-control','min'=>1,'max'=>10]) !!}
+    {!! Form::number('rect_num', null, ['class' => 'form-control','min'=>1,'max'=>10,'placeholder'=>'Which Rectifier Used for this Batteries?']) !!}
 </div>
 
 <!-- Bank Num Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('bank_num', __('models/batteryAdds.fields.bank_num') . ':') !!}
-    {!! Form::number('bank_num', 1, ['class' => 'form-control','min'=>1,'max'=>20]) !!}
+    {!! Form::number('bank_num', null, ['class' => 'form-control','min'=>1,'max'=>20,'placeholder'=>'Which Batteru Bank this batteries?']) !!}
 </div>
 
 <!-- Install Date Field -->
@@ -86,7 +87,7 @@
 @push('page_scripts')
     <script type="text/javascript">
         $('#install_date').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm:ss',
+            format: 'YYYY-MM-DD',
             useCurrent: true,
             sideBySide: true
         })
@@ -96,7 +97,7 @@
 <!-- Aircon Status Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('aircon_status', __('models/batteryAdds.fields.aircon_status') . ':') !!}
-    {!! Form::select('aircon_status', [1 => 'Good', 0 => 'Bad'], null, ['class' => 'form-control custom-select']) !!}
+    {!! Form::select('aircon_status', [1 => 'Good', 0 => 'Bad'], 0, ['class' => 'form-control custom-select']) !!}
 </div>
 
 
@@ -104,7 +105,7 @@
 <div class="form-group col-sm-6">
     {!! Form::label('rect_charge_status', __('models/batteryAdds.fields.rect_charge_status') . ':') !!}
     {!! Form::select('rect_charge_status', [1 => 'Good', 0 => 'Bad'], null, [
-        'class' => 'form-control custom-select',
+        'class' => 'form-control custom-select','placeholder'=>'Rectifier Charging Status'
     ]) !!}
 </div>
 
@@ -112,47 +113,47 @@
 <!-- Old Batteries Aging Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('old_batteries_aging', __('models/batteryAdds.fields.old_batteries_aging') . ':') !!}
-    {!! Form::number('old_batteries_aging', 5, ['class' => 'form-control','min'=>0,'max'=>10]) !!}
+    {!! Form::number('old_batteries_aging', null, ['class' => 'form-control','min'=>0,'max'=>10,'placeholder'=>'Old Batteries Aging']) !!}
 </div>
 
 <!-- Llvd Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('llvd', __('models/batteryAdds.fields.llvd') . ':') !!}
-    {!! Form::text('llvd', "46", ['class' => 'form-control' ]) !!}
+    {!! Form::text('llvd', null, ['class' => 'form-control','placeholder'=>'LLVD Value in rectifier (46v)' ]) !!}
 </div>
 
 <!-- Blvd Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('blvd', __('models/batteryAdds.fields.blvd') . ':') !!}
-    {!! Form::text('blvd', '43.2', ['class' => 'form-control']) !!}
+    {!! Form::text('blvd', null, ['class' => 'form-control','placeholder'=>'BLVD Value in rectifier (43.2v)']) !!}
 </div>
 <!-- Capacity Rating Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('capacity_rating', __('models/batteryAdds.fields.capacity_rating') . ':') !!}
-    {!! Form::text('capacity_rating', '', ['class' => 'form-control']) !!}
+    {!! Form::text('capacity_rating', null, ['class' => 'form-control','placeholder'=>'Capacity Ratin Should match batteries rating']) !!}
 </div>
 <!-- Battery Brand Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('battery_brand', __('models/batteryAdds.fields.battery_brand') . ':') !!}
-    {!! Form::text('battery_brand', '', ['class' => 'form-control']) !!}
+    {!! Form::text('battery_brand', null, ['class' => 'form-control','placeholder'=>'Batteries manufacturer']) !!}
 </div>
 <!-- Battery Model Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Battery_model', __('models/batteryAdds.fields.Battery_model') . ':') !!}
-    {!! Form::text('Battery_model', '', ['class' => 'form-control']) !!}
+    {!! Form::text('Battery_model', null, ['class' => 'form-control','placeholder'=>'Batteries Model']) !!}
 </div>
 <!-- Voltage Testing after Install Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Volt_after', __('models/batteryAdds.fields.Volt_after') . ':') !!}
-    {!! Form::text('Volt_after', '', ['class' => 'form-control']) !!}
+    {!! Form::text('Volt_after', null, ['class' => 'form-control','placeholder'=>'Volt After Replacing Batteries']) !!}
 </div>
 <!-- Ampere Testing after Install Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Amp_After', __('models/batteryAdds.fields.Amp_After') . ':') !!}
-    {!! Form::text('Amp_After', '', ['class' => 'form-control']) !!}
+    {!! Form::text('Amp_After', null, ['class' => 'form-control','placeholder'=>'Ampere After Replacing Batteries']) !!}
 </div>
 <!-- Remarks -->
 <div class="form-group col-sm-6">
     {!! Form::label('remarks', __('models/batteryAdds.fields.remarks') . ':') !!}
-    {!! Form::text('remarks', '', ['class' => 'form-control']) !!}
+    {!! Form::text('remarks', null, ['class' => 'form-control','placeholder'=>'Please add if any remarks']) !!}
 </div>

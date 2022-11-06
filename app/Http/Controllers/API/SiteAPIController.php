@@ -34,11 +34,12 @@ class SiteAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $sites = $this->siteRepository->all(
-            $request->except(['skip', 'limit']),
-            $request->get('skip'),
-            $request->get('limit')
-        );
+        // $sites = $this->siteRepository->all(
+        //     $request->except(['skip', 'limit']),
+        //     $request->get('skip'),
+        //     $request->get('limit')
+        // );
+        $sites=Site::all();
 
         return $this->sendResponse(
             $sites->toArray(),

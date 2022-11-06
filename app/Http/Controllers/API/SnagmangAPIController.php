@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Requests\API\CreateSnagmangAPIRequest;
 use App\Http\Requests\API\UpdateSnagmangAPIRequest;
 use App\Models\Snagmang;
-use App\Repositories\SnagmangRepository;
+use App\Repositories\SnagRepository as SnagmangRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use Response;
@@ -17,8 +17,8 @@ use Response;
 
 class SnagmangAPIController extends AppBaseController
 {
-    /** @var  SnagmangRepository */
     private $snagmangRepository;
+    /** @var  SnagmangRepository */
 
     public function __construct(SnagmangRepository $snagmangRepo)
     {

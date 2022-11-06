@@ -460,7 +460,7 @@
                         borderWidth: 2
                     }, {
                         label: 'Planned/Week',
-                        data: [3, 11, 37, 63, 63, 89, 104, 110, 120, 125, 130],
+                        data: [1, 10, 21, 39, 59, 59, 59, 73, 93, 104, 120],
                         tension: 0.2,
                         fill: false,
                     }]

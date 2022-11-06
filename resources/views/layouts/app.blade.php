@@ -221,6 +221,7 @@
         </div>
     </div>
     @livewireScripts()
+    @wireUiScripts
     <script src="{{ mix('js/app.js') }}"></script>
 
 

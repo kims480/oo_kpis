@@ -1,5 +1,6 @@
 <?php
 
+// use ;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,10 +20,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::resource('sites', App\Http\Controllers\API\SiteAPIController::class);
+Route::get('sites-all', [App\Http\Controllers\API\SiteAPIController::class,'index'])->name('sites.all');
+// Route::apiResource('sites', App\Http\Controllers\API\SiteAPIController::class);
 
 
-Route::resource('regions', App\Http\Controllers\API\RegionAPIController::class);
+Route::resource('regions',\App\Http\Controllers\API\RegionAPIController::class);
 
 
 
@@ -39,7 +41,8 @@ Route::resource('snagdomains', App\Http\Controllers\API\SnagdomainAPIController:
 Route::resource('snagstatuses', App\Http\Controllers\API\SnagstatusAPIController::class);
 
 
-Route::resource('snagmangs', App\Http\Controllers\API\SnagmangAPIController::class);
+// Route::resource('snagmangs', App\Http\Controllers\API\SnagmangAPIController::class);
+// Route::resource('snagmangs', App\Http\Controllers\API\SnagmangAPIController::class);
 
 
 Route::resource('site_snags', App\Http\Controllers\API\SiteSnagAPIController::class);

@@ -107,7 +107,7 @@
 <!-- Rect Charge Status Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('rect_charge_status', __('models/batteryAdds.fields.rect_charge_status') . ':') !!}
-    {!! Form::select('rect_charge_status', [1 => 'Good', 0 => 'Bad'], null, [
+    {!! Form::select('rect_charge_status', [1 => 'Good', 0 => 'Bad'], 1, [
         'class' => 'form-control custom-select','placeholder'=>'Rectifier Charging Status'
     ]) !!}
 </div>

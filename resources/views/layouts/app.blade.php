@@ -8,6 +8,7 @@
     <meta name="author" content="Karim Saleh">
     <meta name="description" content="Alkan East">
     <!-- Tailwind -->
+    {{-- <link rel="stylesheet" href="{{ asset('css/choices.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 

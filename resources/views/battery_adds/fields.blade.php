@@ -31,12 +31,12 @@
 <!-- Load Vlot Before Cr Start -->
 <div class="form-group col-sm-6">
     {!! Form::label('volt_before', __('models/batteryAdds.fields.volt_before') . ':') !!}
-    {!! Form::text('volt_before', null, ['class' => 'form-control' ,'placeholder'=>'Volt before Activity']) !!}
+    {!! Form::number('volt_before', null, ['class' => 'form-control' ,'placeholder'=>'Volt before Activity']) !!}
 </div>
 <!-- Load Amp Before Cr Start -->
 <div class="form-group col-sm-6">
     {!! Form::label('Amp_before', __('models/batteryAdds.fields.Amp_before') . ':') !!}
-    {!! Form::text('Amp_before', null, ['class' => 'form-control','placeholder'=>'Ampere Befroe Activity']) !!}
+    {!! Form::number('Amp_before', null, ['class' => 'form-control','placeholder'=>'Ampere Befroe Activity']) !!}
 </div>
 
 <!-- Batter 1 Sn Field -->
@@ -86,11 +86,14 @@
 
 @push('page_scripts')
     <script type="text/javascript">
-        $('#install_date').datetimepicker({
-            format: 'YYYY-MM-DD',
-            useCurrent: true,
-            sideBySide: true
-        })
+        // $('#install_date').datetimepicker({
+        //     format: 'YYYY-MM-DD',
+        //     useCurrent: true,
+        //     sideBySide: true
+        // });
+
+            // const element = document.querySelector('.snags-list');
+            const choices = new Choices(document.querySelector('.snags-list'));
     </script>
 @endpush
 
@@ -119,18 +122,18 @@
 <!-- Llvd Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('llvd', __('models/batteryAdds.fields.llvd') . ':') !!}
-    {!! Form::text('llvd', null, ['class' => 'form-control','placeholder'=>'LLVD Value in rectifier (46v)' ]) !!}
+    {!! Form::number('llvd', null, ['class' => 'form-control','placeholder'=>'LLVD Value in rectifier (46v)' ]) !!}
 </div>
 
 <!-- Blvd Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('blvd', __('models/batteryAdds.fields.blvd') . ':') !!}
-    {!! Form::text('blvd', null, ['class' => 'form-control','placeholder'=>'BLVD Value in rectifier (43.2v)']) !!}
+    {!! Form::number('blvd', null, ['class' => 'form-control','placeholder'=>'BLVD Value in rectifier (43.2v)']) !!}
 </div>
 <!-- Capacity Rating Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('capacity_rating', __('models/batteryAdds.fields.capacity_rating') . ':') !!}
-    {!! Form::text('capacity_rating', null, ['class' => 'form-control','placeholder'=>'Capacity Ratin Should match batteries rating']) !!}
+    {!! Form::number('capacity_rating', null, ['class' => 'form-control','placeholder'=>'Capacity Ratin Should match batteries rating']) !!}
 </div>
 <!-- Battery Brand Field -->
 <div class="form-group col-sm-6">
@@ -145,12 +148,12 @@
 <!-- Voltage Testing after Install Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Volt_after', __('models/batteryAdds.fields.Volt_after') . ':') !!}
-    {!! Form::text('Volt_after', null, ['class' => 'form-control','placeholder'=>'Volt After Replacing Batteries']) !!}
+    {!! Form::number('Volt_after', null, ['class' => 'form-control','placeholder'=>'Volt After Replacing Batteries']) !!}
 </div>
 <!-- Ampere Testing after Install Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Amp_After', __('models/batteryAdds.fields.Amp_After') . ':') !!}
-    {!! Form::text('Amp_After', null, ['class' => 'form-control','placeholder'=>'Ampere After Replacing Batteries']) !!}
+    {!! Form::number('Amp_After', null, ['class' => 'form-control','placeholder'=>'Ampere After Replacing Batteries']) !!}
 </div>
 <!-- Remarks -->
 <div class="form-group col-sm-6">

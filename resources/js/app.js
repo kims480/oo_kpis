@@ -8,6 +8,7 @@
 import Alpine from 'alpinejs';
 import focus from '@alpinejs/focus';
 import swal from 'sweetalert';
+import Choices from 'choices.js';
 // import NiceSelect from'./nice-select2';
 // import './prism';
 // import './fastclick';
@@ -27,6 +28,7 @@ window.Chart=Chart;
 window.Alpine = Alpine;
 window.swal = swal;
 window.Toastify = Toastify;
+window.Choices = Choices;
 // window.SelectSearch = searchdrop;
 
 Alpine.plugin(focus);
@@ -72,3 +74,10 @@ Alpine.data('tooltip', () => ({
 
 Alpine.start()
 // require('./main');
+const choices = (element) =>{
+    return new Choices(element,{
+    allowHTML:true,
+    maxItemCount:10,
+    removeItemButton:true
+})
+};

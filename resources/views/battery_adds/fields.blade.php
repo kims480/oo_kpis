@@ -14,7 +14,7 @@
 <!-- Shelter Num Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('shelter_num', __('models/batteryAdds.fields.shelter_num') . ':') !!}
-    {!! Form::number('shelter_num',null, ['class' => 'form-control','min'=>0,'max'=>10,'placeholder'=>'Enter Selter number']) !!}
+    {!! Form::number('shelter_num',null, ['class' => 'form-control','min'=>1,'max'=>10,'placeholder'=>'Enter Selter number']) !!}
 </div>
 
 <!-- Ref Wo Field -->
@@ -31,12 +31,12 @@
 <!-- Load Vlot Before Cr Start -->
 <div class="form-group col-sm-6">
     {!! Form::label('volt_before', __('models/batteryAdds.fields.volt_before') . ':') !!}
-    {!! Form::number('volt_before', null, ['class' => 'form-control' ,'placeholder'=>'Volt before Activity']) !!}
+    {!! Form::number('volt_before', null, ['class' => 'form-control' ,'placeholder'=>'Volt before Activity', 'min'=>46,'max'=>64,'step'=>0.1]) !!}
 </div>
 <!-- Load Amp Before Cr Start -->
 <div class="form-group col-sm-6">
     {!! Form::label('Amp_before', __('models/batteryAdds.fields.Amp_before') . ':') !!}
-    {!! Form::number('Amp_before', null, ['class' => 'form-control','placeholder'=>'Ampere Befroe Activity']) !!}
+    {!! Form::number('Amp_before', null, ['class' => 'form-control','placeholder'=>'Ampere Befroe Activity', 'min'=>1,'max'=>200,'step'=>0.01]) !!}
 </div>
 
 <!-- Batter 1 Sn Field -->
@@ -122,38 +122,38 @@
 <!-- Llvd Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('llvd', __('models/batteryAdds.fields.llvd') . ':') !!}
-    {!! Form::number('llvd', null, ['class' => 'form-control','placeholder'=>'LLVD Value in rectifier (46v)' ]) !!}
+    {!! Form::number('llvd', null, ['class' => 'form-control','placeholder'=>'LLVD Value in rectifier (46v)', 'min'=>46,'max'=>64,'step'=>0.1 ]) !!}
 </div>
 
 <!-- Blvd Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('blvd', __('models/batteryAdds.fields.blvd') . ':') !!}
-    {!! Form::number('blvd', null, ['class' => 'form-control','placeholder'=>'BLVD Value in rectifier (43.2v)']) !!}
+    {!! Form::number('blvd', null, ['class' => 'form-control','placeholder'=>'BLVD Value in rectifier (43.2v)','min'=>42,'max'=>48,'step'=>0.1]) !!}
 </div>
 <!-- Capacity Rating Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('capacity_rating', __('models/batteryAdds.fields.capacity_rating') . ':') !!}
-    {!! Form::number('capacity_rating', null, ['class' => 'form-control','placeholder'=>'Capacity Ratin Should match batteries rating']) !!}
+    {!! Form::number('capacity_rating', null, ['class' => 'form-control','placeholder'=>'Capacity Ratin Should match batteries rating (Ah)','min'=>90,'max'=>400,'step'=>10]) !!}
 </div>
 <!-- Battery Brand Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('battery_brand', __('models/batteryAdds.fields.battery_brand') . ':') !!}
-    {!! Form::text('battery_brand', null, ['class' => 'form-control','placeholder'=>'Batteries manufacturer']) !!}
+    {!! Form::text('battery_brand', 'SACRED SUN', ['class' => 'form-control','placeholder'=>'Batteries manufacturer']) !!}
 </div>
 <!-- Battery Model Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Battery_model', __('models/batteryAdds.fields.Battery_model') . ':') !!}
-    {!! Form::text('Battery_model', null, ['class' => 'form-control','placeholder'=>'Batteries Model']) !!}
+    {!! Form::text('Battery_model', 'FTA12-190A', ['class' => 'form-control','placeholder'=>'Batteries Model']) !!}
 </div>
 <!-- Voltage Testing after Install Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Volt_after', __('models/batteryAdds.fields.Volt_after') . ':') !!}
-    {!! Form::number('Volt_after', null, ['class' => 'form-control','placeholder'=>'Volt After Replacing Batteries']) !!}
+    {!! Form::number('Volt_after', null, ['class' => 'form-control','placeholder'=>'Volt After Replacing Batteries','min'=>46,'max'=>64,'step'=>0.1]) !!}
 </div>
 <!-- Ampere Testing after Install Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Amp_After', __('models/batteryAdds.fields.Amp_After') . ':') !!}
-    {!! Form::number('Amp_After', null, ['class' => 'form-control','placeholder'=>'Ampere After Replacing Batteries']) !!}
+    {!! Form::number('Amp_After', null, ['class' => 'form-control','placeholder'=>'Ampere After Replacing Batteries''min'=>1,'max'=>200,'step'=>0.01]) !!}
 </div>
 <!-- Remarks -->
 <div class="form-group col-sm-6">

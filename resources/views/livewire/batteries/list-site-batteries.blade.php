@@ -83,57 +83,57 @@
                             {!! Form::text('site_id', null, [
                                 'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
                                 'placeholder' => __('models/batteryAdds.fields.site__deployed'),
-                                'wire:model' => 'site_id',
+                                'wire:model.debounce' => 'site_id',
                             ]) !!}
                         </th>
                         <th>
                             {!! Form::text('batter_1_sn', null, [
                                 'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
                                 'placeholder' => __('models/batteryAdds.fields.battery_sn'),
-                                'wire:model' => 'battery_1_sn',
+                                'wire:model.debounce' => 'battery_1_sn',
                             ]) !!}
                         </th>
                         <th>
                             {!! Form::text('ref_wo', null, [
                                 'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
                                 'placeholder' => __('models/batteryAdds.fields.ref_wo'),
-                                'wire:model' => 'ref_wo',
+                                'wire:model.debounce' => 'ref_wo',
                             ]) !!}
                         </th>
                         <th> {!! Form::text('ref_cr', null, [
                             'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
                             'placeholder' => __('models/batteryAdds.fields.ref_cr'),
-                            'wire:model' => 'ref_cr',
+                            'wire:model.debounce' => 'ref_cr',
                         ]) !!}
                         </th>
                         <th> {!! Form::text('install_date', null, [
                             'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
                             'placeholder' => __('models/batteryAdds.fields.install_date'),
-                            'wire:model' => 'install_date',
+                            'wire:model.debounce' => 'install_date',
                         ]) !!}
                         </th>
                         <th> {!! Form::text('num_of_rect', null, [
                             'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
                             'placeholder' => __('models/batteryAdds.fields.num_of_rect'),
-                            'wire:model' => 'num_of_rect',
+                            'wire:model.debounce' => 'num_of_rect',
                         ]) !!}
                         </th>
                         <th> {!! Form::text('rect_num', null, [
                             'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
                             'placeholder' => __('models/batteryAdds.fields.rect_num'),
-                            'wire:model' => 'rect_num',
+                            'wire:model.debounce' => 'rect_num',
                         ]) !!}
                         </th>
                         <th> {!! Form::text('bank_num', null, [
                             'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
                             'placeholder' => __('models/batteryAdds.fields.bank_num'),
-                            'wire:model' => 'bank_num',
+                            'wire:model.debounce' => 'bank_num',
                         ]) !!}
                         </th>
                         <th> {!! Form::text('added_by', null, [
                             'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
                             'placeholder' => __('models/batteryAdds.fields.added_by'),
-                            'wire:model' => 'added_by',
+                            'wire:model.debounce' => 'added_by',
                         ]) !!}
                         </th>
                         <th>

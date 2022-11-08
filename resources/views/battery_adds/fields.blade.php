@@ -153,7 +153,7 @@
 <!-- Ampere Testing after Install Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Amp_After', __('models/batteryAdds.fields.Amp_After') . ':') !!}
-    {!! Form::number('Amp_After', null, ['class' => 'form-control','placeholder'=>'Ampere After Replacing Batteries''min'=>1,'max'=>200,'step'=>0.01]) !!}
+    {!! Form::number('Amp_After', null, ['class' => 'form-control','placeholder'=>'Ampere After Replacing Batteries','min'=>1,'max'=>200,'step'=>0.01]) !!}
 </div>
 <!-- Remarks -->
 <div class="form-group col-sm-6">

@@ -102,7 +102,32 @@ class BatteryAdd extends EloquentModel
      * @var array
      */
     public static $rules = [
-        'batter_1_sn' => 'unique:battery_add'
+        'batter_1_sn' => 'required|unique:battery_add',
+        'battery_2_sn' => 'required|unique:battery_add,batter_1_sn',
+        'battery_3_sn' => 'required|unique:battery_add,batter_1_sn',
+        'battery_4_sn' => 'required|unique:battery_add,batter_1_sn',
+        'site__deployed' => 'required',
+        'shelter_num' => 'required',
+        'ref_wo' => 'required',
+        'ref_cr' => 'required',
+
+        'num_of_rect' => 'required',
+        'rect_num' => 'required',
+        'bank_num' => 'required',
+        'install_date' => 'date',
+        'aircon_status' => 'required',
+        'rect_charge_status' => 'required',
+        'old_batteries_aging' => 'required',
+        'llvd' => 'required',
+        'blvd' => 'required',
+        'Amp_before'=>'required',
+        'volt_before' =>'required',
+        'Volt_after' =>'required',
+        'Amp_After'=>'required',
+        'capacity_rating'=>'required',
+        'battery_brand'=>'required',
+        'Battery_model'=>'required',
+        'remarks'=>'nullable'
     ];
 
     /**

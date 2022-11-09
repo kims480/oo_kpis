@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use App\DataTables\BatteryAddDataTable;
 use App\Exports\BatteryAddExport;
-use App\Http\Requests;
+use \Laracasts\Flash\Flash;
 use App\Http\Requests\CreateBatteryAddRequest;
 use App\Http\Requests\UpdateBatteryAddRequest;
 use App\Repositories\BatteryAddRepository;
-use Flash;
 use App\Http\Controllers\AppBaseController;
 use GuzzleHttp\Psr7\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -87,7 +86,7 @@ class BatteryAddController extends AppBaseController
             }
         }
 
-        Flash::success(__('messages.saved', ['model' => __('models/batteryAdds.singular')]));
+        \Laracasts\Flash\Flash::success(__('messages.saved', ['model' => __('models/batteryAdds.singular')]));
 
         return redirect(route(__('models/batteryAdds.singular').'.index'));
     }

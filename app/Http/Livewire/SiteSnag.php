@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\MainCateg;
+use App\Models\PassiveSpare;
 use App\Models\Site;
 use App\Models\SiteSnag as ModelsSiteSnag;
 use App\Models\Snag;
@@ -47,6 +48,9 @@ class SiteSnag extends Component
     public $selectedSnag_severity;
     public $report_date;
     public $closure_date;
+
+    public $meterialList;
+    public $requiredMeterials=[];
     // public $data = [];
 
 
@@ -65,8 +69,24 @@ class SiteSnag extends Component
         $this->snags_status = Snagstatus::select('id', 'name')->pluck('name', 'id');
         $this->snag_domain = Snagdomain::select('id', 'name')->pluck('name', 'id');
         $this->snag_reporter = Snagreporter::select('id', 'name')->pluck('name', 'id');
+        $this->meterialList = PassiveSpare::select('id', 'old_bom','new_bom','description')->get()->map(function($item){
+            $item['details']= $item['description'].", ".$item['new_bom'].", ".$item['old_bom'];
+            return ['id'=>$item['id'],'detail' => $item['details']];
+        });
+        $this->requiredMeterials=[['spare_part_id'=>'','qty'=>1]];
     }
 
+    public function addSpare()
+    {
+        $this->requiredMeterials[]=['spare_part_id'=>'','qty'=>1];
+
+    }
+    public function removeSpare($index)
+    {
+        unset($this->requiredMeterials[$index]);
+        $this->requiredMeterials=array_values($this->requiredMeterials);
+
+    }
 
     public function rules()
     {

@@ -67,6 +67,43 @@
                     {{-- Closure Date --}}
                     <x-forms.input id="closure_date" type="date" label="Closure Date" wireModel="" />
 
+                    {{-- Spares Required --}}
+                    <table>
+                        <thead>
+                            <th>Item</th>
+                            <th>Quintity</th>
+                        </thead>
+                        <tbody>
+
+                            @foreach ($requiredMeterials as $index=>$requiredMaterial)
+                            <tr>
+                                <td>
+
+                                    <select name="requiredMaterials[{{$index}}][spare_part_id]" wire:model="requiredMeterials.{{$index}}.spare_part_id" >
+                                        <option value="">-- Choose Spare --</option>
+                                        @foreach ($meterialList as $index=>$item)
+                                        {{-- @dump($item['detail']) --}}
+                                        <option value="{{$item['id']}}">{{$item['detail']}}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                    <input id="" type="number" name="requiredMaterials[{{$index}}][qty]"  wire:model="requiredMeterials.{{$index}}.qty" />
+                                </td>
+                                <td>-</td>
+                            </tr>
+
+                            @endforeach
+                            <tr>
+                                <td class="col-span-2">
+                                    <button wire:click.prevent="addSpare">
+                                        Add Material
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    @dump($requiredMeterials)
                 </div>
             </div>
             <div class="card-footer">

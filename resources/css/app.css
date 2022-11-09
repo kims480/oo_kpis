@@ -131,7 +131,7 @@ html, body {
 .is-invalid{
     @apply border-red-300
 }
-.is-invalid{
+.is-valid{
     @apply border-green-400
 }
 /* <!-- Font Awesome --> */

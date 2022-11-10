@@ -34,8 +34,8 @@ class CreateBatteryAddRequest extends FormRequest
     public function messages()
     {
         return [
-            'ref_wo.required' => __('models/batteryAdds.fields.volt_before') . ' is required',
-            'ref_cr.required' => __('models/batteryAdds.fields.volt_before') . ' is required',
+            'ref_wo.required' => __('models/batteryAdds.fields.ref_wo') . ' is required',
+            'ref_cr.required' => __('models/batteryAdds.fields.ref_cr') . ' is required',
             'volt_before.required' => __('models/batteryAdds.fields.volt_before') . ' is required',
             'Amp_before.required' => __('models/batteryAdds.fields.Amp_before') . ' is required',
             'batter_1_sn.required' => __('models/batteryAdds.fields.battery_sn') . ' is required',

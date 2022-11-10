@@ -106,10 +106,10 @@ class BatteryAdd extends EloquentModel
         'battery_2_sn' => 'required|unique:battery_add,batter_1_sn',
         'battery_3_sn' => 'required|unique:battery_add,batter_1_sn',
         'battery_4_sn' => 'required|unique:battery_add,batter_1_sn',
-        'site_name_id' => 'required',
-        'shelter_num' => 'required',
+        // 'site_name_id' => 'required',
+        // 'shelter_num' => 'required',
         'ref_wo' => 'required',
-        'ref_cr' => 'required',
+        // 'ref_cr' => 'required',
 
         'num_of_rect' => 'required',
         'rect_num' => 'required',

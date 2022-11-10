@@ -5,6 +5,7 @@
 </div> --}}
 <div class="w-full">
     <x-alert type="error" title="Warning" message="All Data photos to be reflected on Autin"></x-alert>
+    {{ $errors }}
 </div>
 <div class="form-groub p-1 px-2 col-sm-6 sm:w-full md:w-1/2 ">
     @livewire('site-list')

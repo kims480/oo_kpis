@@ -2,6 +2,13 @@
 
 # Laravel Boilerplate for AdminLTE Theme
 
+This Version has been built by Karim Saleh
+
+95021221
+eng.karim2010@gmail.com
+
+ALKANCIT
+
 Laravel Boilerplate with [AdminLTE](https://adminlte.io/) Theme with [Laravel Boilerplate](https://github.com/OpenHau/laravel-boilerplate).
 
 Youtube: https://www.youtube.com/watch?v=tk9CJU9W7BU

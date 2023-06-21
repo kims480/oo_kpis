@@ -1,7 +1,7 @@
 
 # Telecom Management System
 
-by Karim Saleh
+by <b style="color:blue;">Karim Saleh</b>
 
 Phone: +968 95021221
 

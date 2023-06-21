@@ -9,7 +9,11 @@ Email: eng.karim2010@gmail.com
 
 ALKANCIT
 
-Following features are included
+Laravel Boilerplate with [AdminLTE](https://adminlte.io/) Theme with [Laravel Boilerplate](https://github.com/OpenHau/laravel-boilerplate).
+
+Youtube: https://www.youtube.com/watch?v=tk9CJU9W7BU
+
+Following things are ready to be used directly with AdminLTE Theme.
 
 - Auth(Signup,Login,Forgot Password,Password Reset)
 - Dashboard
@@ -48,8 +52,6 @@ Following features are included
 4. Generate application key by running `php artisan key:generate`
 5. Run `php artisan migrate --seed`
 6. Run `php artisan serve`
-
-#
 
 Thanks for downloading...
 

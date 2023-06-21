@@ -1,5 +1,5 @@
 
-# Telecom Managemnt System
+# Telecom Management System
 
 by Karim Saleh
 
@@ -51,15 +51,6 @@ Following things are ready to be used directly with AdminLTE Theme.
 4. Generate application key by running `php artisan key:generate`
 5. Run `php artisan migrate --seed`
 6. Run `php artisan serve`
-7. Login account:
-- Supper Admin: hau@hau.xyz/123@123@1234
 
-Once everything is installed, you are ready to go with generator.
-
-see: https://hau.xyz
-
-## Vue 3 + bootstrap 5 + Bootstrap Icons: 
-
-https://github.com/devhau/hoya
-Contact: nguyenvanhaudev@gmail.com
+Thanks for downloading...
 

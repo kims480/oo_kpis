@@ -55,3 +55,16 @@ git pull https://github.com/kims480/oo_kpis.git main
 git checkout  public/css/app.css -f
 export PATH="/opt/alt/php80/usr/bin:$PATH"
 alias php='/opt/alt/php80/usr/bin/php'
+
+
+7. Login account:
+- Supper Admin: hau@hau.xyz/123@123@1234
+
+Once everything is installed, you are ready to go with generator.
+
+see: https://hau.xyz
+
+## Vue 3 + bootstrap 5 + Bootstrap Icons:
+
+https://github.com/devhau/hoya
+Contact: nguyenvanhaudev@gmail.com

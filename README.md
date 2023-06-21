@@ -3,8 +3,9 @@
 
 by Karim Saleh
 
-95021221
-eng.karim2010@gmail.com
+Phone: +968 95021221
+
+Email: eng.karim2010@gmail.com
 
 ALKANCIT
 

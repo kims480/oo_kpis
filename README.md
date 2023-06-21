@@ -1,8 +1,8 @@
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-# Laravel Boilerplate for AdminLTE Theme
+# Telecom Managemnt System
 
-This Version has been built by Karim Saleh
+by Karim Saleh
 
 95021221
 eng.karim2010@gmail.com

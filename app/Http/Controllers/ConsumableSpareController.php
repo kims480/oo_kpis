@@ -32,7 +32,7 @@ class ConsumableSpareController extends AppBaseController
         $this->authorize('viewAny',ConsumableSpare::class);
         $consumableSpares = $this->consumableSpareRepository->paginate(10);
 
-        return view('consumable_spares.index_')
+        return view('consumable_spares.index')
             ->with('consumableSpares', $consumableSpares);
         //
     }

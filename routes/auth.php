@@ -92,5 +92,7 @@ Route::get('battery-export', [App\Http\Controllers\BatteryAddController::class,'
 
 Route::resource('passive-spares', App\Http\Controllers\PassiveSpareController::class);
 
+Route::resource('consumable-spares', App\Http\Controllers\ConsumableSpareController::class);
+
 
 Route::resource('siteExtras', App\Http\Controllers\SiteExtraController::class);

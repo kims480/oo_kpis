@@ -53,9 +53,9 @@
                             for="flexSwitchCheckChecked">Filter</label>
                     </div>
                 </div>
-                @can(__('models/batteryAdds.singular') . '.create')
+                @can(__('models/consumableSpares.route') . '.create')
                     <a class="transition text-amber-800 bg-amber-50 ease-in-out btn btn-default relative has-tooltips text-sm hover:bg-cyan-900 hover:text-slate-50"
-                        href="{{ route(__('models/batteryAdds.singular') . '.create') }}">
+                        href="{{ route(__('models/consumableSpares.route') . '.create') }}">
                         @lang('crud.add_new')
                     </a>
                 @endcan

@@ -9,6 +9,19 @@
         <th>@lang('models/consumableSpares.fields.uom')</th>
         <th>@lang('models/consumableSpares.fields.Important')</th>
         <th>@lang('models/consumableSpares.fields.high_consumption')</th>
+        <th>@lang('models/consumableSpares.fields.muscat_stk')</th>
+        <th>@lang('models/consumableSpares.fields.sll_stk')</th>
+        <th>@lang('models/consumableSpares.fields.shr_stk')</th>
+        <th>@lang('models/consumableSpares.fields.nzw_stk')</th>
+        <th>@lang('models/consumableSpares.fields.ibra_stk')</th>
+        <th>@lang('models/consumableSpares.fields.ibri_stk')</th>
+        <th>@lang('models/consumableSpares.fields.adm_stk')</th>
+        <th>@lang('models/consumableSpares.fields.swq_stk')</th>
+        <th>@lang('models/consumableSpares.fields.dqm_stk')</th>
+        <th>@lang('models/consumableSpares.fields.sur_stk')</th>
+        <th>@lang('models/consumableSpares.fields.khasab_stk')</th>
+        <th>@lang('models/consumableSpares.fields.haima_stk')</th>
+        <th>@lang('models/consumableSpares.fields.total_stk')</th>
             <th colspan="3">@lang('crud.action')</th>
         </tr>
         </thead>
@@ -22,6 +35,19 @@
             <td>{{ $consumableSpare->uom }}</td>
             <td>{{ $consumableSpare->Important }}</td>
             <td>{{ $consumableSpare->high_consumption }}</td>
+            <td>{{ $consumableSpare->muscat_stk }}</td>
+            <td>{{ $consumableSpare->sll_stk }}</td>
+            <td>{{ $consumableSpare->shr_stk }}</td>
+            <td>{{ $consumableSpare->nzw_stk }}</td>
+            <td>{{ $consumableSpare->ibra_stk }}</td>
+            <td>{{ $consumableSpare->ibri_stk }}</td>
+            <td>{{ $consumableSpare->adm_stk }}</td>
+            <td>{{ $consumableSpare->swq_stk }}</td>
+            <td>{{ $consumableSpare->dqm_stk }}</td>
+            <td>{{ $consumableSpare->sur_stk }}</td>
+            <td>{{ $consumableSpare->khasab_stk }}</td>
+            <td>{{ $consumableSpare->haima_stk }}</td>
+            <td>{{ $consumableSpare->total_stk }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['consumable-spares.destroy', $consumableSpare->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

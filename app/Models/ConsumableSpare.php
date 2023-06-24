@@ -23,7 +23,20 @@ class ConsumableSpare extends Model
         'description',
         'uom',
         'Important',
-        'high_consumption'
+        'high_consumption',
+        'muscat_stk',
+        'sll_stk',
+        'shr_stk',
+        'nzw_stk',
+        'adm_stk',
+        'ibri_stk',
+        'haima_stk',
+        'dqm_stk',
+        'sur_stk',
+        'ibra_stk',
+        'swq_stk',
+        'khasab_stk',
+        'total_stk',
     ];
 
     /**

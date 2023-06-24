@@ -76,5 +76,20 @@ nono .env //for edit
 
 php composer.phar ... for user composer 2
 
-create policy
+#create policy
 php artisan make:policy ConsumableSparePolicy --model=ConsumbaleSpare
+
+
+#create Seeders
+php artisan make:seeder UserSeeder
+
+#run seeders
+php artisan db:seed
+php artisan db:seed --class=UserSeeder
+
+#fresh seeders
+php artisan migrate:fresh --seed
+php artisan migrate:fresh --seed --seeder=ConsumableSpareSeeder
+
+#force seeders
+php artisan db:seed --force

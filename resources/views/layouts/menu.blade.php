@@ -225,6 +225,14 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
     </a>
 </li>
 @endcan
+@can('consumable-spares.index')
+<li class="nav-item">
+    <a href="{{ route(__('models/consumableSpares.route').'.index') }}"
+       class="nav-link {{ Request::is('batteryAdds*') ? 'active' : '' }}">
+        <p>@lang('models/consumableSpares.plural')</p>
+    </a>
+</li>
+@endcan
 
 <li class="nav-item">
     <a href="{{ route('passiveSpares.index') }}"

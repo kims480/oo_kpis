@@ -75,3 +75,6 @@ cat .env
 nono .env //for edit
 
 php composer.phar ... for user composer 2
+
+create policy
+php artisan make:policy ConsumableSparePolicy --model=ConsumbaleSpare

@@ -16,7 +16,7 @@
                     </a>
                     @can('gen.permissions')
                         <a class="btn btn-success "
-                        href="{{route('insert.permissions',__('models/consumable-spares.singular')) }}">
+                        href="{{route('insert.permissions',__('models/consumableSpares.model')) }}">
                             @lang('crud.initiate_permissions')
                         </a>
                     @endcan

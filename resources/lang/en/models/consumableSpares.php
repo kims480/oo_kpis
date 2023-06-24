@@ -1,6 +1,8 @@
 <?php
 return array (
   'route' => 'consumable-spares',
+  'model' => 'ConsumableSpare',
+  'permissions' => 'consumablespares',
   'singular' => 'consumable-spare',
   'plural' => 'consumable-spares',
   'fields' =>

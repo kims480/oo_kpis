@@ -879,11 +879,11 @@ $urlAdmin = config('fast.admin_prefix');
         </a>
     </div>
 @endcan
-@can(__('models/consumableSpares.singular').'.index')
+@can(__('models/consumableSpares.permissions').'.index')
     <div @click="$store.sidebar.active = 'consumable-spare'" x-data="tooltip" x-on:mouseover="show = true"
         x-on:mouseleave="show = false"
         class=" relative flex justify-between items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
-        {{ Request::is('admin/'.__('models/consumableSpares.singular').'*')  ? 'active text-orange-300 bg-gray-800' : 'text-gray-400' }}"
+        {{ Request::is('admin/'.__('models/consumableSpares.route').'*')  ? 'active text-orange-300 bg-gray-800' : 'text-gray-400' }}"
         x-bind:class="{
             'justify-start': $store.sidebar.full,
             'sm:justify-center': !$store.sidebar.full,
@@ -901,7 +901,7 @@ $urlAdmin = config('fast.admin_prefix');
                 </svg>
                 <h3 x-cloak class="text-base"
                     x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full && !show ? 'sm:hidden' : ''">
-                    <p>@lang('models/consumableSpares.plural')</p>
+                    <p>@lang('models/consumableSpares.route')</p>
                 </h3>
 
             </div>

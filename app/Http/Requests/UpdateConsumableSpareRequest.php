@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\ConsumableSpare;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateConsumableSpareRequest extends FormRequest
@@ -13,7 +14,7 @@ class UpdateConsumableSpareRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +24,6 @@ class UpdateConsumableSpareRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        return ConsumableSpare::$rules;
     }
 }

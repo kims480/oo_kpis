@@ -18,7 +18,7 @@ class ConsumableSparePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class ConsumableSparePolicy
      */
     public function view(User $user, ConsumableSpare $consumableSpare)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,7 +41,7 @@ class ConsumableSparePolicy
      */
     public function create(User $user)
     {
-        //
+        return false;
     }
 
     /**

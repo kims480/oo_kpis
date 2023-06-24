@@ -17,7 +17,7 @@
 
         <div class="card">
 
-            {!! Form::model($consumableSpare, ['route' => ['consumableSpares.update', $consumableSpare->id], 'method' => 'patch']) !!}
+            {!! Form::model($consumableSpare, ['route' => [__('models/consumableSpares.route').'.update', $consumableSpare->id], 'method' => 'patch']) !!}
 
             <div class="card-body">
                 <div class="row">
@@ -27,7 +27,7 @@
 
             <div class="card-footer">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('consumableSpares.index') }}" class="btn btn-default">
+                <a href="{{ route(__('models/consumableSpares.route').'.index') }}" class="btn btn-default">
                     @lang('crud.cancel')
                  </a>
             </div>

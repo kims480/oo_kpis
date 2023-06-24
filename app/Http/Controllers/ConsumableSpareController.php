@@ -29,9 +29,10 @@ class ConsumableSpareController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $this->authorize('viewAny',ConsumableSpare::class);
         $consumableSpares = $this->consumableSpareRepository->paginate(10);
 
-        return view('consumable_spares.index')
+        return view('consumable_spares.index_')
             ->with('consumableSpares', $consumableSpares);
         //
     }
@@ -60,7 +61,7 @@ class ConsumableSpareController extends AppBaseController
 
         Flash::success(__('messages.saved', ['model' => __('models/consumableSpares.singular')]));
 
-        return redirect(route('consumableSpares.index'));
+        return redirect(route(__('models/consumableSpares.route').'.index'));
     }
 
     /**
@@ -90,7 +91,7 @@ class ConsumableSpareController extends AppBaseController
      */
     public function edit(ConsumableSpare $consumableSpare)
     {
-        $consumableSpare = $this->consumableSpareRepository->find($id);
+        $consumableSpare = $this->consumableSpareRepository->find($consumableSpare->id);
 
         if (empty($consumableSpare)) {
             Flash::error(__('messages.not_found', ['model' => __('models/consumableSpares.singular')]));
@@ -110,19 +111,19 @@ class ConsumableSpareController extends AppBaseController
      */
     public function update(UpdateConsumableSpareRequest $request, ConsumableSpare $consumableSpare)
     {
-        $consumableSpare = $this->consumableSpareRepository->find($id);
+        $consumableSpare = $this->consumableSpareRepository->find($consumableSpare->id);
 
         if (empty($consumableSpare)) {
             Flash::error(__('messages.not_found', ['model' => __('models/consumableSpares.singular')]));
 
-            return redirect(route('consumableSpares.index'));
+            return redirect(route(__('models/consumableSpares.route').'.index'));
         }
 
-        $consumableSpare = $this->consumableSpareRepository->update($request->all(), $id);
+        $consumableSpare = $this->consumableSpareRepository->update($request->all(), $consumableSpare->id);
 
         Flash::success(__('messages.updated', ['model' => __('models/consumableSpares.singular')]));
 
-        return redirect(route('consumableSpares.index'));
+        return redirect(route(__('models/consumableSpares.route').'.index'));
     }
 
     /**

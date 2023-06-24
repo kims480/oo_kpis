@@ -21,9 +21,11 @@ class ConsumableSpareSeeder extends Seeder
     public function run()
     {
         if (\DB::table('consumable_spares')->count() > 0) {
-            return;
+
+
+            \DB::table('consumable_spares')->truncate();
+            \DB::table('consumable_spares')->insert($this->spares);
         }
 
-        \DB::table('consumable_spares')->insert($this->spares);
     }
 }

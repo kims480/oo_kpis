@@ -134,6 +134,18 @@ class ConsumableSpareController extends AppBaseController
      */
     public function destroy(ConsumableSpare $consumableSpare)
     {
+        $passiveSpare = $this->consumableSpareRepository->find($consumableSpare->id);
+
+        if (empty($passiveSpare)) {
+            Flash::error(__('messages.not_found', ['model' => __('models/consumableSpares.route')]));
+
+            return redirect(route('passiveSpares.index'));
+        }
+
+        $this->consumableSpareRepository->delete($consumableSpare->id);
+
+        Flash::success(__('messages.deleted', ['model' => __('models/consumableSpares.route')]));
+
         return redirect(route(__('models/consumableSpares.route').'.index'));
 
     }

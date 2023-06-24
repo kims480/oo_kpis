@@ -879,7 +879,7 @@ $urlAdmin = config('fast.admin_prefix');
         </a>
     </div>
 @endcan
-@can(__('models/consumableSpares.permissions').'.index')
+@can(__('models/consumableSpares.route').'.index')
     <div @click="$store.sidebar.active = 'consumable-spare'" x-data="tooltip" x-on:mouseover="show = true"
         x-on:mouseleave="show = false"
         class=" relative flex justify-between items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer

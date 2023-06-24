@@ -77,7 +77,7 @@ class ConsumableSpareController extends AppBaseController
         if (empty($consumableSpare)) {
             Flash::error(__('messages.not_found', ['model' => __('models/consumableSpares.singular')]));
 
-            return redirect(route('consumableSpares.index'));
+            return redirect(route(__('models/consumableSpares.route').'.index'));
         }
 
         return view('consumable_spares.show')->with('consumableSpare', $consumableSpare);
@@ -96,7 +96,7 @@ class ConsumableSpareController extends AppBaseController
         if (empty($consumableSpare)) {
             Flash::error(__('messages.not_found', ['model' => __('models/consumableSpares.singular')]));
 
-            return redirect(route('consumableSpares.index'));
+            return redirect(route(__('models/consumableSpares.route').'.index'));
         }
 
         return view('consumable_spares.edit')->with('consumableSpare', $consumableSpare);
@@ -134,7 +134,7 @@ class ConsumableSpareController extends AppBaseController
      */
     public function destroy(ConsumableSpare $consumableSpare)
     {
-        return redirect(route('consumableSpares.index'));
+        return redirect(route(__('models/consumableSpares.route').'.index'));
 
     }
 }

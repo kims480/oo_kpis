@@ -180,6 +180,11 @@
                         <i class="fas fa-user mr-3"></i>
                         Deploy Battery
                     </a>
+                    <a href="{{ route(__('models/consumableSpares.route').'.index') }}"
+                        class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                        <i class="fas fa-user mr-3"></i>
+                        Consumable spare
+                    </a>
                     <a href="#"
                         class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

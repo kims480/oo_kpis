@@ -134,7 +134,7 @@
                         <th>@lang('models/consumableSpares.fields.uom')</th>
                         <th>@lang('models/consumableSpares.fields.Important')</th>
                         <th>@lang('models/consumableSpares.fields.high_consumption')</th>
-                        <th>@lang('models/consumableSpares.fields.muscat_stk')</th>
+                        {{-- <th>@lang('models/consumableSpares.fields.muscat_stk')</th>
                         <th>@lang('models/consumableSpares.fields.sll_stk')</th>
                         <th>@lang('models/consumableSpares.fields.shr_stk')</th>
                         <th>@lang('models/consumableSpares.fields.nzw_stk')</th>
@@ -145,7 +145,7 @@
                         <th>@lang('models/consumableSpares.fields.dqm_stk')</th>
                         <th>@lang('models/consumableSpares.fields.sur_stk')</th>
                         <th>@lang('models/consumableSpares.fields.khasab_stk')</th>
-                        <th>@lang('models/consumableSpares.fields.haima_stk')</th>
+                        <th>@lang('models/consumableSpares.fields.haima_stk')</th> --}}
                         <th>@lang('models/consumableSpares.fields.total_stk')</th>
                         <th colspan="3">@lang('crud.action')</th>
                     </tr>
@@ -168,7 +168,7 @@
                     <td>{{ $consumableSpare->uom ?? null }}</td>
                     <td>{{ $consumableSpare->Important ?? null }}</td>
                     <td>{{ $consumableSpare->high_consumption ?? null }}</td>
-                    <td>{{ $consumableSpare->muscat_stk ?? null }}</td>
+                    {{-- <td>{{ $consumableSpare->muscat_stk ?? null }}</td>
                     <td>{{ $consumableSpare->sll_stk ?? null }}</td>
                     <td>{{ $consumableSpare->shr_stk ?? null }}</td>
                     <td>{{ $consumableSpare->nzw_stk ?? null }}</td>
@@ -179,8 +179,19 @@
                     <td>{{ $consumableSpare->dqm_stk ?? null }}</td>
                     <td>{{ $consumableSpare->sur_stk ?? null }}</td>
                     <td>{{ $consumableSpare->khasab_stk ?? null }}</td>
-                    <td>{{ $consumableSpare->haima_stk ?? null }}</td>
-                    <td>{{ $consumableSpare->total_stk ?? null }}</td>
+                    <td>{{ $consumableSpare->haima_stk ?? null }}</td> --}}
+
+                    <td>{{ $consumableSpare->muscat_stk+$consumableSpare->sll_stk
+                        +$consumableSpare->shr_stk
+                        +$consumableSpare->nzw_stk
+                        +$consumableSpare->ibra_stk
+                        +$consumableSpare->ibri_stk
+                        +$consumableSpare->adm_stk
+                        +$consumableSpare->swq_stk
+                        +$consumableSpare->dqm_stk
+                        +$consumableSpare->sur_stk
+                        +$consumableSpare->khasab_stk
+                        +$consumableSpare->haima_stk ?? null }}</td>
 
                                 <td class="flex justify-center flex-nowrap">
                                     {!! Form::open([
@@ -192,16 +203,18 @@
                                             class='btn btn-default btn-xs'>
                                             <i class="far fa-eye"></i>
                                         </a>
-                                        @if (Auth::user()->isSuperAdmin())
+                                        @if (Auth::user()->isSuperAdmin() || Auth::user()->can(__('models/consumableSpares.route').'.edit'))
                                             <a href="{{ route(__('models/consumableSpares.route') . '.edit', [$consumableSpare->id]) }}"
                                                 class='btn btn-success btn-xs'>
                                                 <i class="far fa-edit"></i>
                                             </a>
+                                            @if (Auth::user()->isSuperAdmin() || Auth::user()->can(__('models/consumableSpares.route').'.destroy'))
                                             {!! Form::button('<i class="far fa-trash-alt"></i>', [
                                                 'type' => 'submit',
                                                 'class' => 'btn btn-danger btn-xs',
                                                 'onclick' => "return confirm('Are you sure?')",
                                             ]) !!}
+                                            @endif
                                         @endif
                                     </div>
                                     {!! Form::close() !!}

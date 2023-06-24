@@ -46,6 +46,7 @@ git checkout HEAD^ resources/views/site_extras/table.blade.php
 
 
 Remote
+password: Ringer!93
 cd domains/karimsaleh.tech/public_html/ookpi/
 chmod 777 -R ./
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -68,3 +69,9 @@ see: https://hau.xyz
 
 https://github.com/devhau/hoya
 Contact: nguyenvanhaudev@gmail.com
+
+
+cat .env
+nono .env //for edit
+
+php composer.phar ... for user composer 2

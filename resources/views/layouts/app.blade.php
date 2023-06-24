@@ -222,7 +222,7 @@
         </div>
     </div>
     @livewireScripts()
-    @wireUiScripts
+    @wireUiScripts()
     <script src="{{ mix('js/app.js') }}"></script>
 
 

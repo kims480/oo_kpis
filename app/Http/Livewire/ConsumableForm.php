@@ -16,6 +16,10 @@ class ConsumableForm extends Component
     public $selectedSite_id = null;
     public $siteSearch = null;
     public $SitesList;
+    public $consumable_spare_bom = '';
+    public $selectedSpare_id = null;
+    public $spareSearch = null;
+    public $SparesList;
     public $consumable_moveConsumable_spares = [];
     public $allConsumable_spares = [];
 
@@ -87,6 +91,7 @@ class ConsumableForm extends Component
         $this->resetErrorBag();
         $consumable_spare = ConsumableSpare::find($this->consumable_moveConsumable_spares[$index]['consumable_spare_id']);
         $this->consumable_moveConsumable_spares[$index]['old_bom'] = $consumable_spare->old_bom;
+        $this->consumable_moveConsumable_spares[$index]['description'] = $consumable_spare->description;
 
         $this->consumable_moveConsumable_spares[$index]['is_saved'] = true;
     }

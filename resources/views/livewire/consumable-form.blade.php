@@ -2,13 +2,16 @@
     <form wire:submit.prevent="saveConsumable_move">
         @csrf
         <div>
-            <label>Site ID</label>
-            <input wire:model="consumable_move.site_id" type="text" name="customer_name" class="focus:outline-none w-full border border-indigo-500 rounded-md p-1" value="{{ old('invoice.customer_name') }}" required>
+            <x-multi-select label="Site ID" itemId="site" :optionSelectedId="$selectedSite_id" optionValue="selectedSite_id"
+                optionName="site_name" :optionSelectedName="$site_name" :optionList="$SitesList" itemSearch="siteSearch" />
+            {{-- <label>Site ID</label> --}}
+
+            {{-- <input wire:model="consumable_move.site_id" type="text" name="customer_name" class="focus:outline-none w-full border border-indigo-500 rounded-md p-1" value="{{ old('invoice.customer_name') }}" required>
             @error('consumable_move.site_id')
                 <span class="text-red-500">
                     {{ $errors->first('consumable_move.site_id') }}
                 </span>
-            @enderror
+            @enderror --}}
         </div>
         <div>
             <label>WO</label>

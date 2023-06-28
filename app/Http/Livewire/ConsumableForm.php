@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\ConsumableMove;
 use App\Models\ConsumableSpare;
+use App\Models\Site;
 use Livewire\Component;
 
 class ConsumableForm extends Component
@@ -11,6 +12,10 @@ class ConsumableForm extends Component
 
 
     public $consumable_move;
+    public $site_name = '';
+    public $selectedSite_id = null;
+    public $siteSearch = null;
+    public $SitesList;
     public $consumable_moveConsumable_spares = [];
     public $allConsumable_spares = [];
 
@@ -26,8 +31,7 @@ class ConsumableForm extends Component
                     'consumable_spare_id' => $consumable_spare->id,
                     'quantity' => $consumable_spare->pivot->quantity,
                     'is_saved' => true,
-
-
+                    'site_name' => $this->site_name_id,
                 ];
             }
         }
@@ -42,6 +46,8 @@ class ConsumableForm extends Component
         //         $total += $consumable_moveConsumable_spare['consumable_spare_price'] * $consumable_moveConsumable_spare['quantity'];
         //     }
         // }
+        $this->SitesList = Site::where('site_id', 'like', '%' . $this->siteSearch . '%')->select('id', 'site_id')->paginate(100)->pluck('site_id', 'id');
+
 
         return view('livewire.consumable-form');
     }
@@ -95,10 +101,12 @@ class ConsumableForm extends Component
     {
         $this->validate();
         $this->consumable_move->user_id=auth()->user()->id;
+
+        $this->consumable_move->site_id=Site::find($this->selectedSite_id)->id;
+        // dd($this->consumable_move);
         $this->consumable_move->save();
 
         $consumable_spares = [];
-        // dd($this->consumable_moveConsumable_spares);
         foreach ($this->consumable_moveConsumable_spares as $consumable_spare) {
             $consumable_spares[$consumable_spare['consumable_spare_id']] = ['quantity' => $consumable_spare['quantity'],];
         }
@@ -111,7 +119,7 @@ class ConsumableForm extends Component
     protected function rules(): array
     {
         return [
-            'consumable_move.site_id'  => 'required|string',
+            'selectedSite_id'  => 'required',
             'consumable_move.wo' => 'required|string'
         ];
     }

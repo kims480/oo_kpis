@@ -14,7 +14,7 @@ class ConsumableSpare extends Model
 
     protected $dates = ['deleted_at'];
 
-
+//cost
 
     public $fillable = [
         'id',
@@ -22,6 +22,7 @@ class ConsumableSpare extends Model
         'new_bom',
         'description',
         'uom',
+
         'Important',
         'high_consumption',
         'muscat_stk',
@@ -62,5 +63,9 @@ class ConsumableSpare extends Model
     public static $rules = [
 
     ];
+    public function consumable_moves()
+    {
+        return $this->belongsToMany(consumableMove::class,'consumable_spare_consumable_move');
+    }
 
 }

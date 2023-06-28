@@ -170,6 +170,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(BatteryAdd::class, 'added_by', 'id');
     }
+    /**
+     * Get all of the batteries for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function offices()
+    {
+        return $this->belongsToMany(Office::class, 'office_user');
+    }
 
     // $users = DB::table('users')
     //             ->leftJoin('posts', 'users.id', '=', 'posts.user_id')

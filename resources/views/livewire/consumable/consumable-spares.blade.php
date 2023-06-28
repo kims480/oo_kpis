@@ -1,3 +1,20 @@
 <div>
-    test consumanle spares
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Item</th>
+                <th>Qty</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ([0,1,2] as $index)
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>

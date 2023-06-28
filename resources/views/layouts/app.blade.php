@@ -191,6 +191,7 @@
         </div>
     </div>
     @livewireScripts()
+    @stack('scripts')
     @wireUiScripts()
     <script src="{{ mix('js/app.js') }}"></script>
 

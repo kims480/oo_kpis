@@ -64,5 +64,12 @@ class Office extends Model
     {
         return $this->belongsTo(Region::class, 'region_id');
     }
+    /**
+     * The users that belong to the role.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'office_user');
+    }
 
 }

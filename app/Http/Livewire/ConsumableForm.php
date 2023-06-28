@@ -26,7 +26,7 @@ class ConsumableForm extends Component
                     'consumable_spare_id' => $consumable_spare->id,
                     'quantity' => $consumable_spare->pivot->quantity,
                     'is_saved' => true,
-                    // 'consumable_spare_name' => $consumable_spare->site_id,
+
 
                 ];
             }
@@ -94,7 +94,7 @@ class ConsumableForm extends Component
     public function saveConsumable_move()
     {
         $this->validate();
-
+        $this->consumable_move->user_id=auth()->user()->id;
         $this->consumable_move->save();
 
         $consumable_spares = [];

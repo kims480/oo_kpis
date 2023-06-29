@@ -53,7 +53,8 @@ class ConsumableForm extends Component
         $this->SitesList = Site::where('site_id', 'like', '%' . $this->siteSearch . '%')->select('id', 'site_id')->paginate(100)->pluck('site_id', 'id');
 
 
-        return view('livewire.consumable-form');
+        return view("livewire.consumable-form");
+        // return view('livewire.consumable-form');
     }
 
     public function addConsumable_spare()
@@ -118,15 +119,41 @@ class ConsumableForm extends Component
 
         $this->consumable_move->consumable_spares()->sync($consumable_spares);
 
-        return redirect()->route(__('models/consumableSpares.route').'.index');
+        $this->close();
+        $this->dispatchBrowserEvent('swal:modal', [
+            'type' => 'success',
+            'title' => 'Spare Dispached successfully',
+            'text' => '',
+        ]);
+
+        // return redirect()->route(__('models/consumableSpares.route').'.index');
+    }
+
+    public function routeBattery ()
+    {
+        return redirect()->route(__('models/batteryAdds.singular').'.index');
+
     }
 
     protected function rules(): array
     {
         return [
             'selectedSite_id'  => 'required',
-            'consumable_move.wo' => 'required|string'
+            'consumable_move.wo' => 'required|string',
+            'consumable_moveConsumable_spares' =>  'required|array|min:1',
         ];
+    }
+    function close(){
+        $this->site_name = null;
+        $this->consumable_move->wo = null;
+        $this->consumable_moveConsumable_spares = [];
+        $this->SitesList = collect();
+        $this->selectedSite_id=null;
+
+        $this->resetValidation();
+        $this->resetErrorBag();
+
+
     }
 
 }

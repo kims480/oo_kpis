@@ -186,6 +186,7 @@
                     </div>
                     {{-- {{$slot}} --}}
                     @yield('content')
+                    {{$slot}}
                 </main>
             </div>
         </div>

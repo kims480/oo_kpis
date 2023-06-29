@@ -1,6 +1,7 @@
 window._ = require('lodash');
 
-
+var Turbolinks = require("turbolinks")
+Turbolinks.start()
 
 
 /**

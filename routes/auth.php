@@ -86,13 +86,19 @@ Route::get('add-battery', AddSiteBatteries::class)->name('add-battery');
 Route::get('add-batteries-to-site', AddSiteBatteries::class)->name('battery-to-site');
 
 
-Route::resource('battery-add', App\Http\Controllers\BatteryAddController::class);
+// Route::resource('battery-add', App\Http\Controllers\BatteryAddController::class);
+Route::get('battery-add', App\Http\Livewire\Batteries\ListSiteBatteries::class)->name('battery-add.index');
+Route::get('battery-add/create', App\Http\Livewire\Batteries\ListSiteBatteries::class)->name('battery-add.create');
+Route::get('battery-add/destroy', App\Http\Livewire\Batteries\ListSiteBatteries::class)->name('battery-add.destroy');
+Route::get('battery-add/show', App\Http\Livewire\Batteries\ListSiteBatteries::class)->name('battery-add.show');
+Route::get('battery-add/edit', App\Http\Livewire\Batteries\ListSiteBatteries::class)->name('battery-add.edit');
 Route::get('battery-export', [App\Http\Controllers\BatteryAddController::class,'export'])->name('battery-add.export');
 
 
 Route::resource('passive-spares', App\Http\Controllers\PassiveSpareController::class);
 
-Route::resource('consumable-spares', App\Http\Controllers\ConsumableSpareController::class);
+// Route::resource('consumable-spares', App\Http\Controllers\ConsumableSpareController::class);
+Route::get('consumable-spares', App\Http\Livewire\ConsumableForm::class)->name('consumable-spares.index');
 
 
 Route::resource('siteExtras', App\Http\Controllers\SiteExtraController::class);

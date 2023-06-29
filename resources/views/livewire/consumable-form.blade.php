@@ -26,7 +26,7 @@
         </div>
 
 
-        <div class="border-b border-gray-200 bg-neutral-50 py-2  flex flex-row justify-between items-baseline">
+        <div class="border-b border-gray-200 bg-neutral-50 py-2 px-2  flex flex-row justify-between items-baseline">
             <div class="font-extrabold">
                 Consumables
             </div>
@@ -34,6 +34,7 @@
                 <button
                     class="hover:bg-slate-100 hover:text-green-700 py-1 px-2 bg-green-600 border border-indigo-800 rounded-md text-white focus:outline-none"
                     wire:click.prevent="addConsumable_spare"><i class="fas fa-plus"></i></button>
+
             </div>
         </div>
         <div class="flex flex-col overflow-x-auto bg-neutral-50 border-b border-gray-400">
@@ -121,6 +122,11 @@
                             </tbody>
                         </table>
                     </div>
+                    @error('consumable_moveConsumable_spares')
+                    <span class="text-red-500">
+                        {{ $errors->first('consumable_moveConsumable_spares') }}
+                    </span>
+                @enderror
                 </div>
             </div>
         </div>

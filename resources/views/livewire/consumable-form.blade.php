@@ -16,7 +16,7 @@
             @enderror --}}
         </div>
         <div class="py-4 ">
-            <label>WO</label>
+            <label>WO <b class="text-red-600">*</b></label>
             <input wire:model="consumable_move.wo" type="text" name="customer_email"
                 class="focus:outline-none w-full border border-indigo-500 rounded-md p-1"
                 value="{{ old('invoice.customer_email') }}">

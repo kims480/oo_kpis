@@ -4,8 +4,8 @@
         <div class="py-4 px-2">
             <x-multi-select label="Site ID" itemId="site" :optionSelectedId="$selectedSite_id" optionValue="selectedSite_id"
                 optionName="site_name" :optionSelectedName="$site_name" :optionList="$SitesList" itemSearch="siteSearch" />
-                isEdit: {{$isEdit}}
-                iscomplete: {{ $iscomplete}}
+                {{-- isEdit: {{$isEdit}}
+                iscomplete: {{ $iscomplete}} --}}
             {{-- <label>Site ID</label> --}}
 
             {{-- <input wire:model="consumable_move.site_id" type="text" name="customer_name" class="focus:outline-none w-full border border-indigo-500 rounded-md p-1" value="{{ old('invoice.customer_name') }}" required>

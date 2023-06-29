@@ -4,6 +4,8 @@
         <div class="py-4 px-2">
             <x-multi-select label="Site ID" itemId="site" :optionSelectedId="$selectedSite_id" optionValue="selectedSite_id"
                 optionName="site_name" :optionSelectedName="$site_name" :optionList="$SitesList" itemSearch="siteSearch" />
+                isEdit: {{$isEdit}}
+                iscomplete: {{ $iscomplete}}
             {{-- <label>Site ID</label> --}}
 
             {{-- <input wire:model="consumable_move.site_id" type="text" name="customer_name" class="focus:outline-none w-full border border-indigo-500 rounded-md p-1" value="{{ old('invoice.customer_name') }}" required>
@@ -106,6 +108,7 @@
                                                     wire:click.prevent="editConsumable_spare({{ $index }})"><i
                                                         class="fas fa-edit"></i></button>
                                             @elseif($consumable_moveConsumable_spare['consumable_spare_id'])
+
                                                 <button
                                                     class="hover:bg-green-600 py-1 px-2 bg-green-500 border border-green-600 rounded-md text-white focus:outline-none"
                                                     wire:click.prevent="saveConsumable_spare({{ $index }})"><i
@@ -135,7 +138,7 @@
         <div class="flex justify-end  py-1 bg-blue-50">
             <input
                 class="hover:bg-green-800 disabled:bg-slate-50 disabled:text-gray-600 cursor-pointer py-1 px-3 bg-green-600 border border-indigo-600 rounded-md text-white focus:outline-none"
-                type="submit" value="Submit" {{$edit ? '': 'disabled'}}  >
+                type="submit" value="Submit" {{$isEdit&&$iscomplete ? '': 'disabled'}}  >
         </div>
     </form>
 </div>

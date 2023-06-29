@@ -20,7 +20,8 @@ class ConsumableForm extends Component
     public $selectedSpare_id = null;
     public $spareSearch = null;
     public $SparesList;
-    public $edit=false;
+    public $isEdit=false;
+    public $iscomplete=false;
     public $consumable_moveConsumable_spares = [];
     public $allConsumable_spares = [];
 
@@ -52,7 +53,7 @@ class ConsumableForm extends Component
         //     }
         // }
 
-        ( $this->selectedSite_id && $this->consumable_move->wo) || $this->edit=false;
+        // ( $this->selectedSite_id && $this->consumable_move->wo) || $this->edit=false;
 
 
 
@@ -63,6 +64,18 @@ class ConsumableForm extends Component
         // return view('livewire.consumable-form');
     }
 
+    public function updatedSelectedSiteId()
+    {
+        is_null($this->selectedSite_id)?  $this->iscomplete=null : '';
+        // if (!is_null($value)) {
+        //     $this->edit=false;
+        // }
+    }
+    public function updated($consumable_move,$value)
+    {
+        ($this->consumable_move->wo && $this->selectedSite_id ) ? $this->iscomplete=true:  $this->iscomplete=null ;
+
+    }
     public function addConsumable_spare()
     {
         foreach ($this->consumable_moveConsumable_spares as $key => $consumable_moveConsumable_spare) {
@@ -71,7 +84,7 @@ class ConsumableForm extends Component
                 return;
             }
         }
-        $this->edit=false;
+        $this->isEdit=false;
         $this->consumable_moveConsumable_spares[] = [
             'consumable_spare_id' => '',
             'quantity' => 1,
@@ -86,11 +99,11 @@ class ConsumableForm extends Component
         foreach ($this->consumable_moveConsumable_spares as $key => $consumable_moveConsumable_spare) {
             if (!$consumable_moveConsumable_spare['is_saved']) {
                 $this->addError('consumable_moveConsumable_spares.' . $key, 'This line must be saved before editing another.');
-                $this->edit=false;
+                $this->isEdit=false;
                 return;
             }
         }
-        $this->edit=false;
+        $this->isEdit=false;
 
         $this->consumable_moveConsumable_spares[$index]['is_saved'] = false;
     }
@@ -103,7 +116,7 @@ class ConsumableForm extends Component
         $this->consumable_moveConsumable_spares[$index]['description'] = $consumable_spare->description;
 
         $this->consumable_moveConsumable_spares[$index]['is_saved'] = true;
-        $this->edit=true;
+        $this->isEdit=true;
 
     }
 
@@ -123,6 +136,7 @@ class ConsumableForm extends Component
         $this->consumable_move->save();
 
         $consumable_spares = [];
+
         foreach ($this->consumable_moveConsumable_spares as $consumable_spare) {
             $consumable_spares[$consumable_spare['consumable_spare_id']] = ['quantity' => $consumable_spare['quantity'],];
         }
@@ -160,7 +174,8 @@ class ConsumableForm extends Component
         $this->consumable_moveConsumable_spares = [];
         $this->SitesList = collect();
         $this->selectedSite_id=null;
-        $this->edit=false;
+        $this->isEdit=false;
+        $this->iscomplete=false;
         $this->resetValidation();
         $this->resetErrorBag();
 

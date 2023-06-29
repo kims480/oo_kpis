@@ -190,7 +190,7 @@
                     </div>
                     {{-- {{$slot}} --}}
                     @yield('content')
-                    {{ $slot }}
+                    {{-- {{ $slot }} --}}
                 </main>
             </div>
         </div>

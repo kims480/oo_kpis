@@ -51,6 +51,11 @@ class ConsumableForm extends Component
         //         $total += $consumable_moveConsumable_spare['consumable_spare_price'] * $consumable_moveConsumable_spare['quantity'];
         //     }
         // }
+
+        ( $this->selectedSite_id && $this->consumable_move->wo) || $this->edit=false;
+
+
+
         $this->SitesList = Site::where('site_id', 'like', '%' . $this->siteSearch . '%')->select('id', 'site_id')->paginate(100)->pluck('site_id', 'id');
 
 

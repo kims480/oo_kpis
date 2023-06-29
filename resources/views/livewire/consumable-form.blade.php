@@ -126,7 +126,7 @@
         </div>
 
 
-        <div class="flex justify-end  py-1 bg-slate-50">
+        <div class="flex justify-end  py-1 bg-blue-50">
             <input
                 class="hover:bg-green-800 cursor-pointer py-1 px-3 bg-green-600 border border-indigo-600 rounded-md text-white focus:outline-none"
                 type="submit" value="Submit">

@@ -20,6 +20,7 @@ class ConsumableForm extends Component
     public $selectedSpare_id = null;
     public $spareSearch = null;
     public $SparesList;
+    public $edit=false;
     public $consumable_moveConsumable_spares = [];
     public $allConsumable_spares = [];
 
@@ -65,7 +66,7 @@ class ConsumableForm extends Component
                 return;
             }
         }
-
+        $this->edit=false;
         $this->consumable_moveConsumable_spares[] = [
             'consumable_spare_id' => '',
             'quantity' => 1,
@@ -80,9 +81,11 @@ class ConsumableForm extends Component
         foreach ($this->consumable_moveConsumable_spares as $key => $consumable_moveConsumable_spare) {
             if (!$consumable_moveConsumable_spare['is_saved']) {
                 $this->addError('consumable_moveConsumable_spares.' . $key, 'This line must be saved before editing another.');
+                $this->edit=false;
                 return;
             }
         }
+        $this->edit=false;
 
         $this->consumable_moveConsumable_spares[$index]['is_saved'] = false;
     }
@@ -95,6 +98,8 @@ class ConsumableForm extends Component
         $this->consumable_moveConsumable_spares[$index]['description'] = $consumable_spare->description;
 
         $this->consumable_moveConsumable_spares[$index]['is_saved'] = true;
+        $this->edit=true;
+
     }
 
     public function removeConsumable_spare($index)
@@ -124,6 +129,7 @@ class ConsumableForm extends Component
             'type' => 'success',
             'title' => 'Spare Dispached successfully',
             'text' => '',
+            'customClass'=> 'swal-wide',
         ]);
 
         // return redirect()->route(__('models/consumableSpares.route').'.index');
@@ -149,7 +155,7 @@ class ConsumableForm extends Component
         $this->consumable_moveConsumable_spares = [];
         $this->SitesList = collect();
         $this->selectedSite_id=null;
-
+        $this->edit=false;
         $this->resetValidation();
         $this->resetErrorBag();
 

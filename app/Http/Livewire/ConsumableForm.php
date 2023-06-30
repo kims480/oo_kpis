@@ -89,8 +89,6 @@ class ConsumableForm extends Component
             'consumable_spare_id' => '',
             'quantity' => 1,
             'is_saved' => false,
-
-
         ];
     }
 

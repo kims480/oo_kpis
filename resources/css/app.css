@@ -2,9 +2,12 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities'; */
 @import 'choices.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* @import '/node_modules/tom-select/dist/css/tom-select.default.css'; */
+
 html, body {
     overflow-x: hidden!important;
     font-family: "Source Sans Pro",sans-serif;

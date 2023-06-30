@@ -34,6 +34,8 @@
         "jquery": "^3.6.0",
         "sweetalert": "^2.1.2",
         "toastify-js": "^1.11.2",
-        "turbolinks": "^5.2.0"
+        "tom-select": "^2.2.2",
+        "turbolinks": "^5.2.0",
+        "tw-elements": "^1.0.0-beta2"
     }
 }

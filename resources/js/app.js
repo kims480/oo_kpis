@@ -2,7 +2,8 @@
 // import './alpine'
 
 // window.Alpine = Alpine
-
+import { Select,Datepicker, Input, initTE } from "tw-elements";
+initTE({ Select,Datepicker, Input });
 
 // require('./searchdrop');
 import Alpine from 'alpinejs';
@@ -20,6 +21,16 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 Chart.register(...registerables);
 Chart.register(ChartDataLabels);
 window.Chart=Chart;
+// window.TomSelect = require('tom-select')
+
+// const myInput = new Input(document.getElementById("myDatepicker"));
+// const options = {
+//   format: "dd-mm-yyyy",
+// };
+// const myDatepicker = new Datepicker(
+//   document.getElementById("myDatepicker"),
+//   options
+// );
 // window.NiceSelect=NiceSelect;
 // import { getRelativePosition } from 'chart.js/helpers';
 

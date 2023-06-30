@@ -1,4 +1,4 @@
-<div class="bg-blue-50 rounded-md shadow-md px-2">
+<div class="bg-white rounded-md shadow-md px-2">
     <form wire:submit.prevent="saveConsumable_move">
         @csrf
         <div class="py-4 px-2">
@@ -45,7 +45,7 @@
                     <div class="overflow-x-auto">
                         <table class="min-w-full text-left text-sm font-light">
                             <thead
-                                class="border-b bg-neutral-400 font-medium dark:border-neutral-500 dark:text-neutral-800">
+                                class="border-b bg-sky-300 font-medium dark:border-neutral-500 dark:text-neutral-800">
                                 <tr>
                                     <th scope="col" class="px-4 py-2">Consumable Spare</th>
                                     <th scope="col" class="px-4 py-2">Quantity</th>
@@ -68,8 +68,8 @@
                                                     </div>
                                                 @endif
                                             @else
-                                                {{-- <x-multi-select label="Spare BOM" itemId="spare" :optionSelectedId="$consumable_spare_id" optionValue="selectedSpare_id"
-                                    optionName="consumable_moveConsumable_spares[{{$index}}][consumable_spare_id]" :optionSelectedName="$consumable_moveConsumable_spares[{{$index}}][old_bom]" :optionList="$allConsumable_spares" itemSearch="spareSearch" /> --}}
+                                                <x-multi-select label="Spare BOM" itemId="spare" :optionSelectedId="$consumable_spare_id" optionValue="selectedSpare_id"
+                                    optionName="consumable_moveConsumable_spares[{{$index}}][consumable_spare_id]" :optionSelectedName="$consumable_moveConsumable_spares[{{$index}}][old_bom]" :optionList="$allConsumable_spares" itemSearch="spareSearch" />
                                                 <select
                                                     name="consumable_moveConsumable_spares[{{ $index }}][consumable_spare_id]"
                                                     class="focus:outline-none w-full border {{ $errors->has('consumable_moveConsumable_spares.' . $index) ? 'border-red-500' : 'border-indigo-500' }} rounded-md p-1"
@@ -135,7 +135,7 @@
         </div>
 
 
-        <div class="flex justify-end  py-1 bg-blue-50">
+        <div class="flex justify-end  py-1 ">
             <input
                 class="hover:bg-green-800 disabled:bg-slate-50 disabled:text-gray-600 cursor-pointer py-1 px-3 bg-green-600 border border-indigo-600 rounded-md text-white focus:outline-none"
                 type="submit" value="Submit" {{$isEdit&&$iscomplete ? '': 'disabled'}}  >

@@ -78,6 +78,10 @@ class User extends Authenticatable
     {
         return $this->hasRole(Role::SUPPER_ADMIN);
     }
+    public function stk_office()
+    {
+        return $this->hasRole(Role::SUPPER_ADMIN);
+    }
     public function getRoleDataAttribute()
     {
         return $this->roles->pluck('id', 'name');

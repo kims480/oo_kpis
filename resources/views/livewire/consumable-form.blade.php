@@ -95,7 +95,7 @@
                                                     wire:model="consumable_moveConsumable_spares.{{ $index }}.quantity" />
                                                 {{ $consumable_moveConsumable_spare['quantity'] }}
                                             @else
-                                                <input type="number"
+                                                <input type="number" step="0.1" min="0" max="1000"
                                                     name="consumable_moveConsumable_spares[{{ $index }}][quantity]"
                                                     class="focus:outline-none w-full border border-indigo-500 rounded-md p-1"
                                                     wire:model="consumable_moveConsumable_spares.{{ $index }}.quantity" />

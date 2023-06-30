@@ -68,8 +68,8 @@
                                                     </div>
                                                 @endif
                                             @else
-                                                <x-multi-select label="Spare BOM" itemId="spare" :optionSelectedId="$consumable_spare_id" optionValue="selectedSpare_id"
-                                    optionName="consumable_moveConsumable_spares[{{$index}}][consumable_spare_id]" :optionSelectedName="$consumable_moveConsumable_spares[{{$index}}][old_bom]" :optionList="$allConsumable_spares" itemSearch="spareSearch" />
+                                                {{-- <x-multi-select label="Spare BOM" itemId="spare" :optionSelectedId="$consumable_spare_id" optionValue="selectedSpare_id"
+                                    optionName="consumable_moveConsumable_spares[{{$index}}][consumable_spare_id]" :optionSelectedName="$consumable_moveConsumable_spares[{{$index}}][old_bom]" :optionList="$allConsumable_spares" itemSearch="spareSearch" /> --}}
                                                 <select
                                                     name="consumable_moveConsumable_spares[{{ $index }}][consumable_spare_id]"
                                                     class="focus:outline-none w-full border {{ $errors->has('consumable_moveConsumable_spares.' . $index) ? 'border-red-500' : 'border-indigo-500' }} rounded-md p-1"

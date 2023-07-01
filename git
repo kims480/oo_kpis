@@ -14,8 +14,13 @@ git remote add origin https://github.com/kims480/oo_kpis.git
 git branch -M main
 git push -u origin main
 
+cd domains/karimsaleh.tech/public_html/ookpi/
 alias php='/opt/cpanel/ea-php74/root/usr/bin/php'
 export PATH="/opt/cpanel/ea-php74/root/usr/bin:$PATH"
+
+git pull https://github.com/kims480/oo_kpis.git main
+
+
 git checkout HEAD^ public/mix-manifest.json
 
  git checkout HEAD^ public/images/logo.png -f

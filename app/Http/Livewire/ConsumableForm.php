@@ -137,7 +137,7 @@ class ConsumableForm extends Component
         $this->consumable_move->user_id=auth()->user()->id;
 
         $this->consumable_move->site_id=Site::find($this->selectedSite_id)->id;
-        dd($this->consumable_move,$this->consumable_moveConsumable_spares);
+        // dd($this->consumable_move,$this->consumable_moveConsumable_spares);
         $this->consumable_move->save();
 
         $consumable_spares = [];

@@ -54,26 +54,26 @@
                         <!-- start header  -->
                         <div class="bg-gray-100 mx-auto border-gray-500 border rounded-sm text-gray-700 mb-0.5 h-30">
                             <div class="flex  p-3 border-l-8 border-sky-700">
-                                <div class="basis-2/5 space-y-1 border-r-2 pr-3">
+                                <div class="basis-2/5 space-y-1 border-r-2 pr-1">
                                     <div class="text-sm leading-5 font-semibold">Consumable Spare</div>
 
                                 </div>
-                                <div class="basis-1/5 ">
-                                    <div class=" ml-3 space-y-1 border-r-2 pr-3">
-                                        <div class="text-base leading-6 font-normal">Stock Locator</div>
+                                <div class="basis-1/5 pr-1">
+                                    <div class="h-full flex items-center justify-center ml-3 space-y-1 border-r-2 pr-3">
+                                        <div class="text-sm leading-6 font-semibold">Stock Locator</div>
 
                                     </div>
                                 </div>
 
-                                <div class="basis-1/5  pr-3">
-                                    <div class=" ml-3 space-y-1 border-r-2 pr-3">
-                                        <div class="text-base leading-6 font-normal">Quantity</div>
+                                <div class="basis-1/5  pr-1">
+                                    <div class="h-full flex items-center justify-center ml-3 space-y-1 border-r-2 pr-3">
+                                        <div class="text-sm leading-6 font-semibold">Quantity</div>
 
                                     </div>
 
                                 </div>
-                                <div class="basis-1/5 space-y-1 border-r-2 pl-8 pr-3">
-                                    <div class="text-sm leading-5 font-semibold">Action</div>
+                                <div class="basis-1/5 space-y-1 border-r-2 pl-8 pr-1">
+                                    <div class="h-full flex items-center justify-center text-sm leading-5 font-semibold">Action</div>
 
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
                                 class="{{ ($index%2==0) ? 'bg-gray-50' :'bg-gray-100'}}  mx-auto border-gray-200 border rounded-sm text-gray-700 mb-2 h-30">
                                 <div class="flex items-stretch  px-3 py-1 border-l-8 {{ ($index%2==0) ? 'border-x-info-500' :'border-x-info-600'}}">
 
-                                    <div class="basis-2/5 space-y-1 border-r-2 pr-3">
+                                    <div class="basis-2/5 space-y-1 border-r-2 pr-1">
                                         <div class="text-sm leading-5 font-semibold">
                                             @if ($consumable_moveConsumable_spare['is_saved'])
                                                 <input type="hidden"
@@ -121,7 +121,7 @@
 
                                     </div>
 
-                                    <div class="basis-1/5 ">
+                                    <div class="basis-1/5 pr-1">
                                         <div class="h-full flex items-center justify-center  ml-3 space-y-1 border-r-2 pr-3">
                                             @if ($consumable_moveConsumable_spare['is_saved'])
                                                 <input type="hidden"
@@ -167,7 +167,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="basis-1/5 ">
+                                    <div class="basis-1/5 pr-1">
                                         <div class="h-full flex items-center justify-center ml-3  space-y-1 border-r-2 pr-3">
                                             <div class="flex items-center justify-center center text-base leading-6 font-normal">
                                                 @if ($consumable_moveConsumable_spare['is_saved'])
@@ -185,7 +185,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="basis-1/5 h-full space-y-1 border-r-2 pl-8 pr-3">
+                                    <div class="basis-1/5 space-y-1 border-r-2 pl-8 pr-3">
                                         <div class="text-sm h-full flex items-center justify-center leading-5 font-semibold">
                                             @if ($consumable_moveConsumable_spare['is_saved'])
                                                 <button

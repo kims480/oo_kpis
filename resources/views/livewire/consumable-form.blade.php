@@ -4,7 +4,7 @@
         <div class="py-4 px-2">
             <x-multi-select label="Site ID" itemId="site" :optionSelectedId="$selectedSite_id" optionValue="selectedSite_id"
                 optionName="site_name" :optionSelectedName="$site_name" :optionList="$SitesList" itemSearch="siteSearch" />
-                {{-- isEdit: {{$isEdit}}
+            {{-- isEdit: {{$isEdit}}
                 iscomplete: {{ $iscomplete}} --}}
             {{-- <label>Site ID</label> --}}
 
@@ -26,6 +26,14 @@
                 </span>
             @enderror
         </div>
+        {{-- <div class="py-4 ">
+
+            @error('consumable_move.wo')
+                <span class="text-red-500">
+                    {{ $errors->first('consumable_move.wo') }}
+                </span>
+            @enderror
+        </div> --}}
 
 
         <div class="border-b border-gray-200 bg-neutral-50 py-2 px-2  flex flex-row justify-between items-baseline">
@@ -43,19 +51,42 @@
             <div class="sm:-mx-4 lg:-mx-0">
                 <div class="inline-block min-w-full py-2 sm:px-4 lg:px-4">
                     <div class="overflow-x-auto">
-                        <table class="min-w-full text-left text-sm font-light">
-                            <thead
-                                class="border-b bg-sky-300 font-medium dark:border-neutral-500 dark:text-neutral-800">
-                                <tr>
-                                    <th scope="col" class="px-4 py-2">Consumable Spare</th>
-                                    <th scope="col" class="px-4 py-2">Quantity</th>
-                                    <th scope="col" class="px-4 py-2">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($consumable_moveConsumable_spares as $index => $consumable_moveConsumable_spare)
-                                    <tr class="border-b bg-neutral-50 dark:border-neutral-200">
-                                        <td class="whitespace-nowrap px-4 py-2 font-medium">
+                        <!-- start header  -->
+                        <div class="bg-gray-100 mx-auto border-gray-500 border rounded-sm text-gray-700 mb-0.5 h-30">
+                            <div class="flex  p-3 border-l-8 border-sky-700">
+                                <div class="flex-1 space-y-1 border-r-2 pr-3">
+                                    <div class="text-sm leading-5 font-semibold">Consumable Spare</div>
+
+                                </div>
+                                <div class="flex-1">
+                                    <div class=" ml-3 space-y-1 border-r-2 pr-3">
+                                        <div class="text-base leading-6 font-normal">Stock Locator</div>
+
+                                    </div>
+                                </div>
+
+                                <div class="flex-1  pr-3">
+                                    <div class=" ml-3 space-y-1 border-r-2 pr-3">
+                                        <div class="text-base leading-6 font-normal">Quantity</div>
+
+                                    </div>
+
+                                </div>
+                                <div class="space-y-1 border-r-2 pl-8 pr-3">
+                                    <div class="text-sm leading-5 font-semibold">Action</div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end -->
+                        @foreach ($consumable_moveConsumable_spares as $index => $consumable_moveConsumable_spare)
+                            <!-- start list -->
+                            <div
+                                class="{{ ($index%2==0) ? 'bg-gray-50' :'bg-gray-100'}}  mx-auto border-gray-200 border rounded-sm text-gray-700 mb-2 h-30">
+                                <div class="flex  px-3 py-1 border-l-8 {{ ($index%2==0) ? 'border-x-info-500' :'border-x-info-600'}}">
+
+                                    <div class="flex-1 space-y-1 border-r-2 pr-3">
+                                        <div class="text-sm leading-5 font-semibold">
                                             @if ($consumable_moveConsumable_spare['is_saved'])
                                                 <input type="hidden"
                                                     name="consumable_moveConsumable_spares[{{ $index }}][consumable_spare_id]"
@@ -68,8 +99,6 @@
                                                     </div>
                                                 @endif
                                             @else
-                                                {{-- <x-multi-select label="Spare BOM" itemId="spare" :optionSelectedId="$consumable_spare_id" optionValue="selectedSpare_id"
-                                    optionName="consumable_moveConsumable_spares[{{$index}}][consumable_spare_id]" :optionSelectedName="$consumable_moveConsumable_spares[{{$index}}][old_bom]" :optionList="$allConsumable_spares" itemSearch="spareSearch" /> --}}
                                                 <select
                                                     name="consumable_moveConsumable_spares[{{ $index }}][consumable_spare_id]"
                                                     class="focus:outline-none w-full border {{ $errors->has('consumable_moveConsumable_spares.' . $index) ? 'border-red-500' : 'border-indigo-500' }} rounded-md p-1"
@@ -81,34 +110,89 @@
                                                         </option>
                                                     @endforeach
                                                 </select>
+
                                                 @if ($errors->has('consumable_moveConsumable_spares.' . $index))
                                                     <em class="text-sm text-red-500">
                                                         {{ $errors->first('consumable_moveConsumable_spares.' . $index) }}
                                                     </em>
                                                 @endif
                                             @endif
-                                        </td>
-                                        <td class="whitespace-nowrap px-6 py-4">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="flex-1">
+                                        <div class=" ml-3 space-y-1 border-r-2 pr-3">
                                             @if ($consumable_moveConsumable_spare['is_saved'])
                                                 <input type="hidden"
-                                                    name="consumable_moveConsumable_spares[{{ $index }}][quantity]"
-                                                    wire:model="consumable_moveConsumable_spares.{{ $index }}.quantity" />
-                                                {{ $consumable_moveConsumable_spare['quantity'] }}
+                                                    name="consumable_moveConsumable_spares[{{ $index }}][stock]"
+                                                    wire:model="consumable_moveConsumable_spares.{{ $index }}.stock" />
+                                                {{ $consumable_moveConsumable_spare['stock'] }}
                                             @else
-                                                <input type="number" step="0.1" min="0" max="1000"
-                                                    name="consumable_moveConsumable_spares[{{ $index }}][quantity]"
-                                                    class="focus:outline-none w-full border border-indigo-500 rounded-md p-1"
-                                                    wire:model="consumable_moveConsumable_spares.{{ $index }}.quantity" />
+                                                {{-- <x-select.select_Search :index="$index"></x-select.select_Search> --}}
+                                                <div class="text-base leading-6 font-normal">
+                                                    <select data-te-select-init data-te-select-filter="true" data-te-select-option-height="52"
+                                                    name="consumable_moveConsumable_spares[{{ $index }}][stock]"
+                                                    wire:model="consumable_moveConsumable_spares.{{ $index }}.stock"
+                                                        id="select1" class="searchSelection">
+                                                        <option value="muscat_stk" data-te-select-secondary-text="2">
+                                                            MCT
+                                                        </option>
+                                                        <option value="sll_stk" data-te-select-secondary-text="2">SLL
+                                                        </option>
+                                                        <option value="shr_stk" data-te-select-secondary-text="2">Sohar
+                                                        </option>
+                                                        <option value="ibra_stk" data-te-select-secondary-text="2">Ibra
+                                                        </option>
+                                                        <option value="nzw_stk" data-te-select-secondary-text="2">Nizwa
+                                                        </option>
+                                                        <option value="swq_stk" data-te-select-secondary-text="2">Swuiq
+                                                        </option>
+                                                        <option value="sur_stk" data-te-select-secondary-text="2">Sur
+                                                        </option>
+                                                        <option value="adm_stk" data-te-select-secondary-text="2">Adam
+                                                        </option>
+                                                        <option value="khasab_stk" data-te-select-secondary-text="2">KSB
+                                                        </option>
+                                                        <option value="dqm_stk" data-te-select-secondary-text="2">DQM
+                                                        </option>
+                                                        <option value="haima_stk" data-te-select-secondary-text="2">Haima
+                                                        </option>
+                                                        <option value="ibri_stk" data-te-select-secondary-text="2">Ibri
+                                                        </option>
+                                                    </select>
+                                                </div>
+
                                             @endif
-                                        </td>
-                                        <td class="whitespace-nowrap px-6 py-4">
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-1  pr-3">
+                                        <div class=" ml-3 space-y-1 border-r-2 pr-3">
+                                            <div class="text-base leading-6 font-normal">
+                                                @if ($consumable_moveConsumable_spare['is_saved'])
+                                                    <input type="hidden"
+                                                        name="consumable_moveConsumable_spares[{{ $index }}][quantity]"
+                                                        wire:model="consumable_moveConsumable_spares.{{ $index }}.quantity" />
+                                                    {{ $consumable_moveConsumable_spare['quantity'] }}
+                                                @else
+                                                    <input type="number" step="0.1" min="0" max="1000"
+                                                        name="consumable_moveConsumable_spares[{{ $index }}][quantity]"
+                                                        class="focus:outline-none w-full border border-indigo-500 rounded-md p-1"
+                                                        wire:model="consumable_moveConsumable_spares.{{ $index }}.quantity" />
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-y-1 border-r-2 pl-8 pr-3">
+                                        <div class="text-sm leading-5 font-semibold">
                                             @if ($consumable_moveConsumable_spare['is_saved'])
                                                 <button
                                                     class="hover:bg-blue-600 py-1 px-2 bg-blue-500 border border-blue-600 rounded-md text-white focus:outline-none"
                                                     wire:click.prevent="editConsumable_spare({{ $index }})"><i
                                                         class="fas fa-edit"></i></button>
                                             @elseif($consumable_moveConsumable_spare['consumable_spare_id'])
-
                                                 <button
                                                     class="hover:bg-green-600 py-1 px-2 bg-green-500 border border-green-600 rounded-md text-white focus:outline-none"
                                                     wire:click.prevent="saveConsumable_spare({{ $index }})"><i
@@ -118,27 +202,38 @@
                                                 class="hover:bg-red-600 ml-1 py-1 px-2 bg-red-500 border border-red-600 rounded-md text-white focus:outline-none"
                                                 wire:click.prevent="removeConsumable_spare({{ $index }})"><i
                                                     class="fas fa-trash"></i></button>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                        </div>
+                                    </div>
 
-                            </tbody>
-                        </table>
+                                </div>
+
+                                <!-- end -->
+                            </div>
+                        @endforeach
+
+                        @error('consumable_moveConsumable_spares')
+                            <span class="text-red-500">
+                                {{ $errors->first('consumable_moveConsumable_spares') }}
+                            </span>
+                        @enderror
                     </div>
-                    @error('consumable_moveConsumable_spares')
-                    <span class="text-red-500">
-                        {{ $errors->first('consumable_moveConsumable_spares') }}
-                    </span>
-                @enderror
                 </div>
             </div>
         </div>
 
-
         <div class="flex justify-end  py-1 ">
             <input
                 class="hover:bg-green-800 disabled:bg-slate-50 disabled:text-gray-600 cursor-pointer py-1 px-3 bg-green-600 border border-indigo-600 rounded-md text-white focus:outline-none"
-                type="submit" value="Submit" {{$isEdit&&$iscomplete ? '': 'disabled'}}  >
+                type="submit" value="Submit" {{ $isEdit && $iscomplete ? '' : 'disabled' }}>
         </div>
     </form>
+    @push('scripts')
+        <script>
+
+
+            // singleSelectInstance.open();
+        </script>
+    @endpush
+
+
 </div>

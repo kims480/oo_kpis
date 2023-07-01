@@ -2,8 +2,7 @@
 // import './alpine'
 
 // window.Alpine = Alpine
-import { Select,Datepicker, Input, initTE } from "tw-elements";
-initTE({ Select,Datepicker, Input });
+
 
 // require('./searchdrop');
 import Alpine from 'alpinejs';
@@ -17,6 +16,10 @@ import Choices from 'choices.js';
 import Toastify from 'toastify-js';
 import { Chart, registerables } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { Select,initTE } from "tw-elements";
+// console.log('import select');
+// // initTE({ Select });
+// console.log(initTE);
 
 Chart.register(...registerables);
 Chart.register(ChartDataLabels);
@@ -40,7 +43,11 @@ window.Alpine = Alpine;
 window.swal = swal;
 window.Toastify = Toastify;
 window.Choices = Choices;
+window.initTE = initTE;
+window.TESelect = Select;
+window.initTE( window.TESelect );
 // window.SelectSearch = searchdrop;
+
 
 Alpine.plugin(focus);
 
@@ -92,3 +99,5 @@ const choices = (element) =>{
     removeItemButton:true
 })
 };
+
+

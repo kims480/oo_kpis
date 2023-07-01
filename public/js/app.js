@@ -3753,17 +3753,17 @@ var module_default = src_default;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var tw_elements__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tw-elements */ "./node_modules/tw-elements/dist/js/tw-elements.es.min.js");
-/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
-/* harmony import */ var _alpinejs_focus__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @alpinejs/focus */ "./node_modules/@alpinejs/focus/dist/module.esm.js");
-/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert.min.js");
-/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var choices_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! choices.js */ "./node_modules/choices.js/public/assets/scripts/choices.js");
-/* harmony import */ var choices_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(choices_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var toastify_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! toastify-js */ "./node_modules/toastify-js/src/toastify.js");
-/* harmony import */ var toastify_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(toastify_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.esm.js");
-/* harmony import */ var chartjs_plugin_datalabels__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! chartjs-plugin-datalabels */ "./node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.esm.js");
+/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
+/* harmony import */ var _alpinejs_focus__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @alpinejs/focus */ "./node_modules/@alpinejs/focus/dist/module.esm.js");
+/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert.min.js");
+/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var choices_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! choices.js */ "./node_modules/choices.js/public/assets/scripts/choices.js");
+/* harmony import */ var choices_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(choices_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var toastify_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! toastify-js */ "./node_modules/toastify-js/src/toastify.js");
+/* harmony import */ var toastify_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(toastify_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.esm.js");
+/* harmony import */ var chartjs_plugin_datalabels__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! chartjs-plugin-datalabels */ "./node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.esm.js");
+/* harmony import */ var tw_elements__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tw-elements */ "./node_modules/tw-elements/dist/js/tw-elements.es.min.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -3779,13 +3779,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 // require('./bootstrap');
 // import './alpine'
 // window.Alpine = Alpine
-
-(0,tw_elements__WEBPACK_IMPORTED_MODULE_0__.initTE)({
-  Select: tw_elements__WEBPACK_IMPORTED_MODULE_0__.Select,
-  Datepicker: tw_elements__WEBPACK_IMPORTED_MODULE_0__.Datepicker,
-  Input: tw_elements__WEBPACK_IMPORTED_MODULE_0__.Input
-}); // require('./searchdrop');
-
+// require('./searchdrop');
 
 
 
@@ -3797,9 +3791,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
-chart_js__WEBPACK_IMPORTED_MODULE_6__.Chart.register.apply(chart_js__WEBPACK_IMPORTED_MODULE_6__.Chart, _toConsumableArray(chart_js__WEBPACK_IMPORTED_MODULE_6__.registerables));
-chart_js__WEBPACK_IMPORTED_MODULE_6__.Chart.register(chartjs_plugin_datalabels__WEBPACK_IMPORTED_MODULE_7__["default"]);
-window.Chart = chart_js__WEBPACK_IMPORTED_MODULE_6__.Chart; // window.TomSelect = require('tom-select')
+ // console.log('import select');
+// // initTE({ Select });
+// console.log(initTE);
+
+chart_js__WEBPACK_IMPORTED_MODULE_5__.Chart.register.apply(chart_js__WEBPACK_IMPORTED_MODULE_5__.Chart, _toConsumableArray(chart_js__WEBPACK_IMPORTED_MODULE_5__.registerables));
+chart_js__WEBPACK_IMPORTED_MODULE_5__.Chart.register(chartjs_plugin_datalabels__WEBPACK_IMPORTED_MODULE_6__["default"]);
+window.Chart = chart_js__WEBPACK_IMPORTED_MODULE_5__.Chart; // window.TomSelect = require('tom-select')
 // const myInput = new Input(document.getElementById("myDatepicker"));
 // const options = {
 //   format: "dd-mm-yyyy",
@@ -3811,31 +3809,34 @@ window.Chart = chart_js__WEBPACK_IMPORTED_MODULE_6__.Chart; // window.TomSelect 
 // window.NiceSelect=NiceSelect;
 // import { getRelativePosition } from 'chart.js/helpers';
 
-window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"];
-window.swal = (sweetalert__WEBPACK_IMPORTED_MODULE_3___default());
-window.Toastify = (toastify_js__WEBPACK_IMPORTED_MODULE_5___default());
-window.Choices = (choices_js__WEBPACK_IMPORTED_MODULE_4___default()); // window.SelectSearch = searchdrop;
+window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
+window.swal = (sweetalert__WEBPACK_IMPORTED_MODULE_2___default());
+window.Toastify = (toastify_js__WEBPACK_IMPORTED_MODULE_4___default());
+window.Choices = (choices_js__WEBPACK_IMPORTED_MODULE_3___default());
+window.initTE = tw_elements__WEBPACK_IMPORTED_MODULE_7__.initTE;
+window.TESelect = tw_elements__WEBPACK_IMPORTED_MODULE_7__.Select;
+window.initTE(window.TESelect); // window.SelectSearch = searchdrop;
 
-alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].plugin(_alpinejs_focus__WEBPACK_IMPORTED_MODULE_2__["default"]);
-alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].store('darkMode', {
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].plugin(_alpinejs_focus__WEBPACK_IMPORTED_MODULE_1__["default"]);
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].store('darkMode', {
   on: false,
   toggle: function toggle() {
     this.on = !this.on;
   }
 }); // Stores variable globally
 
-alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].store('sidebar', {
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].store('sidebar', {
   full: true,
   active: 'home',
   navOpen: false
 }); // Creating component Dropdown
 
-alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data('dropdown', function () {
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('dropdown', function () {
   return {
     open: false,
     toggle: function toggle(tab) {
       this.open = !this.open;
-      alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].store('sidebar').active = tab;
+      alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].store('sidebar').active = tab;
     },
     activeClass: 'bg-gray-800 text-gray-200',
     expandedClass: 'border-l border-gray-400 ml-4 pl-4',
@@ -3843,7 +3844,7 @@ alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data('dropdown', function () {
   };
 }); // Creating component Sub Dropdown
 
-alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data('sub_dropdown', function () {
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('sub_dropdown', function () {
   return {
     sub_open: false,
     sub_toggle: function sub_toggle() {
@@ -3854,16 +3855,16 @@ alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data('sub_dropdown', function (
   };
 }); // Creating tooltip
 
-alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data('tooltip', function () {
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('tooltip', function () {
   return {
     show: false,
     visibleClass: 'block sm:absolute z-20 -top-2 sm:border border-gray-800 left-4 sm:text-sm sm:bg-gray-900 sm:px-2 sm:py-1 sm:rounded-md'
   };
 });
-alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].start(); // require('./main');
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start(); // require('./main');
 
 var choices = function choices(element) {
-  return new (choices_js__WEBPACK_IMPORTED_MODULE_4___default())(element, {
+  return new (choices_js__WEBPACK_IMPORTED_MODULE_3___default())(element, {
     allowHTML: true,
     maxItemCount: 10,
     removeItemButton: true

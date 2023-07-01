@@ -7,7 +7,8 @@ module.exports = {
       "./resources/**/*.vue",
       './vendor/wireui/wireui/resources/**/*.blade.php',
       './vendor/wireui/wireui/ts/**/*.ts',
-      './vendor/wireui/wireui/src/View/**/*.php'
+      './vendor/wireui/wireui/src/View/**/*.php',
+      "./node_modules/tw-elements/dist/js/**/*.js"
     ],
     theme: {
       extend: {

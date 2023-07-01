@@ -26,7 +26,7 @@
             padding-left: 5px;
         }
 
-        .swal-wide{
+        .swal-wide {
             transform: scale(0.8)
         }
     </style>
@@ -59,12 +59,18 @@
     <div class="flex justify-between overflow-hidden ">
         {{-- <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl"> --}}
         <div class="h-screen bg-gray-900 transition-all  w-64 duration-300 space-y-2 fixed sm:relative  "
-            x-bind:class="{ 'w-64': $store.sidebar.full, 'w-64 sm:w-20': !$store.sidebar.full, 'top-0 left-0': $store.sidebar
-                .navOpen, 'top-0 -left-64 sm:left-0': !$store.sidebar.navOpen }">
+            x-bind:class="{
+                'w-64': $store.sidebar.full,
+                'w-64 sm:w-20': !$store.sidebar.full,
+                'top-0 left-0': $store.sidebar
+                    .navOpen,
+                'top-0 -left-64 sm:left-0': !$store.sidebar.navOpen
+            }">
 
             <h1 class="text-white uppercase font-black py-4 flex"
                 x-bind:class="$store.sidebar.full ? 'text-2xl px-4' : 'text-xs px-1 xm:px-1'">
-                <span>{{ env('APP_NAME') }}</span></h1>
+                <span>{{ env('APP_NAME') }}</span>
+            </h1>
 
             <div class="px-2 space-y-1 {{-- scrollbar-thin overflow-y-clip  scrollbar-thumb-slate-700 scrollbar-track-slate-500 --}}" style="max-height: 85vh;">
 
@@ -196,9 +202,25 @@
         </div>
     </div>
     @livewireScripts()
-    @stack('scripts')
     @wireUiScripts()
     <script src="{{ mix('js/app.js') }}"></script>
+    @stack('scripts')
+    <script>
+        window.addEventListener('SelectSearch', event => {
+
+            let singleSelect = document.querySelectorAll("select.searchSelection");
+            console.log('singleSelect');
+            // console.log(singleSelect);
+            singleSelect.forEach(element => {
+
+                    new TESelect(element);
+                    console.log('newInstance');
+
+
+            });
+
+        })
+    </script>
 
 
 

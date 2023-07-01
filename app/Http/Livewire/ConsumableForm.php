@@ -45,18 +45,6 @@ class ConsumableForm extends Component
 
     public function render()
     {
-        // $total = 0;
-
-        // foreach ($this->consumable_moveConsumable_spares as $consumable_moveConsumable_spare) {
-        //     if ($consumable_moveConsumable_spare['is_saved'] && $consumable_moveConsumable_spare['consumable_spare_price'] && $consumable_moveConsumable_spare['quantity']) {
-        //         $total += $consumable_moveConsumable_spare['consumable_spare_price'] * $consumable_moveConsumable_spare['quantity'];
-        //     }
-        // }
-
-        // ( $this->selectedSite_id && $this->consumable_move->wo) || $this->edit=false;
-
-
-
         $this->SitesList = Site::where('site_id', 'like', '%' . $this->siteSearch . '%')->select('id', 'site_id')->paginate(100)->pluck('site_id', 'id');
 
 
@@ -71,29 +59,46 @@ class ConsumableForm extends Component
         //     $this->edit=false;
         // }
     }
-    public function updated($consumable_move,$value)
+    public function updatedConsumableMove($value)
     {
         ($this->consumable_move->wo && $this->selectedSite_id ) ? $this->iscomplete=true:  $this->iscomplete=null ;
 
     }
+
+    function updated() {
+
+        // $this->dispatchBrowserEvent('SelectSearch');
+    }
+    public function updatedConsumableMoveConsumableSpares()
+    {
+        $this->dispatchBrowserEvent('SelectSearch');
+        // dd('test');
+
+    }
     public function addConsumable_spare()
     {
+        // $this->dispatchBrowserEvent('SelectSearch');
+
         foreach ($this->consumable_moveConsumable_spares as $key => $consumable_moveConsumable_spare) {
             if (!$consumable_moveConsumable_spare['is_saved']) {
+                $this->dispatchBrowserEvent('SelectSearch');
                 $this->addError('consumable_moveConsumable_spares.' . $key, 'This line must be saved before creating a new one.');
                 return;
             }
         }
+
         $this->isEdit=false;
         $this->consumable_moveConsumable_spares[] = [
             'consumable_spare_id' => '',
             'quantity' => 1,
+            'stock' => 'muscat_stk',
             'is_saved' => false,
         ];
     }
 
     public function editConsumable_spare($index)
     {
+        // $this->dispatchBrowserEvent('SelectSearch');
         foreach ($this->consumable_moveConsumable_spares as $key => $consumable_moveConsumable_spare) {
             if (!$consumable_moveConsumable_spare['is_saved']) {
                 $this->addError('consumable_moveConsumable_spares.' . $key, 'This line must be saved before editing another.');
@@ -101,6 +106,7 @@ class ConsumableForm extends Component
                 return;
             }
         }
+
         $this->isEdit=false;
 
         $this->consumable_moveConsumable_spares[$index]['is_saved'] = false;
@@ -112,6 +118,7 @@ class ConsumableForm extends Component
         $consumable_spare = ConsumableSpare::find($this->consumable_moveConsumable_spares[$index]['consumable_spare_id']);
         $this->consumable_moveConsumable_spares[$index]['old_bom'] = $consumable_spare->old_bom;
         $this->consumable_moveConsumable_spares[$index]['description'] = $consumable_spare->description;
+        // $this->consumable_moveConsumable_spares[$index]['stock'] = $consumable_spare->description;
 
         $this->consumable_moveConsumable_spares[$index]['is_saved'] = true;
         $this->isEdit=true;
@@ -130,7 +137,7 @@ class ConsumableForm extends Component
         $this->consumable_move->user_id=auth()->user()->id;
 
         $this->consumable_move->site_id=Site::find($this->selectedSite_id)->id;
-        // dd($this->consumable_move);
+        dd($this->consumable_move,$this->consumable_moveConsumable_spares);
         $this->consumable_move->save();
 
         $consumable_spares = [];

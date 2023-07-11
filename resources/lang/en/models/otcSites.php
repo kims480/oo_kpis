@@ -3,7 +3,7 @@
 return array(
     'router' => 'otcSites',
     'route' => 'otcSites',
-    'singular' => 'otc_site',
+    'singular' => 'Otc_site',
     'plural' => 'otc_sites',
     'fields' =>
     array(

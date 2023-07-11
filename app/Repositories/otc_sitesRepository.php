@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\otc_sites;
+use App\Models\Otc_site;
 use App\Repositories\BaseRepository;
 
 /**
@@ -11,7 +11,7 @@ use App\Repositories\BaseRepository;
  * @version July 11, 2023, 9:08 pm +04
 */
 
-class otc_sitesRepository extends BaseRepository
+class Otc_siteRepository extends BaseRepository
 {
     /**
      * @var array

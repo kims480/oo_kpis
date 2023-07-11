@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Createotc_sitesRequest;
 use App\Http\Requests\Updateotc_sitesRequest;
-use App\Repositories\otc_sitesRepository;
+use App\Repositories\Otc_siteRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -15,7 +15,7 @@ class OtcSitesController extends AppBaseController
     /** @var otc_sitesRepository $otcSitesRepository*/
     private $otcSitesRepository;
 
-    public function __construct(otc_sitesRepository $otcSitesRepo)
+    public function __construct(Otc_siteRepository $otcSitesRepo)
     {
         $this->otcSitesRepository = $otcSitesRepo;
     }

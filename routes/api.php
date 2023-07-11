@@ -73,3 +73,18 @@ Route::resource('tickets', App\Http\Controllers\API\TicketAPIController::class);
 
 
 Route::resource('alarm_categs', App\Http\Controllers\API\AlarmCategAPIController::class);
+
+
+Route::resource('contractors', App\Http\Controllers\API\ContractorAPIController::class);
+
+
+Route::resource('otc_sites', App\Http\Controllers\API\otc_sitesAPIController::class);
+
+
+Route::resource('otc_scopes', App\Http\Controllers\API\OtcScopeAPIController::class);
+
+
+Route::resource('otc_categs', App\Http\Controllers\API\OtcCategAPIController::class);
+
+
+Route::resource('otc_alarms', App\Http\Controllers\API\OtcAlarmsAPIController::class);

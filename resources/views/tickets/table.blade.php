@@ -15,15 +15,21 @@
         </tr>
         </thead>
         <tbody>
+            @php
+                // dd($tickets);
+            @endphp
+            @isset($tickets)
+
+
          @foreach($tickets as $ticket)
             <tr>
             <td>{{ $ticket->tt_number }}</td>
-            <td>{{ $ticket->site_id }}</td>
-            <td>{{ $ticket->alarm_name }}</td>
+            <td>{{ $ticket->site->site_id }}</td>
+            <td>{{ $ticket->alarm->name }}</td>
             <td>{{ $ticket->description }}</td>
-            <td>{{ $ticket->categ }}</td>
-            <td>{{ $ticket->contractor }}</td>
-            <td>{{ $ticket->scope }}</td>
+            <td>{{ $ticket->tt_categ->name }}</td>
+            <td>{{ $ticket->tt_contractor->name }}</td>
+            <td>{{ $ticket->tt_scope->name }}</td>
 
             <td>{{ $ticket->created_at }}</td>
                 <td width="120">
@@ -42,7 +48,9 @@
                     {!! Form::close() !!}
                 </td>
             </tr>
+
          @endforeach
+         @endisset
         </tbody>
     </table>
 </div>

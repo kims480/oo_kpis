@@ -9,6 +9,7 @@ return array (
     'id' => 'Id',
     'site_id' => 'Site Id',
     'description' => 'Description',
+    'alarm_name' => 'Alarm Name',
     'categ' => 'Categ',
     'contractor' => 'Contractor',
     'scope' => 'Scope',

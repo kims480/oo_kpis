@@ -220,6 +220,18 @@
             });
 
         })
+
+        let singleSelect = document.querySelectorAll("select.searchSelection");
+            console.log('singleSelect');
+            // console.log(singleSelect);
+            singleSelect.forEach(element => {
+
+                    new TESelect(element);
+                    console.log('newInstance');
+
+
+            });
+
     </script>
 
 

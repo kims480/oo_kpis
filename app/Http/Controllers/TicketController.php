@@ -6,6 +6,9 @@ use App\Http\Requests\CreateTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
 use App\Repositories\TicketRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Contractor;
+use App\Models\OtcAlarms;
+use App\Models\Site;
 use App\Models\Ticket;
 use Auth;
 use Carbon\Carbon;
@@ -33,10 +36,25 @@ class TicketController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $tickets = $this->ticketRepository->paginate(10);
 
-        return view('tickets.index')
-            ->with('tickets', $tickets);
+        $tickets = Ticket::with(
+            [
+                'site' => function ($site) {
+                    $site->select('id', 'site_id')->get();
+                }, 'tt_categ' => function ($categ) {
+                    $categ->select('id', 'name')->get();
+                }, 'tt_contractor' => function ($contractor) {
+                    $contractor->select('id', 'name')->get();
+                }, 'tt_scope' => function ($scope) {
+                    $scope->select('id', 'name')->get();
+                }, 'alarm' => function ($alarm_name) {
+                    $alarm_name->select('id', 'name')->get();
+                }
+            ]
+        )->paginate(10);
+        // ->where('site_id','like', '%'.$this->site_id.'%');
+
+        return view('tickets.index', compact('tickets'));
     }
 
     /**
@@ -46,7 +64,12 @@ class TicketController extends AppBaseController
      */
     public function create()
     {
-        return view('tickets.create');
+
+        $SitesList = Site::select('id', 'site_id')->get()->pluck('site_id', 'id');
+        $ContractorsList = Contractor::select('id', 'name')->get()->pluck('name', 'id');
+        $AlarmsList = OtcAlarms::select('id', 'name')->get()->pluck('name', 'id');
+
+        return view('tickets.create', compact('SitesList', 'ContractorsList', 'AlarmsList'));
     }
 
     /**
@@ -60,15 +83,15 @@ class TicketController extends AppBaseController
     {
         $input = $request->all();
 
-        $input['tt_number']=$this->genTT();
-        $input['last_number']=$this->last_number()+1;
-        $input['assigned_to']=Auth::user()->id;
-        $input['status']='Created';
-        $input['created_by']=   Auth::user()->id;
+        $input['tt_number'] = $this->genTT();
+        $input['last_number'] = $this->last_number() + 1;
+        $input['assigned_to'] = Auth::user()->id;
+        $input['status'] = 'Created';
+        $input['created_by'] =   Auth::user()->id;
 
         $ticket = $this->ticketRepository->create($input);
 
-        Flash::success(__($ticket->tt_number.'TT created successfully', ['model' => __('models/tickets.singular')]));
+        Flash::success(__($ticket->tt_number . 'TT created successfully', ['model' => __('models/tickets.singular')]));
 
         return redirect(route('tickets.index'));
     }
@@ -76,12 +99,12 @@ class TicketController extends AppBaseController
 
     public function last_number()
     {
-        return (Ticket::select('id','last_number')->orderBy('id', 'DESC')->first()->last_number)??0;
+        return (Ticket::select('id', 'last_number')->orderBy('id', 'DESC')->first()->last_number) ?? 0;
     }
     public function genTT()
     {
         $dt = Carbon::now();
-        return 'TT-'.$dt->year.$dt->month.$dt->day.'-'.sprintf('%08d', $this->last_number()+1);;
+        return 'TT-' . $dt->year . $dt->month . $dt->day . '-' . sprintf('%08d', $this->last_number() + 1);;
     }
 
     /**
@@ -101,7 +124,8 @@ class TicketController extends AppBaseController
             return redirect(route('tickets.index'));
         }
 
-        return view('tickets.show')->with('ticket', $ticket);
+
+        return view('tickets.show', compact('ticket'));
     }
 
     /**
@@ -120,8 +144,11 @@ class TicketController extends AppBaseController
 
             return redirect(route('tickets.index'));
         }
+        $SitesList = Site::select('id', 'site_id')->get()->pluck('site_id', 'id');
+        $ContractorsList = Contractor::select('id', 'name')->get()->pluck('name', 'id');
+        $AlarmsList = OtcAlarms::select('id', 'name')->get()->pluck('name', 'id');
 
-        return view('tickets.edit')->with('ticket', $ticket);
+        return view('tickets.edit', compact('ticket', 'SitesList', 'ContractorsList', 'AlarmsList'));
     }
 
     /**

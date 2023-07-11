@@ -15,7 +15,7 @@ class AddColumsToTicketsTable extends Migration
     {
         Schema::table('tickets', function (Blueprint $table) {
             $table->integer('last_number')->nullable();
-            $table->integer('alarm_name')->nullable();
+            $table->integer('alarm_name')->unsigned()->nullable();
         });
     }
 

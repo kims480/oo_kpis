@@ -262,3 +262,87 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
     </a>
 </li>
 
+<li class="nav-item">
+    <a href="{{ route('contractors.index') }}"
+       class="nav-link {{ Request::is('contractors*') ? 'active' : '' }}">
+        <p>@lang('models/contractors.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('otcSites.index') }}"
+       class="nav-link {{ Request::is('otcSites*') ? 'active' : '' }}">
+        <p>@lang('models/otcSites.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('otcScopes.index') }}"
+       class="nav-link {{ Request::is('otcScopes*') ? 'active' : '' }}">
+        <p>@lang('models/otcScopes.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('otcScopes.index') }}"
+       class="nav-link {{ Request::is('otcScopes*') ? 'active' : '' }}">
+        <p>@lang('models/otcScopes.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('otcScopes.index') }}"
+       class="nav-link {{ Request::is('otcScopes*') ? 'active' : '' }}">
+        <p>@lang('models/otcScopes.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('otcScopes.index') }}"
+       class="nav-link {{ Request::is('otcScopes*') ? 'active' : '' }}">
+        <p>@lang('models/otcScopes.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('otcScopes.index') }}"
+       class="nav-link {{ Request::is('otcScopes*') ? 'active' : '' }}">
+        <p>@lang('models/otcScopes.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('otcScopes.index') }}"
+       class="nav-link {{ Request::is('otcScopes*') ? 'active' : '' }}">
+        <p>@lang('models/otcScopes.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('otcScopes.index') }}"
+       class="nav-link {{ Request::is('otcScopes*') ? 'active' : '' }}">
+        <p>@lang('models/otcScopes.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('otcScopes.index') }}"
+       class="nav-link {{ Request::is('otcScopes*') ? 'active' : '' }}">
+        <p>@lang('models/otcScopes.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('otcCategs.index') }}"
+       class="nav-link {{ Request::is('otcCategs*') ? 'active' : '' }}">
+        <p>@lang('models/otcCategs.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('otcAlarms.index') }}"
+       class="nav-link {{ Request::is('otcAlarms*') ? 'active' : '' }}">
+        <p>@lang('models/otcAlarms.plural')</p>
+    </a>
+</li>
+

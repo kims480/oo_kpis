@@ -42,7 +42,8 @@ class Ticket extends Model
         'tt_number',
         'last_number',
         'alarm_name',
-        'notes'
+        'notes',
+        'alarm_name'
     ];
 
     /**
@@ -51,7 +52,6 @@ class Ticket extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
         'site_id' => 'integer',
         'categ' => 'integer',
         'contractor' => 'integer',
@@ -70,8 +70,36 @@ class Ticket extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function id()
+    public function site()
     {
-        return $this->belongsTo(\App\Models\Site::class, 'id', 'Site_id');
+        return $this->belongsTo(\App\Models\Site::class, 'site_id','id' );
+    }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function tt_categ()
+    {
+        return $this->belongsTo(\App\Models\OtcCateg::class,'categ', 'id' );
+    }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function tt_scope()
+    {
+        return $this->belongsTo(\App\Models\OtcScope::class, 'scope','id' );
+    }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function alarm()
+    {
+        return $this->belongsTo(\App\Models\OtcAlarms::class, 'alarm_name','id' );
+    }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function tt_contractor()
+    {
+        return $this->belongsTo(\App\Models\Contractor::class,  'contractor','id');
     }
 }

@@ -105,3 +105,39 @@ Route::resource('tickets', App\Http\Controllers\TicketController::class);
 
 
 Route::resource('alarmCategs', App\Http\Controllers\AlarmCategController::class);
+
+
+Route::resource('contractors', App\Http\Controllers\ContractorController::class);
+
+
+Route::resource('otcSites', App\Http\Controllers\OtcSitesController::class);
+
+
+Route::resource('otcScopes', App\Http\Controllers\OtcScopeController::class);
+
+
+Route::resource('otcScopes', App\Http\Controllers\OtcScopeController::class);
+
+
+Route::resource('otcScopes', App\Http\Controllers\OtcScopeController::class);
+
+
+Route::resource('otcScopes', App\Http\Controllers\OtcScopeController::class);
+
+
+Route::resource('otcScopes', App\Http\Controllers\OtcScopeController::class);
+
+
+Route::resource('otcScopes', App\Http\Controllers\OtcScopeController::class);
+
+
+Route::resource('otcScopes', App\Http\Controllers\OtcScopeController::class);
+
+
+Route::resource('otcScopes', App\Http\Controllers\OtcScopeController::class);
+
+
+Route::resource('otcCategs', App\Http\Controllers\OtcCategController::class);
+
+
+Route::resource('otcAlarms', App\Http\Controllers\OtcAlarmsController::class);

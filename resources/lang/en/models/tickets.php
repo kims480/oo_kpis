@@ -1,7 +1,7 @@
 <?php
 
 return array (
-  'route' => 'Ticket',
+  'route' => 'tickets',
   'singular' => 'Ticket',
   'plural' => 'Tickets',
   'fields' =>

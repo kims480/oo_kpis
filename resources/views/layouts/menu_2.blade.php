@@ -921,7 +921,7 @@ $urlAdmin = config('fast.admin_prefix');
             {{-- 'text-gray-400 ': $store.sidebar.active != 'battery-add' --}}
         }">
         <!-- bATTERIES -->
-        <a href="{{ route(__('models/tickets.plural').'.index') }}"
+        <a href="{{ route(__('models/tickets.route').'.index') }}"
             class="flex justify-between p-0 w-full   items-center space-x-2 {{ Request::is('admin/'.__('models/tickets.singular').'*') ? 'active ' : '' }}">
             <div class="flex  items-center space-x-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"

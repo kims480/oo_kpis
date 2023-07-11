@@ -4,7 +4,7 @@ return array(
     'router' => 'otcSites',
     'route' => 'otcSites',
     'singular' => 'Otc_site',
-    'plural' => 'otc_sites',
+    'plural' => 'otcSites',
     'fields' =>
     array(
         'id' => 'Id',

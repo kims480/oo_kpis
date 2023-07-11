@@ -32,7 +32,7 @@ class Contractor extends Model
     use SoftDeletes;
 
 
-    public $table = 'Contractors';
+    public $table = 'contractors';
 
 
     protected $dates = ['deleted_at'];

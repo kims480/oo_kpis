@@ -34,7 +34,9 @@ class TicketController extends AppBaseController
     	$user = User::find(1);
 
         $project = [
+            'to'=>'eng.karim@2010@gmail.com',
             'greeting' => 'Hi '.$user->name.',',
+
             'body' => 'This is the project assigned to you.',
             'thanks' => 'Thank you this is from codeanddeploy.com',
             'actionText' => 'View Project',

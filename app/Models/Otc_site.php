@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @version July 11, 2023, 9:08 pm +04
  *
  */
-class Otc_sites extends Model
+class Otc_site extends Model
 {
     use SoftDeletes;
 

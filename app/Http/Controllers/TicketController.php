@@ -42,9 +42,9 @@ class TicketController extends AppBaseController
             'id' => 57
         ];
 
-        Notification::send($user, new EmailNotification($project));
+        $not=Notification::send($user, new EmailNotification($project));
 
-        dd('Notification sent!');
+        dd('Notification sent!',$not);
     }
     /**
      * Display a listing of the Ticket.

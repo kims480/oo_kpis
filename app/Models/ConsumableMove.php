@@ -23,12 +23,12 @@ class ConsumableMove extends Model
 
     public function getTotalAttribute()
     {
-        $total = 0;
+        // $total = 0;
 
-        foreach ($this->products as $product) {
-            $total += $product->price * $product->pivot->quantity;
-        }
+        // foreach ($this->products as $product) {
+            // $total += $product->price * $product->pivot->quantity;
+        // }
 
-        return $total * (1 + (is_numeric($this->taxes) ? $this->taxes : 0) / 100);
+        // return $total * (1 + (is_numeric($this->taxes) ? $this->taxes : 0) / 100);
     }
 }

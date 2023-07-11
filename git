@@ -15,6 +15,7 @@ git branch -M main
 git push -u origin main
 
 cd domains/karimsaleh.tech/public_html/ookpi/
+cd domains/rahaal.store/public_html/
 alias php='/opt/cpanel/ea-php74/root/usr/bin/php'
 export PATH="/opt/cpanel/ea-php74/root/usr/bin:$PATH"
 

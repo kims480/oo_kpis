@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\ConsumableSpare;
+use App\Models\Storm;
+use App\Policies\StormPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Support\Facades\Gate;
@@ -20,8 +22,9 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
 
-            ConsumableSpare::class => ConsumableSparePolicy::class,
+        ConsumableSpare::class => ConsumableSparePolicy::class,
 
+        Storm::class => StormPolicy::class,
     ];
 
     /**

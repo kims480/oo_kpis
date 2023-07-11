@@ -248,3 +248,17 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
     </a>
 </li>
 
+<li class="nav-item">
+    <a href="{{ route('tickets.index') }}"
+       class="nav-link {{ Request::is('tickets*') ? 'active' : '' }}">
+        <p>@lang('models/tickets.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('alarmCategs.index') }}"
+       class="nav-link {{ Request::is('alarmCategs*') ? 'active' : '' }}">
+        <p>@lang('models/alarmCategs.plural')</p>
+    </a>
+</li>
+

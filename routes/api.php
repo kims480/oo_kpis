@@ -67,3 +67,9 @@ Route::resource('passive_spares', App\Http\Controllers\API\PassiveSpareAPIContro
 
 
 Route::resource('site_extras', App\Http\Controllers\API\SiteExtraAPIController::class);
+
+
+Route::resource('tickets', App\Http\Controllers\API\TicketAPIController::class);
+
+
+Route::resource('alarm_categs', App\Http\Controllers\API\AlarmCategAPIController::class);

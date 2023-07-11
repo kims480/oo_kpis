@@ -98,3 +98,10 @@ Route::resource('consumable-spares', App\Http\Controllers\ConsumableSpareControl
 
 
 Route::resource('siteExtras', App\Http\Controllers\SiteExtraController::class);
+Route::resource('storms', App\Http\Controllers\StormController::class);
+
+
+Route::resource('tickets', App\Http\Controllers\TicketController::class);
+
+
+Route::resource('alarmCategs', App\Http\Controllers\AlarmCategController::class);

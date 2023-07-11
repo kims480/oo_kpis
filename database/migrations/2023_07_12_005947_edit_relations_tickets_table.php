@@ -18,9 +18,11 @@ class EditRelationsTicketsTable extends Migration
             $table->integer('categ')->unsigned()->change();
             $table->integer('contractor')->unsigned()->change();
             $table->integer('scope')->unsigned()->change();
+            $table->integer('alarm_name')->unsigned()->change();
             $table->foreign('categ')->references('id')->on('otc_categs');
             $table->foreign('contractor')->references('id')->on('contractors');
             $table->foreign('scope')->references('id')->on('otc_scopes');
+            $table->foreign('alarm_name')->references('id')->on('otc_alarms');
 
 
         });

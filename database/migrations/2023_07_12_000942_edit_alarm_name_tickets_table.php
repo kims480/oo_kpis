@@ -15,7 +15,7 @@ class EditAlarmNameTicketsTable extends Migration
     {
         Schema::table('tickets', function (Blueprint $table) {
 
-            $table->foreign('alarm_name')->references('id')->on('otc_alarms');
+            // $table->foreign('alarm_name')->references('id')->on('otc_alarms');
         });
     }
 

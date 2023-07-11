@@ -35,6 +35,6 @@ class otc_sitesRepository extends BaseRepository
      **/
     public function model()
     {
-        return Otc_sites::class;
+        return Otc_site::class;
     }
 }

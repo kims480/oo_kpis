@@ -116,25 +116,7 @@ Route::resource('otcSites', App\Http\Controllers\OtcSitesController::class);
 Route::resource('otcScopes', App\Http\Controllers\OtcScopeController::class);
 
 
-Route::resource('otcScopes', App\Http\Controllers\OtcScopeController::class);
 
-
-Route::resource('otcScopes', App\Http\Controllers\OtcScopeController::class);
-
-
-Route::resource('otcScopes', App\Http\Controllers\OtcScopeController::class);
-
-
-Route::resource('otcScopes', App\Http\Controllers\OtcScopeController::class);
-
-
-Route::resource('otcScopes', App\Http\Controllers\OtcScopeController::class);
-
-
-Route::resource('otcScopes', App\Http\Controllers\OtcScopeController::class);
-
-
-Route::resource('otcScopes', App\Http\Controllers\OtcScopeController::class);
 
 
 Route::resource('otcCategs', App\Http\Controllers\OtcCategController::class);

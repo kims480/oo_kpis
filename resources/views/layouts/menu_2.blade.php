@@ -909,6 +909,36 @@ $urlAdmin = config('fast.admin_prefix');
         </a>
     </div>
 @endcan
+@can(__('models/tickets.route').'.index')
+    <div @click="$store.sidebar.active = 'tickets'" x-data="tooltip" x-on:mouseover="show = true"
+        x-on:mouseleave="show = false"
+        class=" relative flex justify-between items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+        {{ Request::is('admin/'.__('models/tickets.route').'*')  ? 'active text-orange-300 bg-gray-800' : 'text-gray-400' }}"
+        x-bind:class="{
+            'justify-start': $store.sidebar.full,
+            'sm:justify-center': !$store.sidebar.full,
+            {{-- 'text-gray-200 bg-gray-800': $store.sidebar.active == 'battery-add', --}}
+            {{-- 'text-gray-400 ': $store.sidebar.active != 'battery-add' --}}
+        }">
+        <!-- bATTERIES -->
+        <a href="{{ route(__('models/consumableSpares.plural').'.index') }}"
+            class="flex justify-between p-0 w-full   items-center space-x-2 {{ Request::is('admin/'.__('models/tickets.singular').'*') ? 'active ' : '' }}">
+            <div class="flex  items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h3 x-cloak class="text-base"
+                    x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full && !show ? 'sm:hidden' : ''">
+                    <p>@lang('models/tickets.route')</p>
+                </h3>
+
+            </div>
+
+        </a>
+    </div>
+@endcan
 
 <!-- Posts -->
 {{-- <div @click="$store.sidebar.active = 'posts' " x-data="tooltip" x-on:mouseover="show = true"

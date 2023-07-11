@@ -1,9 +1,10 @@
 <?php
 
 return array (
+  'route' => 'Ticket',
   'singular' => 'Ticket',
   'plural' => 'Tickets',
-  'fields' => 
+  'fields' =>
   array (
     'id' => 'Id',
     'site_id' => 'Site Id',
@@ -11,7 +12,7 @@ return array (
     'categ' => 'Categ',
     'contractor' => 'Contractor',
     'scope' => 'Scope',
-    'tt_number' => 'Tt Number',
+    'tt_number' => 'TT Number',
     'notes' => 'Notes',
     'created_at' => 'Created At',
     'updated_at' => 'Updated At',

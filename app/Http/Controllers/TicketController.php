@@ -10,11 +10,14 @@ use App\Models\Contractor;
 use App\Models\OtcAlarms;
 use App\Models\Site;
 use App\Models\Ticket;
+use App\Models\User;
+use App\Notifications\EmailNotification;
 use Auth;
 use Carbon\Carbon;
 use Doctrine\DBAL\Driver\SQLSrv\LastInsertId;
 use Illuminate\Http\Request;
 use Flash;
+use Notification;
 use Response;
 
 class TicketController extends AppBaseController
@@ -26,7 +29,23 @@ class TicketController extends AppBaseController
     {
         $this->ticketRepository = $ticketRepo;
     }
+    public function send()
+    {
+    	$user = User::first();
 
+        $project = [
+            'greeting' => 'Hi '.$user->name.',',
+            'body' => 'This is the project assigned to you.',
+            'thanks' => 'Thank you this is from codeanddeploy.com',
+            'actionText' => 'View Project',
+            'actionURL' => url('/'),
+            'id' => 57
+        ];
+
+        Notification::send($user, new EmailNotification($project));
+
+        dd('Notification sent!');
+    }
     /**
      * Display a listing of the Ticket.
      *

@@ -123,3 +123,4 @@ Route::resource('otcCategs', App\Http\Controllers\OtcCategController::class);
 
 
 Route::resource('otcAlarms', App\Http\Controllers\OtcAlarmsController::class);
+Route::get('sendmail', [App\Http\Controllers\TicketController::class ,'send']);

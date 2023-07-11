@@ -31,7 +31,7 @@ class TicketController extends AppBaseController
     }
     public function send()
     {
-    	$user = User::first();
+    	$user = User::find(1);
 
         $project = [
             'greeting' => 'Hi '.$user->name.',',

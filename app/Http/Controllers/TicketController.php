@@ -67,7 +67,8 @@ class TicketController extends AppBaseController
             'to'=>'eng.karim@2010@gmail.com',
             'greeting' => 'Hi '.$user->name.',',
 
-            'body' => $message,
+            'body' => "TT has assigned to you, Please check and do the needful",
+            'table'=>$message,
             'thanks' => 'Thank you this is from Alkan.KarimSaleh.com',
             'actionText' => 'View Website',
             'actionURL' => url('/'),

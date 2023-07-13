@@ -9,6 +9,11 @@
     {{-- Body --}}
     {{ $slot }}
 
+    @isset($table)
+        @component('mail::table')
+            {{ $table }}
+        @endcomponent
+    @endisset
     {{-- Subcopy --}}
     @isset($subcopy)
         @slot('subcopy')

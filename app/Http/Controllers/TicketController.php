@@ -29,24 +29,54 @@ class TicketController extends AppBaseController
     {
         $this->ticketRepository = $ticketRepo;
     }
-    public function send()
+    public function send($ticket = null)
     {
     	$user = User::find(1);
 
-        $project = [
+        $message="
+        <table class='table' id='tickets-table'>
+            <tbody>
+                <tr>
+                    <th>".__('models/tickets.fields.tt_number')."</th>
+                    <td>".$ticket->tt_number."</td>
+                    <th>".__('models/tickets.fields.site_id')."</th>
+                    <td>". $ticket->site->site_id ."</td>
+                </tr>
+                <tr>
+                    <th>".__('models/tickets.fields.alarm_name')."</th>
+                    <td>". $ticket->alarm->name ."</td>
+                    <th>".__('models/tickets.fields.description')."</th>
+                    <td>". $ticket->description ."</td>
+                </tr>
+                <tr>
+                    <th>".__('models/tickets.fields.categ')."</th>
+                    <td>". $ticket->tt_categ->name ."</td>
+                    <th>".__('models/tickets.fields.contractor')."</th>
+                    <td>". $ticket->tt_contractor->name ."</td>
+                </tr>
+                <tr>
+                    <th>".__('models/tickets.fields.scope')."</th>
+                    <td>". $ticket->tt_scope->name ."</td>
+                    <th>".__('models/tickets.fields.created_at')."</th>
+                    <td>". $ticket->created_at ."</td>
+                </tr>
+        </tbody>
+       </table>
+        ";
+        $ttNotify = [
             'to'=>'eng.karim@2010@gmail.com',
             'greeting' => 'Hi '.$user->name.',',
 
-            'body' => 'This is the project assigned to you.',
-            'thanks' => 'Thank you this is from codeanddeploy.com',
-            'actionText' => 'View Project',
+            'body' => $message,
+            'thanks' => 'Thank you this is from Alkan.KarimSaleh.com',
+            'actionText' => 'View Website',
             'actionURL' => url('/'),
             'id' => 57
         ];
 
-        $not=Notification::send($user, new EmailNotification($project));
+        $not=Notification::send($user, new EmailNotification($ttNotify));
 
-        dd('Notification sent!',$not);
+        // dd('Notification sent!',$not);
     }
     /**
      * Display a listing of the Ticket.
@@ -90,6 +120,9 @@ class TicketController extends AppBaseController
         $ContractorsList = Contractor::select('id', 'name')->get()->pluck('name', 'id');
         $AlarmsList = OtcAlarms::select('id', 'name')->get()->pluck('name', 'id');
 
+
+
+
         return view('tickets.create', compact('SitesList', 'ContractorsList', 'AlarmsList'));
     }
 
@@ -112,7 +145,12 @@ class TicketController extends AppBaseController
 
         $ticket = $this->ticketRepository->create($input);
 
-        Flash::success(__($ticket->tt_number . 'TT created successfully', ['model' => __('models/tickets.singular')]));
+        $not=$this->send($ticket);;
+
+        if($not){
+
+            Flash::success(__($ticket->tt_number . 'TT created successfully', ['model' => __('models/tickets.singular')]));
+        }
 
         return redirect(route('tickets.index'));
     }

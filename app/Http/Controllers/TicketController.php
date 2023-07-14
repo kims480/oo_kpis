@@ -54,8 +54,8 @@ class TicketController extends AppBaseController
             'body' => "TT (" . $ticket->tt_number . ") has assigned to you, Please check and do the needful",
             'ttDetails'=>$this->messageMarkDown,
             'thanks' => 'Thank you this is from ALKAN.KarimSaleh.com',
-            'actionText' => 'Open Website',
-            'actionURL' => url('/'),
+            'actionText' => 'Open TT',
+            'actionURL' => url('//tickets/'.$ticket->id),
             'id' => $ticket->last_number
         ];
 

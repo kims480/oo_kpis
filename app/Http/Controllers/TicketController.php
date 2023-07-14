@@ -43,7 +43,7 @@ class TicketController extends AppBaseController
         if (!isNull($ticket)) {
             $messageMarkDown =
 
-                "| ------------- |:-------------:| --------:|"
+                "<x-mail::table>"
                 ."|" . __('models/tickets.fields.tt_number') . "|" . $ticket->tt_number . "|"
                 . __('models/tickets.fields.site_id') . "|" . $ticket->site->site_id . "|"
                 . __('models/tickets.fields.alarm_name') . "|" . $ticket->alarm->name . "|"
@@ -51,7 +51,8 @@ class TicketController extends AppBaseController
                 . __('models/tickets.fields.categ') . "|" . $ticket->tt_categ->name . "|"
                 . __('models/tickets.fields.contractor') . "|" . $ticket->tt_contractor->name .
                 "|" . __('models/tickets.fields.scope') . "|" . $ticket->tt_scope->name . "|"
-                . __('models/tickets.fields.created_at') . "|" . $ticket->created_at . "|";
+                . __('models/tickets.fields.created_at') . "|" . $ticket->created_at . "|"
+                ."</x-mail::table>";
 
 
         }

@@ -26,7 +26,7 @@
 
                     @foreach ($tickets as $ticket)
                         <tr class="border-b border-gray-200 hover:bg-gray-100">
-                            <td class="py-3 px-6 text-left whitespace-nowrap"><span class="font-medium">{{ $ticket->tt_number }}</span></td>
+                            <td class="py-3 px-6 text-left"><span class="font-medium">{{ $ticket->tt_number }}</span></td>
                             <td ؤlass="py-3 px-6 text-left">{{ $ticket->site->site_id }}</td>
                             <td class="py-3 px-6 text-center">{{ $ticket->alarm->name }}</td>
                             <td class="py-3 px-6 text-center">{{ $ticket->description }}</td>
@@ -62,3 +62,4 @@
             </tbody>
         </table>
     </div>
+</div>

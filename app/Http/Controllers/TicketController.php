@@ -12,6 +12,7 @@ use App\Models\Site;
 use App\Models\Ticket;
 use App\Models\User;
 use App\Notifications\EmailNotification;
+use App\Notifications\TTCreated;
 use Auth;
 use Carbon\Carbon;
 use Doctrine\DBAL\Driver\SQLSrv\LastInsertId;
@@ -68,7 +69,7 @@ class TicketController extends AppBaseController
             'id' => 2
         ];
 
-        Notification::send($user, new EmailNotification($ttNotify));
+        Notification::send($user, new TTCreated($ttNotify));
 
         // dd('Notification sent!',$not);
     }

@@ -2,6 +2,8 @@
 
 namespace App\Notifications;
 
+use App\Models\User;
+use Auth;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -46,6 +48,8 @@ class TTCreated extends Notification
             // ->line('The introduction to the notification.')
             // ->action('Notification Action', url('/'))
             // ->line('Thank you for using our application!');
+            ->cc('eng.karim2010@gmail.com', 'Karim Saleh')
+            ->cc(Auth::user()->email,Auth::user()->name)
             ->greeting($this->TT['greeting'])
             ->line($this->TT['body'])
             ->lines($this->TT['ttDetails'])

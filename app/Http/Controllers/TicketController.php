@@ -52,7 +52,8 @@ class TicketController extends AppBaseController
             ];
 
         $ttNotify = [
-            'to' => 'eng.karim@2010@gmail.com',
+            // 'to' => Auth::user(),
+            // 'cc'=>'eng.karim@2010@gmail.com',
             'greeting' => 'Dear ' . $user->name . ',',
             // 'body' => "test",
             'body' => "TT (" . $ticket->tt_number . ") has assigned to you, Please check and do the needful",
@@ -63,7 +64,7 @@ class TicketController extends AppBaseController
             'id' => 2
         ];
 
-        Notification::send($user, new TTCreated($ttNotify));
+        Notification::send( User::role('OTC')->get(), new TTCreated($ttNotify));
 
         // dd('Notification sent!',$not);
     }

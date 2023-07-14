@@ -100,3 +100,21 @@ php artisan migrate:fresh --seed --seeder=ConsumableSpareSeeder
 
 #force seeders
 php artisan db:seed --force
+
+
+#to create JOb
+
+
+
+# create Mail class
+php artisan make:mail TTNotifMail
+## go to build() function
+## return $this->subject('Mail Subject')
+## ->view('view.name');
+
+# create Job class
+php artisan make:job SendTTCreationMails
+
+# create Job queue table storing success and failed jobs
+php artisan queue:table
+php artisan migrate

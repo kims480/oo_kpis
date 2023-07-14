@@ -102,6 +102,7 @@ Route::resource('storms', App\Http\Controllers\StormController::class);
 
 
 Route::resource('tickets', App\Http\Controllers\TicketController::class);
+Route::get('tickets-mail', [App\Http\Controllers\TicketController::class,'mailView'])->name('tickets.mail');
 
 
 Route::resource('alarmCategs', App\Http\Controllers\AlarmCategController::class);

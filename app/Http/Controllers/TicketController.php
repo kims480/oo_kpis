@@ -6,16 +6,16 @@ use App\Http\Requests\CreateTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
 use App\Repositories\TicketRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Jobs\SendTTCreationMails;
+use App\Jobs\SendTTCreationMailsJob;
 use App\Models\Contractor;
 use App\Models\OtcAlarms;
 use App\Models\Site;
 use App\Models\Ticket;
 use App\Models\User;
-use App\Notifications\EmailNotification;
 use App\Notifications\TTCreated;
 use Auth;
 use Carbon\Carbon;
-use Doctrine\DBAL\Driver\SQLSrv\LastInsertId;
 use Illuminate\Http\Request;
 use Flash;
 use Notification;
@@ -36,32 +36,9 @@ class TicketController extends AppBaseController
     }
     public function send(Ticket $myTicket )
     {
-        $ticket = $myTicket;
+        dispatch(new SendTTCreationMailsJob($myTicket) );
+        // Flash::success('Will send mails in background you can do other things', ['model' => __('models/tickets.singular')]);
 
-            $this->messageMarkDown =[
-                __('models/tickets.fields.tt_number') . " : " . $ticket->tt_number,
-                 __('models/tickets.fields.site_id') . " : " . $ticket->site->site_id,
-                 __('models/tickets.fields.alarm_name') . " : " . $ticket->alarm->name,
-                 __('models/tickets.fields.description') . " : " . $ticket->description,
-                 __('models/tickets.fields.categ') . " : " . $ticket->tt_categ->name,
-                 __('models/tickets.fields.contractor') . " : " . $ticket->tt_contractor->name,
-                 __('models/tickets.fields.scope') . " : " . $ticket->tt_scope->name,
-                 __('models/tickets.fields.created_at') . " : " . $ticket->created_at,
-            ];
-
-        $ttNotify = [
-            'tt_number' => $ticket->tt_number,
-            'body' => "TT (" . $ticket->tt_number . ") has assigned to you, Please check and do the needful",
-            'ttDetails'=>$this->messageMarkDown,
-            'thanks' => 'Thank you this is from ALKAN.KarimSaleh.com',
-            'actionText' => 'Open TT',
-            'actionURL' => url('//tickets/'.$ticket->id),
-            'id' => $ticket->last_number
-        ];
-
-        Notification::send( User::role('OTC')->get(), new TTCreated($ttNotify));
-
-        // dd('Notification sent!',$not);
     }
     /**
      * Display a listing of the Ticket.
@@ -247,5 +224,14 @@ class TicketController extends AppBaseController
         Flash::success(__('messages.deleted', ['model' => __('models/tickets.singular')]));
 
         return redirect(route('tickets.index'));
+    }
+
+    public function mailView()  {
+        $data=[
+
+            'ticket'=>Ticket::find(53),
+            'userData'=>User::find(1)
+        ];
+        return view('tickets.mail',compact('data'));
     }
 }

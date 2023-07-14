@@ -59,6 +59,7 @@ class TicketController extends AppBaseController
         $ttNotify = [
             'to' => 'eng.karim@2010@gmail.com',
             'greeting' => 'Dear ' . $user->name . ',',
+            'body' => "test",
             'body' => "TT (" . $ticket->tt_number . ") has assigned to you, Please check and do the needful".$messageMarkDown,
             'table'=>$message,
             'thanks' => 'Thank you this is from Alkan.KarimSaleh.com',

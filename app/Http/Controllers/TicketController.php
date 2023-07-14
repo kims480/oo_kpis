@@ -45,7 +45,7 @@ class TicketController extends AppBaseController
                  __('models/tickets.fields.description') . " : " . $ticket->description,
                  __('models/tickets.fields.categ') . " : " . $ticket->tt_categ->name,
                  __('models/tickets.fields.contractor') . " : " . $ticket->tt_contractor->name,
-                 __('models/tickets.fields.scope') . " : " . $ticket->tt_scope->name.
+                 __('models/tickets.fields.scope') . " : " . $ticket->tt_scope->name,
                  __('models/tickets.fields.created_at') . " : " . $ticket->created_at,
             ];
 

@@ -28,6 +28,8 @@ class TicketController extends AppBaseController
     /** @var TicketRepository $ticketRepository*/
     private $ticketRepository;
 
+    protected $messageMarkDown='';
+
     public function __construct(TicketRepository $ticketRepo)
     {
         $this->ticketRepository = $ticketRepo;
@@ -37,12 +39,8 @@ class TicketController extends AppBaseController
         $user = User::find(1);
 
         $ticket = $myTicket;
-        // $ticket=$myTicket;
-        $message = '';
-        $messageMarkDown = '';
-        // dd($ticket);
         if (!isNull($ticket)) {
-            $messageMarkDown =
+            $this->messageMarkDown =
 
                 "<x-mail::table>"
                 ."|" . __('models/tickets.fields.tt_number') . "|" . $ticket->tt_number . "|"
@@ -60,9 +58,8 @@ class TicketController extends AppBaseController
         $ttNotify = [
             'to' => 'eng.karim@2010@gmail.com',
             'greeting' => 'Dear ' . $user->name . ',',
-            'body' => "test",
-            // 'body' => "TT (" . $ticket->tt_number . ") has assigned to you, Please check and do the needful".$messageMarkDown,
-            'table'=>$message,
+            // 'body' => "test",
+            'body' => "TT (" . $ticket->tt_number . ") has assigned to you, Please check and do the needful".$this->messageMarkDown,
             'thanks' => 'Thank you this is from Alkan.KarimSaleh.com',
             'actionText' => 'View Website',
             'actionURL' => url('/'),

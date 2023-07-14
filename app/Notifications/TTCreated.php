@@ -42,11 +42,14 @@ class TTCreated extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+            // ->greeting($this->TT['greeting'])
+            // ->line('The introduction to the notification.')
+            // ->action('Notification Action', url('/'))
+            // ->line('Thank you for using our application!');
             ->greeting($this->TT['greeting'])
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application!');
-
+            ->line($this->TT['body'])
+            ->action($this->TT['actionText'], $this->TT['actionURL'])
+            ->line($this->TT['thanks']);
 
             // ///
             // ->line($this->project['body'])

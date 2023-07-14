@@ -20,6 +20,8 @@ use Flash;
 use Notification;
 use Response;
 
+use function PHPUnit\Framework\isNull;
+
 class TicketController extends AppBaseController
 {
     /** @var TicketRepository $ticketRepository*/
@@ -29,49 +31,39 @@ class TicketController extends AppBaseController
     {
         $this->ticketRepository = $ticketRepo;
     }
-    public function send($ticket = null)
+    public function send(Ticket $myTicket )
     {
-    	$user = User::find(1);
+        $user = User::find(1);
 
-        $message="
-        <table class='table' id='tickets-table'>
-            <tbody>
-                <tr>
-                    <th>".__('models/tickets.fields.tt_number')."</th>
-                    <td>".$ticket->tt_number."</td>
-                    <th>".__('models/tickets.fields.site_id')."</th>
-                    <td>". $ticket->site->site_id ."</td>
-                </tr>
-                <tr>
-                    <th>".__('models/tickets.fields.alarm_name')."</th>
-                    <td>". $ticket->alarm->name ."</td>
-                    <th>".__('models/tickets.fields.description')."</th>
-                    <td>". $ticket->description ."</td>
-                </tr>
-                <tr>
-                    <th>".__('models/tickets.fields.categ')."</th>
-                    <td>". $ticket->tt_categ->name ."</td>
-                    <th>".__('models/tickets.fields.contractor')."</th>
-                    <td>". $ticket->tt_contractor->name ."</td>
-                </tr>
-                <tr>
-                    <th>".__('models/tickets.fields.scope')."</th>
-                    <td>". $ticket->tt_scope->name ."</td>
-                    <th>".__('models/tickets.fields.created_at')."</th>
-                    <td>". $ticket->created_at ."</td>
-                </tr>
-        </tbody>
-       </table>
-        ";
+        $ticket = $myTicket;
+        // $ticket=$myTicket;
+        $message = '';
+        $messageMarkDown = '';
+        // dd($ticket);
+        if (!isNull($ticket)) {
+            $messageMarkDown =
+
+                "| ------------- |:-------------:| --------:|"
+                ."|" . __('models/tickets.fields.tt_number') . "|" . $ticket->tt_number . "|"
+                . __('models/tickets.fields.site_id') . "|" . $ticket->site->site_id . "|"
+                . __('models/tickets.fields.alarm_name') . "|" . $ticket->alarm->name . "|"
+                . __('models/tickets.fields.description') . "|" . $ticket->description . "|"
+                . __('models/tickets.fields.categ') . "|" . $ticket->tt_categ->name . "|"
+                . __('models/tickets.fields.contractor') . "|" . $ticket->tt_contractor->name .
+                "|" . __('models/tickets.fields.scope') . "|" . $ticket->tt_scope->name . "|"
+                . __('models/tickets.fields.created_at') . "|" . $ticket->created_at . "|";
+
+
+        }
         $ttNotify = [
-            'to'=>'eng.karim@2010@gmail.com',
-            'greeting' => 'Dear '.$user->name.',',
-            'body' => "TT has assigned to you, Please check and do the needful",
+            'to' => 'eng.karim@2010@gmail.com',
+            'greeting' => 'Dear ' . $user->name . ',',
+            'body' => "TT (" . $ticket->tt_number . ") has assigned to you, Please check and do the needful".$messageMarkDown,
             'table'=>$message,
             'thanks' => 'Thank you this is from Alkan.KarimSaleh.com',
             'actionText' => 'View Website',
             'actionURL' => url('/'),
-            'id' => 57
+            'id' => 2
         ];
 
         Notification::send($user, new EmailNotification($ttNotify));
@@ -145,9 +137,9 @@ class TicketController extends AppBaseController
 
         $ticket = $this->ticketRepository->create($input);
 
-        $not=$this->send($ticket);;
+        $not = $this->send($ticket);;
 
-        if($not){
+        if ($not) {
 
             Flash::success(__($ticket->tt_number . 'TT created successfully', ['model' => __('models/tickets.singular')]));
         }

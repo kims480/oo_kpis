@@ -34,7 +34,7 @@ class EmailNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail','database'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -46,11 +46,10 @@ class EmailNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting($this->project['greeting'])
-                    ->line($this->project['body'])
-                    ->line($this->project['table'])
-                    ->action($this->project['actionText'], $this->project['actionURL'])
-                    ->line($this->project['thanks']);
+            ->greeting($this->project['greeting'])
+            ->line($this->project['body'])
+            ->action($this->project['actionText'], $this->project['actionURL'])
+            ->line($this->project['thanks']);
     }
 
     /**

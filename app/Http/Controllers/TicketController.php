@@ -52,16 +52,13 @@ class TicketController extends AppBaseController
             ];
 
         $ttNotify = [
-            // 'to' => Auth::user(),
-            // 'cc'=>'eng.karim@2010@gmail.com',
-            'greeting' => 'Dear ' . $user->name . ',',
-            // 'body' => "test",
+            'tt_number' => $ticket->tt_number,
             'body' => "TT (" . $ticket->tt_number . ") has assigned to you, Please check and do the needful",
             'ttDetails'=>$this->messageMarkDown,
-            'thanks' => 'Thank you this is from Alkan.KarimSaleh.com',
-            'actionText' => 'View Website',
+            'thanks' => 'Thank you this is from ALKAN.KarimSaleh.com',
+            'actionText' => 'Open Website',
             'actionURL' => url('/'),
-            'id' => 2
+            'id' => $ticket->last_number
         ];
 
         Notification::send( User::role('OTC')->get(), new TTCreated($ttNotify));

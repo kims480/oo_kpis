@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         // $schedule->command('inspire')->hourly();
         $schedule->command('user:expire')->everyMinute();
-        $schedule->command('queue:work')->everyMinute();
+        $schedule->command('/opt/alt/php80/usr/bin/php'.' artisan'. ' queue:work')->everyMinute();
         $schedule->command('queue:restart')->everyFiveMinutes();
     }
 

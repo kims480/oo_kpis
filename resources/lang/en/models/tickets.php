@@ -13,6 +13,8 @@ return array (
     'categ' => 'Categ',
     'contractor' => 'Contractor',
     'scope' => 'Scope',
+    'status' => 'Status',
+    'sla' => 'SLA',
     'tt_number' => 'TT Number',
     'notes' => 'Notes',
     'created_at' => 'Created At',

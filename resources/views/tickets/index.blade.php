@@ -36,7 +36,7 @@
 
                 <div class="card-footer clearfix float-right">
                     <div class="float-right">
-                        @include('adminlte-templates::common.paginate', ['records' => $tickets])
+                        @include('/infyom/common/paginate', ['records' => $tickets])
                     </div>
                 </div>
             </div>

@@ -45,6 +45,8 @@ return [
 
         'templates_dir'     => resource_path('infyom/infyom-generator-templates/'),
 
+        'templates_common_dir'     => resource_path('infyom/view/common/'),
+
         'seeder'            => database_path('seeders/'),
 
         'database_seeder'   => database_path('seeders/DatabaseSeeder.php'),

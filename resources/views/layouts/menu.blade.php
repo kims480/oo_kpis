@@ -346,3 +346,10 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
     </a>
 </li>
 
+<li class="nav-item">
+    <a href="{{ route('tTStatuses.index') }}"
+       class="nav-link {{ Request::is('tTStatuses*') ? 'active' : '' }}">
+        <p>@lang('models/tTStatuses.plural')</p>
+    </a>
+</li>
+

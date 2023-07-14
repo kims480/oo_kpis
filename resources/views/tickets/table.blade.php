@@ -1,6 +1,6 @@
-<div class="w-full lg:w-5/6">
+<div class="w-full ">
     <div class="bg-white shadow-md rounded my-6">
-        <table class="min-w-max w-full table-auto">
+        <table class="min-w-max w-full table-auto text-sm">
             <thead>
                 <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
 
@@ -13,6 +13,7 @@
                     <th class="py-3 px-6 text-center">@lang('models/tickets.fields.status')</th>
 
                     <th class="py-3 px-6 text-center">@lang('models/tickets.fields.created_at')</th>
+                    <th class="py-3 px-6 text-center">@lang('models/tickets.fields.sla')</th>
                     <th class="py-3 px-6 text-center" colspan="2">@lang('crud.action')</th>
                 </tr>
             </thead>
@@ -27,9 +28,12 @@
                             <td class="py-3 px-6 text-center">{{ $ticket->description }}</td>
                             <td class="py-3 px-6 text-center">{{ $ticket->tt_categ->name }}</td>
                             <td class="py-3 px-6 text-center">{{ $ticket->tt_contractor->name }}</td>
-                            <td class="py-3 px-6 text-center"><span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">: {{ $ticket->status }}</span></td>
-
+                            <td class="py-3 px-6 text-center">
+                                {{-- @dd($ticket->status) --}}
+                                <span class="{{$ticket->tt_status->name}}">{{$ticket->tt_status->name}} </span>
+                            </td>
                             <td class="py-3 px-6 text-center">{{ $ticket->created_at }}</td>
+                            <td class="py-3 px-6 text-center">{{ $ticket->alarm->sla }}</td>
                             <td class="py-3 px-6 text-center" colspan="2">
                                 {!! Form::open(['route' => ['tickets.destroy', $ticket->id], 'method' => 'delete']) !!}
                                 <div class='btn-group'>
@@ -41,13 +45,13 @@
                                             <i class="far fa-edit"></i>
                                         </a>
                                     @endcan
-                                    @role('DELETE_TT')
+                                    @hasanyrole('DELETE_TT|supper-admin')
                                         {!! Form::button('<i class="far fa-trash-alt"></i>', [
                                             'type' => 'submit',
                                             'class' => 'btn btn-danger btn-xs',
                                             'onclick' => "return confirm('Are you sure?')",
                                         ]) !!}
-                                    @endrole
+                                    @endhasanyrole
                                 </div>
                                 {!! Form::close() !!}
                             </td>

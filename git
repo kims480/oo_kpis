@@ -92,6 +92,7 @@ php artisan make:seeder UserSeeder
 #run seeders
 php artisan db:seed
 php artisan db:seed --class=UserSeeder
+ php artisan db:seed --class=TTStatusSeeder
 
 #fresh seeders
 php artisan migrate:fresh --seed

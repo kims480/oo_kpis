@@ -88,3 +88,6 @@ Route::resource('otc_categs', App\Http\Controllers\API\OtcCategAPIController::cl
 
 
 Route::resource('otc_alarms', App\Http\Controllers\API\OtcAlarmsAPIController::class);
+
+
+Route::resource('t_t_statuses', App\Http\Controllers\API\TTStatusAPIController::class);

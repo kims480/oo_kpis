@@ -39,6 +39,7 @@ class Ticket extends Model
         'description',
         'contractor',
         'scope',
+        'status',
         'tt_number',
         'last_number',
         'alarm_name',
@@ -66,7 +67,23 @@ class Ticket extends Model
     public static $rules = [
 
     ];
+    // public function getStatusAttribute()
+    // {
+        // return 'completed';
+        // return $this->tt_status()->pluck('id', 'name');
+        // return $this->status == 1?
+        //     'hold': null;
+            //  ($this->status == 2 ?
+        //     'dispatched':($this->status == 3?
+        //     'accepted': ($this->status == 4?
+        //     'updated': ($this->status == 5?
+        //     'completed': ($this->status == 6?
+        //     'closed': ($this->status == 7?
+        //     'rejected': null))))));
 
+
+
+    // }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
@@ -101,5 +118,12 @@ class Ticket extends Model
     public function tt_contractor()
     {
         return $this->belongsTo(\App\Models\Contractor::class,  'contractor','id');
+    }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function tt_status()
+    {
+        return $this->belongsTo(\App\Models\TTStatus::class,  'status','id');
     }
 }

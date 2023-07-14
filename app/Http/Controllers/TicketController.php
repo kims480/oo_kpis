@@ -36,8 +36,6 @@ class TicketController extends AppBaseController
     }
     public function send(Ticket $myTicket )
     {
-        $user = User::find(1);
-
         $ticket = $myTicket;
 
             $this->messageMarkDown =[
@@ -86,10 +84,13 @@ class TicketController extends AppBaseController
                 }, 'tt_scope' => function ($scope) {
                     $scope->select('id', 'name')->get();
                 }, 'alarm' => function ($alarm_name) {
-                    $alarm_name->select('id', 'name')->get();
+                    $alarm_name->select('id', 'name','sla')->get();
+                }, 'tt_status' => function ($status) {
+                    $status->select('id', 'name')->get();
                 }
+
             ]
-        )->paginate(10);
+        )->orderBy('id','desc')->paginate(10);
         // ->where('site_id','like', '%'.$this->site_id.'%');
 
         return view('tickets.index', compact('tickets'));

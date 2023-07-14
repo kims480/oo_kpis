@@ -28,7 +28,7 @@ class TicketController extends AppBaseController
     /** @var TicketRepository $ticketRepository*/
     private $ticketRepository;
 
-    protected $messageMarkDown='';
+    protected $messageMarkDown;
 
     public function __construct(TicketRepository $ticketRepo)
     {
@@ -39,27 +39,24 @@ class TicketController extends AppBaseController
         $user = User::find(1);
 
         $ticket = $myTicket;
-        if (!isNull($ticket)) {
-            $this->messageMarkDown =
 
-                "<x-mail::table>"
-                ."|" . __('models/tickets.fields.tt_number') . "|" . $ticket->tt_number . "|"
-                . __('models/tickets.fields.site_id') . "|" . $ticket->site->site_id . "|"
-                . __('models/tickets.fields.alarm_name') . "|" . $ticket->alarm->name . "|"
-                . __('models/tickets.fields.description') . "|" . $ticket->description . "|"
-                . __('models/tickets.fields.categ') . "|" . $ticket->tt_categ->name . "|"
-                . __('models/tickets.fields.contractor') . "|" . $ticket->tt_contractor->name .
-                "|" . __('models/tickets.fields.scope') . "|" . $ticket->tt_scope->name . "|"
-                . __('models/tickets.fields.created_at') . "|" . $ticket->created_at . "|"
-                ."</x-mail::table>";
+            $this->messageMarkDown =[
+                __('models/tickets.fields.tt_number') . " : " . $ticket->tt_number,
+                 __('models/tickets.fields.site_id') . " : " . $ticket->site->site_id,
+                 __('models/tickets.fields.alarm_name') . " : " . $ticket->alarm->name,
+                 __('models/tickets.fields.description') . " : " . $ticket->description,
+                 __('models/tickets.fields.categ') . " : " . $ticket->tt_categ->name,
+                 __('models/tickets.fields.contractor') . " : " . $ticket->tt_contractor->name,
+                 __('models/tickets.fields.scope') . " : " . $ticket->tt_scope->name.
+                 __('models/tickets.fields.created_at') . " : " . $ticket->created_at,
+            ];
 
-
-        }
         $ttNotify = [
             'to' => 'eng.karim@2010@gmail.com',
             'greeting' => 'Dear ' . $user->name . ',',
             // 'body' => "test",
-            'body' => "TT (" . $ticket->tt_number . ") has assigned to you, Please check and do the needful".$this->messageMarkDown,
+            'body' => "TT (" . $ticket->tt_number . ") has assigned to you, Please check and do the needful",
+            'ttDetails'=>$this->messageMarkDown,
             'thanks' => 'Thank you this is from Alkan.KarimSaleh.com',
             'actionText' => 'View Website',
             'actionURL' => url('/'),

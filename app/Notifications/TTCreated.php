@@ -48,6 +48,7 @@ class TTCreated extends Notification
             // ->line('Thank you for using our application!');
             ->greeting($this->TT['greeting'])
             ->line($this->TT['body'])
+            ->lines($this->TT['ttDetails'])
             ->action($this->TT['actionText'], $this->TT['actionURL'])
             ->line($this->TT['thanks']);
 

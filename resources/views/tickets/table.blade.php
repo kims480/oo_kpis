@@ -46,10 +46,10 @@
                             <i class="far fa-edit"></i>
                         </a>
                         @endcan
-                        @hasrole('DELETE_TT')
+                        @role('DELETE_TT')
 
                         {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
-                        @hasrole
+                        @endrole
                     </div>
                     {!! Form::close() !!}
                 </td>

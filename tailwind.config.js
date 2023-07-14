@@ -30,6 +30,7 @@ module.exports = {
             '6/7': '85.7142857%',
           },
 
+
           animation:{
             entrance:'entrance 0.6s ease-in-out ',
             dropdown:'dropdown 0.6s ease-out ',

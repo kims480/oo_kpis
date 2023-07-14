@@ -43,6 +43,14 @@ html, body {
 /* .table th { @apply bg-gray-700 text-white p-2 } */
 /* .table tr:nth-child(even) { @apply bg-blue-50 text-blue-900 } */
     /* background-color:#f6f6f6 !important } */
+.hold {@apply bg-gray-200 text-gray-600 py-1 px-3 rounded-full text-xs } ;
+.dispatched {@apply bg-sky-200 text-sky-600 py-1 px-3 rounded-full text-xs } ;
+.rejected {@apply bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs } ;
+.accepted {@apply bg-blue-200 text-blue-600 py-1 px-3 rounded-full text-xs} ;
+.updated {@apply bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs } ;
+.completed {@apply bg-lime-200 text-lime-600 py-1 px-3 rounded-full text-xs } ;
+.closed {@apply bg-green-600 text-white py-1 px-3 rounded-full text-xs } ;
+.confirmed {@apply bg-emerald-800 text-emerald-600 py-1 px-3 rounded-full text-xs } ;
 .btn {
     @apply font-bold py-1 px-4 rounded  mr-1;
   }

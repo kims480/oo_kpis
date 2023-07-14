@@ -1,3 +1,4 @@
+
 @if ($paginator->hasPages())
     <ul class="pagination flex  m-0">
         {{-- Previous Page Link --}}

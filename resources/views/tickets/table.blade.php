@@ -18,12 +18,7 @@
             </thead>
 
             <tbody class="text-gray-600 text-sm font-light">
-                @php
-                    // dd($tickets);
-                @endphp
                 @isset($tickets)
-
-
                     @foreach ($tickets as $ticket)
                         <tr class="border-b border-gray-200 hover:bg-gray-100">
                             <td class="py-3 px-6 text-left"><span class="font-medium">{{ $ticket->tt_number }}</span></td>
@@ -32,7 +27,7 @@
                             <td class="py-3 px-6 text-center">{{ $ticket->description }}</td>
                             <td class="py-3 px-6 text-center">{{ $ticket->tt_categ->name }}</td>
                             <td class="py-3 px-6 text-center">{{ $ticket->tt_contractor->name }}</td>
-                            <td class="py-3 px-6 text-center">{{ $ticket->status }}</td>
+                            <td class="py-3 px-6 text-center"><span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">: {{ $ticket->status }}</span></td>
 
                             <td class="py-3 px-6 text-center">{{ $ticket->created_at }}</td>
                             <td class="py-3 px-6 text-center" colspan="2">

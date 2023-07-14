@@ -46,10 +46,10 @@
                             <i class="far fa-edit"></i>
                         </a>
                         @endcan
-                        @can('tickets.destroy')
+                        @hasrole('DELETE_TT')
 
                         {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
-                        @endcan
+                        @hasrole
                     </div>
                     {!! Form::close() !!}
                 </td>

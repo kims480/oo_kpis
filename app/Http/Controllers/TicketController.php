@@ -128,7 +128,7 @@ class TicketController extends AppBaseController
         $input['tt_number'] = $this->genTT();
         $input['last_number'] = $this->last_number() + 1;
         $input['assigned_to'] = Auth::user()->id;
-        $input['status'] = 'Created';
+        $input['status'] = 2;
         $input['created_by'] =   Auth::user()->id;
 
         $ticket = $this->ticketRepository->create($input);

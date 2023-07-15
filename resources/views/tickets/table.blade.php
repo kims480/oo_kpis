@@ -2,8 +2,9 @@
     <div class="bg-white shadow-md rounded my-6">
         <table class="min-w-max w-full table-auto text-sm">
             <thead>
-                <tr class="bg-gray-200 text-gray-600 uppercase text-xs leading-normal">
+                <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
 
+                    <th class="py-1 px-1 text-center"> {!! Form::checkbox('check-tickets','all') !!} </th>
                     <th class="py-1 px-2 text-center">@lang('models/tickets.fields.tt_number')</th>
                     <th class="py-1 px-2 text-left">@lang('models/tickets.fields.site_id')</th>
                     <th class="py-1 px-2 text-center">@lang('models/tickets.fields.alarm_name')</th>
@@ -18,10 +19,11 @@
                 </tr>
             </thead>
 
-            <tbody class="text-gray-600 text-xs font-light">
+            <tbody class="text-blue-600 text-xs  font-body font-semibold">
                 @isset($tickets)
                     @foreach ($tickets as $ticket)
                         <tr class="border-b border-gray-200 hover:bg-gray-100">
+                            <td class="py-1 px-1 text-center">{!! Form::checkbox( 'check-'.$ticket->id , $ticket->id) !!} </span></td>
                             <td class="py-1 px-2 text-center"><span class="font-medium">{{ $ticket->tt_number }}</span></td>
                             <td ؤlass="py-1 px-2 text-left">{{ $ticket->site->site_id }}</td>
                             <td class="py-1 px-2 text-center">{{ $ticket->alarm->name }}</td>

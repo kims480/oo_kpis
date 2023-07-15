@@ -8462,10 +8462,6 @@ h3{
     width: 50%;
   }
 
-  .lg\:w-5\/6{
-    width: 83.333333%;
-  }
-
   .lg\:justify-between{
     justify-content: space-between;
   }

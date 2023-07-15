@@ -499,7 +499,7 @@
                                                                         <td>
                                                                             <a class="button button-primary"
                                                                                 target="_blank" rel="noopener"
-                                                                                href="{{ env('APP_URL') }}/admin/tickets/{{ $data['ticket']->id }}">
+                                                                                href="{{ config('app.url') }}/admin/tickets/{{ $data['ticket']->id }}">
                                                                                 Open TT </a>
 
                                                                         </td>

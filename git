@@ -50,7 +50,7 @@ git checkout HEAD^ resources/views/site_extras/show.blade.php
 git checkout HEAD^ resources/views/site_extras/show_fields.blade.php
 git checkout HEAD^ resources/views/site_extras/table.blade.php
 
-
+# cd /home/u459353948/domains/karimsaleh.tech/public_html/ookpi &&
 Remote
 password: Ringer!93
 cd domains/karimsaleh.tech/public_html/ookpi/

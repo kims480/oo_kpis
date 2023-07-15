@@ -23,42 +23,36 @@
             </div>
         </div>
     </section> --}}
+    <div class="card">
+        <section class="content-header">
 
-    <section class="content-header bg-primary p-0">
-        <h3>@lang('models/tickets.plural')</h3>
-        <a class="btn btn-default btn-sm ml-auto" href="{{ route('tickets.create') }}">
-            @lang('crud.add_new')
-        </a>
-        <a class="btn btn-default btn-sm ml-auto" href="{{ route('tickets.mail') }}">
-            mail
-        </a>
-        <a class="btn btn-default btn-sm ml-2" href="{{ route('insert.permissions', __('models/tickets.singular')) }}">
-            @lang('crud.initiate_permissions')
-        </a>
-    </section>
+            <h3>@lang('models/tickets.plural')</h3>
+            <a class="btn btn-default btn-sm ml-auto" href="{{ route('tickets.create') }}">
+                @lang('crud.add_new')
+            </a>
+            <a class="btn btn-default btn-sm ml-auto" href="{{ route('tickets.mail') }}">
+                mail
+            </a>
+            <a class="btn btn-default btn-sm ml-2" href="{{ route('insert.permissions', __('models/tickets.singular')) }}">
+                @lang('crud.initiate_permissions')
+            </a>
+        </section>
 
-    <div class="content px-3">
+        <div class="card-body overflow-hidden">
 
-        @include('flash::message')
+            @include('flash::message')
 
-        <div class="clearfix"></div>
-
-        <div class="card">
-            <div class="card-body p-0">
-                @include('tickets.table')
-
-                <div class="card-footer clearfix float-right">
-                    <div class="float-right">
-                        {{-- @include("infyom/common/paginate", ['records' => $tickets]) --}}
-                        <x-paginate-component :items="$tickets">
+            <div class="clearfix"></div>
 
 
-                    </div>
-                </div>
-            </div>
+            @include('tickets.table')
+        </div>
+        <div class="card-footer ">
+
+            @include("infyom/common/paginate", ['records' => $tickets])
+            {{-- <x-paginate-component :items="$tickets"> --}}
+
+
         </div>
     </div>
-
 @endsection
-
-

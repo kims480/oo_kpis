@@ -49,7 +49,10 @@
 
                 <div class="card-footer clearfix float-right">
                     <div class="float-right">
-                        @include("infyom/common/paginate", ['records' => $tickets])
+                        {{-- @include("infyom/common/paginate", ['records' => $tickets]) --}}
+                        <x-paginate-component :items="$tickets">
+
+
                     </div>
                 </div>
             </div>

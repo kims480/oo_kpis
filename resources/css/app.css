@@ -33,13 +33,10 @@ html, body {
 
     }
 }
-.table { @apply bg-white text-gray-900 border-separate w-full shadow-md }
-.table  th { @apply bg-slate-800 text-blue-100;  padding: 2px; border-bottom: 2px solid #d8d8d8 ; }
+.table { @apply  text-sm  w-full shadow-md table-auto mb-2  }
+.table  th { @apply bg-gray-700 text-slate-50 uppercase text-sm leading-normal py-1}
 .table th:nth-child(1) { @apply w-auto }
 .table th:last-child { width: 15%; }
-.table tr:nth-child(odd) { @apply bg-white text-blue-900 }
-.table tr:nth-child(even) { @apply bg-blue-50 text-blue-900;}
-.table td { @apply p-0 }
 /* .table th { @apply bg-gray-700 text-white p-2 } */
 /* .table tr:nth-child(even) { @apply bg-blue-50 text-blue-900 } */
     /* background-color:#f6f6f6 !important } */

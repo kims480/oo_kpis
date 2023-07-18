@@ -67,7 +67,7 @@ class TicketController extends AppBaseController
                 }
 
             ]
-        )->orderBy('id','desc')->paginate(5);
+        )->orderBy('id','desc')->paginate(15);
         // ->where('site_id','like', '%'.$this->site_id.'%');
 
         return view('tickets.index')-> with('tickets',$tickets);

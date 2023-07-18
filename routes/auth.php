@@ -121,6 +121,7 @@ Route::resource('otcScopes', App\Http\Controllers\OtcScopeController::class);
 
 
 Route::resource('otcCategs', App\Http\Controllers\OtcCategController::class);
+Route::resource('site_access', App\Http\Controllers\SiteAccessController::class);
 
 
 Route::resource('otcAlarms', App\Http\Controllers\OtcAlarmsController::class);

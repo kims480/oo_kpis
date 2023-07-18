@@ -67,7 +67,7 @@ class TicketController extends AppBaseController
                 }
 
             ]
-        )->orderBy('id','desc')->paginate(10);
+        )->orderBy('id','desc')->paginate(5);
         // ->where('site_id','like', '%'.$this->site_id.'%');
 
         return view('tickets.index')-> with('tickets',$tickets);
@@ -128,7 +128,7 @@ class TicketController extends AppBaseController
     public function genTT()
     {
         $dt = Carbon::now();
-        return 'TT-' . $dt->year . $dt->month . $dt->day . '-' . sprintf('%08d', $this->last_number() + 1);;
+        return 'PM-' . $dt->year . $dt->month . $dt->day . '-' . sprintf('%08d', $this->last_number() + 1);;
     }
 
     /**

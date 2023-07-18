@@ -31,6 +31,127 @@ git add .
 git commit -m "send-1"
 git push -u origin main
 
+let url= document.querySelector(".ows-image--mask-inner[data-v-ca1b1dca]").style.backgroundImage;
+url.slice(5,-2);
+
+let url= document.querySelector(".ows-image--mask-inner[data-v-ca1b1dca]").style.backgroundImage;
+url.slice(5,-2);
+
+
+
+infyomlabs/laravel-generator
+
+
+
+
+
+
+
+
+Nf.ready(function () {
+
+    Spl.EventBus.register('arrive_photo', 'click', function (args) {
+        console.dir("here:");
+        // console.log(globalThis.window);
+        let myDiv=  U;
+        //globalThis.Window.querySelector(".ows-image--mask-inner[data-v-ca1b1dca]");
+        console.log(myDiv);
+        // let url=myDiv.style.backgroundImage;
+        // url = url.slice(5,-2);
+        // console.log("Url: https://10.129.43.147:31943"+url);
+        // var aTag=Spl.createElement('a');
+        // aTag.setAttribute('href','https://10.129.43.147:31943'+url);
+        // aTag.innerText="Download";
+        // myDiv.appendChild(aTag);
+        // console.log(myDiv);
+        var orderid = unescape(U.getUrlParameter('orderid'));
+        MessageProcessor.process({
+            serviceId: 'app.service.c_task_service.mobilecommon_photo_getListForWFM',
+            async: false,
+            data: {
+                'task_id': orderid,
+                'photo_type': "in_out_site",
+                'photo_item': "in_out_site_photos_enter",
+                'start': 0,
+                'limti': 10
+            },
+            success: function (data) {
+                var json = data.results;
+                var jlength = json.length;
+                console.log(" jlength -=-=-=- " + jlength);
+                for (var i = 0; i < jlength; i++) {
+                    var attid = json[i].attachmentId;
+                    location.href = "https://10.129.43.147:31943/app/fileservice/view?attachmentId=" + attid + "&_t=undefined&folder=mateline";
+                    const date = Date.now();
+                    var currentDate = null;
+                    do {
+                        currentDate = Date.now();
+                    } while (currentDate - date < 1000);
+                }
+            }
+        });
+    });
+
+    Spl.EventBus.register('complete_photo', 'click', function (args) {
+        var orderid = unescape(U.getUrlParameter('orderid'));
+        MessageProcessor.process({
+            serviceId: 'app.service.c_task_service.mobilecommon_photo_getListForWFM',
+            async: false,
+            data: {
+                'task_id': orderid,
+                'photo_type': "task",
+                'photo_item': "task_photos",
+                'start': 0,
+                'limti': 10
+            },
+            success: function (data) {
+                var json = data.results;
+                var jlength = json.length;
+                console.log(" jlength -=-=-=- " + jlength);
+                for (var i = 0; i < jlength; i++) {
+                    var attid = json[i].attachmentId;
+                    location.href = "https://10.129.43.147:31943/app/fileservice/view?attachmentId=" + attid + "&_t=undefined&folder=mateline";
+                    const date = Date.now();
+                    var currentDate = null;
+                    do {
+                        currentDate = Date.now();
+                    } while (currentDate - date < 1000);
+                }
+            }
+        });
+    });
+
+    Spl.EventBus.register('leave_photo', 'click', function (args) {
+        var orderid = unescape(U.getUrlParameter('orderid'));
+        MessageProcessor.process({
+            serviceId: 'app.service.c_task_service.mobilecommon_photo_getListForWFM',
+            async: false,
+            data: {
+                'task_id': orderid,
+                'photo_type': "in_out_site",
+                'photo_item': "in_out_site_photos_exit",
+                'start': 0,
+                'limti': 10
+            },
+            success: function (data) {
+                var json = data.results;
+                var jlength = json.length;
+                console.log(" jlength -=-=-=- " + jlength);
+                for (var i = 0; i < jlength; i++) {
+                    console.log("iteration 1");
+                    var attid = json[i].attachmentId;
+                    location.href = "https://10.129.43.147:31943/app/fileservice/view?attachmentId=" + attid + "&_t=undefined&folder=mateline";
+                    console.log("out of iteration =--=" + i);
+                    const date = Date.now();
+                    var currentDate = null;
+                    do {
+                        currentDate = Date.now();
+                    } while (currentDate - date < 1000);
+                }
+            }
+        });
+    });
+});
 
 git checkout HEAD^ app/Http/Controllers/API/SiteExtraAPIController.php
 git checkout HEAD^ app/Http/Controllers/SiteExtraController.php

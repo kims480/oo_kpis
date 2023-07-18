@@ -29,6 +29,10 @@
         .swal-wide {
             transform: scale(0.8)
         }
+        body{
+            background-image: url(/images/login_5.jpeg);
+    background-blend-mode: overlay;
+        }
     </style>
     @stack('page_css')
     @stack('third_party_stylesheets')

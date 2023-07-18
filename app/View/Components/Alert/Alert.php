@@ -1,25 +1,25 @@
 <?php
 
-namespace App\View\Component\Alert;
+namespace App\View\Components\Alert;
 
 use Illuminate\View\Component;
 
 class Alert extends Component
 {
-    public $type;
-    public $title;
-    public $message;
+    protected $type;
+    protected $title;
+    protected $message;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($type='info',$title=null,$message=null)
+    public function __construct($type = 'info', $title = null, $message = null)
     {
-        $this->type=$type;
-        $this->title=$title;
-        $this->message=$message;
+        $this->type = $type;
+        $this->title = $title;
+        $this->message = $message;
     }
 
     /**

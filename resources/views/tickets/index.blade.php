@@ -45,11 +45,13 @@
             <div class="clearfix"></div>
 
 
-            @include('tickets.table')
+            {{-- @include('tickets.table') --}}
+        @livewire('tickets.tickets')
+
         </div>
         <div class="card-footer ">
 
-            @include("infyom/common/paginate", ['records' => $tickets])
+            {{-- @include("infyom/common/paginate", ['records' => $tickets]) --}}
             {{-- <x-paginate-component :items="$tickets"> --}}
 
 

@@ -4,6 +4,7 @@ return array (
   'route' => 'tickets',
   'singular' => 'Ticket',
   'plural' => 'Tickets',
+  'export' => 'tickets.export',
   'fields' =>
   array (
     'id' => 'Id',

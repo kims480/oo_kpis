@@ -64,7 +64,7 @@
                                 @lang('crud.add_new')
                             </a>
                         @endcan --}}
-                        @can(__('models/btickets.route') . '.export')
+                        @can(__('models/tickets.export'))
                             <button wire:click.prevent="export" x-data={isOpen:false}
                                 class="transition w-28 text-amber-800 bg-amber-50 ease-in-out btn btn-default relative has-tooltips text-sm "
                                 data-mdb-ripple="true" @mouseover="isOpen=true" @mouseover.away="isOpen=false">

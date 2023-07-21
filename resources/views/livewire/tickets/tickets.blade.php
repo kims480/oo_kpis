@@ -58,12 +58,12 @@
                         </div>
                     </div>
                     <div class="flex xs:flex-col  xs:w-full md:flex-row  sm:ml-0 md:ml-auto ml-auto sm:w-full sm:items-end sm:justify-end px-2 gap-2">
-                        @can(__('models/tickets.route') . '.create')
+                        {{-- @can(__('models/tickets.route') . '.create')
                             <a class="transition w-28 text-center  text-amber-800 bg-amber-50 ease-in-out btn btn-default relative has-tooltips text-sm hover:bg-cyan-900 hover:text-slate-50"
                                 href="{{ route(__('models/tickets.route') . '.create') }}">
                                 @lang('crud.add_new')
                             </a>
-                        @endcan
+                        @endcan --}}
                         @can(__('models/btickets.route') . '.export')
                             <button wire:click.prevent="export" x-data={isOpen:false}
                                 class="transition w-28 text-amber-800 bg-amber-50 ease-in-out btn btn-default relative has-tooltips text-sm "

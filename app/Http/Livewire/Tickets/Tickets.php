@@ -2,12 +2,9 @@
 
 namespace App\Http\Livewire\Tickets;
 
-use App\Exports\BatteryAddExport;
 use App\Exports\TicketExport;
-use App\Models\Ticket;
 use DB;
 use Excel;
-use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 use Livewire\WithPagination;
 

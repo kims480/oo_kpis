@@ -19,9 +19,11 @@
 
     <div class="content px-3">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body  bg-gray-100">
                 <div class="row">
-                    @include('tickets.show_fields')
+
+                    @livewire('tickets.ticket-handler',['ticket' => $ticket], key($ticket->id))
+                    {{-- @include('tickets.show_fields') --}}
                 </div>
             </div>
         </div>

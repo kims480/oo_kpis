@@ -16,7 +16,7 @@
             </div>
             <div class="options flex gap-4 flex-col justify-between pb-2 items-center border-b-2 border-slate-800">
                 @can(__('models/batteryAdds.singular') . '.upload')
-                    <div class="form w-full">
+                    <div class="form w-full p-2">
                         <form class="flex flex-nowrap mb-1" wire:submit.prevent="import">
                             @csrf
                             <input type="file" wire:model="your_file">

@@ -95,6 +95,7 @@ trait ExportStyle
     {
         if(method_exists($this,'collection'))
         {
+            // dd($this->collection());
             $colArrList = $this->collection()->first();
             return array_keys($colArrList);
         }

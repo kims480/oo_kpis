@@ -53,24 +53,25 @@
                             for="flexSwitchCheckChecked">Filter</label>
                     </div>
                 </div>
-                @can(__('models/batteryAdds.singular') . '.create')
-                    <a class="transition text-amber-800 bg-amber-50 ease-in-out btn btn-default relative has-tooltips text-sm hover:bg-cyan-900 hover:text-slate-50"
-                        href="{{ route(__('models/batteryAdds.singular') . '.create') }}">
-                        @lang('crud.add_new')
-                    </a>
-                @endcan
-                @can(__('models/batteryAdds.singular') . '.export')
-                    <button wire:click.prevent="export" x-data={isOpen:false}
-                        class="transition text-amber-800 bg-amber-50 ease-in-out btn btn-default relative has-tooltips text-sm "
-                        data-mdb-ripple="true" @mouseover="isOpen=true" @mouseover.away="isOpen=false">
-                        <x-tooltip message='Export excel' />
-                        <i class="far fa-file-excel text-amber-800 "></i> Export
-                    </button>
-                @endcan
+                    @can(__('models/batteryAdds.singular') . '.create')
+                        <a class="transition text-amber-800 bg-amber-50 ease-in-out btn btn-default relative has-tooltips text-sm hover:bg-cyan-900 hover:text-slate-50"
+                            href="{{ route(__('models/batteryAdds.singular') . '.create') }}">
+                            @lang('crud.add_new')
+                        </a>
+                    @endcan
+                    @can(__('models/batteryAdds.singular') . '.export')
+                        <button wire:click.prevent="export" x-data={isOpen:false}
+                            class="transition text-amber-800 bg-amber-50 ease-in-out btn btn-default relative has-tooltips text-sm "
+                            data-mdb-ripple="true" @mouseover="isOpen=true" @mouseover.away="isOpen=false">
+                            <x-tooltip message='Export excel' />
+                            <i class="far fa-file-excel text-amber-800 "></i> Export
+                        </button>
+                    @endcan
+
             </div>
         </div>
         <div class="scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-300">
-            <table class=" w-full table-auto mb-2  {{-- h-32  --}}">
+            <table class=" w-full table-auto mb-2">
 
 
                 <thead>
@@ -79,59 +80,59 @@
                             {{-- {!! Form::text('id', null, ['class' => 'text-sm border-0 rounded-none border-b-2 p-1 ', 'placeholder' => __('models/sites.fields.id'), 'wire:model' => '']) !!} --}}
 
                         </th>
-                        <th>
+                        <th class="py-1 px-2 w-48 text-center">
                             {!! Form::text('tt_number', null, [
                                 'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
                                 'placeholder' => __('models/tickets.fields.tt_number'),
                                 'wire:model.debounce' => 'tt_number',
                             ]) !!}
                         </th>
-                        <th>
+                        <th class="py-1 px-2 w-20 text-center">
                             {!! Form::text('site_id', null, [
-                                'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
+                                'class' => 'text-sm  border-0 rounded-none border-b-2 p-1 ',
                                 'placeholder' => __('models/tickets.fields.site_id'),
                                 'wire:model.debounce' => 'site_id',
                             ]) !!}
                         </th>
-                        <th>
+                        <th class="py-1 px-2 w-48 text-center">
                             {!! Form::text('alarm_name', null, [
-                                'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
+                                'class' => 'text-sm  border-0  rounded-none border-b-2 p-1 ',
                                 'placeholder' => __('models/tickets.fields.alarm_name'),
                                 'wire:model.debounce' => 'alarm_name',
                             ]) !!}
                         </th>
-                        <th> {!! Form::text('description', null, [
-                            'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
+                        <th class="py-1 px-2  w-48 text-center"> {!! Form::text('description', null, [
+                            'class' => 'text-sm  border-0 rounded-none border-b-2 p-1 ',
                             'placeholder' => __('models/tickets.fields.description'),
                             'wire:model.debounce' => 'description',
                         ]) !!}
                         </th>
-                        <th> {!! Form::text('categ', null, [
-                            'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
+                        <th class="py-1 px-2 w-48 text-center"> {!! Form::text('categ', null, [
+                            'class' => 'text-sm  border-0 rounded-none border-b-2 p-1 ',
                             'placeholder' => __('models/tickets.fields.categ'),
                             'wire:model.debounce' => 'categ',
                         ]) !!}
                         </th>
-                        <th> {!! Form::text('contractor', null, [
-                            'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
+                        <th class="py-1 px-2 w-24 text-center"> {!! Form::text('contractor', null, [
+                            'class' => 'text-sm  border-0 rounded-none border-b-2 p-1 ',
                             'placeholder' => __('models/tickets.fields.contractor'),
                             'wire:model.debounce' => 'contractor',
                         ]) !!}
                         </th>
-                        <th> {!! Form::text('status', null, [
-                            'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
+                        <th class="py-1 px-2 w-20  text-center"> {!! Form::text('status', null, [
+                            'class' => 'text-sm  border-0 rounded-none border-b-2 p-1 ',
                             'placeholder' => __('models/tickets.fields.status'),
                             'wire:model.debounce' => 'status',
                         ]) !!}
                         </th>
-                        <th> {!! Form::text('created_at', null, [
-                            'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
+                        <th class="py-1 px-2 w-48 text-center"> {!! Form::text('created_at', null, [
+                            'class' => 'text-sm  border-0 rounded-none border-b-2 p-1 ',
                             'placeholder' => __('models/tickets.fields.created_at'),
                             'wire:model.debounce' => 'created_at',
                         ]) !!}
                         </th>
-                        <th> {!! Form::text('sla', null, [
-                            'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
+                        <th class="py-1 px-2 w-20  text-center"> {!! Form::text('sla', null, [
+                            'class' => 'text-sm  border-0 rounded-none border-b-2 py-1 ',
                             'placeholder' => __('models/tickets.fields.sla'),
                             'wire:model.debounce' => 'sla',
                         ]) !!}

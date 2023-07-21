@@ -57,7 +57,7 @@
 
                         </div>
                     </div>
-                    <div class="flex sm:flex-col  xs:w-full md:flex-row  sm:ml-0 md:ml-auto ml-auto sm:w-full sm:items-end sm:justify-end px-2 gap-2">
+                    <div class="flex xs:flex-col  xs:w-full md:flex-row  sm:ml-0 md:ml-auto ml-auto sm:w-full sm:items-end sm:justify-end px-2 gap-2">
                         {{-- @can(__('models/tickets.route') . '.create')
                             <a class="transition w-28 text-center  text-amber-800 bg-amber-50 ease-in-out btn btn-default relative has-tooltips text-sm hover:bg-cyan-900 hover:text-slate-50"
                                 href="{{ route(__('models/tickets.route') . '.create') }}">

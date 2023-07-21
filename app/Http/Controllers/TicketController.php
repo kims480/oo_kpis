@@ -128,7 +128,7 @@ class TicketController extends AppBaseController
     public function genTT()
     {
         $dt = Carbon::now();
-        return 'PM-' . $dt->year . $dt->month . $dt->day . '-' . sprintf('%08d', $this->last_number() + 1);;
+        return 'TT-' . $dt->year . $dt->month . $dt->day . '-' . sprintf('%08d', $this->last_number() + 1);;
     }
 
     /**

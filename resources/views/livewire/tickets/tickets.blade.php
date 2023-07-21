@@ -87,6 +87,12 @@
                             {{-- {!! Form::text('id', null, ['class' => 'text-sm border-0 rounded-none border-b-2 p-1 ', 'placeholder' => __('models/sites.fields.id'), 'wire:model' => '']) !!} --}}
 
                         </th>
+                        <th class="py-1 px-2 w-20  text-center"> {!! Form::text('status', null, [
+                            'class' => 'text-sm  border-0 rounded-none border-b-2 p-1 ',
+                            'placeholder' => __('models/tickets.fields.status'),
+                            'wire:model.debounce' => 'status',
+                        ]) !!}
+                        </th>
                         <th class="py-1 px-2 w-44 text-center">
                             {!! Form::text('tt_number', null, [
                                 'class' => 'text-sm border-0 rounded-none border-b-2 p-1 ',
@@ -126,12 +132,7 @@
                             'wire:model.debounce' => 'contractor',
                         ]) !!}
                         </th>
-                        <th class="py-1 px-2 w-20  text-center"> {!! Form::text('status', null, [
-                            'class' => 'text-sm  border-0 rounded-none border-b-2 p-1 ',
-                            'placeholder' => __('models/tickets.fields.status'),
-                            'wire:model.debounce' => 'status',
-                        ]) !!}
-                        </th>
+
                         <th class="py-1 px-2 w-40 text-center"> {!! Form::text('created_at', null, [
                             'class' => 'text-sm  border-0 rounded-none border-b-2 p-1 ',
                             'placeholder' => __('models/tickets.fields.created_at'),
@@ -153,13 +154,14 @@
                     <tr class="bg-gray-700 text-slate-50 uppercase text-sm leading-normal">
 
                         <th class="py-1 px-1 text-center"> {!! Form::checkbox('check-tickets', 'all') !!} </th>
+                        <th class="py-1 px-2 text-center">@lang('models/tickets.fields.status')</th>
+
                         <th class="py-1 px-2 text-center">@lang('models/tickets.fields.tt_number')</th>
                         <th class="py-1 px-2 text-left">@lang('models/tickets.fields.site_id')</th>
                         <th class="py-1 px-2 text-center">@lang('models/tickets.fields.alarm_name')</th>
                         <th class="py-1 px-2 w-40  text-center">@lang('models/tickets.fields.description')</th>
                         <th class="py-1 px-2 text-center">@lang('models/tickets.fields.categ')</th>
                         <th class="py-1 px-2 text-center">@lang('models/tickets.fields.contractor')</th>
-                        <th class="py-1 px-2 text-center">@lang('models/tickets.fields.status')</th>
 
                         <th class="py-1 px-2 text-center">@lang('models/tickets.fields.created_at')</th>
                         <th class="py-1 px-2 text-center">@lang('models/tickets.fields.sla')</th>
@@ -178,6 +180,10 @@
                             "
                                 :class="opacity ? 'opacity-100' : 'opacity-0'">
                                 <td class="py-1 px-1 text-center">{!! Form::checkbox('check-' . $ticket->id, $ticket->id) !!} </span></td>
+                                <td class="py-1 px-2 text-center">
+                                    {{-- @dd($ticket->status) --}}
+                                    <span class="{{ $ticket->status_name }}">{{ $ticket->status_name }} </span>
+                                </td>
                                 <td class="py-1 px-2 text-center"><span
                                         class="w-40 truncate hover:text-clip font-semibold">{{ $ticket->tt_number }}</span>
                                 </td>
@@ -194,10 +200,7 @@
                                 <td class="py-1 px-2 text-center ">
                                     <p class="w-40 truncate hover:text-clip">{{ $ticket->contractor_name }}</p>
                                 </td>
-                                <td class="py-1 px-2 text-center">
-                                    {{-- @dd($ticket->status) --}}
-                                    <span class="{{ $ticket->status_name }}">{{ $ticket->status_name }} </span>
-                                </td>
+
                                 <td class="py-1 px-2 text-center">
                                     <p class="w-40 truncate hover:text-clip">{{ $ticket->created_at }}</p>
                                 </td>

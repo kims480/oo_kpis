@@ -1650,6 +1650,9 @@ video {
 .w-20{
   width: 5rem;
 }
+.w-24{
+  width: 6rem;
+}
 .w-28{
   width: 7rem;
 }
@@ -1667,6 +1670,12 @@ video {
 }
 .w-4{
   width: 1rem;
+}
+.w-40{
+  width: 10rem;
+}
+.w-44{
+  width: 11rem;
 }
 .w-48{
   width: 12rem;
@@ -2390,6 +2399,9 @@ video {
 }
 .gap-3{
   gap: 0.75rem;
+}
+.gap-4{
+  gap: 1rem;
 }
 .gap-5{
   gap: 1.25rem;
@@ -5714,6 +5726,9 @@ h3{
 .hover\:cursor-pointer:hover{
   cursor: pointer;
 }
+.hover\:text-clip:hover{
+  text-overflow: clip;
+}
 .hover\:rounded-\[50\%\]:hover{
   border-radius: 50%;
 }
@@ -8070,6 +8085,24 @@ h3{
     color: rgb(156 163 175 / var(--tw-text-opacity));
   }
 }
+@media (min-width: 320px){
+
+  .xs\:w-full{
+    width: 100%;
+  }
+
+  .xs\:flex-col{
+    flex-direction: column;
+  }
+
+  .xs\:content-start{
+    align-content: flex-start;
+  }
+
+  .xs\:justify-start{
+    justify-content: flex-start;
+  }
+}
 @media (min-width: 640px){
 
   .sm\:absolute{
@@ -8235,6 +8268,10 @@ h3{
 
   .sm\:grid-cols-none{
     grid-template-columns: none;
+  }
+
+  .sm\:flex-row{
+    flex-direction: row;
   }
 
   .sm\:items-start{
@@ -8434,12 +8471,20 @@ h3{
 }
 @media (min-width: 768px){
 
+  .md\:ml-auto{
+    margin-left: auto;
+  }
+
   .md\:grid{
     display: grid;
   }
 
   .md\:w-1\/2{
     width: 50%;
+  }
+
+  .md\:w-auto{
+    width: auto;
   }
 
   .md\:grid-cols-2{

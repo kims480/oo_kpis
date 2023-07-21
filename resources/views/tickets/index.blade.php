@@ -26,16 +26,20 @@
     <div class="card">
         <section class="content-header">
 
+
+
             <h3>@lang('models/tickets.plural')</h3>
             <a class="btn btn-default btn-sm ml-auto" href="{{ route('tickets.create') }}">
                 @lang('crud.add_new')
             </a>
+            @can('super_admin')
             <a class="btn btn-default btn-sm ml-auto" href="{{ route('tickets.mail') }}">
                 mail
             </a>
             <a class="btn btn-default btn-sm ml-2" href="{{ route('insert.permissions', __('models/tickets.singular')) }}">
                 @lang('crud.initiate_permissions')
             </a>
+            @endcan
         </section>
 
         <div class="card-body overflow-hidden">

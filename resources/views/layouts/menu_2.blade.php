@@ -11,7 +11,7 @@ $urlAdmin = config('fast.admin_prefix');
     @endphp
     <a href="{{ route('home') }}" x-data="tooltip" x-on:mouseover="show = true" x-on:mouseleave="show = false"
         @click="$store.sidebar.active = 'admin' "
-        class=" relative flex items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer {{ Request::is('admin') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
+        class=" sidebar-item {{ Request::is('admin') ? 'active' : 'text-gray-400' }}"
         x-bind:class="{
             'justify-start': $store.sidebar.full,
             'sm:justify-center': !$store.sidebar
@@ -45,7 +45,7 @@ $urlAdmin = config('fast.admin_prefix');
 
     <a href="{{ route('attendances.index') }}" @click="$store.sidebar.active = 'home' " x-data="tooltip"
         x-on:mouseover="show = true" x-on:mouseleave="show = false"
-        class=" relative flex justify-between items-center  {{ $isUserActive ? 'text-gray-200 bg-gray-800' : '' }} text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer"
+        class=" sidebar-item {{ $isUserActive ? 'active' : '' }}"
         x-bind:class="{
             'justify-start': $store.sidebar.full,
             'sm:justify-center': !$store.sidebar.full,
@@ -175,7 +175,7 @@ $urlAdmin = config('fast.admin_prefix');
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
                     </svg>
-                    <h3 x-cloak class="text-base"
+                    <h3 x-cloak class="sidebar-item-text"
                         x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full && !show ? 'sm:hidden' : ''">
                         Snags</h3>
                 </div>
@@ -197,7 +197,7 @@ $urlAdmin = config('fast.admin_prefix');
             @can('imports.index')
                 <div @click="$store.sidebar.active = 'imports'" x-data="tooltip" x-on:mouseover="show = true"
                     x-on:mouseleave="show = false"
-                    class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+                    class=" sidebar-item
                     {{ Request::is('admin/imports*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
                     x-bind:class="{
                         'justify-start': $store.sidebar.full,
@@ -233,7 +233,7 @@ $urlAdmin = config('fast.admin_prefix');
             @can(__('models/snagdomains.url').'.index')
                 <div @click="$store.sidebar.active = 'snagdomains'" x-data="tooltip" x-on:mouseover="show = true"
                     x-on:mouseleave="show = false"
-                    class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+                    class=" sidebar-item
                     {{ Request::is('admin/snagdomains*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
                     x-bind:class="{
                         'justify-start': $store.sidebar.full,
@@ -267,7 +267,7 @@ $urlAdmin = config('fast.admin_prefix');
             @can(__('models/snagstatuses.url').'.index')
                 <div @click="$store.sidebar.active = 'snag-statuses'" x-data="tooltip" x-on:mouseover="show = true"
                     x-on:mouseleave="show = false"
-                    class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+                    class=" sidebar-item
                         {{ Request::is('admin/'.__('models/snagstatuses.url').'*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
                     x-bind:class="{
                         'justify-start': $store.sidebar.full,
@@ -300,7 +300,7 @@ $urlAdmin = config('fast.admin_prefix');
             @can(__('models/snagremarks.url').'.index')
                 <div @click="$store.sidebar.active = 'snag-remarks'" x-data="tooltip" x-on:mouseover="show = true"
                     x-on:mouseleave="show = false"
-                    class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+                    class=" sidebar-item
                         {{ Request::is('admin/snag-remarks*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
                     x-bind:class="{
                         'justify-start': $store.sidebar.full,
@@ -333,7 +333,7 @@ $urlAdmin = config('fast.admin_prefix');
             @can(__('models/snagreporters.url').'.index')
                 <div @click="$store.sidebar.active = 'snag-sources'" x-data="tooltip" x-on:mouseover="show = true"
                     x-on:mouseleave="show = false"
-                    class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+                    class=" sidebar-item
                      {{ Request::is('admin/snag-reporters*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
                     x-bind:class="{
                         'justify-start': $store.sidebar.full,
@@ -430,7 +430,7 @@ $urlAdmin = config('fast.admin_prefix');
             @can(__('models/sites.url').'.index')
                 <div @click="$store.sidebar.active = 'sites'" x-data="tooltip" x-on:mouseover="show = true"
                     x-on:mouseleave="show = false"
-                    class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+                    class=" sidebar-item
                     {{ Request::is('admin/sites*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
                     x-bind:class="{
                         'justify-start': $store.sidebar.full,
@@ -462,7 +462,7 @@ $urlAdmin = config('fast.admin_prefix');
             @can(__('models/siteCategs.url').'.index')
                 <div @click="$store.sidebar.active = 'site-categs'" x-data="tooltip" x-on:mouseover="show = true"
                     x-on:mouseleave="show = false"
-                    class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+                    class=" sidebar-item
                 {{ Request::is('admin/'.__('models/siteCategs.plural').'*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
                     x-bind:class="{
                         'justify-start': $store.sidebar.full,
@@ -495,7 +495,7 @@ $urlAdmin = config('fast.admin_prefix');
             @can(__('models/sitePrios.url').'.index')
                 <div @click="$store.sidebar.active = 'site-prios'" x-data="tooltip" x-on:mouseover="show = true"
                     x-on:mouseleave="show = false"
-                    class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+                    class=" sidebar-item
                 {{ Request::is('admin/site-prios*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
                     x-bind:class="{
                         'justify-start': $store.sidebar.full,
@@ -528,7 +528,7 @@ $urlAdmin = config('fast.admin_prefix');
             @can(__('models/siteTypes.url').'site-types.index')
                 <div @click="$store.sidebar.active = 'site-types'" x-data="tooltip" x-on:mouseover="show = true"
                     x-on:mouseleave="show = false"
-                    class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+                    class=" sidebar-item
                     {{ Request::is('admin/site-types*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
                     x-bind:class="{
                         'justify-start': $store.sidebar.full,
@@ -606,7 +606,7 @@ $urlAdmin = config('fast.admin_prefix');
         @can('regions.index')
             <div @click="$store.sidebar.active = 'regions'" x-data="tooltip" x-on:mouseover="show = true"
                 x-on:mouseleave="show = false"
-                class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+                class=" sidebar-item
                 {{ Request::is('admin/regions*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
                 x-bind:class="{
                     'justify-start': $store.sidebar.full,
@@ -640,7 +640,7 @@ $urlAdmin = config('fast.admin_prefix');
         @can('offices.index')
             <div @click="$store.sidebar.active = 'offices'" x-data="tooltip" x-on:mouseover="show = true"
                 x-on:mouseleave="show = false"
-                class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+                class=" sidebar-item
             {{ Request::is('admin/offices*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
                 x-bind:class="{
                     'justify-start': $store.sidebar.full,
@@ -676,7 +676,7 @@ $urlAdmin = config('fast.admin_prefix');
         @can('governs.index')
             <div @click="$store.sidebar.active = 'governs'" x-data="tooltip" x-on:mouseover="show = true"
                 x-on:mouseleave="show = false"
-                class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+                class=" sidebar-item
                 {{ Request::is('admin/governs*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
                 x-bind:class="{
                     'justify-start': $store.sidebar.full,
@@ -711,7 +711,7 @@ $urlAdmin = config('fast.admin_prefix');
         @can('wilayats.index')
             <div @click="$store.sidebar.active = 'wilayats'" x-data="tooltip" x-on:mouseover="show = true"
                 x-on:mouseleave="show = false"
-                class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+                class=" sidebar-item
                                      {{ Request::is('admin/wilayats*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
                 x-bind:class="{
                     'justify-start': $store.sidebar.full,
@@ -752,7 +752,7 @@ $urlAdmin = config('fast.admin_prefix');
     @endphp
     <div @click="$store.sidebar.active = 'generator_builder' " x-data="tooltip" x-on:mouseover="show = true"
         x-on:mouseleave="show = false"
-        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer"
+        class=" sidebar-item"
         x-bind:class="{
             'justify-start': $store.sidebar.full,
             'sm:justify-center': !$store.sidebar
@@ -769,7 +769,7 @@ $urlAdmin = config('fast.admin_prefix');
             </svg>
                 <h3 x-cloak class="text-sm"
                     x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full && !show ? 'sm:hidden' : ''">
-                    @lang('menu.generator_builder.title')
+                    @lang('menu.generator_builder.link_text')
                 </h3>
         </a>
         {{-- <div x-cloak x-bind:class="$store.sidebar.full ? '' : 'sm:hidden'" class="flex items-center space-x-2">
@@ -789,7 +789,7 @@ $urlAdmin = config('fast.admin_prefix');
 @can('fileUploads.index')
     <div @click="$store.sidebar.active = 'fileUploads'" x-data="tooltip" x-on:mouseover="show = true"
         x-on:mouseleave="show = false"
-        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+        class=" sidebar-item
     {{ Request::is('admin/fileUploads*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
         x-bind:class="{
             'justify-start': $store.sidebar.full,
@@ -809,7 +809,7 @@ $urlAdmin = config('fast.admin_prefix');
                 <i class="nav-icon fas fa-file-alt"></i>
                 <h3 x-cloak class="text-sm"
                     x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full && !show ? 'sm:hidden' : ''">
-                    <p>@lang('models/fileUploads.plural')</p>
+                    <p>@lang('models/fileUploads.link_text')</p>
                 </h3>
         </a>
     </div>
@@ -819,7 +819,7 @@ $urlAdmin = config('fast.admin_prefix');
 @can('site-snags.index')
     <div @click="$store.sidebar.active = 'site-snags'" x-data="tooltip" x-on:mouseover="show = true"
         x-on:mouseleave="show = false"
-        class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
+        class=" sidebar-item
         {{ Request::is('admin/site-snags*') ? 'text-gray-200 bg-gray-800' : 'text-gray-400' }}"
         x-bind:class="{
             'justify-start': $store.sidebar.full,
@@ -836,9 +836,9 @@ $urlAdmin = config('fast.admin_prefix');
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <h3 x-cloak class="text-base"
+                <h3 x-cloak class="sidebar-item-text"
                     x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full && !show ? 'sm:hidden' : ''">
-                    <p>@lang('models/siteSnags.plural')</p>
+                    <p>@lang('models/siteSnags.link_text')</p>
                 </h3>
 
             </div>
@@ -852,8 +852,8 @@ $urlAdmin = config('fast.admin_prefix');
 @can(__('models/batteryAdds.singular').'.index')
     <div @click="$store.sidebar.active = 'battery-add'" x-data="tooltip" x-on:mouseover="show = true"
         x-on:mouseleave="show = false"
-        class=" relative flex justify-between items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
-        {{ Request::is('admin/'.__('models/batteryAdds.singular').'*')  ? 'active text-orange-300 bg-gray-800' : 'text-gray-400' }}"
+        class=" sidebar-item
+        {{ Request::is('admin/'.__('models/batteryAdds.singular').'*')  ? 'active':'' }}"
         x-bind:class="{
             'justify-start': $store.sidebar.full,
             'sm:justify-center': !$store.sidebar.full,
@@ -869,9 +869,9 @@ $urlAdmin = config('fast.admin_prefix');
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <h3 x-cloak class="text-base"
+                <h3 x-cloak class="sidebar-item-text"
                     x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full && !show ? 'sm:hidden' : ''">
-                    <p>@lang('models/batteryAdds.plural')</p>
+                    <p>@lang('models/batteryAdds.link_text')</p>
                 </h3>
 
             </div>
@@ -882,8 +882,8 @@ $urlAdmin = config('fast.admin_prefix');
 @can(__('models/consumableSpares.route').'.index')
     <div @click="$store.sidebar.active = 'consumable-spare'" x-data="tooltip" x-on:mouseover="show = true"
         x-on:mouseleave="show = false"
-        class=" relative flex justify-between items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
-        {{ Request::is('admin/'.__('models/consumableSpares.route').'*')  ? 'active text-orange-300 bg-gray-800' : 'text-gray-400' }}"
+        class=" sidebar-item
+        {{ Request::is('admin/'.__('models/consumableSpares.route').'*')  ? 'active':'' }}"
         x-bind:class="{
             'justify-start': $store.sidebar.full,
             'sm:justify-center': !$store.sidebar.full,
@@ -899,9 +899,9 @@ $urlAdmin = config('fast.admin_prefix');
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <h3 x-cloak class="text-base"
+                <h3 x-cloak class="sidebar-item-text"
                     x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full && !show ? 'sm:hidden' : ''">
-                    <p>@lang('models/consumableSpares.route')</p>
+                    <p>@lang('models/consumableSpares.link_text')</p>
                 </h3>
 
             </div>
@@ -912,8 +912,7 @@ $urlAdmin = config('fast.admin_prefix');
 @can(__('models/tickets.route').'.index')
     <div @click="$store.sidebar.active = 'tickets'" x-data="tooltip" x-on:mouseover="show = true"
         x-on:mouseleave="show = false"
-        class=" relative flex justify-between items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
-        {{ Request::is('admin/'.__('models/tickets.route').'*')  ? 'active text-orange-300 bg-gray-800' : 'text-gray-400' }}"
+        class="sidebar-item {{ Request::is('admin/'.__('models/tickets.route').'*')  ? 'active' : '' }}"
         x-bind:class="{
             'justify-start': $store.sidebar.full,
             'sm:justify-center': !$store.sidebar.full,
@@ -929,9 +928,9 @@ $urlAdmin = config('fast.admin_prefix');
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <h3 x-cloak class="text-base uppercase"
+                <h3 x-cloak class="sidebar-item-text"
                     x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full && !show ? 'sm:hidden' : ''">
-                    <p>@lang('models/tickets.route')</p>
+                    <p>@lang('models/tickets.link_text')</p>
                 </h3>
 
             </div>
@@ -942,8 +941,8 @@ $urlAdmin = config('fast.admin_prefix');
 @can(__('models/contractors.route').'.index')
     <div @click="$store.sidebar.active = 'contractors'" x-data="tooltip" x-on:mouseover="show = true"
         x-on:mouseleave="show = false"
-        class=" relative flex justify-between items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
-        {{ Request::is('admin/'.__('models/contractors.route').'*')  ? 'active text-orange-300 bg-gray-800' : 'text-gray-400' }}"
+        class=" sidebar-item
+        {{ Request::is('admin/'.__('models/contractors.route').'*')  ? 'active' : '' }}"
         x-bind:class="{
             'justify-start': $store.sidebar.full,
             'sm:justify-center': !$store.sidebar.full,
@@ -959,9 +958,9 @@ $urlAdmin = config('fast.admin_prefix');
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <h3 x-cloak class="text-base"
+                <h3 x-cloak class="sidebar-item-text"
                     x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full && !show ? 'sm:hidden' : ''">
-                    <p>@lang('models/contractors.route')</p>
+                    <p>@lang('models/contractors.link_text')</p>
                 </h3>
 
             </div>
@@ -973,8 +972,8 @@ $urlAdmin = config('fast.admin_prefix');
 @can(__('models/otcSites.route').'.index')
     <div @click="$store.sidebar.active = 'otcSites'" x-data="tooltip" x-on:mouseover="show = true"
         x-on:mouseleave="show = false"
-        class=" relative flex justify-between items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
-        {{ Request::is('admin/'.__('models/otcSites.route').'*')  ? 'active text-orange-300 bg-gray-800' : 'text-gray-400' }}"
+        class=" sidebar-item
+        {{ Request::is('admin/'.__('models/otcSites.route').'*')  ? 'active':'' }}"
         x-bind:class="{
             'justify-start': $store.sidebar.full,
             'sm:justify-center': !$store.sidebar.full,
@@ -990,9 +989,9 @@ $urlAdmin = config('fast.admin_prefix');
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <h3 x-cloak class="text-base"
+                <h3 x-cloak class="sidebar-item-text"
                     x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full && !show ? 'sm:hidden' : ''">
-                    <p>@lang('models/otcSites.route')</p>
+                    <p>@lang('models/otcSites.link_text')</p>
                 </h3>
 
             </div>
@@ -1003,8 +1002,8 @@ $urlAdmin = config('fast.admin_prefix');
 @can(__('models/otcScopes.route').'.index')
     <div @click="$store.sidebar.active = 'otcScopes'" x-data="tooltip" x-on:mouseover="show = true"
         x-on:mouseleave="show = false"
-        class=" relative flex justify-between items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
-        {{ Request::is('admin/'.__('models/otcScopes.route').'*')  ? 'active text-orange-300 bg-gray-800' : 'text-gray-400' }}"
+        class=" sidebar-item
+        {{ Request::is('admin/'.__('models/otcScopes.route').'*')  ? 'active':'' }}"
         x-bind:class="{
             'justify-start': $store.sidebar.full,
             'sm:justify-center': !$store.sidebar.full,
@@ -1020,9 +1019,9 @@ $urlAdmin = config('fast.admin_prefix');
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <h3 x-cloak class="text-base"
+                <h3 x-cloak class="sidebar-item-text"
                     x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full && !show ? 'sm:hidden' : ''">
-                    <p>@lang('models/otcScopes.route')</p>
+                    <p>@lang('models/otcScopes.link_text')</p>
                 </h3>
 
             </div>
@@ -1033,8 +1032,8 @@ $urlAdmin = config('fast.admin_prefix');
 @can(__('models/otcAlarms.route').'.index')
     <div @click="$store.sidebar.active = 'otcAlarms'" x-data="tooltip" x-on:mouseover="show = true"
         x-on:mouseleave="show = false"
-        class=" relative flex justify-between items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
-        {{ Request::is('admin/'.__('models/otcAlarms.route').'*')  ? 'active text-orange-300 bg-gray-800' : 'text-gray-400' }}"
+        class=" sidebar-item
+        {{ Request::is('admin/'.__('models/otcAlarms.route').'*')  ? 'active':'' }}"
         x-bind:class="{
             'justify-start': $store.sidebar.full,
             'sm:justify-center': !$store.sidebar.full,
@@ -1050,9 +1049,9 @@ $urlAdmin = config('fast.admin_prefix');
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <h3 x-cloak class="text-base"
+                <h3 x-cloak class="sidebar-item-text"
                     x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full && !show ? 'sm:hidden' : ''">
-                    <p>@lang('models/otcAlarms.route')</p>
+                    <p>@lang('models/otcAlarms.link_text')</p>
                 </h3>
 
             </div>
@@ -1063,8 +1062,8 @@ $urlAdmin = config('fast.admin_prefix');
 @can(__('models/otcCategs.route').'.index')
     <div @click="$store.sidebar.active = 'otcCategs'" x-data="tooltip" x-on:mouseover="show = true"
         x-on:mouseleave="show = false"
-        class=" relative flex justify-between items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer
-        {{ Request::is('admin/'.__('models/otcCategs.route').'*')  ? 'active text-orange-300 bg-gray-800' : 'text-gray-400' }}"
+        class=" sidebar-item
+        {{ Request::is('admin/'.__('models/otcCategs.route').'*')  ? 'active':'' }}"
         x-bind:class="{
             'justify-start': $store.sidebar.full,
             'sm:justify-center': !$store.sidebar.full,
@@ -1080,9 +1079,9 @@ $urlAdmin = config('fast.admin_prefix');
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <h3 x-cloak class="text-base"
+                <h3 x-cloak class="sidebar-item-text"
                     x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full && !show ? 'sm:hidden' : ''">
-                    <p>@lang('models/otcCategs.route')</p>
+                    <p>@lang('models/otcCategs.link_text')</p>
                 </h3>
 
             </div>
@@ -1094,7 +1093,7 @@ $urlAdmin = config('fast.admin_prefix');
 <!-- Posts -->
 {{-- <div @click="$store.sidebar.active = 'posts' " x-data="tooltip" x-on:mouseover="show = true"
     x-on:mouseleave="show = false"
-    class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer"
+    class=" sidebar-item"
     x-bind:class="{'justify-start': $store.sidebar.full, 'sm:justify-center':!$store.sidebar.full,'text-gray-200 bg-gray-800':$store.sidebar.active == 'posts','text-gray-400 ':$store.sidebar.active != 'posts'}">
     <div class="flex  items-center space-x-2">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -1113,7 +1112,7 @@ $urlAdmin = config('fast.admin_prefix');
 <!-- Schedules -->
 {{-- <div @click="$store.sidebar.active = 'home' " x-data="tooltip" x-on:mouseover="show = true"
     x-on:mouseleave="show = false"
-    class=" relative flex justify-between items-center text-gray-400 hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer"
+    class=" sidebar-item"
     x-bind:class="{'justify-start': $store.sidebar.full, 'sm:justify-center':!$store.sidebar.full,'text-gray-200 bg-gray-800':$store.sidebar.active == 'schedules','text-gray-400 ':$store.sidebar.active != 'schedules'}">
     <div class="flex  items-center space-x-2">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"

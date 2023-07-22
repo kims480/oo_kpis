@@ -3,7 +3,8 @@
 return array (
   'singular' => 'GovernController',
   'plural' => 'GovernControllers',
-  'fields' => 
+  'link_text' => 'Governs',
+  'fields' =>
   array (
     'id' => 'Id',
     '(name' => '(Name',

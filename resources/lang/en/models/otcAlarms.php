@@ -6,6 +6,7 @@ return array (
   'singular' => 'otcAlarms',
   'plural' => 'otcAlarms',
   'menu' => 'OTC Alarms List',
+  'link_text' => 'OTC Alarms List',
   'fields' =>
   array (
     'id' => 'Id',

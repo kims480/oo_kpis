@@ -3,7 +3,8 @@
 return array (
   'singular' => 'AlarmCateg',
   'plural' => 'AlarmCategs',
-  'fields' => 
+  'link_text' => 'Alarm Categories',
+  'fields' =>
   array (
     'id' => 'Id',
     'categ_name' => 'Categ Name',

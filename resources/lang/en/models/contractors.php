@@ -4,6 +4,7 @@ return array (
   'route' => 'contractors',
   'singular' => 'Contractor',
   'plural' => 'Contractors',
+  'link_text' => 'Sub Cons',
   'fields' =>
   array (
     'id' => 'Id',

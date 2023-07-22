@@ -5,6 +5,8 @@ return array (
   'permissions' => 'consumablespares',
   'singular' => 'consumable-spare',
   'plural' => 'consumable-spares',
+  'link_text'=>'Consumable Spares',
+
   'fields' =>
   array (
     'id' => 'Id',

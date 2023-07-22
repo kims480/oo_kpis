@@ -3,7 +3,8 @@
 return array (
   'singular' => 'FileUpload',
   'plural' => 'FileUploads',
-  'fields' => 
+  'link_text' => 'Files Upload',
+  'fields' =>
   array (
     'id' => 'Id',
     'name' => 'Name',

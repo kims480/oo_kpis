@@ -5,6 +5,7 @@ return array (
   'singular' => 'Ticket',
   'plural' => 'Tickets',
   'export' => 'tickets.export',
+  'link_text' => 'Tickets',
   'fields' =>
   array (
     'id' => 'Id',

@@ -5,6 +5,7 @@ return array(
     'route' => 'otcSites',
     'singular' => 'Otc_site',
     'plural' => 'otcSites',
+    'link_text' => 'OTC Sites',
     'fields' =>
     array(
         'id' => 'Id',

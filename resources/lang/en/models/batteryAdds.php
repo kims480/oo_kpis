@@ -5,6 +5,7 @@ return array (
   'plural' => 'Battery-Adds',
   'export' => 'Export',
   'import' => 'Import',
+  'link_text'=>'Battery Install',
   'fields' =>
   array (
     'id' => 'Id',

@@ -20,7 +20,8 @@ return [
         'permissions' => 'permissions'
     ],
     'generator_builder'=>[
-        'title'=>'Generator Builder'
+        'title'=>'Generator Builder',
+        'link_text'=>'Generator Builder'
     ],
     'attendances'=>[
         'title'=>'Checkin/out'

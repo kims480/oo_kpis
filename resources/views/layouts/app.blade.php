@@ -30,8 +30,8 @@
             transform: scale(0.8)
         }
         body{
-            background-image: url(/images/login_5.jpeg);
-    background-blend-mode: overlay;
+            /* background-image: url(/images/login_5.jpeg);
+            background-blend-mode: overlay; */
         }
     </style>
     @stack('page_css')
@@ -59,10 +59,10 @@
 
 </head>
 
-<body class="bg-gray-100 font-family-karla h-screen mx-auto antialiased  @stack('page_body_class')" x-data>
+<body class="bg-slate-100 font-family-karla h-screen mx-auto antialiased  @stack('page_body_class')" x-data>
     <div class="flex justify-between overflow-hidden ">
         {{-- <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl"> --}}
-        <div class="h-screen bg-gray-900 transition-all  w-64 duration-300 space-y-2 fixed sm:relative  "
+        <div class="sidebar"
             x-bind:class="{
                 'w-64': $store.sidebar.full,
                 'w-64 sm:w-20': !$store.sidebar.full,

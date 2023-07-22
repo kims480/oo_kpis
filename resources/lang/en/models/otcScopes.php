@@ -5,6 +5,7 @@ return array (
   'route' => 'otcScopes',
   'singular' => 'OtcScope',
   'plural' => 'OtcScopes',
+  'link_text' => 'OTC Scopes',
   'fields' =>
   array (
     'id' => 'Id',

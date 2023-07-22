@@ -14,6 +14,7 @@ html, body {
     font-size: 14px;
     -webkit-font-smoothing: antialiased;
 }
+
 @layer base{
     [type='text'],[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],
     [type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea,select {
@@ -33,8 +34,10 @@ html, body {
 
     }
 }
+body{
+}
 .table { @apply  text-sm  w-full shadow-md table-auto mb-2  }
-.table  th { @apply bg-gray-700 text-slate-50 uppercase text-sm leading-normal py-1}
+.table  th { @apply bg-red-700 text-slate-50 uppercase text-sm leading-normal py-1}
 .table th:nth-child(1) { @apply w-auto }
 .table th:last-child { width: 15%; }
 
@@ -124,7 +127,7 @@ html, body {
     @apply text-lg font-bold
   }
   .content-header{
-      @apply bg-slate-800 text-white rounded shadow-md p-2 mb-6 flex
+      @apply bg-sky-800 text-white rounded shadow-md p-2 mb-6 flex
   }
   .has-tooltip{
       @apply relative
@@ -238,3 +241,9 @@ html, body {
 h3{
     @apply text-base;
 }
+.sidebar{
+    @apply h-screen bg-sky-900 transition-all  w-64 duration-300 space-y-2 fixed sm:relative
+}
+.sidebar-item{ @apply relative flex justify-between items-center text-gray-100 hover:text-white hover:bg-orange-800 space-x-2 py-1.5 px-2 cursor-pointer}
+.sidebar-item.active{ @apply  text-white bg-red-800 border-l-2 border-gray-100}
+.sidebar-item-text{@apply text-sm}

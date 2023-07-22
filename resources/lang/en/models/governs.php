@@ -3,7 +3,8 @@
 return array (
   'singular' => 'Govern',
   'plural' => 'Governs',
-  'fields' => 
+  'link_text' => 'Governs',
+  'fields' =>
   array (
     'id' => 'Id',
     'name' => 'Name',

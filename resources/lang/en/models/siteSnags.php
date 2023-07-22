@@ -5,6 +5,7 @@ return array (
   'singular' => 'Site Snag',
   'url' => 'site-snags',
   'plural' => 'Site Snags',
+  'link_text' => 'Site Snags',
   'fields' =>
   array (
     'id' => 'Id',

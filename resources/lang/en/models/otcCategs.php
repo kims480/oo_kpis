@@ -5,6 +5,7 @@ return array (
   'route' => 'otcCategs',
   'singular' => 'OtcCateg',
   'plural' => 'OtcCategs',
+  'link_text' => 'OTC Categs',
   'fields' =>
   array (
     'id' => 'Id',

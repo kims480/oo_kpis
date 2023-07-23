@@ -32,3 +32,6 @@ Route::get('site-snags',[\App\Http\Controllers\SnagsController::class,'getSiteSn
 // Route::get('/gen-permissions/{model}/{url?}', [App\Http\Controllers\DashboardController::class,'generatePermissions'])->name('insert.permissions');
 // Route::livewire('/consumable-spares', 'ConsumableForm')->name('consumable-spares.index');
 // Route::livewire('/battery-add', 'batteries/ListSiteBatteries')->name('battery-add.index');
+
+
+Route::get('employee-contract_confim',[\App\Http\Controllers\EmployeeController::class,'contract_confirmation'])->name('employees.contract');

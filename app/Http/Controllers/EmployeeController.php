@@ -153,4 +153,10 @@ class EmployeeController extends AppBaseController
 
         return redirect(route('employees.index'));
     }
+
+    function contract_confirmation()  {
+
+        return view('employees.contract');
+
+    }
 }

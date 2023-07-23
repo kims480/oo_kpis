@@ -26,6 +26,7 @@ return array (
     'dept_id'=>'Department',
     'hiring_date'=>'Hiring Date',
     'salary'=>'Salary',
+    'contract_confirmed'=>'Contract Confirmed',
     'created_at' => 'Created At',
     'updated_at' => 'Updated At',
     'deleted_at' => 'Deleted At',

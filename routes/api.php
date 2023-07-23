@@ -91,3 +91,18 @@ Route::resource('otc_alarms', App\Http\Controllers\API\OtcAlarmsAPIController::c
 
 
 Route::resource('t_t_statuses', App\Http\Controllers\API\TTStatusAPIController::class);
+
+
+Route::resource('employees', App\Http\Controllers\API\EmployeeAPIController::class);
+
+
+Route::resource('alkan_projects', App\Http\Controllers\API\AlkanProjectAPIController::class);
+
+
+Route::resource('designations', App\Http\Controllers\API\DesignationAPIController::class);
+
+
+Route::resource('departments', App\Http\Controllers\API\DepartmentAPIController::class);
+
+
+Route::resource('titles', App\Http\Controllers\API\TitleAPIController::class);

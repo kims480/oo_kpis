@@ -353,3 +353,38 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
     </a>
 </li>
 
+<li class="nav-item">
+    <a href="{{ route('employees.index') }}"
+       class="nav-link {{ Request::is('employees*') ? 'active' : '' }}">
+        <p>@lang('models/employees.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('alkanProjects.index') }}"
+       class="nav-link {{ Request::is('alkanProjects*') ? 'active' : '' }}">
+        <p>@lang('models/alkanProjects.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('designations.index') }}"
+       class="nav-link {{ Request::is('designations*') ? 'active' : '' }}">
+        <p>@lang('models/designations.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('departments.index') }}"
+       class="nav-link {{ Request::is('departments*') ? 'active' : '' }}">
+        <p>@lang('models/departments.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('titles.index') }}"
+       class="nav-link {{ Request::is('titles*') ? 'active' : '' }}">
+        <p>@lang('models/titles.plural')</p>
+    </a>
+</li>
+

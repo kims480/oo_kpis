@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\API;
 
-use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Employee;
+use App\Models\AlkanProject;
+use InfyOm\Generator\Request\APIRequest;
 
-class UpdateEmployeeRequest extends FormRequest
+class UpdateAlkanProjectAPIRequest extends APIRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class UpdateEmployeeRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = Employee::$rules;
+        $rules = AlkanProject::$rules;
         
         return $rules;
     }

@@ -129,3 +129,18 @@ Route::get('sendmail', [App\Http\Controllers\TicketController::class ,'send']);
 
 
 Route::resource('tTStatuses', App\Http\Controllers\TTStatusController::class);
+
+
+Route::resource('employees', App\Http\Controllers\EmployeeController::class);
+
+
+Route::resource('alkan-projects', App\Http\Controllers\AlkanProjectController::class);
+
+
+Route::resource('designations', App\Http\Controllers\DesignationController::class);
+
+
+Route::resource('departments', App\Http\Controllers\DepartmentController::class);
+
+
+Route::resource('titles', App\Http\Controllers\TitleController::class);

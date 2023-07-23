@@ -102,7 +102,7 @@
 
                     <label for="contract_confirmation">{{ __('models/employees.fields.contract_confirmed') }}</label>
 
-                    {!! Form::select('contract_confirmed', [0 => 'No', 1 => 'Yes'], null, [
+                    {!! Form::select('contract_confirmed', [null=>'Please confirm',0 => 'No', 1 => 'Yes'], null, [
                         'class' => 'text-base   rounded  p-1 ',
                         'wire:model.debounce' => 'contract_confirmed',
                     ]) !!}

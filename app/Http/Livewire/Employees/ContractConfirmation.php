@@ -64,7 +64,7 @@ class ContractConfirmation extends Component
         ]);
         // dd($this->employee_id);
         $employee = Employee::find($this->employee_id);
-        $employee->contract_confirmed=true;
+        $employee->contract_confirmed=$this->contract_confirmed;
         $employee->save();
 
         $this->close();

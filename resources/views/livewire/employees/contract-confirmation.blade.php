@@ -86,7 +86,7 @@
                 <div>
                     <p
                         class="rounded-r-lg min-w-[15rem]  py-1 min-h-[2rem] bg-slate-200 text-slate-900 text-left  px-2">
-                        {{ $employee[0]['contract_confirmed'] ?? '_' }}
+                        {{ $employee[0]['contract_confirmed']!=null ? ($employee[0]['contract_confirmed']?'Yes':'No') :'No'  }}
                     </p>
                 </div>
             </div>

@@ -78,7 +78,7 @@ class ContractConfirmation extends Component
     }
 
     function close(){
-        $this->contract_confirmed = false;
+        $this->contract_confirmed = null;
         $this->search = null;
         $this->civil_id = null;
 

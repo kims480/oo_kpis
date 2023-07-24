@@ -340,6 +340,14 @@
                         <canvas id="chartThree" width="400" height="200"></canvas>
                     </div>
                 </div>
+                <div class="w-full lg:w-1/2 pl-0 lg:pl-2 mt-12 lg:mt-0">
+                    <p class="text-xl pb-3 flex items-center">
+                        <i class="fas fa-check mr-3"></i> Employees Contact Signing
+                    </p>
+                    <div class="p-6 bg-white">
+                        <canvas id="chartFour" width="400" height="200"></canvas>
+                    </div>
+                </div>
             </div>
 
             <div class="w-full mt-12">
@@ -360,7 +368,11 @@
         var _ydata = JSON.parse('{!! json_encode(array_values($dashboardInfo['batteries_progress_chart'])) !!}');
         var office_ydata = JSON.parse('{!! json_encode(array_values($dashboardInfo['batteries_office_chart'])) !!}');
         var sitePrio_ydata = JSON.parse('{!! json_encode(array_values($dashboardInfo['batteries_site_prio_chart'])) !!}');
+        var employees_ydata = JSON.parse('{!! json_encode(array_values($dashboardInfo['employees_chart'][0])) !!}');
+        var employees_xdata = JSON.parse('{!! json_encode(array_keys($dashboardInfo['employees_chart'][0])) !!}');
         // var _ydata=JSON.parse('{!! json_encode($dashboardInfo['batteries_chart_weeks_ydata']) !!}');
+        console.log(employees_ydata);
+        console.log(employees_xdata);
     </script>
     @push('page_scripts')
         <script>
@@ -536,6 +548,9 @@
 
             });
 
+
+
+
             var chartThree = document.getElementById('chartThree');
             var myChart = new Chart(chartThree, {
                 type: 'pie',
@@ -594,13 +609,82 @@
                             },
                             padding: 2,
                             formatter: function(value, context) {
-                                // console.log(context.);
+                                // console.log(context);
                                 var i=context.dataIndex;
 
                                 var prio = sitePrio_xdata[i];
                                 // var prio = "pRIO";
 
                                 return  prio + " - "+value  ;
+                            }
+                        }
+                    }
+
+                }
+            });
+
+// employees
+            var chartFour = document.getElementById('chartFour');
+            var myFourChart = new Chart(chartFour, {
+                type: 'pie',
+                data: {
+                    labels: employees_xdata,
+                    datasets: [{
+                        label: 'Employees Contract  Signed',
+                        data: employees_ydata,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                        ],
+                        datalabels: {
+                            anchor: 'end'
+                        },
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    // Core options
+                    aspectRatio: 4 / 3,
+                    cutoutPercentage: 32,
+                    layout: {
+                        padding: 2
+                    },
+                    elements: {
+                        line: {
+                            fill: false
+                        },
+                        point: {
+                            hoverRadius: 7,
+                            radius: 5
+                        }
+                    },
+
+                    plugins: {
+                        datalabels: {
+                            backgroundColor: function(context) {
+                                return context.dataset.backgroundColor;
+                            },
+                            borderColor: 'white',
+                            borderRadius: 25,
+                            borderWidth: 2,
+                            color: 'white',
+                            align:'center',
+                            font: {
+                                weight: 'bold'
+                            },
+                            padding: 2,
+                            formatter: function(value, context) {
+                                // console.log(context);
+                                var i=context.dataIndex;
+
+                                var contract = employees_xdata[i];
+                                // var prio = "pRIO";
+
+                                return  contract + " - "+value  ;
                             }
                         }
                     }

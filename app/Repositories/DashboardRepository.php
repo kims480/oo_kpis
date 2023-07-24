@@ -8,6 +8,7 @@ use App\Models\BatteryAdd;
 use App\Models\BatteryCountWeekChart;
 use App\Models\BatteryprogressChart;
 use App\Models\BatterySitePrio;
+use App\Models\EmployeesChart;
 use Carbon\Carbon;
 use phpDocumentor\Reflection\Types\ArrayKey;
 
@@ -57,7 +58,9 @@ class DashboardRepository
         $batteries=  BatteryAdd::select('battery_add.id','install_date','site__deployed')->with(['site'=>function($q){
             $q->select('id','site_id','office_id');
         }
+
         ])->orderBy('install_date','asc')->get();
+
         $dashboardInfo['batteries_chart_weeks_xdata']=[];
         $dashboardInfo['batteries_chart_weeks_ydata']=[];
         $weeks=$batteries->groupBY(function($battery){
@@ -67,7 +70,7 @@ class DashboardRepository
             $dashboardInfo['batteries_chart_weeks_xdata'][]="Week-".$week;
             $dashboardInfo['batteries_chart_weeks_ydata'][]=count($value);
         }
-
+        $dashboardInfo['employees_chart'] =  EmployeesChart::get()->toArray();
         // dd($dashboardInfo['batteries_chart_weeks_ydata']);
         $dashboardInfo['batteries_sites'] =  BatteryAdd::distinct()->count('site__deployed');
         $dashboardInfo['batteries_progress_chart'] =  BatteryprogressChart::get()->mapWithKeys(function ($item, $key) {
@@ -80,9 +83,11 @@ class DashboardRepository
         $dashboardInfo['batteries_office_chart'] =  BatterAddOffice::get()->mapWithKeys(function ($item, $key) {
             return [$item['office_name'] => $item['num_office_name']];
         })->except(['Warehouse'])->toArray();
+
         $dashboardInfo['batteries_site_prio_chart'] =  BatterySitePrio::get()->filter()->mapWithKeys(function ($item, $key) {
             return [$item['site_prio'] => $item['num_sites']];
         })->toArray();
+$dashboardInfo['employees_chart'] =  EmployeesChart::get()->filter()->toArray();
         $dashboardInfo['permission_count'] =  $this->permissionRepository->count();
         // $dashboardInfo['user_online'] =  $this->attendanceRepository->CountUserOnline();
 

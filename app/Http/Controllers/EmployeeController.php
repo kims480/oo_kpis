@@ -159,4 +159,9 @@ class EmployeeController extends AppBaseController
         return view('employees.contract');
 
     }
+    function contract_list()  {
+
+        return view('employees.contract_list');
+
+    }
 }

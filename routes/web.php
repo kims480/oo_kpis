@@ -35,3 +35,4 @@ Route::get('site-snags',[\App\Http\Controllers\SnagsController::class,'getSiteSn
 
 
 Route::get('employee-contract_confim',[\App\Http\Controllers\EmployeeController::class,'contract_confirmation'])->name('employees.contract');
+Route::get('employee-contract-list',[\App\Http\Controllers\EmployeeController::class,'contract_list'])->name('employees.list');

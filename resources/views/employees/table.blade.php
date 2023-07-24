@@ -2,10 +2,10 @@
     <table class="table" id="employees-table">
         <thead>
         <tr>
+            <th>@lang('models/employees.fields.civil_id')</th>
             <th>@lang('models/employees.fields.name')</th>
+            <th>@lang('models/employees.fields.hr_code')</th>
         <th>@lang('models/employees.fields.phone')</th>
-        <th>@lang('models/employees.fields.civil_id')</th>
-        <th>@lang('models/employees.fields.hr_code')</th>
         <th>@lang('models/employees.fields.project_id')</th>
         <th>@lang('models/employees.fields.designation_id')</th>
         <th>@lang('models/employees.fields.title_id')</th>
@@ -19,11 +19,11 @@
         <tbody>
          @foreach($employees as $employee)
             <tr>
+                <td>{{ $employee->civil_id }}</td>
                 <td>{{ $employee->first_name .' '. $employee->mid_name.' ' .$employee->last_name  }}</td>
 
+                <td>{{ $employee->hr_code }}</td>
             <td>{{ $employee->phone }}</td>
-            <td>{{ $employee->civil_id }}</td>
-            <td>{{ $employee->hr_code }}</td>
             <td>{{ $employee->project_id }}</td>
             <td>{{ $employee->designation_id }}</td>
             <td>{{ $employee->title_id }}</td>
